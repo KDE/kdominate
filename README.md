@@ -1,0 +1,3 @@
+# KDominate
+
+KDominate is a tactical game for one or two players, where players move and convert tiles with the goal of controlling the majority of the board.

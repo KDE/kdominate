@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+                          http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+  <kcfgfile name="kdominaterc"/>
+  <group name="Game">
+    <entry name="Color0" type="Color">
+      <label>Color of neutral tiles.</label>
+      <default>#4b3f3d</default>
+    </entry>
+    <entry name="Color1" type="Color">
+      <label>Color of player 1.</label>
+      <default>#8dd862</default>
+    </entry>
+    <entry name="Color2" type="Color">
+      <label>Color of player 2.</label>
+      <default>#6087dc</default>
+    </entry>
+    <entry name="ComputerPlayer1" type="Bool" key="Computer_Pl_1">
+      <label>Whether player 1 is played by the computer.</label>
+      <default>false</default>
+    </entry>
+    <entry name="Skill1" type="Enum">
+      <choices>
+        <choice name="Beginner"/>
+        <choice name="Novice"/>
+        <choice name="Average"/>
+        <choice name="Strong"/>
+        <choice name="Expert"/>
+      </choices>
+      <label>Skill of computer player 1.</label>
+      <default>Average</default>
+    </entry>
+    <entry name="ComputerPlayer2" type="Bool" key="Computer_Pl_2">
+      <label>Whether player 2 is played by the computer.</label>
+      <default>true</default>
+    </entry>
+    <entry name="Skill2" type="Enum">
+      <choices>
+        <choice name="Beginner"/>
+        <choice name="Novice"/>
+        <choice name="Average"/>
+        <choice name="Strong"/>
+        <choice name="Expert"/>
+      </choices>
+      <label>Skill of computer player 2.</label>
+      <default>Average</default>
+    </entry>
+    <entry name="PauseForComputer" type="Bool">
+      <label>Pause before each computer move.</label>
+      <default>false</default>
+    </entry>
+    <entry name="MapIndex" type="Int">
+      <label>Predefined map selection</label>
+      <default>1</default>
+    </entry>
+    <entry name="ThemeIndex" type="Enum">
+      <choices>
+        <choice name="Simple"/>
+        <choice name="Plastic"/>
+        <choice name="Glass"/>
+      </choices>
+      <label>Visual theme for the tiles.</label>
+      <default>Plastic</default>
+    </entry>
+  </group>
+</kcfg>

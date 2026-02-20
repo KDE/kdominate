@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=KDominate
+Exec=kdominate -qwindowtitle %c
+Icon=kdominate
+Type=Application
+X-DocPath=kdominate/index.html
+GenericName=Board Domination Game
+Comment=Board Domination Game
+StartupNotify=true
+Categories=Qt;KDE;Game;StrategyGame;

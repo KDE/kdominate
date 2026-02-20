@@ -1,0 +1,210 @@
+/**
+ * SPDX-FileCopyrightText: 2026 Albert Vaca <albertvaka@kde.org>
+ *
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
+#include "kdominate_ai.h"
+#include "kdominate_board.h"
+
+#include <climits>
+
+// Helper thread class
+class AiThread : public QThread
+{
+    Q_OBJECT
+public:
+    AiThread(KDominateAi *ai)
+        : m_ai(ai)
+    {
+    }
+    void run() override
+    {
+        m_ai->computeMove();
+    }
+
+private:
+    KDominateAi *m_ai;
+};
+
+// Cloning actions before jumping actions since they tend to be better and help pruning
+const QPoint KDominateAi::s_validMovementDirections[] = {
+    // Clone orthogonal
+    QPoint(0, -1),
+    QPoint(1, 0),
+    QPoint(-1, 0),
+    QPoint(0, 1),
+    // Clone diagonal
+    QPoint(1, 1),
+    QPoint(1, -1),
+    QPoint(-1, 1),
+    QPoint(-1, -1),
+    // Jump orthogonal (distance 2)
+    QPoint(0, -2),
+    QPoint(2, 0),
+    QPoint(-2, 0),
+    QPoint(0, 2)};
+const int KDominateAi::s_numDirections = 12;
+
+KDominateAi::KDominateAi(QObject *parent)
+    : QObject(parent)
+    , m_depth(4)
+    , m_stopped(false)
+    , m_thread(nullptr)
+    , m_workBoard(nullptr)
+{
+}
+
+KDominateAi::~KDominateAi()
+{
+    if (m_thread) {
+        m_stopped = true;
+        m_thread->wait();
+        delete m_thread;
+    }
+    delete m_workBoard;
+}
+
+void KDominateAi::setDepth(int depth)
+{
+    m_depth = depth;
+}
+
+void KDominateAi::stop()
+{
+    m_stopped = true;
+    if (m_thread) {
+        m_thread->wait();
+    }
+}
+
+void KDominateAi::getMove(KDominateBoard &board, int player)
+{
+    m_stopped = false;
+
+    // Create a working copy of the board for the AI thread
+    delete m_workBoard;
+    m_workBoard = new KDominateBoard();
+    m_workBoard->newGame(board.size());
+    for (int x = 0; x < board.size(); x++) {
+        for (int y = 0; y < board.size(); y++) {
+            m_workBoard->set(x, y, board[x][y]);
+        }
+    }
+    m_workBoard->setCurrentPlayer(player);
+
+    if (m_thread) {
+        m_thread->wait();
+        delete m_thread;
+    }
+
+    m_thread = new AiThread(this);
+    // Use QueuedConnection so the signal crosses from the AI thread to the main thread
+    connect(
+        m_thread,
+        &QThread::finished,
+        this,
+        [this]() {
+            Q_EMIT done(m_resultOrigin, m_resultDest);
+        },
+        Qt::QueuedConnection);
+
+    m_thread->start(QThread::IdlePriority);
+}
+
+void KDominateAi::computeMove()
+{
+    if (!m_workBoard) {
+        m_resultOrigin = QPoint(-1, -1);
+        m_resultDest = QPoint(-1, -1);
+        return;
+    }
+
+    AiMove move = alphaBeta(*m_workBoard, m_workBoard->currentPlayer(), m_depth);
+    m_resultOrigin = move.origin;
+    m_resultDest = move.dest;
+}
+
+int KDominateAi::staticEvaluationFunction(KDominateBoard &board, int initialPlayer, int depth) const
+{
+    int score = 0;
+
+    int w = board.winner();
+    if (w == initialPlayer)
+        score += 1000 + depth;
+    else if (w == 3 - initialPlayer)
+        score -= (1000 + depth);
+
+    KDominateBoard::TileCount tc = board.countTiles();
+    if (initialPlayer == 1)
+        score += tc.p1 - tc.p2;
+    else
+        score += tc.p2 - tc.p1;
+
+    return score;
+}
+
+KDominateAi::AiMove KDominateAi::alphaBeta(KDominateBoard &board, int initialPlayer, int depth, int alpha, int beta)
+{
+    AiMove bestAiMove;
+
+    if (depth <= 0 || board.isWinner()) {
+        bestAiMove.score = staticEvaluationFunction(board, initialPlayer, depth);
+        return bestAiMove;
+    }
+
+    // If the current player has no moves, skip their turn (free move for the other player)
+    if (!board.areMovementsAvailable(board.currentPlayer())) {
+        int skippedPlayer = board.currentPlayer();
+        board.setCurrentPlayer(board.otherPlayer());
+        bestAiMove = alphaBeta(board, initialPlayer, depth - 1, alpha, beta);
+        board.setCurrentPlayer(skippedPlayer);
+        return bestAiMove;
+    }
+
+    bool maximizing = initialPlayer == board.currentPlayer();
+    bestAiMove.score = maximizing ? INT_MIN : INT_MAX;
+
+    for (int i = 0; i < board.size(); i++) {
+        for (int j = 0; j < board.size(); j++) {
+            QPoint origin(i, j);
+            if (board[origin] != board.currentPlayer())
+                continue;
+
+            for (int k = 0; k < s_numDirections; k++) {
+                QPoint dest = origin + s_validMovementDirections[k];
+
+                auto [validMovement, jumpMovement] = board.move(origin, dest);
+                if (!validMovement)
+                    continue;
+
+                AiMove candidateAiMove = alphaBeta(board, initialPlayer, depth - 1, alpha, beta);
+
+                if ((maximizing && candidateAiMove.score > bestAiMove.score) || (!maximizing && candidateAiMove.score < bestAiMove.score)) {
+                    bestAiMove.origin = origin;
+                    bestAiMove.dest = dest;
+                    bestAiMove.score = candidateAiMove.score;
+                }
+
+                board.undo();
+
+                if (maximizing)
+                    alpha = qMax(alpha, bestAiMove.score);
+                else
+                    beta = qMin(beta, bestAiMove.score);
+                if (beta <= alpha) {
+                    return bestAiMove;
+                }
+
+                if (m_stopped) {
+                    return bestAiMove;
+                }
+            }
+        }
+    }
+
+    return bestAiMove;
+}
+
+#include "kdominate_ai.moc"
+#include "moc_kdominate_ai.cpp"

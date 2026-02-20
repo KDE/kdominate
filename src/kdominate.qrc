@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="/kxmlgui5/kdominate">
+    <file>kdominateui.rc</file>
+  </qresource>
+  <qresource prefix="/">
+    <file>graphics.svg</file>
+  </qresource>
+</RCC>

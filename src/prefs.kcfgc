@@ -1,0 +1,4 @@
+File=kdominate.kcfg
+ClassName=Prefs
+Singleton=true
+Mutators=MapIndex

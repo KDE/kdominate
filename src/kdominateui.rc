@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gui xmlns="http://www.kde.org/standards/kxmlgui/1.0"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     name="kdominate"
+     version="7"
+     xsi:schemaLocation="http://www.kde.org/standards/kxmlgui/1.0
+                         http://www.kde.org/standards/kxmlgui/1.0/kxmlgui.xsd">
+
+<ToolBar name="mainToolBar" noMerge="1"><text>Main Toolbar</text>
+    <Action name="action_button"/>
+    <Action name="options_configure"/>
+    <Separator/>
+    <Action name="game_new"/>
+    <Separator/>
+    <Action name="move_hint"/>
+    <Action name="move_undo"/>
+    <Action name="move_redo"/>
+</ToolBar>
+
+</gui>
