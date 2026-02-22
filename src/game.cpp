@@ -56,6 +56,11 @@ QString Game::mapDisplayName(const QString &resourcePath)
     return ki18n(englishName.toUtf8().constData()).toString();
 }
 
+KDominateBoard::TileCount Game::countTiles() const
+{
+    return m_board->countTiles();
+}
+
 Game::Game(const int d, KBoardWidget *view, QWidget *parent)
     : QObject((QObject *)parent)
     , m_state(GameState::Idle)

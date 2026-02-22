@@ -41,7 +41,9 @@ KBoardWidget::KBoardWidget(const int d, QWidget *parent)
     color2 = Prefs::color2();
     color0 = Prefs::color0();
     m_theme = Theme(Prefs::themeIndex());
-    // makeSVGTiles(tileSize);
+    // We don't know the actual size until setSize is called, but we need to generate
+    // the tiles already since we use them in the status bar. Hardcode some small size.
+    makeSVGTiles(30);
 
     initTiles();
 

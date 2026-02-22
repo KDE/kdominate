@@ -16,11 +16,11 @@
 #include <QStringList>
 #include <QTimer>
 
+#include "kdominate_board.h"
 #include "ktilewidget.h"
 
 class KBoardWidget;
 class SettingsWidget;
-class KDominateBoard;
 class KDominateAi;
 
 enum Action {
@@ -45,6 +45,7 @@ public:
     static QStringList availableMapFiles(); // Returns sorted list of map filenames from :/maps/ resource directory
     static QString mapResourcePath(int mapIndex); // Returns resource path for a given map index (e.g. ":/maps/arena.map")
     static QString mapDisplayName(const QString &resourcePath); // Reads a map file's display name from its header comment
+    KDominateBoard::TileCount countTiles() const;
 
 public Q_SLOTS:
     void gameActions(int action);

@@ -31,7 +31,11 @@ public Q_SLOTS:
 private:
     Game *m_game;
     KBoardWidget *m_view = nullptr;
-    QLabel *currentPlayer = nullptr;
+    QLabel *m_p1Icon = nullptr;
+    QLabel *m_p1Count = nullptr;
+    QLabel *m_p2Icon = nullptr;
+    QLabel *m_p2Count = nullptr;
+    QLabel *m_currentPlayerIcon = nullptr;
     QAction *undoAction = nullptr;
     QAction *redoAction = nullptr;
     QAction *stopAction = nullptr;

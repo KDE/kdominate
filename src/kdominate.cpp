@@ -55,13 +55,22 @@ KDominate::KDominate()
     setCentralWidget(m_view);
 
     // init statusbar
-    QString s = i18n("Current player:");
-    statusBar()->addPermanentWidget(new QLabel(s));
+    m_p1Icon = new QLabel();
+    m_p1Count = new QLabel();
+    m_p2Icon = new QLabel();
+    m_p2Count = new QLabel();
+    m_currentPlayerIcon = new QLabel();
 
-    currentPlayer = new QLabel();
-    currentPlayer->setFrameStyle(QFrame::NoFrame);
+    statusBar()->addPermanentWidget(m_p1Icon);
+    statusBar()->addPermanentWidget(m_p1Count);
+    statusBar()->addPermanentWidget(new QLabel(QStringLiteral("|")));
+    statusBar()->addPermanentWidget(m_p2Icon);
+    statusBar()->addPermanentWidget(m_p2Count);
+    statusBar()->addPermanentWidget(new QLabel(QStringLiteral(" - ")));
+    statusBar()->addPermanentWidget(new QLabel(i18n("Current player:")));
+    statusBar()->addPermanentWidget(m_currentPlayerIcon);
+    statusBar()->addPermanentWidget(new QLabel(QString())); // Padding
     changePlayerColor(1);
-    statusBar()->addPermanentWidget(currentPlayer);
 
     {
         QAction *action = KGameStandardAction::gameNew(
@@ -164,8 +173,15 @@ void KDominate::changeButton(bool enabled, bool stop, const QString &caption)
 
 void KDominate::changePlayerColor(int newPlayer)
 {
-    // currentPlayer->setPixmap(m_view->playerPixmap(newPlayer));
-    // currentPlayer->resize(30,30);
+    const int iconSize = 16;
+    QPixmap p1Scaled = m_view->playerPixmap(1).scaled(iconSize, iconSize, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    QPixmap p2Scaled = m_view->playerPixmap(2).scaled(iconSize, iconSize, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    m_p1Icon->setPixmap(p1Scaled);
+    m_p2Icon->setPixmap(p2Scaled);
+    m_currentPlayerIcon->setPixmap(newPlayer == 1 ? p1Scaled : p2Scaled);
+    KDominateBoard::TileCount tc = m_game->countTiles();
+    m_p1Count->setText(QString::number(tc.p1));
+    m_p2Count->setText(QString::number(tc.p2));
 }
 
 void KDominate::setAction(const Action a, const bool onOff)
