@@ -96,15 +96,7 @@ std::pair<bool, bool> KDominateBoard::move(QPoint origin, QPoint dest)
             m_board[origin.x()][origin.y()] = 0;
         }
         expandConnected(dest);
-        TileCount tc = countTiles();
-        if (tc.empty == 0 || tc.p1 == 0 || tc.p2 == 0) {
-            if (tc.p1 > tc.p2)
-                m_winner = 1;
-            else if (tc.p1 < tc.p2)
-                m_winner = 2;
-            else
-                m_winner = 0;
-        } else {
+        if (!determineWinner()) {
             m_currentPlayer = otherPlayer();
         }
     }
@@ -182,6 +174,39 @@ void KDominateBoard::loadFromMap(const QStringList &lines)
             // '.' or anything else = 0 (empty)
         }
     }
+}
+
+std::optional<QPoint> KDominateBoard::fillNextEmpty(int player)
+{
+    UndoMovement &umovs = m_undos.top();
+    for (int y = 0; y < m_boardSize; y++) {
+        for (int x = 0; x < m_boardSize; x++) {
+            if (m_board[x][y] == 0) {
+                QPoint pos(x, y);
+                umovs.append(PosAndPlayer(pos, 0));
+                m_board[x][y] = player;
+                return pos;
+            }
+        }
+    }
+    determineWinner();
+    return std::nullopt;
+}
+
+bool KDominateBoard::determineWinner()
+{
+    TileCount tc = countTiles();
+    if (tc.empty == 0 || tc.p1 == 0 || tc.p2 == 0) {
+        if (tc.p1 > tc.p2) {
+            m_winner = 1;
+        } else if (tc.p1 < tc.p2) {
+            m_winner = 2;
+        } else {
+            m_winner = 0;
+        }
+        return true;
+    }
+    return false;
 }
 
 bool KDominateBoard::areMovementsAvailable(int player) const

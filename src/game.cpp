@@ -76,6 +76,10 @@ Game::Game(const int d, KBoardWidget *view, QWidget *parent)
     m_board = new KDominateBoard();
     m_ai = new KDominateAi(this);
 
+    m_autoFillTimer = new QTimer(this);
+    m_autoFillTimer->setInterval(150);
+    connect(m_autoFillTimer, &QTimer::timeout, this, &Game::autoFillNextTile);
+
     connect(m_view, &KBoardWidget::mouseClick, this, &Game::startHumanMove);
     connect(m_ai, &KDominateAi::done, this, &Game::moveCalculationDone);
     connect(m_view, &KBoardWidget::animationDone, this, &Game::animationDone);
@@ -335,7 +339,7 @@ void Game::moveCalculationDone(QPoint origin, QPoint dest)
         } else {
             Q_EMIT buttonChange(true, false, i18n("Start computer move"));
         }
-        Q_EMIT setAction(HINT, true);
+        Q_EMIT setAction(Action::HINT, true);
         KTileWidget::enableClicks(true);
         return;
     }
@@ -378,8 +382,8 @@ void Game::doMove(QPoint origin, QPoint dest)
     // Save snapshot for undo
     saveSnapshot(origin, dest);
 
-    Q_EMIT setAction(UNDO, true);
-    Q_EMIT setAction(REDO, false);
+    Q_EMIT setAction(Action::UNDO, true);
+    Q_EMIT setAction(Action::REDO, false);
 
     // Execute the move on the board
     auto [validMovement, jumpMovement] = m_board->move(origin, dest);
@@ -401,13 +405,17 @@ void Game::doMove(QPoint origin, QPoint dest)
     }
 
     // Change player (the board already changed currentPlayer internally)
-    moveDone();
     m_currentPlayer = m_board->currentPlayer();
     if (!m_board->areMovementsAvailable(m_currentPlayer) && !m_board->isWinner()) {
-        // Opponent has no moves, skip their turn
-        m_currentPlayer = (m_currentPlayer == 1) ? 2 : 1;
-        m_board->setCurrentPlayer(m_currentPlayer);
+        // Opponent can't move: auto-fill all empty cells for the other player
+        m_autoFillPlayer = (m_currentPlayer == 1) ? 2 : 1;
+        m_state = GameState::AutoFilling;
+        Q_EMIT setAction(Action::UNDO, false);
+        Q_EMIT buttonChange(true, true, i18n("Skip"));
+        m_autoFillTimer->start();
+        return;
     }
+    moveDone();
     Q_EMIT playerChanged(m_currentPlayer);
     setUpNextTurn();
 }
@@ -416,13 +424,17 @@ void Game::moveDone()
 {
     m_view->setNormalCursor();
     m_state = GameState::Idle;
-    Q_EMIT setAction(HINT, true);
+    Q_EMIT setAction(Action::HINT, true);
     m_view->hidePopup();
 }
 
 void Game::buttonClick()
 {
     qCDebug(KDOMINATE_LOG) << "BUTTON CLICK seen: m_state:" << int(m_state);
+    if (m_state == GameState::AutoFilling) {
+        finishAutoFill();
+        return;
+    }
     if (m_board->isWinner()) {
         KTileWidget::enableClicks(false);
         return;
@@ -597,8 +609,8 @@ bool Game::redo()
 
     m_currentPlayer = m_board->currentPlayer();
     if (!m_board->areMovementsAvailable(m_currentPlayer) && !m_board->isWinner()) {
-        m_currentPlayer = (m_currentPlayer == 1) ? 2 : 1;
-        m_board->setCurrentPlayer(m_currentPlayer);
+        int fillingPlayer = (m_currentPlayer == 1) ? 2 : 1;
+        while (m_board->fillNextEmpty(fillingPlayer)) { }
     }
     updateAllTiles();
 
@@ -630,6 +642,7 @@ void Game::setSize(int d)
 void Game::shutdown()
 {
     m_view->killAnimation();
+    m_autoFillTimer->stop();
     if (m_state == GameState::Computing) {
         m_ai->stop();
         m_state = GameState::Aborting;
@@ -643,6 +656,28 @@ void Game::shutdown()
 bool Game::isComputer(int player) const
 {
     return player == 1 ? computerPlOne : computerPlTwo;
+}
+
+void Game::autoFillNextTile()
+{
+    auto pos = m_board->fillNextEmpty(m_autoFillPlayer);
+    if (!pos) {
+        finishAutoFill();
+        return;
+    }
+    Owner owner = (m_autoFillPlayer == 1) ? Owner::One : Owner::Two;
+    m_view->displayTile(*pos, owner);
+}
+
+void Game::finishAutoFill()
+{
+    m_autoFillTimer->stop();
+    // Fill any remaining empty cells instantly (in case of skip)
+    while (m_board->fillNextEmpty(m_autoFillPlayer)) { }
+    updateAllTiles();
+    moveDone();
+    showWinner();
+    Q_EMIT setAction(Action::UNDO, true);
 }
 
 void Game::animationDone(int index)
@@ -711,7 +746,8 @@ void Game::saveSnapshot(QPoint origin, QPoint dest)
 
 bool Game::isBusy() const
 {
-    return m_state == GameState::Computing || m_state == GameState::Stopping || m_state == GameState::ShowingMove || m_state == GameState::Aborting;
+    return m_state == GameState::Computing || m_state == GameState::Stopping || m_state == GameState::ShowingMove || m_state == GameState::AutoFilling
+        || m_state == GameState::Aborting;
 }
 
 #include "moc_game.cpp"

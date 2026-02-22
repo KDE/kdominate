@@ -14,6 +14,7 @@
 #include <QObject>
 #include <QPoint>
 #include <QStringList>
+#include <QTimer>
 
 #include "ktilewidget.h"
 
@@ -76,6 +77,8 @@ private:
     void updateAllTiles();
     void saveSnapshot(QPoint origin, QPoint dest);
     void highlightValidDestinations(QPoint origin);
+    void autoFillNextTile();
+    void finishAutoFill();
 
 private Q_SLOTS:
     void newGame();
@@ -86,12 +89,13 @@ private Q_SLOTS:
 
 private:
     enum class GameState {
-        Idle, // No game active or game over
+        Idle, // No game started or game over
         HumanTurn, // Human player's turn, board clicks enabled
         WaitingForButton, // Computer's turn, waiting for button press
         Computing, // AI thread running
         Stopping, // AI being stopped, will become WaitingForButton
         ShowingMove, // Blink animation playing
+        AutoFilling, // Auto-filling empty cells animation, before the end of the game
         Aborting // Shutdown in progress
     };
 
@@ -129,4 +133,8 @@ private:
     QList<MoveRecord> m_undoList;
     int m_undoIndex;
     int m_mapIndex = 0;
+
+    // Auto-fill animation state
+    int m_autoFillPlayer = 0;
+    QTimer *m_autoFillTimer = nullptr;
 };

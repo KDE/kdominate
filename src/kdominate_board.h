@@ -13,6 +13,8 @@
 #include <QList>
 #include <QStack>
 
+#include <optional>
+
 class KDominateBoard
 {
 public:
@@ -90,6 +92,8 @@ public:
     }
 
     bool areMovementsAvailable(int player) const;
+    std::optional<QPoint> fillNextEmpty(int player);
+    bool determineWinner();
 
 private:
     void expandConnected(QPoint tile);
