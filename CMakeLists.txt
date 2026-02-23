@@ -28,8 +28,6 @@ include(ECMQtDeclareLoggingCategory)
 include(ECMSetupVersion)
 include(KDEClangFormat)
 
-include(InternalMacros)
-
 find_package(Qt6 ${QT_MIN_VERSION} REQUIRED COMPONENTS
     Svg
     Widgets
