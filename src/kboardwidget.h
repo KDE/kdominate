@@ -43,12 +43,14 @@ public:
     bool loadSettings();
     virtual void setSize(int dim);
     void startComputerMoveAnimation(int originTile, int destTile = -1);
+    void startMoveAnimation(int zoomInTile, int zoomOutTile, const QList<int> &convertedIndices, Owner oldOwner);
     int killAnimation();
     void highlightValidMoves(int player, const QList<int> &cloneTargets, const QList<int> &jumpTargets);
     void clearValidMoveHighlights();
     void showPopup(const QString &message);
     void hidePopup();
 
+    // Conversion functions because the external world uses x,y but we use a contiguous array.
     void displayTile(QPoint p, Owner owner)
     {
         displayTile(p.x() * m_size + p.y(), owner);
@@ -67,6 +69,7 @@ public:
 private Q_SLOTS:
     void nextAnimationStep();
     void highlightDone();
+    void nextMoveAnimationStep();
     bool checkClick(int x, int y);
 
 Q_SIGNALS:
@@ -113,6 +116,14 @@ private:
 
     QTimer *m_highlightTimer;
     int m_highlighted;
+
+    QTimer *m_conversionTimer;
+    QList<int> m_convertedTiles;
+    int m_conversionStep;
+    Owner m_conversionNewOwner;
+
+    int m_zoomInTile;
+    int m_zoomOutTile;
 
     QList<int> m_validMoveHighlights; // Indices of highlighted tiles
 

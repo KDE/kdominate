@@ -64,6 +64,11 @@ public:
         m_currentPlayer = player;
     }
 
+    const QList<QPoint> &lastConvertedTiles() const
+    {
+        return m_lastConverted;
+    }
+
     const QList<int> &operator[](unsigned int a) const
     {
         return m_board[a];
@@ -95,11 +100,18 @@ public:
     std::optional<QPoint> fillNextEmpty(int player);
     bool determineWinner();
 
+    void setSkipLastConvertedComputation(bool b)
+    {
+        skipLastConvertedComputation = b;
+    }
+
 private:
     void expandConnected(QPoint tile);
 
     typedef QList<QList<int>> BoardMatrix;
     BoardMatrix m_board;
+    bool skipLastConvertedComputation = false;
+    QList<QPoint> m_lastConverted;
 
     int m_boardSize;
     int m_currentPlayer;

@@ -21,8 +21,11 @@
 #include "kdominate_debug.h"
 
 const int kHighlightTimeMillis = 1500;
-const int kBlinkCountComputerMove = 4;
+const int kBlinkCountComputerMove = 4; // also used for hints
 const int kBlinkDurationMillis = 250;
+const int kAnimationStepMillis = 20;
+const int kZoomSteps = 10; // 20ms * 10 steps = 200ms
+const int kConversionSteps = 16; // 20ms * 16 steps = 320ms
 
 KBoardWidget::KBoardWidget(const int d, QWidget *parent)
     : QWidget(parent)
@@ -54,8 +57,16 @@ KBoardWidget::KBoardWidget(const int d, QWidget *parent)
     m_highlightTimer->setInterval(kHighlightTimeMillis);
     m_highlighted = -1;
 
+    m_conversionTimer = new QTimer(this);
+    m_conversionTimer->setInterval(kAnimationStepMillis);
+    m_conversionStep = 0;
+    m_conversionNewOwner = Owner::Nobody;
+    m_zoomInTile = -1;
+    m_zoomOutTile = -1;
+
     connect(m_animationTimer, &QTimer::timeout, this, &KBoardWidget::nextAnimationStep);
     connect(m_highlightTimer, &QTimer::timeout, this, &KBoardWidget::highlightDone);
+    connect(m_conversionTimer, &QTimer::timeout, this, &KBoardWidget::nextMoveAnimationStep);
     setNormalCursor();
     setPopup();
 }
@@ -264,7 +275,7 @@ void KBoardWidget::makeSVGTiles(const int width)
             q.drawRoundedRect(rect, pc, pc, Qt::RelativeSize);
             break;
         case SVGElement::P1JumpTarget:
-            q.setBrush(QColor(color1.red(), color1.green(), color1.blue(), 40));
+            q.setBrush(QColor(color1.red(), color1.green(), color1.blue(), 50));
             q.drawRoundedRect(rect, pc, pc, Qt::RelativeSize);
             break;
         case SVGElement::P2CloneTarget:
@@ -272,7 +283,7 @@ void KBoardWidget::makeSVGTiles(const int width)
             q.drawRoundedRect(rect, pc, pc, Qt::RelativeSize);
             break;
         case SVGElement::P2JumpTarget:
-            q.setBrush(QColor(color2.red(), color2.green(), color2.blue(), 40));
+            q.setBrush(QColor(color2.red(), color2.green(), color2.blue(), 50));
             q.drawRoundedRect(rect, pc, pc, Qt::RelativeSize);
             break;
         default:
@@ -371,10 +382,103 @@ void KBoardWidget::nextAnimationStep()
     }
 }
 
+void KBoardWidget::startMoveAnimation(int zoomInTile, int zoomOutTile, const QList<int> &convertedIndices, Owner newOwner)
+{
+    m_zoomInTile = zoomInTile;
+    m_zoomOutTile = zoomOutTile;
+    m_convertedTiles = convertedIndices;
+    m_conversionNewOwner = newOwner;
+    m_conversionStep = 0;
+
+    if (m_zoomInTile >= 0) {
+        tiles.at(m_zoomInTile)->startZoom(true);
+    }
+    if (m_zoomOutTile >= 0) {
+        tiles.at(m_zoomOutTile)->startZoom(false);
+    }
+    // Conversions begin after the zoom phase completes
+    m_conversionTimer->start();
+}
+
+void KBoardWidget::nextMoveAnimationStep()
+{
+    m_conversionStep++;
+
+    // Phase 1: zoom progress (steps 1..kZoomSteps)
+    if (m_conversionStep <= kZoomSteps) {
+        qreal progress = qreal(m_conversionStep) / qreal(kZoomSteps);
+        if (m_zoomInTile >= 0) {
+            tiles.at(m_zoomInTile)->setZoomProgress(progress);
+        }
+        if (m_zoomOutTile >= 0) {
+            tiles.at(m_zoomOutTile)->setZoomProgress(progress);
+        }
+        return;
+    }
+
+    // Zoom cleanup (step kZoomSteps+1): end zoom, then start conversion or finish
+    if (m_conversionStep == kZoomSteps + 1) {
+        if (m_zoomInTile >= 0) {
+            tiles.at(m_zoomInTile)->endZoom();
+            m_zoomInTile = -1;
+        }
+        if (m_zoomOutTile >= 0) {
+            tiles.at(m_zoomOutTile)->endZoom();
+            tiles.at(m_zoomOutTile)->setOwner(Owner::Nobody);
+            m_zoomOutTile = -1;
+        }
+        if (m_convertedTiles.isEmpty()) {
+            m_conversionTimer->stop();
+            Q_EMIT animationDone(-1);
+            return;
+        }
+        // Start conversion phase: set new owner now, then animate the swipe
+        Owner oldOwner = (m_conversionNewOwner == Owner::One) ? Owner::Two : Owner::One;
+        for (int idx : std::as_const(m_convertedTiles)) {
+            tiles.at(idx)->setOwner(m_conversionNewOwner);
+            tiles.at(idx)->startConversion(oldOwner);
+        }
+        return;
+    }
+
+    // Phase 2: conversion progress (steps kZoomSteps+2..kZoomSteps+1+kConversionSteps)
+    int convStep = m_conversionStep - kZoomSteps - 1;
+    if (convStep <= kConversionSteps) {
+        qreal progress = qreal(convStep) / qreal(kConversionSteps);
+        for (int idx : std::as_const(m_convertedTiles)) {
+            tiles.at(idx)->setConversionProgress(progress);
+        }
+        return;
+    }
+
+    // Conversion cleanup (one tick after final progress frame)
+    m_conversionTimer->stop();
+    for (int idx : std::as_const(m_convertedTiles)) {
+        tiles.at(idx)->endConversion();
+    }
+    m_convertedTiles.clear();
+    Q_EMIT animationDone(-1);
+}
+
 int KBoardWidget::killAnimation()
 {
     if (m_animationTimer->isActive()) {
         m_animationTimer->stop();
+    }
+    if (m_conversionTimer->isActive()) {
+        m_conversionTimer->stop();
+        if (m_zoomInTile >= 0) {
+            tiles.at(m_zoomInTile)->endZoom();
+            m_zoomInTile = -1;
+        }
+        if (m_zoomOutTile >= 0) {
+            tiles.at(m_zoomOutTile)->endZoom();
+            m_zoomOutTile = -1;
+        }
+        for (int idx : std::as_const(m_convertedTiles)) {
+            tiles.at(idx)->endConversion();
+        }
+        m_convertedTiles.clear();
     }
     if (m_blinkOrigin >= 0 && m_blinkOrigin < tiles.size()) {
         tiles.at(m_blinkOrigin)->setNeutral();

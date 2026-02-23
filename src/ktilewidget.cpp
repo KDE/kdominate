@@ -12,6 +12,7 @@
 #include <QMouseEvent>
 #include <QPaintEvent>
 #include <QPainter>
+#include <QPainterPath>
 #include <QPixmap>
 
 bool KTileWidget::clicksAllowed = true;
@@ -52,6 +53,50 @@ void KTileWidget::reset()
     m_playerHighlight = 0;
     m_effect = Effect::None;
     m_selected = false;
+    m_converting = false;
+    m_conversionProgress = 0.0;
+    m_conversionFrom = Owner::Nobody;
+    m_zooming = false;
+    m_zoomIn = true;
+    m_zoomProgress = 0.0;
+    update();
+}
+
+void KTileWidget::startConversion(Owner fromOwner)
+{
+    m_conversionFrom = fromOwner;
+    m_conversionProgress = 0.0;
+    m_converting = true;
+}
+
+void KTileWidget::setConversionProgress(qreal t)
+{
+    m_conversionProgress = t;
+    update();
+}
+
+void KTileWidget::endConversion()
+{
+    m_converting = false;
+    update();
+}
+
+void KTileWidget::startZoom(bool zoomIn)
+{
+    m_zooming = true;
+    m_zoomIn = zoomIn;
+    m_zoomProgress = 0.0;
+}
+
+void KTileWidget::setZoomProgress(qreal t)
+{
+    m_zoomProgress = t;
+    update();
+}
+
+void KTileWidget::endZoom()
+{
+    m_zooming = false;
     update();
 }
 
@@ -68,6 +113,20 @@ void KTileWidget::mouseReleaseEvent(QMouseEvent *e)
     }
 }
 
+static SVGElement ownerToElement(Owner o)
+{
+    switch (o) {
+    case Owner::One:
+        return SVGElement::Player1;
+    case Owner::Two:
+        return SVGElement::Player2;
+    case Owner::Wall:
+        return SVGElement::Wall;
+    default:
+        return SVGElement::Neutral;
+    }
+}
+
 void KTileWidget::paintEvent(QPaintEvent * /* ev unused */)
 {
     if ((pixmaps == nullptr) || (pixmaps->isEmpty())) {
@@ -79,35 +138,82 @@ void KTileWidget::paintEvent(QPaintEvent * /* ev unused */)
 
     QPainter p(this);
 
-    // Draw tile background based on owner
-    SVGElement el = SVGElement::Neutral;
-    if (m_owner == Owner::One)
-        el = SVGElement::Player1;
-    else if (m_owner == Owner::Two)
-        el = SVGElement::Player2;
-    else if (m_owner == Owner::Wall)
-        el = SVGElement::Wall;
-
+    SVGElement el = ownerToElement(m_owner);
     int pmw = pixmaps->at(int(el)).width();
     int pmh = pixmaps->at(int(el)).height();
-    p.drawPixmap((w - pmw) / 2, (h - pmh) / 2, pixmaps->at(int(el)));
+    int ox = (w - pmw) / 2;
+    int oy = (h - pmh) / 2;
 
-    // Draw selection marker if this tile is selected
+    if (m_converting) {
+        SVGElement oldEl = ownerToElement(m_conversionFrom);
+
+        // Build diagonal clip polygon: the line x + y = d sweeps top-left to bottom-right
+        qreal d = m_conversionProgress * (w + h);
+        QPolygonF clipPoly;
+        if (d <= qMin(w, h)) {
+            clipPoly << QPointF(0, 0) << QPointF(d, 0) << QPointF(0, d);
+        } else if (d <= qMax(w, h)) {
+            if (w <= h) {
+                clipPoly << QPointF(0, 0) << QPointF(w, 0) << QPointF(w, d - w) << QPointF(0, d);
+            } else {
+                clipPoly << QPointF(0, 0) << QPointF(d, 0) << QPointF(d - h, h) << QPointF(0, h);
+            }
+        } else if (d < w + h) {
+            clipPoly << QPointF(0, 0) << QPointF(w, 0) << QPointF(w, d - w) << QPointF(d - h, h) << QPointF(0, h);
+        } else {
+            clipPoly << QPointF(0, 0) << QPointF(w, 0) << QPointF(w, h) << QPointF(0, h);
+        }
+
+        QPainterPath fullRect;
+        fullRect.addRect(0, 0, w, h);
+        QPainterPath revealPath;
+        revealPath.addPolygon(clipPoly);
+        QPainterPath concealPath = fullRect - revealPath;
+
+        // Draw old owner clipped to the unrevealed region
+        p.setClipPath(concealPath);
+        p.drawPixmap(ox, oy, pixmaps->at(int(oldEl)));
+
+        // Draw new owner clipped to the revealed region
+        p.setClipPath(revealPath);
+        p.drawPixmap(ox, oy, pixmaps->at(int(el)));
+
+        p.setClipping(false);
+    } else if (m_zooming) {
+        // Draw neutral background behind the zooming tile
+        p.drawPixmap(ox, oy, pixmaps->at(int(SVGElement::Neutral)));
+
+        // Scale the owner pixmap based on zoom progress
+        qreal scale = m_zoomIn ? m_zoomProgress : (1.0 - m_zoomProgress);
+        if (scale > 0.0) {
+            p.save();
+            p.translate(w / 2.0, h / 2.0);
+            p.scale(scale, scale);
+            p.translate(-w / 2.0, -h / 2.0);
+            p.drawPixmap(ox, oy, pixmaps->at(int(el)));
+            p.restore();
+        }
+    } else {
+        // Normal drawing
+        p.drawPixmap(ox, oy, pixmaps->at(int(el)));
+    }
+
+    // Draw selection marker or effect overlay
     if (m_selected) {
-        p.drawPixmap((w - pmw) / 2, (h - pmh) / 2, pixmaps->at(int(SVGElement::BlinkDark)));
+        p.drawPixmap(ox, oy, pixmaps->at(int(SVGElement::BlinkDark)));
     } else {
         switch (m_effect) {
         case Effect::Light:
-            p.drawPixmap((w - pmw) / 2, (h - pmh) / 2, pixmaps->at(int(SVGElement::BlinkLight)));
+            p.drawPixmap(ox, oy, pixmaps->at(int(SVGElement::BlinkLight)));
             break;
         case Effect::Dark:
-            p.drawPixmap((w - pmw) / 2, (h - pmh) / 2, pixmaps->at(int(SVGElement::BlinkDark)));
+            p.drawPixmap(ox, oy, pixmaps->at(int(SVGElement::BlinkDark)));
             break;
         case Effect::CloneHighlight:
-            p.drawPixmap((w - pmw) / 2, (h - pmh) / 2, pixmaps->at(int(m_playerHighlight == 1 ? SVGElement::P1CloneTarget : SVGElement::P2CloneTarget)));
+            p.drawPixmap(ox, oy, pixmaps->at(int(m_playerHighlight == 1 ? SVGElement::P1CloneTarget : SVGElement::P2CloneTarget)));
             break;
         case Effect::JumpHighlight:
-            p.drawPixmap((w - pmw) / 2, (h - pmh) / 2, pixmaps->at(int(m_playerHighlight == 1 ? SVGElement::P1JumpTarget : SVGElement::P2JumpTarget)));
+            p.drawPixmap(ox, oy, pixmaps->at(int(m_playerHighlight == 1 ? SVGElement::P1JumpTarget : SVGElement::P2JumpTarget)));
             break;
         default:
             break;

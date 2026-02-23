@@ -93,6 +93,9 @@ void KDominateAi::getMove(KDominateBoard &board, int player)
     }
     m_workBoard->setCurrentPlayer(player);
 
+    // Only needed for animation purposes, the AI doesn't need to update this
+    m_workBoard->setSkipLastConvertedComputation(true);
+
     if (m_thread) {
         m_thread->wait();
         delete m_thread;

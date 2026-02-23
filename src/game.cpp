@@ -382,6 +382,19 @@ void Game::showingDone(QPoint origin, QPoint dest)
     }
 }
 
+Owner Game::boardCellToOwner(int cell)
+{
+    if (cell == 1) {
+        return Owner::One;
+    } else if (cell == 2) {
+        return Owner::Two;
+    } else if (cell == -1) {
+        return Owner::Wall;
+    } else {
+        return Owner::Nobody;
+    }
+}
+
 void Game::doMove(QPoint origin, QPoint dest)
 {
     // Save snapshot for undo
@@ -399,6 +412,24 @@ void Game::doMove(QPoint origin, QPoint dest)
         return;
     }
 
+    Owner newOwner = updateTile(dest);
+
+    // Build converted tile index list but don't update the displayed tiles yet, it is animated later.
+    const QList<QPoint> &converted = m_board->lastConvertedTiles();
+    QList<int> indices;
+    for (const QPoint &p : converted) {
+        indices.append(p.x() * m_size + p.y());
+    }
+
+    int destIdx = dest.x() * m_size + dest.y();
+    int originIdx = jumpMovement ? (origin.x() * m_size + origin.y()) : -1;
+
+    m_view->startMoveAnimation(destIdx, originIdx, indices, newOwner);
+    m_state = GameState::AnimatingConversion;
+}
+
+void Game::finishMove()
+{
     // Update all tile displays
     updateAllTiles();
 
@@ -458,6 +489,9 @@ void Game::buttonClick()
     } else if (m_state == GameState::ShowingMove) {
         m_view->killAnimation();
         showingDone(m_pendingMoveOrigin, m_pendingMoveDest);
+    } else if (m_state == GameState::AnimatingConversion) {
+        m_view->killAnimation();
+        finishMove();
     }
 }
 
@@ -690,22 +724,24 @@ void Game::animationDone(int index)
     Q_UNUSED(index);
     if (m_state == GameState::ShowingMove) {
         showingDone(m_pendingMoveOrigin, m_pendingMoveDest);
+    } else if (m_state == GameState::AnimatingConversion) {
+        finishMove();
     }
+}
+
+Owner Game::updateTile(QPoint p)
+{
+    int cell = m_board->at(p);
+    Owner owner = boardCellToOwner(cell);
+    m_view->displayTile(p, owner);
+    return owner;
 }
 
 void Game::updateAllTiles()
 {
     for (int x = 0; x < m_size; x++) {
         for (int y = 0; y < m_size; y++) {
-            int cell = m_board->at(x, y);
-            Owner owner = Owner::Nobody;
-            if (cell == 1)
-                owner = Owner::One;
-            else if (cell == 2)
-                owner = Owner::Two;
-            else if (cell == -1)
-                owner = Owner::Wall;
-            m_view->displayTile(QPoint(x, y), owner);
+            updateTile(QPoint(x, y));
         }
     }
 }
@@ -752,7 +788,7 @@ void Game::saveSnapshot(QPoint origin, QPoint dest)
 bool Game::isBusy() const
 {
     return m_state == GameState::Computing || m_state == GameState::Stopping || m_state == GameState::ShowingMove || m_state == GameState::AutoFilling
-        || m_state == GameState::Aborting;
+        || m_state == GameState::AnimatingConversion || m_state == GameState::Aborting;
 }
 
 #include "moc_game.cpp"

@@ -86,6 +86,7 @@ std::pair<bool, bool> KDominateBoard::move(QPoint origin, QPoint dest)
     }
 
     if (validMovement) {
+        m_lastConverted.clear();
         m_undos.push(UndoMovement());
         UndoMovement &umovs = m_undos.top();
         umovs.append(PosAndPlayer(dest, 0));
@@ -139,6 +140,9 @@ void KDominateBoard::expandConnected(QPoint tile)
         if (at(nb.x(), nb.y()) == other) {
             umovs.append(PosAndPlayer(nb, m_board[nb.x()][nb.y()]));
             m_board[nb.x()][nb.y()] = player;
+            if (!skipLastConvertedComputation) {
+                m_lastConverted.append(nb);
+            }
         }
     }
 }

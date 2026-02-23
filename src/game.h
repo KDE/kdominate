@@ -62,6 +62,7 @@ private:
     void computeMove();
     void showingDone(QPoint origin, QPoint dest);
     void doMove(QPoint origin, QPoint dest);
+    void finishMove();
     void moveDone();
     void buttonClick();
     void undoClick();
@@ -76,10 +77,13 @@ private:
     virtual void setSize(int dim);
     bool isComputer(int player) const;
     void updateAllTiles();
+    Owner updateTile(QPoint p); // Updates the view of this tile based on what's on m_board
     void saveSnapshot(QPoint origin, QPoint dest);
     void highlightValidDestinations(QPoint origin);
     void autoFillNextTile();
     void finishAutoFill();
+
+    static Owner boardCellToOwner(int boardCell);
 
 private Q_SLOTS:
     void newGame();
@@ -97,6 +101,7 @@ private:
         Stopping, // AI being stopped, will become WaitingForButton
         ShowingMove, // Blink animation playing
         AutoFilling, // Auto-filling empty cells animation, before the end of the game
+        AnimatingConversion, // Conversion flash animation playing
         Aborting // Shutdown in progress
     };
 

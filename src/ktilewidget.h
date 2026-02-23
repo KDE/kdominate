@@ -105,6 +105,14 @@ public:
         }
     }
 
+    void startConversion(Owner fromOwner);
+    void setConversionProgress(qreal t);
+    void endConversion();
+
+    void startZoom(bool zoomIn);
+    void setZoomProgress(qreal t);
+    void endZoom();
+
 public Q_SLOTS:
     virtual void reset();
 
@@ -131,6 +139,14 @@ private:
     Effect m_effect;
     int m_playerHighlight;
     bool m_selected;
+
+    Owner m_conversionFrom;
+    qreal m_conversionProgress;
+    bool m_converting;
+
+    bool m_zooming;
+    bool m_zoomIn;
+    qreal m_zoomProgress;
 
     static QList<QPixmap> *pixmaps;
     static bool clicksAllowed;
