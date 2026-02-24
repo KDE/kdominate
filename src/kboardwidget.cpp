@@ -379,10 +379,10 @@ void KBoardWidget::startMoveAnimation(int zoomInTile, int zoomOutTile, const QLi
     m_conversionStep = 0;
 
     if (m_zoomInTile >= 0) {
-        tiles.at(m_zoomInTile)->startZoom(true);
+        tiles.at(m_zoomInTile)->startZoomIn();
     }
     if (m_zoomOutTile >= 0) {
-        tiles.at(m_zoomOutTile)->startZoom(false);
+        tiles.at(m_zoomOutTile)->startZoomOut();
     }
     // Conversions begin after the zoom phase completes
     m_conversionTimer->start();
@@ -421,10 +421,9 @@ void KBoardWidget::nextMoveAnimationStep()
             return;
         }
         // Start conversion phase: set new owner now, then animate the swipe
-        Owner oldOwner = (m_conversionNewOwner == Owner::One) ? Owner::Two : Owner::One;
         for (int idx : std::as_const(m_convertedTiles)) {
             tiles.at(idx)->setOwner(m_conversionNewOwner);
-            tiles.at(idx)->startConversion(oldOwner);
+            tiles.at(idx)->startConversion();
         }
         return;
     }

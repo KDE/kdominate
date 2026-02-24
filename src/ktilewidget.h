@@ -105,13 +105,47 @@ public:
         }
     }
 
-    void startConversion(Owner fromOwner);
-    void setConversionProgress(qreal t);
-    void endConversion();
+    void startConversion()
+    {
+        m_animProgress = 0.0;
+        m_effect = Effect::Converting;
+    }
 
-    void startZoom(bool zoomIn);
-    void setZoomProgress(qreal t);
-    void endZoom();
+    void setConversionProgress(qreal t)
+    {
+        m_animProgress = t;
+        update();
+    }
+
+    void endConversion()
+    {
+        m_effect = Effect::None;
+        update();
+    }
+
+    void startZoomIn()
+    {
+        m_effect = Effect::ZoomIn;
+        m_animProgress = 0.0;
+    }
+
+    void startZoomOut()
+    {
+        m_effect = Effect::ZoomOut;
+        m_animProgress = 0.0;
+    }
+
+    void setZoomProgress(qreal t)
+    {
+        m_animProgress = t;
+        update();
+    }
+
+    void endZoom()
+    {
+        m_effect = Effect::None;
+        update();
+    }
 
 public Q_SLOTS:
     virtual void reset();
@@ -129,7 +163,10 @@ private:
         Light,
         Dark,
         CloneHighlight,
-        JumpHighlight
+        JumpHighlight,
+        ZoomIn,
+        ZoomOut,
+        Converting,
     };
 
     int m_row;
@@ -137,16 +174,9 @@ private:
 
     Owner m_owner;
     Effect m_effect;
+    qreal m_animProgress;
     int m_playerHighlight;
     bool m_selected;
-
-    Owner m_conversionFrom;
-    qreal m_conversionProgress;
-    bool m_converting;
-
-    bool m_zooming;
-    bool m_zoomIn;
-    qreal m_zoomProgress;
 
     static QList<QPixmap> *pixmaps;
     static bool clicksAllowed;

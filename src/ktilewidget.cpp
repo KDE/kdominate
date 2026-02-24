@@ -49,50 +49,7 @@ void KTileWidget::reset()
     m_playerHighlight = 0;
     m_effect = Effect::None;
     m_selected = false;
-    m_converting = false;
-    m_conversionProgress = 0.0;
-    m_conversionFrom = Owner::Nobody;
-    m_zooming = false;
-    m_zoomIn = true;
-    m_zoomProgress = 0.0;
-    update();
-}
-
-void KTileWidget::startConversion(Owner fromOwner)
-{
-    m_conversionFrom = fromOwner;
-    m_conversionProgress = 0.0;
-    m_converting = true;
-}
-
-void KTileWidget::setConversionProgress(qreal t)
-{
-    m_conversionProgress = t;
-    update();
-}
-
-void KTileWidget::endConversion()
-{
-    m_converting = false;
-    update();
-}
-
-void KTileWidget::startZoom(bool zoomIn)
-{
-    m_zooming = true;
-    m_zoomIn = zoomIn;
-    m_zoomProgress = 0.0;
-}
-
-void KTileWidget::setZoomProgress(qreal t)
-{
-    m_zoomProgress = t;
-    update();
-}
-
-void KTileWidget::endZoom()
-{
-    m_zooming = false;
+    m_animProgress = 0.0;
     update();
 }
 
@@ -140,79 +97,86 @@ void KTileWidget::paintEvent(QPaintEvent * /* ev unused */)
     int ox = (w - pmw) / 2;
     int oy = (h - pmh) / 2;
 
-    if (m_converting) {
-        SVGElement oldEl = ownerToElement(m_conversionFrom);
-
-        // Build diagonal clip polygon: the line x + y = d sweeps top-left to bottom-right
-        qreal d = m_conversionProgress * (w + h);
-        QPolygonF clipPoly;
-        if (d <= qMin(w, h)) {
-            clipPoly << QPointF(0, 0) << QPointF(d, 0) << QPointF(0, d);
-        } else if (d <= qMax(w, h)) {
-            if (w <= h) {
-                clipPoly << QPointF(0, 0) << QPointF(w, 0) << QPointF(w, d - w) << QPointF(0, d);
-            } else {
-                clipPoly << QPointF(0, 0) << QPointF(d, 0) << QPointF(d - h, h) << QPointF(0, h);
-            }
-        } else if (d < w + h) {
-            clipPoly << QPointF(0, 0) << QPointF(w, 0) << QPointF(w, d - w) << QPointF(d - h, h) << QPointF(0, h);
-        } else {
-            clipPoly << QPointF(0, 0) << QPointF(w, 0) << QPointF(w, h) << QPointF(0, h);
-        }
-
-        QPainterPath fullRect;
-        fullRect.addRect(0, 0, w, h);
-        QPainterPath revealPath;
-        revealPath.addPolygon(clipPoly);
-        QPainterPath concealPath = fullRect - revealPath;
-
-        // Draw old owner clipped to the unrevealed region
-        p.setClipPath(concealPath);
-        p.drawPixmap(ox, oy, pixmaps->at(int(oldEl)));
-
-        // Draw new owner clipped to the revealed region
-        p.setClipPath(revealPath);
-        p.drawPixmap(ox, oy, pixmaps->at(int(el)));
-
-        p.setClipping(false);
-    } else if (m_zooming) {
-        // Draw neutral background behind the zooming tile
-        p.drawPixmap(ox, oy, pixmaps->at(int(SVGElement::Neutral)));
-
-        // Scale the owner pixmap based on zoom progress
-        qreal scale = m_zoomIn ? m_zoomProgress : (1.0 - m_zoomProgress);
-        if (scale > 0.0) {
-            p.save();
-            p.translate(w / 2.0, h / 2.0);
-            p.scale(scale, scale);
-            p.translate(-w / 2.0, -h / 2.0);
-            p.drawPixmap(ox, oy, pixmaps->at(int(el)));
-            p.restore();
-        }
-    } else {
-        // Normal drawing
-        p.drawPixmap(ox, oy, pixmaps->at(int(el)));
-    }
-
     // Draw selection marker or effect overlay
     if (m_selected) {
+        p.drawPixmap(ox, oy, pixmaps->at(int(el)));
         p.drawPixmap(ox, oy, pixmaps->at(int(SVGElement::BlinkDark)));
     } else {
         switch (m_effect) {
+        case Effect::None:
+            p.drawPixmap(ox, oy, pixmaps->at(int(el)));
+            break;
         case Effect::Light:
+            p.drawPixmap(ox, oy, pixmaps->at(int(el)));
             p.drawPixmap(ox, oy, pixmaps->at(int(SVGElement::BlinkLight)));
             break;
         case Effect::Dark:
+            p.drawPixmap(ox, oy, pixmaps->at(int(el)));
             p.drawPixmap(ox, oy, pixmaps->at(int(SVGElement::BlinkDark)));
             break;
         case Effect::CloneHighlight:
+            p.drawPixmap(ox, oy, pixmaps->at(int(el)));
             p.drawPixmap(ox, oy, pixmaps->at(int(m_playerHighlight == 1 ? SVGElement::P1CloneTarget : SVGElement::P2CloneTarget)));
             break;
         case Effect::JumpHighlight:
+            p.drawPixmap(ox, oy, pixmaps->at(int(el)));
             p.drawPixmap(ox, oy, pixmaps->at(int(m_playerHighlight == 1 ? SVGElement::P1JumpTarget : SVGElement::P2JumpTarget)));
             break;
-        default:
-            break;
+        case Effect::ZoomIn:
+        case Effect::ZoomOut:
+        {
+            // Draw neutral background behind the zooming tile
+            p.drawPixmap(ox, oy, pixmaps->at(int(SVGElement::Neutral)));
+
+            // Scale the owner pixmap based on zoom progress
+            qreal scale = (m_effect == Effect::ZoomIn) ? m_animProgress : (1.0 - m_animProgress);
+            if (scale > 0.0) {
+                p.save();
+                p.translate(w / 2.0, h / 2.0);
+                p.scale(scale, scale);
+                p.translate(-w / 2.0, -h / 2.0);
+                p.drawPixmap(ox, oy, pixmaps->at(int(el)));
+                p.restore();
+            }
+        }
+        break;
+        case Effect::Converting: {
+            SVGElement oldEl = (el == SVGElement::Player1) ? SVGElement::Player2: SVGElement::Player1;
+
+            // Build diagonal clip polygon: the line x + y = d sweeps top-left to bottom-right
+            qreal d = m_animProgress  * (w + h);
+            QPolygonF clipPoly;
+            if (d <= qMin(w, h)) {
+                clipPoly << QPointF(0, 0) << QPointF(d, 0) << QPointF(0, d);
+            } else if (d <= qMax(w, h)) {
+                if (w <= h) {
+                    clipPoly << QPointF(0, 0) << QPointF(w, 0) << QPointF(w, d - w) << QPointF(0, d);
+                } else {
+                    clipPoly << QPointF(0, 0) << QPointF(d, 0) << QPointF(d - h, h) << QPointF(0, h);
+                }
+            } else if (d < w + h) {
+                clipPoly << QPointF(0, 0) << QPointF(w, 0) << QPointF(w, d - w) << QPointF(d - h, h) << QPointF(0, h);
+            } else {
+                clipPoly << QPointF(0, 0) << QPointF(w, 0) << QPointF(w, h) << QPointF(0, h);
+            }
+
+            QPainterPath fullRect;
+            fullRect.addRect(0, 0, w, h);
+            QPainterPath revealPath;
+            revealPath.addPolygon(clipPoly);
+            QPainterPath concealPath = fullRect - revealPath;
+
+            // Draw old owner clipped to the unrevealed region
+            p.setClipPath(concealPath);
+            p.drawPixmap(ox, oy, pixmaps->at(int(oldEl)));
+
+            // Draw new owner clipped to the revealed region
+            p.setClipPath(revealPath);
+            p.drawPixmap(ox, oy, pixmaps->at(int(el)));
+
+            p.setClipping(false);
+        }
+        break;
         }
     }
 
