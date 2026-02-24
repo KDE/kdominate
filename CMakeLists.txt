@@ -54,5 +54,10 @@ add_subdirectory(doc)
 add_subdirectory(icons)
 add_subdirectory(src)
 
+if(BUILD_TESTING)
+    find_package(Qt6 ${QT_MIN_VERSION} REQUIRED COMPONENTS Test)
+    add_subdirectory(tests)
+endif()
+
 ki18n_install(po)
 kdoctools_install(po)
