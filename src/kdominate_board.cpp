@@ -128,7 +128,9 @@ bool KDominateBoard::undo()
     UndoMovement um = m_undos.pop();
     QPoint aux = um[0].pos;
     m_currentPlayer = m_board[aux.x()][aux.y()];
-    for (int i = 0; i < um.size(); i++) {
+    // NOTE: It is crucial to loop backwards: when autofill triggers at the end after a jump
+    // move, we end up with two movements affecting the same tile which must be undone in order.
+    for (int i = um.size() - 1; i >= 0; i--) {
         QPoint p = um[i].pos;
         int player = um[i].player;
         m_board[p.x()][p.y()] = player;
