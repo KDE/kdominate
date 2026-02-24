@@ -120,20 +120,21 @@ void Game::gameActions(const int action)
     }
 }
 
+QString Game::winnerString() const
+{
+    int w = m_board->winner();
+    if (w == 0) {
+        return i18n("Draw!");
+    } else {
+        return i18n("Player %1 wins!", w);
+    }
+}
+
 void Game::showWinner()
 {
     Q_EMIT buttonChange(false, false, i18n("Game over"));
     KTileWidget::enableClicks(false);
-    KDominateBoard::TileCount tc = m_board->countTiles();
-    QString s;
-    int w = m_board->winner();
-    if (w == 0) {
-        s = i18n("Draw! (%1-%2)", tc.p1, tc.p2);
-    } else {
-        s = i18n("Player %1 wins! (%2-%3)", w, tc.p1, tc.p2);
-    }
-    Q_EMIT statusMessage(s, false);
-    KMessageBox::information(m_view, s, i18n("Game Over"));
+    KMessageBox::information(m_view, winnerString(), i18n("Game Over"));
 }
 
 void Game::showSettingsDialog()

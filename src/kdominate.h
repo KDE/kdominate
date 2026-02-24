@@ -37,6 +37,7 @@ private:
     QLabel *m_p2Icon = nullptr;
     QLabel *m_p2Count = nullptr;
     QLabel *m_currentPlayerIcon = nullptr;
+    QLabel *m_currentPlayerLabel = nullptr;
     QAction *undoAction = nullptr;
     QAction *redoAction = nullptr;
     QAction *stopAction = nullptr;

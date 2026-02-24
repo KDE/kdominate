@@ -60,6 +60,7 @@ KDominate::KDominate()
     m_p2Icon = new QLabel();
     m_p2Count = new QLabel();
     m_currentPlayerIcon = new QLabel();
+    m_currentPlayerLabel = new QLabel();
 
     statusBar()->addPermanentWidget(m_p1Icon);
     statusBar()->addPermanentWidget(m_p1Count);
@@ -67,9 +68,9 @@ KDominate::KDominate()
     statusBar()->addPermanentWidget(m_p2Icon);
     statusBar()->addPermanentWidget(m_p2Count);
     statusBar()->addPermanentWidget(new QLabel(QStringLiteral(" - ")));
-    statusBar()->addPermanentWidget(new QLabel(i18n("Current player:")));
+    statusBar()->addPermanentWidget(m_currentPlayerLabel);
     statusBar()->addPermanentWidget(m_currentPlayerIcon);
-    statusBar()->addPermanentWidget(new QLabel(QString())); // Padding
+    statusBar()->addPermanentWidget(new QWidget()); // Padding
     updateStatus();
 
     {
@@ -187,6 +188,13 @@ void KDominate::updateStatus()
     KDominateBoard::TileCount tc = m_game->countTiles();
     m_p1Count->setText(QString::number(tc.p1));
     m_p2Count->setText(QString::number(tc.p2));
+    if (m_game->isWinner()) {
+        m_currentPlayerLabel->setText(m_game->winnerString());
+        m_currentPlayerIcon->setVisible(false);
+    } else {
+        m_currentPlayerLabel->setText(i18n("Current player:"));
+        m_currentPlayerIcon->setVisible(true);
+    }
 }
 
 void KDominate::setAction(const Action a, const bool onOff)

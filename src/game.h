@@ -56,6 +56,12 @@ public:
         return m_board->currentPlayer();
     }
 
+    bool isWinner() const
+    {
+        return m_board->isWinner();
+    }
+
+    QString winnerString() const;
 
 public Q_SLOTS:
     void gameActions(int action);
