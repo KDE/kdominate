@@ -24,6 +24,7 @@ class KDominate : public KXmlGuiWindow
 
 public:
     KDominate();
+    ~KDominate() override;
 
 public Q_SLOTS:
     void setAction(const Action action, const bool onOff);

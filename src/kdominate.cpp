@@ -149,6 +149,11 @@ KDominate::KDominate()
     m_game->gameActions(Action::NEW);
 }
 
+KDominate::~KDominate()
+{
+    delete m_game;
+}
+
 void KDominate::changeButton(bool enabled, bool stop, const QString &caption)
 {
     qCDebug(KDOMINATE_LOG) << "KDominate::changeButton (" << enabled << stop << caption << ")";
