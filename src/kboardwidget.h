@@ -55,10 +55,6 @@ public:
     {
         displayTile(pointToIndex(p), owner);
     }
-    void highlightTile(QPoint p, bool highlight)
-    {
-        highlightTile(pointToIndex(p), highlight);
-    }
     void selectTile(QPoint p) {
         selectTile(pointToIndex(p));
     }
@@ -77,7 +73,6 @@ public:
     void highlightValidMoves(int player, const QList<QPoint> &cloneTargets, const QList<QPoint> &jumpTargets) {
         highlightValidMoves(player, pointsToIndices(cloneTargets), pointsToIndices(jumpTargets));
     }
-
 
 private Q_SLOTS:
     void nextAnimationStep();
@@ -119,7 +114,6 @@ private:
 
     void displayTile(int index, Owner owner);
     void selectTile(int index);
-    void highlightTile(int index, bool highlight);
     void startComputerNextMoveAnimation(int originTile, int destTile = -1);
     void startMoveAnimation(int zoomInTile, int zoomOutTile, const QList<int> &convertedIndices, Owner oldOwner);
     void timedTileHighlight(int index);

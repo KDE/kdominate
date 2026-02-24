@@ -105,15 +105,6 @@ void KBoardWidget::displayTile(int index, Owner owner)
     tiles.at(index)->setOwner(owner);
 }
 
-void KBoardWidget::highlightTile(int index, bool highlight)
-{
-    if (highlight) {
-        tiles.at(index)->setDark();
-    } else {
-        tiles.at(index)->setNeutral();
-    }
-}
-
 void KBoardWidget::timedTileHighlight(int index)
 {
     if (m_highlighted > 0) {
