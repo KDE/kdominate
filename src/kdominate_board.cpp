@@ -109,9 +109,7 @@ std::pair<bool, bool> KDominateBoard::move(QPoint origin, QPoint dest)
                 }
             }
         }
-        if (!determineWinner()) {
-            m_currentPlayer = otherPlayer();
-        }
+        m_currentPlayer = otherPlayer();
     }
 
     return std::make_pair(validMovement, jumpMovement);
