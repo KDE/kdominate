@@ -464,6 +464,9 @@ void Game::buttonClick()
             m_state = GameState::Stopping;
         }
     } else if (m_state == GameState::ShowingMove) {
+        if (computerPlOne && computerPlTwo) {
+            m_interrupting = true;
+        }
         m_view->killAnimation();
         showingDone(m_pendingMoveOrigin, m_pendingMoveDest);
     } else if (m_state == GameState::AnimatingMove) {
@@ -475,11 +478,7 @@ void Game::buttonClick()
 void Game::setStopAction()
 {
     if ((!m_pauseForComputer) && (!m_interrupting) && (computerPlOne && computerPlTwo)) {
-        if (m_state == GameState::Computing) {
-            Q_EMIT buttonChange(true, true, i18n("Interrupt game"));
-        } else if (m_state == GameState::ShowingMove) {
-            Q_EMIT buttonChange(true, true, i18n("Stop showing move"));
-        }
+        Q_EMIT buttonChange(true, true, i18n("Interrupt game"));
         return;
     }
     if (m_state == GameState::Computing) {
