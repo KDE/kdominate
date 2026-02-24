@@ -153,11 +153,6 @@ KDominateAi::AiMove KDominateAi::alphaBeta(KDominateBoard &board, int initialPla
 {
     AiMove bestAiMove;
 
-    // If the current player has no moves, the other player gets to fill the board
-    if (!board.areMovementsAvailable(board.currentPlayer())) {
-        while (board.fillNextEmpty(board.otherPlayer())) { }
-    }
-
     if (depth <= 0 || board.isWinner()) {
         bestAiMove.score = staticEvaluationFunction(board, initialPlayer, depth);
         return bestAiMove;

@@ -55,7 +55,7 @@ public:
         }
     }
 
-    void setNeutral()
+    void removeEffects()
     {
         if (m_effect != Effect::None) {
             m_effect = Effect::None;
@@ -105,45 +105,24 @@ public:
         }
     }
 
-    void startConversion()
-    {
-        m_animProgress = 0.0;
-        m_effect = Effect::Converting;
-    }
-
     void setConversionProgress(qreal t)
     {
+        m_effect = Effect::Converting;
         m_animProgress = t;
         update();
     }
 
-    void endConversion()
-    {
-        m_effect = Effect::None;
-        update();
-    }
-
-    void startZoomIn()
-    {
-        m_effect = Effect::ZoomIn;
-        m_animProgress = 0.0;
-    }
-
-    void startZoomOut()
+    void setZoomOutProgress(qreal t)
     {
         m_effect = Effect::ZoomOut;
-        m_animProgress = 0.0;
-    }
-
-    void setZoomProgress(qreal t)
-    {
         m_animProgress = t;
         update();
     }
 
-    void endZoom()
+    void setZoomInProgress(qreal t)
     {
-        m_effect = Effect::None;
+        m_effect = Effect::ZoomIn;
+        m_animProgress = t;
         update();
     }
 

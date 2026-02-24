@@ -45,13 +45,23 @@ public:
     static QStringList availableMapFiles(); // Returns sorted list of map filenames from :/maps/ resource directory
     static QString mapResourcePath(int mapIndex); // Returns resource path for a given map index (e.g. ":/maps/arena.map")
     static QString mapDisplayName(const QString &resourcePath); // Reads a map file's display name from its header comment
-    KDominateBoard::TileCount countTiles() const;
+
+    KDominateBoard::TileCount countTiles() const
+    {
+        return m_board->countTiles();
+    }
+
+    int currentPlayer() const
+    {
+        return m_board->currentPlayer();
+    }
+
 
 public Q_SLOTS:
     void gameActions(int action);
 
 Q_SIGNALS:
-    void statusUpdated(int newPlayer);
+    void statusUpdated();
     void buttonChange(bool enabled, bool stop = false, const QString &caption = QString());
     void setAction(const Action a, const bool onOff);
     void statusMessage(const QString &message, bool timed);
@@ -77,11 +87,9 @@ private:
     virtual void setSize(int dim);
     bool isComputer(int player) const;
     void updateAllTiles();
-    Owner updateTile(QPoint p); // Updates the view of this tile based on what's on m_board
+    void updateTile(QPoint p); // Updates the view of this tile based on what's on m_board
     void saveSnapshot(QPoint origin, QPoint dest);
     void highlightValidDestinations(QPoint origin);
-    void autoFillNextTile();
-    void finishAutoFill();
 
     static Owner boardCellToOwner(int boardCell);
 
@@ -99,9 +107,8 @@ private:
         WaitingForButton, // Computer's turn, waiting for button press
         Computing, // AI thread running
         Stopping, // AI being stopped, will become WaitingForButton
-        ShowingMove, // Blink animation playing
-        AutoFilling, // Auto-filling empty cells animation, before the end of the game
-        AnimatingConversion, // Conversion flash animation playing
+        ShowingMove, // Blink animation to show the next computer move
+        AnimatingMove, // Animating tiles changing after moving
         Aborting // Shutdown in progress
     };
 
@@ -117,7 +124,6 @@ private:
     KDominateBoard *m_board;
     KDominateAi *m_ai;
     int m_size;
-    int m_currentPlayer;
 
     // Two-click move state
     bool m_selected;
@@ -139,8 +145,4 @@ private:
     QList<MoveRecord> m_undoList;
     int m_undoIndex;
     int m_mapIndex = 0;
-
-    // Auto-fill animation state
-    int m_autoFillPlayer = 0;
-    QTimer *m_autoFillTimer = nullptr;
 };

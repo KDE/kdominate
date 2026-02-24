@@ -62,13 +62,13 @@ public:
     {
         startComputerNextMoveAnimation(pointToIndex(origin), pointToIndex(dest));
     }
-    void startCloneAnimation(QPoint dest, const QList<QPoint> &convertedTiles, Owner oldOwner)
+    void startCloneAnimation(QPoint dest, const QList<QPoint> &convertedTiles, const QList<QPoint> &autofilledTiles, Owner owner)
     {
-        startMoveAnimation(pointToIndex(dest), -1, pointsToIndices(convertedTiles), oldOwner);
+        startMoveAnimation(pointToIndex(dest), -1, pointsToIndices(convertedTiles), pointsToIndices(autofilledTiles), owner);
     }
-    void startJumpAnimation(QPoint dest, QPoint origin, const QList<QPoint> &convertedTiles, Owner oldOwner)
+    void startJumpAnimation(QPoint dest, QPoint origin, const QList<QPoint> &convertedTiles, const QList<QPoint> &autofilledTiles, Owner owner)
     {
-        startMoveAnimation(pointToIndex(dest), pointToIndex(origin), pointsToIndices(convertedTiles), oldOwner);
+        startMoveAnimation(pointToIndex(dest), pointToIndex(origin), pointsToIndices(convertedTiles), pointsToIndices(autofilledTiles), owner);
     }
     void highlightValidMoves(int player, const QList<QPoint> &cloneTargets, const QList<QPoint> &jumpTargets) {
         highlightValidMoves(player, pointsToIndices(cloneTargets), pointsToIndices(jumpTargets));
@@ -115,7 +115,7 @@ private:
     void displayTile(int index, Owner owner);
     void selectTile(int index);
     void startComputerNextMoveAnimation(int originTile, int destTile = -1);
-    void startMoveAnimation(int zoomInTile, int zoomOutTile, const QList<int> &convertedIndices, Owner oldOwner);
+    void startMoveAnimation(int zoomInTile, int zoomOutTile, const QList<int> &convertedIndices, const QList<int> &autofilledIndices,  Owner owner);
     void timedTileHighlight(int index);
     void highlightValidMoves(int player, const QList<int> &cloneTargets, const QList<int> &jumpTargets);
 
@@ -133,18 +133,18 @@ private:
     int m_size;
     QList<KTileWidget *> tiles;
 
-    QTimer *m_animationTimer;
+    QTimer *m_blinkTimer;
     int m_blinkOrigin;
     int m_blinkDest;
-    int animationCount;
-    int animationTime;
+    int m_blinkCount;
 
     QTimer *m_highlightTimer;
     int m_highlighted;
 
-    QTimer *m_conversionTimer;
+    QTimer *m_animationTimer;
     QList<int> m_convertedTiles;
-    int m_conversionStep;
+    QList<int> m_autofilledTiles;
+    int m_animationStep;
     Owner m_conversionNewOwner;
 
     int m_zoomInTile;

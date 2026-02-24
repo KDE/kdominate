@@ -87,6 +87,7 @@ std::pair<bool, bool> KDominateBoard::move(QPoint origin, QPoint dest)
 
     if (validMovement) {
         m_lastConverted.clear();
+        m_lastAutofilled.clear();
         m_undos.push(UndoMovement());
         UndoMovement &umovs = m_undos.top();
         umovs.append(PosAndPlayer(dest, 0));
@@ -97,6 +98,17 @@ std::pair<bool, bool> KDominateBoard::move(QPoint origin, QPoint dest)
             m_board[origin.x()][origin.y()] = 0;
         }
         expandConnected(dest);
+        if (!areMovementsAvailable(otherPlayer())) {
+            while(true) {
+                auto pos = fillNextEmpty();
+                if (!pos) {
+                    break;
+                }
+                if (!skipLastConvertedComputation) {
+                    m_lastAutofilled.append(*pos);
+                }
+            }
+        }
         if (!determineWinner()) {
             m_currentPlayer = otherPlayer();
         }
@@ -180,7 +192,7 @@ void KDominateBoard::loadFromMap(const QStringList &lines)
     }
 }
 
-std::optional<QPoint> KDominateBoard::fillNextEmpty(int player)
+std::optional<QPoint> KDominateBoard::fillNextEmpty()
 {
     UndoMovement &umovs = m_undos.top();
     for (int y = 0; y < m_boardSize; y++) {
@@ -188,7 +200,7 @@ std::optional<QPoint> KDominateBoard::fillNextEmpty(int player)
             if (m_board[x][y] == 0) {
                 QPoint pos(x, y);
                 umovs.append(PosAndPlayer(pos, 0));
-                m_board[x][y] = player;
+                m_board[x][y] = m_currentPlayer;
                 return pos;
             }
         }

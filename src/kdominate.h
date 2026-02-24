@@ -44,7 +44,7 @@ private:
     QPushButton *actionButton = nullptr;
 
 private Q_SLOTS:
-    void changePlayerColor(int newPlayer);
+    void updateStatus();
     void changeButton(bool enabled, bool stop = false, const QString &caption = QString());
     void statusMessage(const QString &message, bool timed);
 };

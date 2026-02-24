@@ -56,11 +56,6 @@ QString Game::mapDisplayName(const QString &resourcePath)
     return ki18n(englishName.toUtf8().constData()).toString();
 }
 
-KDominateBoard::TileCount Game::countTiles() const
-{
-    return m_board->countTiles();
-}
-
 Game::Game(const int d, KBoardWidget *view, QWidget *parent)
     : QObject((QObject *)parent)
     , m_state(GameState::Idle)
@@ -70,7 +65,6 @@ Game::Game(const int d, KBoardWidget *view, QWidget *parent)
     , m_view(view)
     , m_settingsPage(nullptr)
     , m_size(d)
-    , m_currentPlayer(1)
     , m_selected(false)
     , computerPlOne(false)
     , computerPlTwo(false)
@@ -80,10 +74,6 @@ Game::Game(const int d, KBoardWidget *view, QWidget *parent)
     qCDebug(KDOMINATE_LOG) << "CONSTRUCT Game: size" << m_size;
     m_board = new KDominateBoard();
     m_ai = new KDominateAi(this);
-
-    m_autoFillTimer = new QTimer(this);
-    m_autoFillTimer->setInterval(150);
-    connect(m_autoFillTimer, &QTimer::timeout, this, &Game::autoFillNextTile);
 
     connect(m_view, &KBoardWidget::mouseClick, this, &Game::startHumanMove);
     connect(m_ai, &KDominateAi::done, this, &Game::moveCalculationDone);
@@ -111,7 +101,7 @@ void Game::gameActions(const int action)
         newGame();
         break;
     case Action::HINT:
-        if (!m_board->isWinner() && !isComputer(m_currentPlayer)) {
+        if (!m_board->isWinner() && !isComputer(m_board->currentPlayer())) {
             KTileWidget::enableClicks(false);
             computeMove();
         }
@@ -181,14 +171,14 @@ void Game::loadImmediateSettings()
 
     bool reColorTiles = m_view->loadSettings();
     if (reColorTiles) {
-        Q_EMIT statusUpdated(m_currentPlayer);
+        Q_EMIT statusUpdated();
     }
 }
 
 void Game::loadPlayerSettings()
 {
     qCDebug(KDOMINATE_LOG) << "GAME LOAD PLAYER SETTINGS entered";
-    bool oldComputerPlayer = isComputer(m_currentPlayer);
+    bool oldComputerPlayer = isComputer(m_board->currentPlayer());
 
     m_pauseForComputer = Prefs::pauseForComputer();
     computerPlOne = Prefs::computerPlayer1();
@@ -196,7 +186,7 @@ void Game::loadPlayerSettings()
 
     qCDebug(KDOMINATE_LOG) << "AI 1" << computerPlOne << "AI 2" << computerPlTwo << "m_pauseForComputer" << m_pauseForComputer;
 
-    if (isComputer(m_currentPlayer) && (!oldComputerPlayer)) {
+    if (isComputer(m_board->currentPlayer()) && (!oldComputerPlayer)) {
         qCDebug(KDOMINATE_LOG) << "New computer player set: must wait.";
         m_state = GameState::WaitingForButton;
     }
@@ -206,7 +196,7 @@ void Game::startHumanMove(int x, int y)
 {
     qCDebug(KDOMINATE_LOG) << "CLICK" << x << y;
 
-    bool humanPlayer = (!isComputer(m_currentPlayer));
+    bool humanPlayer = (!isComputer(m_board->currentPlayer()));
     if (!humanPlayer && m_state != GameState::WaitingForButton) {
         return;
     }
@@ -219,7 +209,7 @@ void Game::startHumanMove(int x, int y)
 
     if (!m_selected) {
         // First click: select a source tile
-        if (cellOwner == m_currentPlayer) {
+        if (cellOwner == m_board->currentPlayer()) {
             m_selected = true;
             m_selectedOrigin = QPoint(x, y);
             m_view->selectTile(m_selectedOrigin);
@@ -228,7 +218,7 @@ void Game::startHumanMove(int x, int y)
         }
     } else {
         // Second click: select destination or change selection
-        if (cellOwner == m_currentPlayer) {
+        if (cellOwner == m_board->currentPlayer()) {
             if (m_selectedOrigin == QPoint(x, y)) {
                 // Clicked same tile: deselect
                 m_selected = false;
@@ -280,10 +270,10 @@ void Game::setUpNextTurn()
     m_view->clearValidMoveHighlights();
     m_view->deselectAll();
 
-    qCDebug(KDOMINATE_LOG) << "setUpNextTurn" << m_currentPlayer << computerPlOne << computerPlTwo << "pause:" << m_pauseForComputer
+    qCDebug(KDOMINATE_LOG) << "setUpNextTurn" << m_board->currentPlayer() << computerPlOne << computerPlTwo << "pause:" << m_pauseForComputer
                            << "state:" << int(m_state);
 
-    if (isComputer(m_currentPlayer)) {
+    if (isComputer(m_board->currentPlayer())) {
         if (m_pauseForComputer || m_interrupting || (m_moveNo == 0)) {
             m_interrupting = false;
             m_state = GameState::WaitingForButton;
@@ -311,7 +301,7 @@ void Game::setUpNextTurn()
         if (computerPlOne || computerPlTwo) {
             Q_EMIT buttonChange(false, false, i18n("Your turn"));
         } else {
-            Q_EMIT buttonChange(false, false, i18n("Player %1", m_currentPlayer));
+            Q_EMIT buttonChange(false, false, i18n("Player %1", m_board->currentPlayer()));
         }
     }
 }
@@ -322,10 +312,10 @@ void Game::computeMove()
     m_state = GameState::Computing;
     setStopAction();
     Q_EMIT setAction(Action::HINT, false);
-    if (isComputer(m_currentPlayer)) {
-        Q_EMIT statusMessage(i18n("Computer player %1 is moving", m_currentPlayer), false);
+    if (isComputer(m_board->currentPlayer())) {
+        Q_EMIT statusMessage(i18n("Computer player %1 is moving", m_board->currentPlayer()), false);
     }
-    m_ai->getMove(*m_board, m_currentPlayer);
+    m_ai->getMove(*m_board, m_board->currentPlayer());
 }
 
 void Game::moveCalculationDone(QPoint origin, QPoint dest)
@@ -367,7 +357,7 @@ void Game::moveCalculationDone(QPoint origin, QPoint dest)
 
 void Game::showingDone(QPoint origin, QPoint dest)
 {
-    if (isComputer(m_currentPlayer)) {
+    if (isComputer(m_board->currentPlayer())) {
         m_moveNo++;
         doMove(origin, dest);
     } else {
@@ -412,24 +402,22 @@ void Game::doMove(QPoint origin, QPoint dest)
 
     // Debug: print static evaluation after move
     {
-        int evalAfter = m_ai->staticEvaluationFunction(*m_board, m_currentPlayer);
+        int evalAfter = m_ai->staticEvaluationFunction(*m_board, m_board->otherPlayer());
         KDominateBoard::TileCount tcAfter = m_board->countTiles();
         qCDebug(KDOMINATE_LOG) << " BOARD STATIC EVALUATION: eval=" << evalAfter
                   << " (p1=" << tcAfter.p1 << ", p2=" << tcAfter.p2
                   << ", empty=" << tcAfter.empty << ")";
     }
 
-    Owner newOwner = updateTile(dest);
-
-    // Build converted tile list but don't update the displayed tiles yet, it is animated later.
-    const QList<QPoint> &converted = m_board->lastConvertedTiles();
+    // Do not update the tiles' view, the animation takes care of it
+    Owner owner = boardCellToOwner(m_board->at(dest));
     if (jumpMovement) {
-        m_view->startJumpAnimation(dest, origin, converted, newOwner);
+        m_view->startJumpAnimation(dest, origin, m_board->lastConvertedTiles(), m_board->lastAutofilledTiles(), owner);
     } else {
-        m_view->startCloneAnimation(dest, converted, newOwner);
+        m_view->startCloneAnimation(dest, m_board->lastConvertedTiles(), m_board->lastAutofilledTiles(), owner);
     }
 
-    m_state = GameState::AnimatingConversion;
+    m_state = GameState::AnimatingMove;
 }
 
 void Game::finishMove()
@@ -437,7 +425,7 @@ void Game::finishMove()
     // Update all tile displays
     updateAllTiles();
 
-    Q_EMIT statusUpdated(m_currentPlayer);
+    Q_EMIT statusUpdated();
 
     // Check for winner
     if (m_board->isWinner()) {
@@ -446,17 +434,6 @@ void Game::finishMove()
         return;
     }
 
-    // Change player (the board already changed currentPlayer internally)
-    m_currentPlayer = m_board->currentPlayer();
-    if (!m_board->areMovementsAvailable(m_currentPlayer) && !m_board->isWinner()) {
-        // Opponent can't move: auto-fill all empty cells for the other player
-        m_autoFillPlayer = (m_currentPlayer == 1) ? 2 : 1;
-        m_state = GameState::AutoFilling;
-        Q_EMIT setAction(Action::UNDO, false);
-        Q_EMIT buttonChange(true, true, i18n("Skip"));
-        m_autoFillTimer->start();
-        return;
-    }
     moveDone();
     setUpNextTurn();
 }
@@ -472,10 +449,6 @@ void Game::moveDone()
 void Game::buttonClick()
 {
     qCDebug(KDOMINATE_LOG) << "BUTTON CLICK seen: m_state:" << int(m_state);
-    if (m_state == GameState::AutoFilling) {
-        finishAutoFill();
-        return;
-    }
     if (m_board->isWinner()) {
         KTileWidget::enableClicks(false);
         return;
@@ -494,7 +467,7 @@ void Game::buttonClick()
     } else if (m_state == GameState::ShowingMove) {
         m_view->killAnimation();
         showingDone(m_pendingMoveOrigin, m_pendingMoveDest);
-    } else if (m_state == GameState::AnimatingConversion) {
+    } else if (m_state == GameState::AnimatingMove) {
         m_view->killAnimation();
         finishMove();
     }
@@ -521,7 +494,7 @@ void Game::newGame()
 {
     qCDebug(KDOMINATE_LOG) << "NEW GAME entered: state" << int(m_state) << "won?" << (m_board->isWinner());
     if (newGameOK()) {
-        qCDebug(KDOMINATE_LOG) << "QDEBUG: newGameOK() =" << true;
+        qCDebug(KDOMINATE_LOG) << "newGameOK() =" << true;
         shutdown();
         m_view->setNormalCursor();
         m_view->hidePopup();
@@ -599,7 +572,6 @@ void Game::reset()
         }
     }
 
-    m_currentPlayer = 1;
     m_selected = false;
 
     m_state = GameState::Idle;
@@ -611,7 +583,7 @@ void Game::reset()
     // Update the display to show initial board state
     updateAllTiles();
 
-    Q_EMIT statusUpdated(m_currentPlayer);
+    Q_EMIT statusUpdated();
 }
 
 bool Game::undo()
@@ -623,17 +595,16 @@ bool Game::undo()
     MoveRecord &snap = m_undoList[m_undoIndex];
 
     m_board->undo();
-    m_currentPlayer = m_board->currentPlayer();
     m_moveNo--;
 
     updateAllTiles();
 
-    Q_EMIT statusUpdated(m_currentPlayer);
+    Q_EMIT statusUpdated();
 
     // Highlight the move that was undone
     m_view->timedTileHighlight(snap.origin);
 
-    m_interrupting = isComputer(m_currentPlayer);
+    m_interrupting = isComputer(m_board->currentPlayer());
     m_state = GameState::Idle;
     setUpNextTurn();
 
@@ -650,14 +621,9 @@ bool Game::redo()
     m_undoIndex++;
     m_moveNo++;
 
-    m_currentPlayer = m_board->currentPlayer();
-    if (!m_board->areMovementsAvailable(m_currentPlayer) && !m_board->isWinner()) {
-        int fillingPlayer = (m_currentPlayer == 1) ? 2 : 1;
-        while (m_board->fillNextEmpty(fillingPlayer)) { }
-    }
     updateAllTiles();
 
-    Q_EMIT statusUpdated(m_currentPlayer);
+    Q_EMIT statusUpdated();
 
     m_view->timedTileHighlight(snap.dest);
 
@@ -666,7 +632,7 @@ bool Game::redo()
         return false;
     }
 
-    m_interrupting = isComputer(m_currentPlayer);
+    m_interrupting = isComputer(m_board->currentPlayer());
     m_state = GameState::Idle;
     setUpNextTurn();
     return (m_undoIndex < m_undoList.size());
@@ -684,7 +650,6 @@ void Game::setSize(int d)
 void Game::shutdown()
 {
     m_view->killAnimation();
-    m_autoFillTimer->stop();
     if (m_state == GameState::Computing) {
         m_ai->stop();
         m_state = GameState::Aborting;
@@ -700,46 +665,21 @@ bool Game::isComputer(int player) const
     return player == 1 ? computerPlOne : computerPlTwo;
 }
 
-void Game::autoFillNextTile()
-{
-    auto pos = m_board->fillNextEmpty(m_autoFillPlayer);
-    if (!pos) {
-        finishAutoFill();
-        return;
-    }
-    Owner owner = (m_autoFillPlayer == 1) ? Owner::One : Owner::Two;
-    m_view->displayTile(*pos, owner);
-    Q_EMIT statusUpdated(m_currentPlayer);
-}
-
-void Game::finishAutoFill()
-{
-    m_autoFillTimer->stop();
-    // Fill any remaining empty cells instantly (in case of skip)
-    while (m_board->fillNextEmpty(m_autoFillPlayer)) { }
-    updateAllTiles();
-    Q_EMIT statusUpdated(m_currentPlayer);
-    moveDone();
-    showWinner();
-    Q_EMIT setAction(Action::UNDO, true);
-}
-
 void Game::animationDone(int index)
 {
     Q_UNUSED(index);
     if (m_state == GameState::ShowingMove) {
         showingDone(m_pendingMoveOrigin, m_pendingMoveDest);
-    } else if (m_state == GameState::AnimatingConversion) {
+    } else if (m_state == GameState::AnimatingMove) {
         finishMove();
     }
 }
 
-Owner Game::updateTile(QPoint p)
+void Game::updateTile(QPoint p)
 {
     int cell = m_board->at(p);
     Owner owner = boardCellToOwner(cell);
     m_view->displayTile(p, owner);
-    return owner;
 }
 
 void Game::updateAllTiles()
@@ -772,7 +712,7 @@ void Game::highlightValidDestinations(QPoint origin)
             jumpTiles.append(dest);
         }
     }
-    m_view->highlightValidMoves(m_currentPlayer, cloneTiles, jumpTiles);
+    m_view->highlightValidMoves(m_board->currentPlayer(), cloneTiles, jumpTiles);
 }
 
 void Game::saveSnapshot(QPoint origin, QPoint dest)
@@ -792,8 +732,8 @@ void Game::saveSnapshot(QPoint origin, QPoint dest)
 
 bool Game::isBusy() const
 {
-    return m_state == GameState::Computing || m_state == GameState::Stopping || m_state == GameState::ShowingMove || m_state == GameState::AutoFilling
-        || m_state == GameState::AnimatingConversion || m_state == GameState::Aborting;
+    return m_state == GameState::Computing || m_state == GameState::Stopping || m_state == GameState::ShowingMove
+        || m_state == GameState::AnimatingMove || m_state == GameState::Aborting;
 }
 
 #include "moc_game.cpp"
