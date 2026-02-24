@@ -136,7 +136,7 @@ int KDominateAi::staticEvaluationFunction(KDominateBoard &board, int initialPlay
         if (initialPlayer == winner)
             score += 1000 + depth;
         else
-            score -= (1000 + depth);
+            score -= (1000 - depth);
     }
 
     KDominateBoard::TileCount tc = board.countTiles();
