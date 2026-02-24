@@ -360,6 +360,7 @@ void Game::moveCalculationDone(QPoint origin, QPoint dest)
 void Game::showingDone(QPoint origin, QPoint dest)
 {
     if (isComputer(m_board->currentPlayer())) {
+        Q_EMIT statusMessage(QString(), false);
         m_moveNo++;
         doMove(origin, dest);
     } else {
