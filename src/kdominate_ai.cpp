@@ -5,6 +5,7 @@
  */
 
 #include "kdominate_ai.h"
+
 #include "kdominate_board.h"
 #include "kdominate_debug.h"
 

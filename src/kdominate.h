@@ -9,10 +9,11 @@
 
 #pragma once
 
-#include <QLabel>
+#include "game.h"
 
 #include <KXmlGuiWindow>
-#include <game.h>
+
+#include <QLabel>
 
 class QAction;
 class KBoardWidget;

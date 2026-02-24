@@ -10,14 +10,14 @@
 
 #pragma once
 
+#include "kdominate_board.h"
+#include "ktilewidget.h"
+
 #include <QList>
 #include <QObject>
 #include <QPoint>
 #include <QStringList>
 #include <QTimer>
-
-#include "kdominate_board.h"
-#include "ktilewidget.h"
 
 class KBoardWidget;
 class SettingsWidget;

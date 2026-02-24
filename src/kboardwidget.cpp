@@ -10,15 +10,14 @@
 
 #include "kboardwidget.h"
 
+#include "kdominate_debug.h"
+#include "prefs.h"
+
 #include <QLabel>
 #include <QPainter>
 #include <QResizeEvent>
 #include <QStandardPaths>
 #include <QTimer>
-
-#include "prefs.h"
-
-#include "kdominate_debug.h"
 
 const int kHighlightTimeMillis = 1500;
 const int kBlinkCountComputerMove = 4; // also used for hints
@@ -416,7 +415,6 @@ void KBoardWidget::nextMoveAnimationStep()
             return;
         }
     }
-
 
     // Phase 2: conversion progress
     int convStep = m_animationStep - kZoomSteps;

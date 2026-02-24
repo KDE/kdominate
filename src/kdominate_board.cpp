@@ -99,7 +99,7 @@ std::pair<bool, bool> KDominateBoard::move(QPoint origin, QPoint dest)
         }
         expandConnected(dest);
         if (!areMovementsAvailable(otherPlayer())) {
-            while(true) {
+            while (true) {
                 auto pos = fillNextEmpty();
                 if (!pos) {
                     break;

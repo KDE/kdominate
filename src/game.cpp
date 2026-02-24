@@ -9,6 +9,7 @@
  */
 
 #include "game.h"
+
 #include "kboardwidget.h"
 #include "kdominate_ai.h"
 #include "kdominate_board.h"
@@ -16,8 +17,7 @@
 #include "settingswidget.h"
 
 #include "kdominate_debug.h"
-#include <QFileDialog>
-#include <QTemporaryFile>
+#include "prefs.h"
 
 #include <KConfigDialog>
 #include <KIO/FileCopyJob>
@@ -26,9 +26,10 @@
 #include <KLocalizedString>
 #include <KMessageBox>
 
-#include "prefs.h"
 #include <QDir>
 #include <QFile>
+#include <QFileDialog>
+#include <QTemporaryFile>
 #include <QTextStream>
 
 QStringList Game::availableMapFiles()
@@ -403,9 +404,8 @@ void Game::doMove(QPoint origin, QPoint dest)
     {
         int evalAfter = m_ai->staticEvaluationFunction(*m_board, m_board->otherPlayer());
         KDominateBoard::TileCount tcAfter = m_board->countTiles();
-        qCDebug(KDOMINATE_LOG) << " BOARD STATIC EVALUATION: eval=" << evalAfter
-                  << " (p1=" << tcAfter.p1 << ", p2=" << tcAfter.p2
-                  << ", empty=" << tcAfter.empty << ")";
+        qCDebug(KDOMINATE_LOG) << " BOARD STATIC EVALUATION: eval=" << evalAfter << " (p1=" << tcAfter.p1 << ", p2=" << tcAfter.p2
+                               << ", empty=" << tcAfter.empty << ")";
     }
 
     // Do not update the tiles' view, the animation takes care of it
@@ -730,8 +730,8 @@ void Game::saveSnapshot(QPoint origin, QPoint dest)
 
 bool Game::isBusy() const
 {
-    return m_state == GameState::Computing || m_state == GameState::Stopping || m_state == GameState::ShowingMove
-        || m_state == GameState::AnimatingMove || m_state == GameState::Aborting;
+    return m_state == GameState::Computing || m_state == GameState::Stopping || m_state == GameState::ShowingMove || m_state == GameState::AnimatingMove
+        || m_state == GameState::Aborting;
 }
 
 #include "moc_game.cpp"

@@ -18,11 +18,11 @@
 #if HAVE_KICONTHEME
 #include <KIconTheme>
 #endif
-
 #define HAVE_STYLE_MANAGER __has_include(<KStyleManager>)
 #if HAVE_STYLE_MANAGER
 #include <KStyleManager>
 #endif
+
 #include <QApplication>
 #include <QCommandLineParser>
 

@@ -9,11 +9,11 @@
 
 #pragma once
 
+#include "ktilewidget.h"
+
 #include <QList>
 #include <QSvgRenderer>
 #include <QWidget>
-
-#include "ktilewidget.h"
 
 class QPaintEvent;
 class QResizeEvent;
@@ -55,7 +55,8 @@ public:
     {
         displayTile(pointToIndex(p), owner);
     }
-    void selectTile(QPoint p) {
+    void selectTile(QPoint p)
+    {
         selectTile(pointToIndex(p));
     }
     void startComputerNextMoveAnimation(QPoint origin, QPoint dest = QPoint(-1, -1))
@@ -70,7 +71,8 @@ public:
     {
         startMoveAnimation(pointToIndex(dest), pointToIndex(origin), pointsToIndices(convertedTiles), pointsToIndices(autofilledTiles), owner);
     }
-    void highlightValidMoves(int player, const QList<QPoint> &cloneTargets, const QList<QPoint> &jumpTargets) {
+    void highlightValidMoves(int player, const QList<QPoint> &cloneTargets, const QList<QPoint> &jumpTargets)
+    {
         highlightValidMoves(player, pointsToIndices(cloneTargets), pointsToIndices(jumpTargets));
     }
 
@@ -98,9 +100,10 @@ private:
         }
         return p.x() * m_size + p.y();
     }
-    QList<int> pointsToIndices(const QList<QPoint>& convertedTiles) {
+    QList<int> pointsToIndices(const QList<QPoint> &convertedTiles)
+    {
         QList<int> convertedIndices;
-        for (const QPoint& p : convertedTiles) {
+        for (const QPoint &p : convertedTiles) {
             convertedIndices << pointToIndex(p);
         }
         return convertedIndices;
@@ -115,7 +118,7 @@ private:
     void displayTile(int index, Owner owner);
     void selectTile(int index);
     void startComputerNextMoveAnimation(int originTile, int destTile = -1);
-    void startMoveAnimation(int zoomInTile, int zoomOutTile, const QList<int> &convertedIndices, const QList<int> &autofilledIndices,  Owner owner);
+    void startMoveAnimation(int zoomInTile, int zoomOutTile, const QList<int> &convertedIndices, const QList<int> &autofilledIndices, Owner owner);
     void timedTileHighlight(int index);
     void highlightValidMoves(int player, const QList<int> &cloneTargets, const QList<int> &jumpTargets);
 

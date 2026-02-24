@@ -8,23 +8,23 @@
  */
 
 #include "kdominate.h"
+
 #include "kboardwidget.h"
 #include "kdominate_board.h"
+#include "kdominate_debug.h"
 #include "prefs.h"
 #include "settingswidget.h"
-
-#include <QFile>
-#include <QTextStream>
 
 #include <KActionCollection>
 #include <KGameStandardAction>
 #include <KLocalizedString>
 #include <KStandardAction>
-#include <QAction>
-#include <QStatusBar>
-#include <QWidgetAction>
 
-#include "kdominate_debug.h"
+#include <QAction>
+#include <QFile>
+#include <QStatusBar>
+#include <QTextStream>
+#include <QWidgetAction>
 
 const int kTimedStatusBarMessageDurationMillis = 2000;
 

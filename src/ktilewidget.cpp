@@ -123,8 +123,7 @@ void KTileWidget::paintEvent(QPaintEvent * /* ev unused */)
             p.drawPixmap(ox, oy, pixmaps->at(int(m_playerHighlight == 1 ? SVGElement::P1JumpTarget : SVGElement::P2JumpTarget)));
             break;
         case Effect::ZoomIn:
-        case Effect::ZoomOut:
-        {
+        case Effect::ZoomOut: {
             // Draw neutral background behind the zooming tile
             p.drawPixmap(ox, oy, pixmaps->at(int(SVGElement::Neutral)));
 
@@ -138,13 +137,12 @@ void KTileWidget::paintEvent(QPaintEvent * /* ev unused */)
                 p.drawPixmap(ox, oy, pixmaps->at(int(el)));
                 p.restore();
             }
-        }
-        break;
+        } break;
         case Effect::Converting: {
-            SVGElement oldEl = (el == SVGElement::Player1) ? SVGElement::Player2: SVGElement::Player1;
+            SVGElement oldEl = (el == SVGElement::Player1) ? SVGElement::Player2 : SVGElement::Player1;
 
             // Build diagonal clip polygon: the line x + y = d sweeps top-left to bottom-right
-            qreal d = m_animProgress  * (w + h);
+            qreal d = m_animProgress * (w + h);
             QPolygonF clipPoly;
             if (d <= qMin(w, h)) {
                 clipPoly << QPointF(0, 0) << QPointF(d, 0) << QPointF(0, d);
@@ -175,8 +173,7 @@ void KTileWidget::paintEvent(QPaintEvent * /* ev unused */)
             p.drawPixmap(ox, oy, pixmaps->at(int(el)));
 
             p.setClipping(false);
-        }
-        break;
+        } break;
         }
     }
 

@@ -6,12 +6,11 @@
 
 #pragma once
 
+#include <QList>
 #include <QObject>
 #include <QPoint>
-#include <QStringList>
-
-#include <QList>
 #include <QStack>
+#include <QStringList>
 
 #include <optional>
 
