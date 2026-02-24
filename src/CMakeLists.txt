@@ -36,7 +36,6 @@ ecm_qt_declare_logging_category(kdominate
     HEADER kdominate_debug.h
     IDENTIFIER KDOMINATE_LOG
     CATEGORY_NAME kdominate
-    OLD_CATEGORY_NAMES org.kde.kdominate
     DESCRIPTION "KDominate game"
     EXPORT KDOMINATE
 )

@@ -30,23 +30,23 @@ class KBoardWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit KBoardWidget(const int dim = 1, QWidget *parent = nullptr);
+    explicit KBoardWidget(QWidget *parent = nullptr);
 
     ~KBoardWidget() override = default;
 
-    void deselectAll();
     void reset();
     const QPixmap &playerPixmap(int p);
     void setWaitCursor();
     void setNormalCursor();
     bool loadSettings();
-    virtual void setSize(int dim);
+    void setSize(int dim);
     int killAnimation();
     void clearValidMoveHighlights();
+    void deselectAll();
     void showPopup(const QString &message);
     void hidePopup();
 
-    // Conversion functions because the external world uses x,y but we use a contiguous array.
+    // Conversion functions because the external world uses x,y but we use a linear array
     void timedTileHighlight(QPoint p)
     {
         timedTileHighlight(pointToIndex(p));
@@ -88,7 +88,7 @@ Q_SIGNALS:
 
 protected:
     QSize sizeHint() const override;
-    virtual void initTiles();
+    void initTiles();
     void paintEvent(QPaintEvent *event) override;
     void resizeEvent(QResizeEvent *event) override;
 
@@ -137,9 +137,9 @@ private:
     QList<KTileWidget *> tiles;
 
     QTimer *m_blinkTimer;
+    int m_blinkCount;
     int m_blinkOrigin;
     int m_blinkDest;
-    int m_blinkCount;
 
     QTimer *m_highlightTimer;
     int m_highlighted;
@@ -148,7 +148,7 @@ private:
     QList<int> m_convertedTiles;
     QList<int> m_autofilledTiles;
     int m_animationStep;
-    Owner m_conversionNewOwner;
+    Owner m_animationNewOwner;
 
     int m_zoomInTile;
     int m_zoomOutTile;

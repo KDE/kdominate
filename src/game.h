@@ -36,7 +36,7 @@ class Game : public QObject
     Q_OBJECT
 
 public:
-    explicit Game(const int dim, KBoardWidget *view, QWidget *parent = nullptr);
+    explicit Game(KBoardWidget *view, QWidget *parent = nullptr);
     ~Game() override;
 
     void showSettingsDialog();
@@ -90,7 +90,6 @@ private:
     bool redo();
     bool newGameOK();
     void reset();
-    virtual void setSize(int dim);
     bool isComputer(int player) const;
     void updateAllTiles();
     void updateTile(QPoint p); // Updates the view of this tile based on what's on m_board
@@ -129,7 +128,6 @@ private:
 
     KDominateBoard *m_board;
     KDominateAi *m_ai;
-    int m_size;
 
     // Two-click move state
     bool m_selected;

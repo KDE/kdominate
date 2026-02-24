@@ -30,23 +30,8 @@ const int kTimedStatusBarMessageDurationMillis = 2000;
 
 KDominate::KDominate()
 {
-    // Determine initial board size by reading the saved map preset file.
-    QString mapPath = Game::mapResourcePath(Prefs::mapIndex());
-    KDominateBoard tmpBoard;
-    QFile mapFile(mapPath);
-    if (mapFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        QTextStream in(&mapFile);
-        QStringList lines;
-        while (!in.atEnd())
-            lines.append(in.readLine());
-        mapFile.close();
-        tmpBoard.loadFromMap(lines);
-    }
-    int initDim = tmpBoard.size();
-
-    qCDebug(KDOMINATE_LOG) << "KDominate::KDominate() CONSTRUCTOR";
-    m_view = new KBoardWidget(initDim, this);
-    m_game = new Game(initDim, m_view, this);
+    m_view = new KBoardWidget(this);
+    m_game = new Game(m_view, this);
 
     connect(m_game, &Game::statusUpdated, this, &KDominate::updateStatus);
     connect(m_game, &Game::buttonChange, this, &KDominate::changeButton);
@@ -127,7 +112,6 @@ KDominate::KDominate()
                 m_game->showSettingsDialog();
             },
             actionCollection());
-        qCDebug(KDOMINATE_LOG) << "PREFERENCES ACTION is" << action->objectName();
         action->setIconText(i18n("Settings"));
     }
 
@@ -157,7 +141,6 @@ KDominate::~KDominate()
 
 void KDominate::changeButton(bool enabled, bool stop, const QString &caption)
 {
-    qCDebug(KDOMINATE_LOG) << "KDominate::changeButton (" << enabled << stop << caption << ")";
     // Action button's style sheet: parameters for blue and red colors
     static QString buttonLook = QStringLiteral(
         "QPushButton#ActionButton { color: white; background-color: %1; "

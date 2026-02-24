@@ -26,24 +26,22 @@ const int kAnimationStepMillis = 20;
 const int kZoomSteps = 10; // 20ms * 10 steps = 200ms
 const int kConversionSteps = 16; // 20ms * 16 steps = 320ms
 
-KBoardWidget::KBoardWidget(const int d, QWidget *parent)
+KBoardWidget::KBoardWidget(QWidget *parent)
     : QWidget(parent)
-    , m_size(d)
+    , m_size(0)
+    , m_blinkCount(0)
+    , m_blinkOrigin(-1)
+    , m_blinkDest(-1)
     , m_popup(new QLabel(this))
 {
-    qCDebug(KDOMINATE_LOG) << "CONSTRUCT KBoardWidget: size" << m_size;
-
     svg.load(QStringLiteral(":/graphics.svg"));
-
-    m_blinkCount = 0;
-    m_blinkOrigin = -1;
-    m_blinkDest = -1;
 
     setMinimumSize(200, 200);
     color1 = Prefs::color1();
     color2 = Prefs::color2();
     color0 = Prefs::color0();
     m_theme = Theme(Prefs::themeIndex());
+
     // We don't know the actual size until setSize is called, but we need to generate
     // the tiles already since we use them in the status bar. Hardcode some small size.
     makeSVGTiles(30);
@@ -60,7 +58,7 @@ KBoardWidget::KBoardWidget(const int d, QWidget *parent)
     m_animationTimer = new QTimer(this);
     m_animationTimer->setInterval(kAnimationStepMillis);
     m_animationStep = 0;
-    m_conversionNewOwner = Owner::Nobody;
+    m_animationNewOwner = Owner::Nobody;
     m_zoomInTile = -1;
     m_zoomOutTile = -1;
 
@@ -73,7 +71,6 @@ KBoardWidget::KBoardWidget(const int d, QWidget *parent)
 
 bool KBoardWidget::loadSettings()
 {
-    qCDebug(KDOMINATE_LOG) << "LOAD VIEW SETTINGS";
     bool reColorTiles = ((color1 != Prefs::color1()) || (color2 != Prefs::color2()) || (color0 != Prefs::color0()) || (int(m_theme) != Prefs::themeIndex()));
 
     color1 = Prefs::color1();
@@ -156,7 +153,6 @@ void KBoardWidget::setNormalCursor()
 
 bool KBoardWidget::checkClick(int x, int y)
 {
-    qCDebug(KDOMINATE_LOG) << "Emit mouseClick (" << x << y << ")";
     Q_EMIT mouseClick(x, y);
     return false;
 }
@@ -375,7 +371,7 @@ void KBoardWidget::startMoveAnimation(int zoomInTile, int zoomOutTile, const QLi
     m_zoomOutTile = zoomOutTile;
     m_convertedTiles = convertedIndices;
     m_autofilledTiles = autofilledIndices;
-    m_conversionNewOwner = owner;
+    m_animationNewOwner = owner;
     m_animationStep = 0;
     m_animationTimer->start();
     nextMoveAnimationStep();
@@ -389,7 +385,7 @@ void KBoardWidget::nextMoveAnimationStep()
     if (m_animationStep <= kZoomSteps) {
         qreal progress = qreal(m_animationStep) / qreal(kZoomSteps);
         if (m_zoomInTile >= 0) {
-            tiles.at(m_zoomInTile)->setOwner(m_conversionNewOwner);
+            tiles.at(m_zoomInTile)->setOwner(m_animationNewOwner);
             tiles.at(m_zoomInTile)->setZoomInProgress(progress);
         }
         if (m_zoomOutTile >= 0) {
@@ -424,7 +420,7 @@ void KBoardWidget::nextMoveAnimationStep()
         } else {
             qreal progress = qreal(convStep) / qreal(kConversionSteps);
             for (int idx : std::as_const(m_convertedTiles)) {
-                tiles.at(idx)->setOwner(m_conversionNewOwner);
+                tiles.at(idx)->setOwner(m_animationNewOwner);
                 tiles.at(idx)->setConversionProgress(progress);
             }
         }
@@ -445,7 +441,7 @@ void KBoardWidget::nextMoveAnimationStep()
         int tile = m_autofilledTiles.first();
         if (autofillStep % kZoomSteps != 0) {
             qreal progress = qreal(autofillStep % kZoomSteps) / qreal(kZoomSteps);
-            tiles.at(tile)->setOwner(m_conversionNewOwner);
+            tiles.at(tile)->setOwner(m_animationNewOwner);
             tiles.at(tile)->setZoomInProgress(progress);
             return;
         } else {

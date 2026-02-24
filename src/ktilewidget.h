@@ -127,7 +127,7 @@ public:
     }
 
 public Q_SLOTS:
-    virtual void reset();
+    void reset();
 
 Q_SIGNALS:
     void clicked(int row, int column);

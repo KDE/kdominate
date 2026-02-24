@@ -57,7 +57,7 @@ QString Game::mapDisplayName(const QString &resourcePath)
     return ki18n(englishName.toUtf8().constData()).toString();
 }
 
-Game::Game(const int d, KBoardWidget *view, QWidget *parent)
+Game::Game(KBoardWidget *view, QWidget *parent)
     : QObject((QObject *)parent)
     , m_state(GameState::Idle)
     , m_moveNo(0)
@@ -65,14 +65,12 @@ Game::Game(const int d, KBoardWidget *view, QWidget *parent)
     , m_parent(parent)
     , m_view(view)
     , m_settingsPage(nullptr)
-    , m_size(d)
     , m_selected(false)
     , computerPlOne(false)
     , computerPlTwo(false)
     , m_pauseForComputer(false)
     , m_undoIndex(0)
 {
-    qCDebug(KDOMINATE_LOG) << "CONSTRUCT Game: size" << m_size;
     m_board = new KDominateBoard();
     m_ai = new KDominateAi(this);
 
@@ -91,7 +89,6 @@ Game::~Game()
 
 void Game::gameActions(const int action)
 {
-    qCDebug(KDOMINATE_LOG) << "GAME ACTION IS" << action;
     if (isBusy() && (action != BUTTON) && (action != Action::NEW)) {
         m_view->showPopup(i18n("Sorry, doing a move..."));
         return;
@@ -155,7 +152,7 @@ void Game::showSettingsDialog()
 
 void Game::newSettings()
 {
-    qCDebug(KDOMINATE_LOG) << "NEW SETTINGS" << "m_state" << int(m_state) << "mapIndex:" << Prefs::mapIndex() << "m_size" << m_size;
+    qCDebug(KDOMINATE_LOG) << "NEW SETTINGS" << "m_state" << int(m_state) << "mapIndex:" << Prefs::mapIndex();
     loadImmediateSettings();
 
     if (Prefs::mapIndex() != m_mapIndex) {
@@ -169,8 +166,6 @@ void Game::newSettings()
 
 void Game::loadImmediateSettings()
 {
-    qCDebug(KDOMINATE_LOG) << "GAME LOAD IMMEDIATE SETTINGS entered";
-
     bool reColorTiles = m_view->loadSettings();
     if (reColorTiles) {
         Q_EMIT statusUpdated();
@@ -179,14 +174,11 @@ void Game::loadImmediateSettings()
 
 void Game::loadPlayerSettings()
 {
-    qCDebug(KDOMINATE_LOG) << "GAME LOAD PLAYER SETTINGS entered";
     bool oldComputerPlayer = isComputer(m_board->currentPlayer());
 
     m_pauseForComputer = Prefs::pauseForComputer();
     computerPlOne = Prefs::computerPlayer1();
     computerPlTwo = Prefs::computerPlayer2();
-
-    qCDebug(KDOMINATE_LOG) << "AI 1" << computerPlOne << "AI 2" << computerPlTwo << "m_pauseForComputer" << m_pauseForComputer;
 
     if (isComputer(m_board->currentPlayer()) && (!oldComputerPlayer)) {
         qCDebug(KDOMINATE_LOG) << "New computer player set: must wait.";
@@ -196,8 +188,6 @@ void Game::loadPlayerSettings()
 
 void Game::startHumanMove(int x, int y)
 {
-    qCDebug(KDOMINATE_LOG) << "CLICK" << x << y;
-
     bool humanPlayer = (!isComputer(m_board->currentPlayer()));
     if (!humanPlayer && m_state != GameState::WaitingForButton) {
         return;
@@ -491,15 +481,12 @@ void Game::setStopAction()
 
 void Game::newGame()
 {
-    qCDebug(KDOMINATE_LOG) << "NEW GAME entered: state" << int(m_state) << "won?" << (m_board->isWinner());
     if (newGameOK()) {
-        qCDebug(KDOMINATE_LOG) << "newGameOK() =" << true;
         shutdown();
         m_view->setNormalCursor();
         m_view->hidePopup();
         loadImmediateSettings();
         loadPlayerSettings();
-        qCDebug(KDOMINATE_LOG) << "Entering reset();";
         reset();
         Q_EMIT setAction(Action::UNDO, false);
         Q_EMIT setAction(Action::REDO, false);
@@ -564,11 +551,7 @@ void Game::reset()
         f.close();
         lines.removeFirst(); // Remove the map name
         m_board->loadFromMap(lines);
-        int newSize = m_board->size();
-        if (newSize != m_size) {
-            m_size = newSize;
-            m_view->setSize(m_size);
-        }
+        m_view->setSize(m_board->size());
     }
 
     m_selected = false;
@@ -637,15 +620,6 @@ bool Game::redo()
     return (m_undoIndex < m_undoList.size());
 }
 
-void Game::setSize(int d)
-{
-    if (d != m_size) {
-        shutdown();
-        m_size = d;
-        m_view->setSize(d);
-    }
-}
-
 void Game::shutdown()
 {
     m_view->killAnimation();
@@ -683,8 +657,9 @@ void Game::updateTile(QPoint p)
 
 void Game::updateAllTiles()
 {
-    for (int x = 0; x < m_size; x++) {
-        for (int y = 0; y < m_size; y++) {
+    int size = m_board->size();
+    for (int x = 0; x < size; x++) {
+        for (int y = 0; y < size; y++) {
             updateTile(QPoint(x, y));
         }
     }
