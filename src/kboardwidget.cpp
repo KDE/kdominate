@@ -71,10 +71,6 @@ KBoardWidget::KBoardWidget(const int d, QWidget *parent)
     setPopup();
 }
 
-KBoardWidget::~KBoardWidget()
-{
-}
-
 bool KBoardWidget::loadSettings()
 {
     qCDebug(KDOMINATE_LOG) << "LOAD VIEW SETTINGS";

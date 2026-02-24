@@ -32,7 +32,7 @@ class KBoardWidget : public QWidget
 public:
     explicit KBoardWidget(const int dim = 1, QWidget *parent = nullptr);
 
-    ~KBoardWidget() override;
+    ~KBoardWidget() override = default;
 
     void timedTileHighlight(int index);
     void deselectAll();

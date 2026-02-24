@@ -42,7 +42,7 @@ class KTileWidget : public QFrame
 
 public:
     explicit KTileWidget(QWidget *parent, int row, int col);
-    ~KTileWidget() override;
+    ~KTileWidget() override = default;
 
     static void enableClicks(bool flag);
     static void setPixmaps(QList<QPixmap> *ptr);

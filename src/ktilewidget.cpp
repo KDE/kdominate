@@ -43,10 +43,6 @@ KTileWidget::KTileWidget(QWidget *parent, int row, int col)
     update();
 }
 
-KTileWidget::~KTileWidget()
-{
-}
-
 void KTileWidget::reset()
 {
     m_owner = Owner::Nobody;
