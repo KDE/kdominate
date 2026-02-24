@@ -28,7 +28,7 @@ private:
 };
 
 // Cloning actions before jumping actions since they tend to be better and help pruning
-const QPoint KDominateAi::s_validMovementDirections[] = {
+const QPoint kValidMovementDirections[] = {
     // Clone orthogonal
     QPoint(0, -1),
     QPoint(1, 0),
@@ -43,8 +43,8 @@ const QPoint KDominateAi::s_validMovementDirections[] = {
     QPoint(0, -2),
     QPoint(2, 0),
     QPoint(-2, 0),
-    QPoint(0, 2)};
-const int KDominateAi::s_numDirections = 12;
+    QPoint(0, 2)
+};
 
 KDominateAi::KDominateAi(QObject *parent)
     : QObject(parent)
@@ -167,8 +167,8 @@ KDominateAi::AiMove KDominateAi::alphaBeta(KDominateBoard &board, int initialPla
             if (board[origin] != board.currentPlayer())
                 continue;
 
-            for (int k = 0; k < s_numDirections; k++) {
-                QPoint dest = origin + s_validMovementDirections[k];
+            for (QPoint p : kValidMovementDirections) {
+                QPoint dest = origin + p;
 
                 auto [validMovement, jumpMovement] = board.move(origin, dest);
                 if (!validMovement)

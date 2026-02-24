@@ -41,9 +41,6 @@ private:
         int score = 0;
     };
 
-    static const QPoint s_validMovementDirections[];
-    static const int s_numDirections;
-
     int m_depth;
     bool m_stopped;
 
