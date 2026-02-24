@@ -37,6 +37,7 @@ KBoardWidget::KBoardWidget(const int d, QWidget *parent)
     svg.load(QStringLiteral(":/graphics.svg"));
 
     animationCount = 0;
+    m_blinkOrigin = -1;
     m_blinkDest = -1;
 
     setMinimumSize(200, 200);
