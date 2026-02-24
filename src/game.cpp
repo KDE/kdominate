@@ -412,6 +412,15 @@ void Game::doMove(QPoint origin, QPoint dest)
         return;
     }
 
+    // Debug: print static evaluation after move
+    {
+        int evalAfter = m_ai->staticEvaluationFunction(*m_board, m_currentPlayer);
+        KDominateBoard::TileCount tcAfter = m_board->countTiles();
+        qCDebug(KDOMINATE_LOG) << " BOARD STATIC EVALUATION: eval=" << evalAfter
+                  << " (p1=" << tcAfter.p1 << ", p2=" << tcAfter.p2
+                  << ", empty=" << tcAfter.empty << ")";
+    }
+
     Owner newOwner = updateTile(dest);
 
     // Build converted tile index list but don't update the displayed tiles yet, it is animated later.

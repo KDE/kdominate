@@ -31,6 +31,9 @@ public:
 Q_SIGNALS:
     void done(QPoint origin, QPoint dest);
 
+public:
+    int staticEvaluationFunction(KDominateBoard &board, int initialPlayer, int depth = 0) const;
+
 private:
     struct AiMove {
         QPoint origin;
@@ -53,7 +56,6 @@ private:
     QPoint m_resultOrigin;
     QPoint m_resultDest;
 
-    int staticEvaluationFunction(KDominateBoard &board, int initialPlayer, int depth) const;
     AiMove alphaBeta(KDominateBoard &board, int initialPlayer, int depth, int alpha = INT_MIN, int beta = INT_MAX);
 
     void computeMove();
