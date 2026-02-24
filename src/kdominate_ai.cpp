@@ -207,6 +207,11 @@ KDominateAi::AiMove KDominateAi::alphaBeta(KDominateBoard &board, int initialPla
         tryDirections(kJumpDirections);
     }
 
+    if (bestAiMove.score == INT_MIN || bestAiMove.score == INT_MAX) {
+        qCWarning(KDOMINATE_LOG) << "No moves found, THIS SHOULD NOT HAPPEN!";
+        bestAiMove.score = staticEvaluationFunction(board, initialPlayer, depth);
+    }
+
     return bestAiMove;
 }
 
