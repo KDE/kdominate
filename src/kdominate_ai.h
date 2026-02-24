@@ -55,5 +55,7 @@ private:
 
     AiMove alphaBeta(KDominateBoard &board, int initialPlayer, int depth, int alpha = INT_MIN, int beta = INT_MAX);
 
+    int m_moveCount;
+
     void computeMove();
 };

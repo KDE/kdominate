@@ -6,8 +6,7 @@
 
 #include "kdominate_ai.h"
 #include "kdominate_board.h"
-
-#include <climits>
+#include "kdominate_debug.h"
 
 // Helper thread class
 class AiThread : public QThread
@@ -27,23 +26,21 @@ private:
     KDominateAi *m_ai;
 };
 
-// Cloning actions before jumping actions since they tend to be better and help pruning
-const QPoint kValidMovementDirections[] = {
-    // Clone orthogonal
+const QList<QPoint> kCloneDirections = {
     QPoint(0, -1),
     QPoint(1, 0),
     QPoint(-1, 0),
     QPoint(0, 1),
-    // Clone diagonal
     QPoint(1, 1),
     QPoint(1, -1),
     QPoint(-1, 1),
     QPoint(-1, -1),
-    // Jump orthogonal (distance 2)
+};
+const QList<QPoint> kJumpDirections = {
     QPoint(0, -2),
     QPoint(2, 0),
     QPoint(-2, 0),
-    QPoint(0, 2)
+    QPoint(0, 2),
 };
 
 KDominateAi::KDominateAi(QObject *parent)
@@ -123,7 +120,9 @@ void KDominateAi::computeMove()
         return;
     }
 
+    m_moveCount = 0;
     AiMove move = alphaBeta(*m_workBoard, m_workBoard->currentPlayer(), m_depth);
+    qCDebug(KDOMINATE_LOG) << "AI explored" << m_moveCount << "moves";
     m_resultOrigin = move.origin;
     m_resultDest = move.dest;
 }
@@ -161,42 +160,51 @@ KDominateAi::AiMove KDominateAi::alphaBeta(KDominateBoard &board, int initialPla
     bool maximizing = initialPlayer == board.currentPlayer();
     bestAiMove.score = maximizing ? INT_MIN : INT_MAX;
 
-    for (int i = 0; i < board.size(); i++) {
-        for (int j = 0; j < board.size(); j++) {
-            QPoint origin(i, j);
-            if (board[origin] != board.currentPlayer())
-                continue;
-
-            for (QPoint p : kValidMovementDirections) {
-                QPoint dest = origin + p;
-
-                auto [validMovement, jumpMovement] = board.move(origin, dest);
-                if (!validMovement)
+    auto tryDirections = [&](const QList<QPoint> &directions) -> bool {
+        for (int i = 0; i < board.size(); i++) {
+            for (int j = 0; j < board.size(); j++) {
+                QPoint origin(i, j);
+                if (board[origin] != board.currentPlayer())
                     continue;
 
-                AiMove candidateAiMove = alphaBeta(board, initialPlayer, depth - 1, alpha, beta);
+                for (QPoint p : directions) {
+                    QPoint dest = origin + p;
 
-                if ((maximizing && candidateAiMove.score > bestAiMove.score) || (!maximizing && candidateAiMove.score < bestAiMove.score)) {
-                    bestAiMove.origin = origin;
-                    bestAiMove.dest = dest;
-                    bestAiMove.score = candidateAiMove.score;
-                }
+                    auto [validMovement, jumpMovement] = board.move(origin, dest);
+                    if (!validMovement)
+                        continue;
 
-                board.undo();
+                    m_moveCount++;
+                    AiMove candidateAiMove = alphaBeta(board, initialPlayer, depth - 1, alpha, beta);
 
-                if (maximizing)
-                    alpha = qMax(alpha, bestAiMove.score);
-                else
-                    beta = qMin(beta, bestAiMove.score);
-                if (beta <= alpha) {
-                    return bestAiMove;
-                }
+                    if ((maximizing && candidateAiMove.score > bestAiMove.score) || (!maximizing && candidateAiMove.score < bestAiMove.score)) {
+                        bestAiMove.origin = origin;
+                        bestAiMove.dest = dest;
+                        bestAiMove.score = candidateAiMove.score;
+                    }
 
-                if (m_stopped) {
-                    return bestAiMove;
+                    board.undo();
+
+                    if (maximizing)
+                        alpha = qMax(alpha, bestAiMove.score);
+                    else
+                        beta = qMin(beta, bestAiMove.score);
+                    if (beta <= alpha) {
+                        return true; // pruned
+                    }
+
+                    if (m_stopped) {
+                        return true; // stopped
+                    }
                 }
             }
         }
+        return false;
+    };
+
+    // Try cloning actions before jumping actions since they tend to be better and help pruning
+    if (!tryDirections(kCloneDirections)) {
+        tryDirections(kJumpDirections);
     }
 
     return bestAiMove;
