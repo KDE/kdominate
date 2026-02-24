@@ -364,8 +364,6 @@ void Game::showingDone(QPoint origin, QPoint dest)
     } else {
         // Finish Hint animation
         moveDone();
-        // Highlight both source and destination briefly for hints
-        m_view->timedTileHighlight(origin);
         Q_EMIT statusMessage(i18n("Hint: move from (%1,%2) to (%3,%4)", origin.x() + 1, origin.y() + 1, dest.x() + 1, dest.y() + 1), false);
         setUpNextTurn();
     }
