@@ -181,7 +181,7 @@ void Game::loadImmediateSettings()
 
     bool reColorTiles = m_view->loadSettings();
     if (reColorTiles) {
-        Q_EMIT playerChanged(m_currentPlayer);
+        Q_EMIT statusUpdated(m_currentPlayer);
     }
 }
 
@@ -437,7 +437,7 @@ void Game::finishMove()
     // Update all tile displays
     updateAllTiles();
 
-    Q_EMIT playerChanged(m_currentPlayer);
+    Q_EMIT statusUpdated(m_currentPlayer);
 
     // Check for winner
     if (m_board->isWinner()) {
@@ -611,7 +611,7 @@ void Game::reset()
     // Update the display to show initial board state
     updateAllTiles();
 
-    Q_EMIT playerChanged(m_currentPlayer);
+    Q_EMIT statusUpdated(m_currentPlayer);
 }
 
 bool Game::undo()
@@ -628,7 +628,7 @@ bool Game::undo()
 
     updateAllTiles();
 
-    Q_EMIT playerChanged(m_currentPlayer);
+    Q_EMIT statusUpdated(m_currentPlayer);
 
     // Highlight the move that was undone
     m_view->timedTileHighlight(snap.origin);
@@ -657,7 +657,7 @@ bool Game::redo()
     }
     updateAllTiles();
 
-    Q_EMIT playerChanged(m_currentPlayer);
+    Q_EMIT statusUpdated(m_currentPlayer);
 
     m_view->timedTileHighlight(snap.dest);
 
@@ -709,7 +709,7 @@ void Game::autoFillNextTile()
     }
     Owner owner = (m_autoFillPlayer == 1) ? Owner::One : Owner::Two;
     m_view->displayTile(*pos, owner);
-    Q_EMIT playerChanged(m_currentPlayer);
+    Q_EMIT statusUpdated(m_currentPlayer);
 }
 
 void Game::finishAutoFill()
@@ -718,7 +718,7 @@ void Game::finishAutoFill()
     // Fill any remaining empty cells instantly (in case of skip)
     while (m_board->fillNextEmpty(m_autoFillPlayer)) { }
     updateAllTiles();
-    Q_EMIT playerChanged(m_currentPlayer);
+    Q_EMIT statusUpdated(m_currentPlayer);
     moveDone();
     showWinner();
     Q_EMIT setAction(Action::UNDO, true);

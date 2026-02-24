@@ -48,7 +48,7 @@ KDominate::KDominate()
     m_view = new KBoardWidget(initDim, this);
     m_game = new Game(initDim, m_view, this);
 
-    connect(m_game, &Game::playerChanged, this, &KDominate::changePlayerColor);
+    connect(m_game, &Game::statusUpdated, this, &KDominate::changePlayerColor);
     connect(m_game, &Game::buttonChange, this, &KDominate::changeButton);
     connect(m_game, &Game::statusMessage, this, &KDominate::statusMessage);
 

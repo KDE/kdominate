@@ -51,7 +51,7 @@ public Q_SLOTS:
     void gameActions(int action);
 
 Q_SIGNALS:
-    void playerChanged(int newPlayer);
+    void statusUpdated(int newPlayer);
     void buttonChange(bool enabled, bool stop = false, const QString &caption = QString());
     void setAction(const Action a, const bool onOff);
     void statusMessage(const QString &message, bool timed);
