@@ -153,17 +153,13 @@ KDominateAi::AiMove KDominateAi::alphaBeta(KDominateBoard &board, int initialPla
 {
     AiMove bestAiMove;
 
-    if (depth <= 0 || board.isWinner()) {
-        bestAiMove.score = staticEvaluationFunction(board, initialPlayer, depth);
-        return bestAiMove;
+    // If the current player has no moves, the other player gets to fill the board
+    if (!board.areMovementsAvailable(board.currentPlayer())) {
+        while (board.fillNextEmpty(board.otherPlayer())) { }
     }
 
-    // If the current player has no moves, skip their turn (free move for the other player)
-    if (!board.areMovementsAvailable(board.currentPlayer())) {
-        int skippedPlayer = board.currentPlayer();
-        board.setCurrentPlayer(board.otherPlayer());
-        bestAiMove = alphaBeta(board, initialPlayer, depth - 1, alpha, beta);
-        board.setCurrentPlayer(skippedPlayer);
+    if (depth <= 0 || board.isWinner()) {
+        bestAiMove.score = staticEvaluationFunction(board, initialPlayer, depth);
         return bestAiMove;
     }
 
