@@ -433,6 +433,8 @@ void Game::finishMove()
     // Update all tile displays
     updateAllTiles();
 
+    Q_EMIT playerChanged(m_currentPlayer);
+
     // Check for winner
     if (m_board->isWinner()) {
         moveDone();
@@ -452,7 +454,6 @@ void Game::finishMove()
         return;
     }
     moveDone();
-    Q_EMIT playerChanged(m_currentPlayer);
     setUpNextTurn();
 }
 
@@ -623,11 +624,11 @@ bool Game::undo()
 
     updateAllTiles();
 
+    Q_EMIT playerChanged(m_currentPlayer);
+
     // Highlight the move that was undone
     int originIdx = snap.origin.x() * m_size + snap.origin.y();
     m_view->timedTileHighlight(originIdx);
-
-    Q_EMIT playerChanged(m_currentPlayer);
 
     m_interrupting = isComputer(m_currentPlayer);
     m_state = GameState::Idle;
@@ -653,10 +654,10 @@ bool Game::redo()
     }
     updateAllTiles();
 
+    Q_EMIT playerChanged(m_currentPlayer);
+
     int destIdx = snap.dest.x() * m_size + snap.dest.y();
     m_view->timedTileHighlight(destIdx);
-
-    Q_EMIT playerChanged(m_currentPlayer);
 
     if (m_board->isWinner()) {
         showWinner();
@@ -706,6 +707,7 @@ void Game::autoFillNextTile()
     }
     Owner owner = (m_autoFillPlayer == 1) ? Owner::One : Owner::Two;
     m_view->displayTile(*pos, owner);
+    Q_EMIT playerChanged(m_currentPlayer);
 }
 
 void Game::finishAutoFill()
@@ -714,6 +716,7 @@ void Game::finishAutoFill()
     // Fill any remaining empty cells instantly (in case of skip)
     while (m_board->fillNextEmpty(m_autoFillPlayer)) { }
     updateAllTiles();
+    Q_EMIT playerChanged(m_currentPlayer);
     moveDone();
     showWinner();
     Q_EMIT setAction(Action::UNDO, true);
