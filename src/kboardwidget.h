@@ -34,7 +34,6 @@ public:
 
     ~KBoardWidget() override = default;
 
-    void timedTileHighlight(int index);
     void deselectAll();
     void reset();
     const QPixmap &playerPixmap(int p);
@@ -42,29 +41,43 @@ public:
     void setNormalCursor();
     bool loadSettings();
     virtual void setSize(int dim);
-    void startComputerMoveAnimation(int originTile, int destTile = -1);
-    void startMoveAnimation(int zoomInTile, int zoomOutTile, const QList<int> &convertedIndices, Owner oldOwner);
     int killAnimation();
-    void highlightValidMoves(int player, const QList<int> &cloneTargets, const QList<int> &jumpTargets);
     void clearValidMoveHighlights();
     void showPopup(const QString &message);
     void hidePopup();
 
     // Conversion functions because the external world uses x,y but we use a contiguous array.
+    void timedTileHighlight(QPoint p)
+    {
+        timedTileHighlight(pointToIndex(p));
+    }
     void displayTile(QPoint p, Owner owner)
     {
-        displayTile(p.x() * m_size + p.y(), owner);
+        displayTile(pointToIndex(p), owner);
     }
-
     void highlightTile(QPoint p, bool highlight)
     {
-        highlightTile(p.x() * m_size + p.y(), highlight);
+        highlightTile(pointToIndex(p), highlight);
+    }
+    void selectTile(QPoint p) {
+        selectTile(pointToIndex(p));
+    }
+    void startComputerNextMoveAnimation(QPoint origin, QPoint dest = QPoint(-1, -1))
+    {
+        startComputerNextMoveAnimation(pointToIndex(origin), pointToIndex(dest));
+    }
+    void startCloneAnimation(QPoint dest, const QList<QPoint> &convertedTiles, Owner oldOwner)
+    {
+        startMoveAnimation(pointToIndex(dest), -1, pointsToIndices(convertedTiles), oldOwner);
+    }
+    void startJumpAnimation(QPoint dest, QPoint origin, const QList<QPoint> &convertedTiles, Owner oldOwner)
+    {
+        startMoveAnimation(pointToIndex(dest), pointToIndex(origin), pointsToIndices(convertedTiles), oldOwner);
+    }
+    void highlightValidMoves(int player, const QList<QPoint> &cloneTargets, const QList<QPoint> &jumpTargets) {
+        highlightValidMoves(player, pointsToIndices(cloneTargets), pointsToIndices(jumpTargets));
     }
 
-    void selectTile(QPoint p)
-    {
-        selectTile(p.x() * m_size + p.y());
-    }
 
 private Q_SLOTS:
     void nextAnimationStep();
@@ -83,6 +96,20 @@ protected:
     void resizeEvent(QResizeEvent *event) override;
 
 private:
+    int pointToIndex(QPoint p)
+    {
+        if (p.x() < 0 || p.y() < 0) {
+            return -1;
+        }
+        return p.x() * m_size + p.y();
+    }
+    QList<int> pointsToIndices(const QList<QPoint>& convertedTiles) {
+        QList<int> convertedIndices;
+        for (const QPoint& p : convertedTiles) {
+            convertedIndices << pointToIndex(p);
+        }
+        return convertedIndices;
+    }
     void init();
     void setPopup();
     void makeSVGBackground(const int w, const int h);
@@ -93,6 +120,10 @@ private:
     void displayTile(int index, Owner owner);
     void selectTile(int index);
     void highlightTile(int index, bool highlight);
+    void startComputerNextMoveAnimation(int originTile, int destTile = -1);
+    void startMoveAnimation(int zoomInTile, int zoomOutTile, const QList<int> &convertedIndices, Owner oldOwner);
+    void timedTileHighlight(int index);
+    void highlightValidMoves(int player, const QList<int> &cloneTargets, const QList<int> &jumpTargets);
 
     QSvgRenderer svg;
     QPixmap background;

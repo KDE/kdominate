@@ -360,9 +360,7 @@ void Game::moveCalculationDone(QPoint origin, QPoint dest)
     // Blink both origin and destination tiles to show the move
     m_pendingMoveOrigin = origin;
     m_pendingMoveDest = dest;
-    int originIdx = origin.x() * m_size + origin.y();
-    int destIdx = dest.x() * m_size + dest.y();
-    m_view->startComputerMoveAnimation(originIdx, destIdx);
+    m_view->startComputerNextMoveAnimation(origin, dest);
     m_state = GameState::ShowingMove;
     setStopAction();
 }
@@ -376,7 +374,7 @@ void Game::showingDone(QPoint origin, QPoint dest)
         // Finish Hint animation
         moveDone();
         // Highlight both source and destination briefly for hints
-        m_view->timedTileHighlight(origin.x() * m_size + origin.y());
+        m_view->timedTileHighlight(origin);
         Q_EMIT statusMessage(i18n("Hint: move from (%1,%2) to (%3,%4)", origin.x() + 1, origin.y() + 1, dest.x() + 1, dest.y() + 1), false);
         setUpNextTurn();
     }
@@ -423,17 +421,14 @@ void Game::doMove(QPoint origin, QPoint dest)
 
     Owner newOwner = updateTile(dest);
 
-    // Build converted tile index list but don't update the displayed tiles yet, it is animated later.
+    // Build converted tile list but don't update the displayed tiles yet, it is animated later.
     const QList<QPoint> &converted = m_board->lastConvertedTiles();
-    QList<int> indices;
-    for (const QPoint &p : converted) {
-        indices.append(p.x() * m_size + p.y());
+    if (jumpMovement) {
+        m_view->startJumpAnimation(dest, origin, converted, newOwner);
+    } else {
+        m_view->startCloneAnimation(dest, converted, newOwner);
     }
 
-    int destIdx = dest.x() * m_size + dest.y();
-    int originIdx = jumpMovement ? (origin.x() * m_size + origin.y()) : -1;
-
-    m_view->startMoveAnimation(destIdx, originIdx, indices, newOwner);
     m_state = GameState::AnimatingConversion;
 }
 
@@ -636,8 +631,7 @@ bool Game::undo()
     Q_EMIT playerChanged(m_currentPlayer);
 
     // Highlight the move that was undone
-    int originIdx = snap.origin.x() * m_size + snap.origin.y();
-    m_view->timedTileHighlight(originIdx);
+    m_view->timedTileHighlight(snap.origin);
 
     m_interrupting = isComputer(m_currentPlayer);
     m_state = GameState::Idle;
@@ -665,8 +659,7 @@ bool Game::redo()
 
     Q_EMIT playerChanged(m_currentPlayer);
 
-    int destIdx = snap.dest.x() * m_size + snap.dest.y();
-    m_view->timedTileHighlight(destIdx);
+    m_view->timedTileHighlight(snap.dest);
 
     if (m_board->isWinner()) {
         showWinner();
@@ -765,21 +758,21 @@ void Game::highlightValidDestinations(QPoint origin)
     // Jump directions: 4 orthogonal (distance 2)
     static const QPoint jumpDirs[] = {QPoint(0, -2), QPoint(2, 0), QPoint(-2, 0), QPoint(0, 2)};
 
-    QList<int> cloneIndices;
-    QList<int> jumpIndices;
+    QList<QPoint> cloneTiles;
+    QList<QPoint> jumpTiles;
     for (const QPoint &d : cloneDirs) {
         QPoint dest = origin + d;
         if (m_board->inBounds(dest) && m_board->at(dest) == 0) {
-            cloneIndices.append(dest.x() * m_size + dest.y());
+            cloneTiles.append(dest);
         }
     }
     for (const QPoint &d : jumpDirs) {
         QPoint dest = origin + d;
         if (m_board->inBounds(dest) && m_board->at(dest) == 0 && m_board->at(origin + d / 2) != -1) {
-            jumpIndices.append(dest.x() * m_size + dest.y());
+            jumpTiles.append(dest);
         }
     }
-    m_view->highlightValidMoves(m_currentPlayer, cloneIndices, jumpIndices);
+    m_view->highlightValidMoves(m_currentPlayer, cloneTiles, jumpTiles);
 }
 
 void Game::saveSnapshot(QPoint origin, QPoint dest)

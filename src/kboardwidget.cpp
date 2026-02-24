@@ -341,7 +341,7 @@ QSize KBoardWidget::sizeHint() const
     return QSize(400, 400);
 }
 
-void KBoardWidget::startComputerMoveAnimation(int originTile, int destTile)
+void KBoardWidget::startComputerNextMoveAnimation(int originTile, int destTile)
 {
     m_blinkOrigin = originTile;
     m_blinkDest = destTile;
