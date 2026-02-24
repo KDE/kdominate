@@ -8,4 +8,6 @@ Some boards contain obstacles where tiles can't be placed nor jumped over.
 
 The game ends when the board is full, and the winner is the player who owns more tiles.
 
+There's no "pass" move, if one player can no longer make any move, all the remaining tiles become the other player's and the game ends immediately. 
+
 You can play against a human or against a computer AI, with adjustable difficulty levels.
