@@ -385,18 +385,10 @@ void Game::doMove(QPoint origin, QPoint dest)
     // Execute the move on the board
     bool validMovement = m_board->move(origin, dest);
     if (!validMovement) {
-        qCDebug(KDOMINATE_LOG) << "INVALID MOVE attempted:" << origin << "->" << dest;
+        qCWarning(KDOMINATE_LOG) << "INVALID MOVE attempted:" << origin << "->" << dest;
         moveDone();
         setUpNextTurn();
         return;
-    }
-
-    // Debug: print static evaluation after move
-    {
-        int evalAfter = m_ai->staticEvaluationFunction(*m_board, m_board->otherPlayer());
-        KDominateBoard::TileCount tcAfter = m_board->countTiles();
-        qCDebug(KDOMINATE_LOG) << " BOARD STATIC EVALUATION: eval=" << evalAfter << " (p1=" << tcAfter.p1 << ", p2=" << tcAfter.p2
-                               << ", empty=" << tcAfter.empty << ")";
     }
 
     // Do not update the tiles' view, the animation takes care of it
@@ -415,20 +407,17 @@ void Game::doMove(QPoint origin, QPoint dest)
 
 void Game::finishMove()
 {
-    // Update all tile displays
     updateAllTiles();
 
     Q_EMIT statusUpdated();
 
-    // Check for winner
-    if (m_board->isGameOver()) {
-        moveDone();
-        showWinner();
-        return;
-    }
-
     moveDone();
-    setUpNextTurn();
+
+    if (m_board->isGameOver()) {
+        showWinner();
+    } else {
+        setUpNextTurn();
+    }
 }
 
 void Game::moveDone()
@@ -685,6 +674,7 @@ void Game::highlightValidDestinations(QPoint origin)
     }
     for (const QPoint &d : jumpDirs) {
         QPoint dest = origin + d;
+        // Exclude jumps over walls
         if (m_board->inBounds(dest) && m_board->at(dest) == 0 && m_board->at(origin + d / 2) != -1) {
             jumpTiles.append(dest);
         }
