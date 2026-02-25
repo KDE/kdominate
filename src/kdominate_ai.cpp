@@ -123,7 +123,11 @@ void KDominateAi::computeMove()
 
     m_moveCount = 0;
     qWarning() << "Player maximizing:" << m_workBoard->currentPlayer();
-    AiMove move = alphaBeta(*m_workBoard, m_workBoard->currentPlayer(), m_depth);
+    int depth = m_depth;
+    if (m_workBoard->countTiles().empty < 6) {
+        depth += 6 - m_workBoard->countTiles().empty;
+    }
+    AiMove move = alphaBeta(*m_workBoard, m_workBoard->currentPlayer(), depth);
 
     qCDebug(KDOMINATE_LOG) << "AI explored" << m_moveCount << "moves, best move" << move.origin << "to" << move.dest << "with score" << move.score;
     m_resultOrigin = move.origin;
