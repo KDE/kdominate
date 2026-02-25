@@ -28,14 +28,14 @@ private:
 };
 
 const QList<QPoint> kCloneDirections = {
+    QPoint(-1, 0),
     QPoint(0, -1),
     QPoint(1, 0),
-    QPoint(-1, 0),
     QPoint(0, 1),
-    QPoint(1, 1),
-    QPoint(1, -1),
-    QPoint(-1, 1),
     QPoint(-1, -1),
+    QPoint(-1, 1),
+    QPoint(1, -1),
+    QPoint(1, 1),
 };
 const QList<QPoint> kJumpDirections = {
     QPoint(0, -2),
@@ -139,7 +139,7 @@ int KDominateAi::staticEvaluationFunction(KDominateBoard &board, int maximizingP
         return tc.p2 - tc.p1;
 }
 
-// Often two moves result in an identical board, deduplicate those to remove the number of moves to explore
+// Often two moves result in an identical board, this function deduplicates those to reduce the space we have to explore.
 // Puts the cloning actions before jumping actions since they tend to be better and help pruning.
 QList<std::pair<QPoint,QPoint>> computeMoves(KDominateBoard &board) {
     int size = board.size();
