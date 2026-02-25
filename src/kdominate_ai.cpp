@@ -144,19 +144,20 @@ int KDominateAi::staticEvaluationFunction(KDominateBoard &board, int maximizingP
 
 // Often two moves result in an identical board, this function deduplicates those to reduce the space we have to explore.
 // Puts the cloning actions before jumping actions since they tend to be better and help pruning.
-QList<std::pair<QPoint,QPoint>> computeMoves(KDominateBoard &board) {
+QList<std::pair<QPoint, QPoint>> computeMoves(KDominateBoard &board)
+{
     int size = board.size();
     int currentPlayer = board.currentPlayer();
-    QList<std::pair<QPoint,QPoint>> moves;
+    QList<std::pair<QPoint, QPoint>> moves;
     for (int x = 0; x < size; x++) {
         for (int y = 0; y < size; y++) {
             if (board[x][y] != 0) {
                 continue;
             }
-            for (const QPoint& p : kCloneDirections) {
+            for (const QPoint &p : kCloneDirections) {
                 QPoint origin(x + p.x(), y + p.y());
                 if (board.at(origin) == currentPlayer) {
-                    moves.append(std::make_pair(origin, QPoint(x,y)));
+                    moves.append(std::make_pair(origin, QPoint(x, y)));
                     break;
                 }
             }
@@ -171,10 +172,10 @@ QList<std::pair<QPoint,QPoint>> computeMoves(KDominateBoard &board) {
             if (board[x][y] != 0) {
                 continue;
             }
-            for (const QPoint& p : kJumpDirections) {
+            for (const QPoint &p : kJumpDirections) {
                 QPoint origin(x + p.x(), y + p.y());
                 if (board.at(origin) == currentPlayer) {
-                    moves.append(std::make_pair(origin, QPoint(x,y)));
+                    moves.append(std::make_pair(origin, QPoint(x, y)));
                     break;
                 }
             }
@@ -210,9 +211,9 @@ KDominateAi::AiMove KDominateAi::alphaBeta(KDominateBoard &board, int maximizing
 
     auto moves = computeMoves(board);
 
-    for (const auto& [origin, dest] : moves) {
+    for (const auto &[origin, dest] : moves) {
         QString indent;
-        for (int i = 0; i <  (4-depth); i++) {
+        for (int i = 0; i < (4 - depth); i++) {
             indent += QStringLiteral("  ");
         }
 
@@ -220,17 +221,16 @@ KDominateAi::AiMove KDominateAi::alphaBeta(KDominateBoard &board, int maximizing
         if (!validMovement)
             continue;
 
-        //qWarning().noquote() << indent << "Player" << currentPlayer << "move" << origin << "to" << dest;
+        // qWarning().noquote() << indent << "Player" << currentPlayer << "move" << origin << "to" << dest;
 
         m_moveCount++;
         AiMove candidateAiMove = alphaBeta(board, maximizingPlayer, depth - 1, alpha, beta);
 
-        if ((maximizing && candidateAiMove.score > bestAiMove.score)
-            || (!maximizing && candidateAiMove.score < bestAiMove.score)) {
+        if ((maximizing && candidateAiMove.score > bestAiMove.score) || (!maximizing && candidateAiMove.score < bestAiMove.score)) {
             bestAiMove.origin = origin;
             bestAiMove.dest = dest;
             bestAiMove.score = candidateAiMove.score;
-            //qWarning().noquote() << indent << "New best score:" << bestAiMove.score << "isGameOver:" << board.isGameOver() << board.countTiles().empty;
+            // qWarning().noquote() << indent << "New best score:" << bestAiMove.score << "isGameOver:" << board.isGameOver() << board.countTiles().empty;
         }
 
         board.undo();
