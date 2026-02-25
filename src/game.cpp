@@ -184,6 +184,8 @@ void Game::loadPlayerSettings()
         setUpNextTurn();
     } else if (oldComputerPlayer && !newComputerPlayer && m_state == GameState::WaitingForButton) {
         setUpNextTurn();
+    } else if (!oldComputerPlayer && !newComputerPlayer && m_state == GameState::HumanTurn) {
+        setUpNextTurn();
     }
 }
 
