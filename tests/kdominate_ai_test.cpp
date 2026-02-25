@@ -23,17 +23,10 @@ private:
         QPoint dest;
     };
     MoveResult runAiMove(KDominateBoard &board, int player, int depth = 4, int timeout = 10000);
-    bool playToEnd(KDominateBoard &board, int p1depth = 4, int p2depth = 4, int moveLimit = 50, int timeout = 10000);
 
 private Q_SLOTS:
-    void testWin1Move();
-    void testLose1Move();
-    void testJumpToWin();
-    void testJumpToDraw();
-    void testDoNotDelayDraw();
-    void testDoNotDelayDrawObstacles();
-    void testDoNotDelayLose();
-    void testWinable();
+    void testAi_data();
+    void testAi();
 };
 
 QStringList KDominateAiTest::loadMapLines(const QString &filename)
@@ -65,128 +58,48 @@ KDominateAiTest::MoveResult KDominateAiTest::runAiMove(KDominateBoard &board, in
     return {args.at(0).value<QPoint>(), args.at(1).value<QPoint>()};
 }
 
-bool KDominateAiTest::playToEnd(KDominateBoard &board, int p1depth, int p2depth, int moveLimit, int timeout)
+void KDominateAiTest::testAi_data()
 {
+    QTest::addColumn<int>("expectedWinner");
+    QTest::addColumn<int>("p1depth");
+    QTest::addColumn<int>("p2depth");
+    QTest::addColumn<int>("moveLimit");
+
+    QTest::newRow("win-1-move")              << 1 << 4 << 4 << 1;
+    QTest::newRow("lose-1-move")             << 2 << 4 << 4 << 1;
+    QTest::newRow("jump-to-win")             << 1 << 4 << 4 << 5;
+    QTest::newRow("jump-to-draw")            << 0 << 4 << 4 << 5;
+    QTest::newRow("do-not-delay-draw")       << 0 << 4 << 4 << 5;
+    QTest::newRow("do-not-delay-draw-walls") << 0 << 4 << 4 << 5;
+    QTest::newRow("do-not-delay-lose")       << 1 << 4 << 4 << 5;
+    QTest::newRow("hard-win")                << 1 << 6 << 4 << 20;
+}
+
+void KDominateAiTest::testAi()
+{
+    QFETCH(int, expectedWinner);
+    QFETCH(int, p1depth);
+    QFETCH(int, p2depth);
+    QFETCH(int, moveLimit);
+
+    QString mapFile = QString::fromLatin1(QTest::currentDataTag()) + QStringLiteral(".map");
+    QStringList lines = loadMapLines(mapFile);
+    QVERIFY(!lines.isEmpty());
+
+    KDominateBoard board;
+    board.loadFromMap(lines);
+
     int moveCount = 0;
     while (!board.isGameOver() && moveCount < moveLimit) {
         int player = board.currentPlayer();
         int depth = player == 1 ? p1depth : p2depth;
-        MoveResult result = runAiMove(board, player, depth, timeout);
-        if (result.origin == QPoint(-1, -1)) {
-            return false;
-        }
-        if (!board.move(result.origin, result.dest)) {
-            return false;
-        }
+        MoveResult result = runAiMove(board, player, depth);
+        QVERIFY2(result.origin != QPoint(-1, -1), "AI timeout");
+        QVERIFY2(board.move(result.origin, result.dest), "AI returned an invalid move");
         moveCount++;
     }
-    return board.isGameOver();
-}
-
-void KDominateAiTest::testWin1Move()
-{
-    QStringList lines = loadMapLines(QStringLiteral("win-1-move.map"));
-    QVERIFY(!lines.isEmpty());
-
-    KDominateBoard board;
-    board.loadFromMap(lines);
-
-    MoveResult result = runAiMove(board, 1);
-    QVERIFY2(result.origin != QPoint(-1, -1), "AI timed out");
-    QCOMPARE(result.dest, QPoint(6, 3));
-
-    QVERIFY(board.move(result.origin, result.dest));
-    QVERIFY(board.isGameOver());
-    QCOMPARE(board.winner(), 1);
-}
-
-void KDominateAiTest::testLose1Move()
-{
-    QStringList lines = loadMapLines(QStringLiteral("lose-1-move.map"));
-    QVERIFY(!lines.isEmpty());
-
-    KDominateBoard board;
-    board.loadFromMap(lines);
-
-    MoveResult result = runAiMove(board, 1);
-    QVERIFY2(result.origin != QPoint(-1, -1), "AI timed out");
-    QCOMPARE(result.dest, QPoint(4, 1));
-
-    QVERIFY(board.move(result.origin, result.dest));
-    QVERIFY(board.isGameOver());
-    QCOMPARE(board.winner(), 2);
-}
-
-void KDominateAiTest::testJumpToWin()
-{
-    QStringList lines = loadMapLines(QStringLiteral("jump-to-win.map"));
-    QVERIFY(!lines.isEmpty());
-
-    KDominateBoard board;
-    board.loadFromMap(lines);
-
-    QVERIFY2(playToEnd(board), "Game did not complete within move limit");
-    QCOMPARE(board.winner(), 1);
-}
-
-void KDominateAiTest::testJumpToDraw()
-{
-    QStringList lines = loadMapLines(QStringLiteral("jump-to-draw.map"));
-    QVERIFY(!lines.isEmpty());
-
-    KDominateBoard board;
-    board.loadFromMap(lines);
-
-    QVERIFY2(playToEnd(board), "Game did not complete within move limit");
-    QCOMPARE(board.winner(), 0);
-}
-
-void KDominateAiTest::testDoNotDelayDraw()
-{
-    QStringList lines = loadMapLines(QStringLiteral("do-not-delay-draw.map"));
-    QVERIFY(!lines.isEmpty());
-
-    KDominateBoard board;
-    board.loadFromMap(lines);
-
-    QVERIFY2(playToEnd(board), "Game did not complete within move limit");
-    QCOMPARE(board.winner(), 0);
-}
-
-void KDominateAiTest::testDoNotDelayDrawObstacles()
-{
-    QStringList lines = loadMapLines(QStringLiteral("do-not-delay-draw-obstacles.map"));
-    QVERIFY(!lines.isEmpty());
-
-    KDominateBoard board;
-    board.loadFromMap(lines);
-
-    QVERIFY2(playToEnd(board), "Game did not complete within move limit");
-    QCOMPARE(board.winner(), 0);
-}
-
-void KDominateAiTest::testDoNotDelayLose()
-{
-    QStringList lines = loadMapLines(QStringLiteral("do-not-delay-lose.map"));
-    QVERIFY(!lines.isEmpty());
-
-    KDominateBoard board;
-    board.loadFromMap(lines);
-
-    QVERIFY2(playToEnd(board), "Game did not complete within move limit");
-    QCOMPARE(board.winner(), 1);
-}
-
-void KDominateAiTest::testWinable()
-{
-    QStringList lines = loadMapLines(QStringLiteral("winable.map"));
-    QVERIFY(!lines.isEmpty());
-
-    KDominateBoard board;
-    board.loadFromMap(lines);
-
-    QVERIFY2(playToEnd(board, 6, 4), "Game did not complete within move limit");
-    QCOMPARE(board.winner(), 1);
+    QVERIFY2(board.isGameOver(), "Game did not complete within move limit");
+    QCOMPARE(board.winner(), expectedWinner);
 }
 
 QTEST_GUILESS_MAIN(KDominateAiTest)
