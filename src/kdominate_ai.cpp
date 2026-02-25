@@ -170,7 +170,7 @@ KDominateAi::AiMove KDominateAi::alphaBeta(KDominateBoard &board, int maximizing
                 for (QPoint p : directions) {
                     QPoint dest = origin + p;
 
-                    auto [validMovement, jumpMovement] = board.move(origin, dest);
+                    bool validMovement = board.move(origin, dest);
                     if (!validMovement)
                         continue;
 

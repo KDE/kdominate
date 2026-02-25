@@ -22,7 +22,7 @@ public:
     void newGame(int size);
     void loadFromMap(const QStringList &lines);
 
-    std::pair<bool, bool> move(QPoint origin, QPoint dest);
+    bool move(QPoint origin, QPoint dest);
     bool undo();
 
     struct TileCount {

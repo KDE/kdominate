@@ -383,7 +383,7 @@ void Game::doMove(QPoint origin, QPoint dest)
     Q_EMIT setAction(Action::REDO, false);
 
     // Execute the move on the board
-    auto [validMovement, jumpMovement] = m_board->move(origin, dest);
+    bool validMovement = m_board->move(origin, dest);
     if (!validMovement) {
         qCDebug(KDOMINATE_LOG) << "INVALID MOVE attempted:" << origin << "->" << dest;
         moveDone();
@@ -401,6 +401,9 @@ void Game::doMove(QPoint origin, QPoint dest)
 
     // Do not update the tiles' view, the animation takes care of it
     Owner owner = boardCellToOwner(m_board->at(dest));
+    int diffx = qAbs(origin.x() - dest.x());
+    int diffy = qAbs(origin.y() - dest.y());
+    bool jumpMovement = (diffx == 2 || diffy == 2);
     if (jumpMovement) {
         m_view->startJumpAnimation(dest, origin, m_board->lastConvertedTiles(), m_board->lastAutofilledTiles(), owner);
     } else {

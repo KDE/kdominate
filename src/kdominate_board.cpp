@@ -63,12 +63,12 @@ KDominateBoard::TileCount KDominateBoard::countTiles() const
     return tc;
 }
 
-std::pair<bool, bool> KDominateBoard::move(QPoint origin, QPoint dest)
+bool KDominateBoard::move(QPoint origin, QPoint dest)
 {
     if (at(origin) != m_currentPlayer)
-        return std::make_pair(false, false);
+        return false;
     if (at(dest) != 0)
-        return std::make_pair(false, false);
+        return false;
 
     bool validMovement = false;
     bool jumpMovement = false;
@@ -109,7 +109,7 @@ std::pair<bool, bool> KDominateBoard::move(QPoint origin, QPoint dest)
         m_currentPlayer = otherPlayer();
     }
 
-    return std::make_pair(validMovement, jumpMovement);
+    return validMovement;
 }
 
 bool KDominateBoard::undo()
