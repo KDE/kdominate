@@ -172,26 +172,34 @@ KDominateAi::AiMove KDominateAi::alphaBeta(KDominateBoard &board, int maximizing
                 for (QPoint p : directions) {
                     QPoint dest = origin + p;
 
+                    QString indent;
+                    for (int i = 0; i <  (4-depth); i++) {
+                        indent += QStringLiteral("  ");
+                    }
+
+                    int player = board.currentPlayer();
+
                     bool validMovement = board.move(origin, dest);
                     if (!validMovement)
                         continue;
 
+                    qWarning().noquote() << indent << "Player" << player << "move" << origin << "to" << dest;
+
                     m_moveCount++;
                     AiMove candidateAiMove = alphaBeta(board, maximizingPlayer, depth - 1, alpha, beta);
 
-                    QString indent;
-                    for (int i = 0; i < 4-depth; i++) {
-                        indent += QStringLiteral("  ");
-                    }
-                    qWarning() << indent.toLatin1().toStdString().c_str() << "Player" << board.currentPlayer() << "move" << origin << "to" << dest << "results in score:" << candidateAiMove.score;
-
-                    if ((maximizing && candidateAiMove.score > bestAiMove.score) || (!maximizing && candidateAiMove.score < bestAiMove.score)) {
+                    if ((maximizing && candidateAiMove.score > bestAiMove.score)
+                        || (!maximizing && candidateAiMove.score < bestAiMove.score)
+                    //    || (candidateAiMove.score == bestAiMove.score && rand() % 2)
+                    ) {
                         bestAiMove.origin = origin;
                         bestAiMove.dest = dest;
                         bestAiMove.score = candidateAiMove.score;
                     }
 
                     board.undo();
+
+                    qWarning().noquote() << indent << "Score:" << bestAiMove.score;
 
                     if (maximizing)
                         alpha = qMax(alpha, bestAiMove.score);
