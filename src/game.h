@@ -24,9 +24,9 @@ class SettingsWidget;
 class KDominateAi;
 
 enum Action {
+    BUTTON,
     NEW,
     HINT,
-    BUTTON,
     UNDO,
     REDO,
 };
@@ -69,7 +69,8 @@ public Q_SLOTS:
 Q_SIGNALS:
     void statusUpdated();
     void buttonChange(bool enabled, bool stop = false, const QString &caption = QString());
-    void setAction(const Action a, const bool onOff);
+    void setUndoRedoAvailable(bool canUndo, bool canRedo);
+    void setHintAvailable(bool canHint);
     void statusMessage(const QString &message, bool timed);
 
 private:

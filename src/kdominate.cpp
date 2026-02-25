@@ -60,6 +60,30 @@ KDominate::KDominate()
     updateStatus();
 
     {
+        actionButton = new QPushButton(this);
+        actionButton->setObjectName(QStringLiteral("ActionButton"));
+        connect(actionButton, &QAbstractButton::clicked, this, [this]() {
+            m_game->gameActions(Action::BUTTON);
+        });
+
+        QWidgetAction *widgetAction = new QWidgetAction(this);
+        widgetAction->setDefaultWidget(actionButton);
+        actionCollection()->addAction(QStringLiteral("action_button"), widgetAction);
+        changeButton(true, true); // Load the button's style sheet.
+        changeButton(false); // Set the button to be inactive.
+    }
+
+    {
+        QAction *action = KStandardAction::preferences(
+            this,
+            [this]() {
+                m_game->showSettingsDialog();
+            },
+            actionCollection());
+        action->setIconText(i18n("Settings"));
+    }
+
+    {
         QAction *action = KGameStandardAction::gameNew(
             this,
             [this]() {
@@ -77,28 +101,31 @@ KDominate::KDominate()
             },
             this);
         actionCollection()->addAction(action->objectName(), action);
+
+        connect(m_game, &Game::setHintAvailable, action, &QAction::setEnabled);
     }
 
     {
-        QAction *action = KGameStandardAction::undo(
+        QAction* undoAction = KGameStandardAction::undo(
             this,
             [this]() {
                 m_game->gameActions(Action::UNDO);
             },
             this);
-        actionCollection()->addAction(action->objectName(), action);
-        action->setEnabled(false);
-    }
+        actionCollection()->addAction(undoAction->objectName(), undoAction);
 
-    {
-        QAction *action = KGameStandardAction::redo(
+        QAction* redoAction = KGameStandardAction::redo(
             this,
             [this]() {
                 m_game->gameActions(Action::REDO);
             },
             this);
-        actionCollection()->addAction(action->objectName(), action);
-        action->setEnabled(false);
+        actionCollection()->addAction(redoAction->objectName(), redoAction);
+
+        connect(m_game, &Game::setUndoRedoAvailable, this, [undoAction, redoAction](bool canUndo, bool canRedo) {
+            undoAction->setEnabled(canUndo);
+            redoAction->setEnabled(canRedo);
+        });
     }
 
     {
@@ -106,32 +133,9 @@ KDominate::KDominate()
         actionCollection()->addAction(action->objectName(), action);
     }
 
-    {
-        QAction *action = KStandardAction::preferences(
-            this,
-            [this]() {
-                m_game->showSettingsDialog();
-            },
-            actionCollection());
-        action->setIconText(i18n("Settings"));
-    }
-
-    actionButton = new QPushButton(this);
-    actionButton->setObjectName(QStringLiteral("ActionButton"));
-    connect(actionButton, &QAbstractButton::clicked, this, [this]() {
-        m_game->gameActions(Action::BUTTON);
-    });
-
-    QWidgetAction *widgetAction = new QWidgetAction(this);
-    widgetAction->setDefaultWidget(actionButton);
-    actionCollection()->addAction(QStringLiteral("action_button"), widgetAction);
-
-    changeButton(true, true); // Load the button's style sheet.
-    changeButton(false); // Set the button to be inactive.
-
     setupGUI();
 
-    connect(m_game, &Game::setAction, this, &KDominate::setAction);
+
     m_game->gameActions(Action::NEW);
 }
 
@@ -179,11 +183,6 @@ void KDominate::updateStatus()
         m_currentPlayerLabel->setText(i18n("Current player:"));
         m_currentPlayerIcon->setVisible(true);
     }
-}
-
-void KDominate::setAction(const Action a, const bool onOff)
-{
-    ((QAction *)actionCollection()->action(a))->setEnabled(onOff);
 }
 
 void KDominate::showTileCoords(int x, int y)

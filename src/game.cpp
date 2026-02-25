@@ -131,6 +131,7 @@ QString Game::winnerString() const
 void Game::showWinner()
 {
     Q_EMIT buttonChange(false, false, i18n("Game over"));
+    Q_EMIT setHintAvailable(false);
     KTileWidget::enableClicks(false);
     KMessageBox::information(m_view, winnerString(), i18n("Game Over"));
 }
@@ -279,6 +280,7 @@ void Game::setUpNextTurn()
                 Q_EMIT buttonChange(true, false, i18n("Start computer move"));
             }
             qCDebug(KDOMINATE_LOG) << "COMPUTER MUST WAIT";
+            Q_EMIT setHintAvailable(false);
             KTileWidget::enableClicks(true);
             return;
         }
@@ -289,6 +291,7 @@ void Game::setUpNextTurn()
     } else {
         qCDebug(KDOMINATE_LOG) << "HUMAN TO MOVE";
         m_state = GameState::HumanTurn;
+        Q_EMIT setHintAvailable(true);
         KTileWidget::enableClicks(true);
         if (computerPlOne || computerPlTwo) {
             Q_EMIT buttonChange(false, false, i18n("Your turn"));
@@ -303,7 +306,7 @@ void Game::computeMove()
     m_view->setWaitCursor();
     m_state = GameState::Computing;
     setStopAction();
-    Q_EMIT setAction(Action::HINT, false);
+    Q_EMIT setHintAvailable(false);
     int skill = (m_board->currentPlayer() == 1) ? Prefs::skill1() : Prefs::skill2();
     m_ai->setDepth(skill + 2); // skill 0..4 maps to depth 2..6
     if (isComputer(m_board->currentPlayer())) {
@@ -328,7 +331,7 @@ void Game::moveCalculationDone(QPoint origin, QPoint dest)
         } else {
             Q_EMIT buttonChange(true, false, i18n("Start computer move"));
         }
-        Q_EMIT setAction(Action::HINT, true);
+        Q_EMIT setHintAvailable(!isComputer(m_board->currentPlayer()));
         KTileWidget::enableClicks(true);
         return;
     }
@@ -381,8 +384,7 @@ void Game::doMove(QPoint origin, QPoint dest)
     // Save snapshot for undo
     saveSnapshot(origin, dest);
 
-    Q_EMIT setAction(Action::UNDO, true);
-    Q_EMIT setAction(Action::REDO, false);
+    Q_EMIT setUndoRedoAvailable(true, false);
 
     // Execute the move on the board
     bool validMovement = m_board->move(origin, dest);
@@ -426,7 +428,7 @@ void Game::moveDone()
 {
     m_view->setNormalCursor();
     m_state = GameState::Idle;
-    Q_EMIT setAction(Action::HINT, true);
+    Q_EMIT setHintAvailable(true);
     m_view->hidePopup();
 }
 
@@ -482,8 +484,7 @@ void Game::newGame()
         loadImmediateSettings();
         loadPlayerSettings();
         reset();
-        Q_EMIT setAction(Action::UNDO, false);
-        Q_EMIT setAction(Action::REDO, false);
+        Q_EMIT setUndoRedoAvailable(false, false);
         Q_EMIT statusMessage(i18n("New Game"), false);
         m_moveNo = 0;
         setUpNextTurn();
@@ -493,15 +494,13 @@ void Game::newGame()
 void Game::undoClick()
 {
     bool moreToUndo = undo();
-    Q_EMIT setAction(Action::UNDO, moreToUndo);
-    Q_EMIT setAction(Action::REDO, true);
+    Q_EMIT setUndoRedoAvailable(moreToUndo, true);
 }
 
 void Game::redoClick()
 {
     bool moreToRedo = redo();
-    Q_EMIT setAction(Action::REDO, moreToRedo);
-    Q_EMIT setAction(Action::UNDO, true);
+    Q_EMIT setUndoRedoAvailable(true, moreToRedo);
 }
 
 bool Game::newGameOK()

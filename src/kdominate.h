@@ -27,9 +27,6 @@ public:
     KDominate();
     ~KDominate() override;
 
-public Q_SLOTS:
-    void setAction(const Action action, const bool onOff);
-
 private:
     Game *m_game;
     KBoardWidget *m_view = nullptr;
@@ -39,10 +36,6 @@ private:
     QLabel *m_p2Count = nullptr;
     QLabel *m_currentPlayerIcon = nullptr;
     QLabel *m_currentPlayerLabel = nullptr;
-    QAction *undoAction = nullptr;
-    QAction *redoAction = nullptr;
-    QAction *stopAction = nullptr;
-    QAction *hintAction = nullptr;
     QPushButton *actionButton = nullptr;
 
 private Q_SLOTS:
