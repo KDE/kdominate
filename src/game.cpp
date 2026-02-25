@@ -152,15 +152,11 @@ void Game::showSettingsDialog()
 
 void Game::newSettings()
 {
-    qCDebug(KDOMINATE_LOG) << "NEW SETTINGS state:" << int(m_state) << "mapIndex:" << Prefs::mapIndex();
     loadImmediateSettings();
-
     if (Prefs::mapIndex() != m_mapIndex) {
         QMetaObject::invokeMethod(this, &Game::newGame, Qt::QueuedConnection);
-        return;
-    } else if (m_state == GameState::HumanTurn || m_state == GameState::WaitingForButton) {
+    } else {
         loadPlayerSettings();
-        setUpNextTurn();
     }
 }
 
@@ -180,9 +176,13 @@ void Game::loadPlayerSettings()
     computerPlOne = Prefs::computerPlayer1();
     computerPlTwo = Prefs::computerPlayer2();
 
-    if (isComputer(m_board->currentPlayer()) && (!oldComputerPlayer)) {
-        qCDebug(KDOMINATE_LOG) << "New computer player set: must wait.";
-        m_state = GameState::WaitingForButton;
+    bool newComputerPlayer = isComputer(m_board->currentPlayer());
+
+    if (newComputerPlayer && !oldComputerPlayer && m_state == GameState::HumanTurn) {
+        m_interrupting = true;
+        setUpNextTurn();
+    } else if (oldComputerPlayer && !newComputerPlayer && m_state == GameState::WaitingForButton) {
+        setUpNextTurn();
     }
 }
 
