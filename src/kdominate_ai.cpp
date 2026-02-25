@@ -139,6 +139,43 @@ int KDominateAi::staticEvaluationFunction(KDominateBoard &board, int maximizingP
         return tc.p2 - tc.p1;
 }
 
+// Often two moves result in an identical board, deduplicate those to remove the number of moves to explore
+// Puts the cloning actions before jumping actions since they tend to be better and help pruning.
+QList<std::pair<QPoint,QPoint>> computeMoves(KDominateBoard &board) {
+    int size = board.size();
+    int currentPlayer = board.currentPlayer();
+    QList<std::pair<QPoint,QPoint>> moves;
+    for (int x = 0; x < size; x++) {
+        for (int y = 0; y < size; y++) {
+            if (board[x][y] != 0) {
+                continue;
+            }
+            for (const QPoint& p : kCloneDirections) {
+                QPoint origin(x + p.x(), y + p.y());
+                if (board.at(origin) == currentPlayer) {
+                    moves.append(std::make_pair(origin, QPoint(x,y)));
+                    break;
+                }
+            }
+        }
+    }
+    for (int x = 0; x < size; x++) {
+        for (int y = 0; y < size; y++) {
+            if (board[x][y] != 0) {
+                continue;
+            }
+            for (const QPoint& p : kJumpDirections) {
+                QPoint origin(x + p.x(), y + p.y());
+                if (board.at(origin) == currentPlayer) {
+                    moves.append(std::make_pair(origin, QPoint(x,y)));
+                    break;
+                }
+            }
+        }
+    }
+    return moves;
+}
+
 KDominateAi::AiMove KDominateAi::alphaBeta(KDominateBoard &board, int maximizingPlayer, int depth, int alpha, int beta)
 {
     AiMove bestAiMove;
@@ -162,65 +199,51 @@ KDominateAi::AiMove KDominateAi::alphaBeta(KDominateBoard &board, int maximizing
         return bestAiMove;
     }
 
-    auto tryDirections = [&](const QList<QPoint> &directions) -> bool {
-        for (int i = 0; i < board.size(); i++) {
-            for (int j = 0; j < board.size(); j++) {
-                QPoint origin(i, j);
-                if (board[origin] != board.currentPlayer())
-                    continue;
+    auto moves = computeMoves(board);
+    qWarning() << moves;
 
-                for (QPoint p : directions) {
-                    QPoint dest = origin + p;
-
-                    QString indent;
-                    for (int i = 0; i <  (4-depth); i++) {
-                        indent += QStringLiteral("  ");
-                    }
-
-                    int player = board.currentPlayer();
-
-                    bool validMovement = board.move(origin, dest);
-                    if (!validMovement)
-                        continue;
-
-                    qWarning().noquote() << indent << "Player" << player << "move" << origin << "to" << dest;
-
-                    m_moveCount++;
-                    AiMove candidateAiMove = alphaBeta(board, maximizingPlayer, depth - 1, alpha, beta);
-
-                    if ((maximizing && candidateAiMove.score > bestAiMove.score)
-                        || (!maximizing && candidateAiMove.score < bestAiMove.score)
-                    //    || (candidateAiMove.score == bestAiMove.score && rand() % 2)
-                    ) {
-                        bestAiMove.origin = origin;
-                        bestAiMove.dest = dest;
-                        bestAiMove.score = candidateAiMove.score;
-                        qWarning().noquote() << indent << "New best score:" << bestAiMove.score << "isGameOver:" << board.isGameOver() << board.countTiles().empty;
-                    }
-
-                    board.undo();
-
-
-                    if (maximizing)
-                        alpha = qMax(alpha, bestAiMove.score);
-                    else
-                        beta = qMin(beta, bestAiMove.score);
-                    if (beta <= alpha) {
-                        return true; // pruned
-                    }
-
-                    if (m_stopped) {
-                        return true; // stopped
-                    }
-                }
-            }
+    for (const auto& [origin, dest] : moves) {
+        QString indent;
+        for (int i = 0; i <  (4-depth); i++) {
+            indent += QStringLiteral("  ");
         }
-        return false;
-    };
 
-    // Try cloning actions before jumping actions since they tend to be better and help pruning
-    if (!tryDirections(kCloneDirections)) {
-        tryDirections(kJumpDirections);
+        int player = board.currentPlayer();
+
+        bool validMovement = board.move(origin, dest);
+        if (!validMovement)
+            continue;
+
+        qWarning().noquote() << indent << "Player" << player << "move" << origin << "to" << dest;
+
+        m_moveCount++;
+        AiMove candidateAiMove = alphaBeta(board, maximizingPlayer, depth - 1, alpha, beta);
+
+        if ((maximizing && candidateAiMove.score > bestAiMove.score)
+            || (!maximizing && candidateAiMove.score < bestAiMove.score)
+        //    || (candidateAiMove.score == bestAiMove.score && rand() % 2)
+        ) {
+            bestAiMove.origin = origin;
+            bestAiMove.dest = dest;
+            bestAiMove.score = candidateAiMove.score;
+            qWarning().noquote() << indent << "New best score:" << bestAiMove.score << "isGameOver:" << board.isGameOver() << board.countTiles().empty;
+        }
+
+        board.undo();
+
+        if (maximizing) {
+            alpha = qMax(alpha, bestAiMove.score);
+        } else {
+            beta = qMin(beta, bestAiMove.score);
+        }
+
+        if (beta <= alpha) {
+            return bestAiMove; // pruned
+        }
+
+        if (m_stopped) {
+            return bestAiMove; // computation interrupted
+        }
     }
 
     if (bestAiMove.score == INT_MIN || bestAiMove.score == INT_MAX) {
