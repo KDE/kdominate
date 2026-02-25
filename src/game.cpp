@@ -670,14 +670,14 @@ void Game::highlightValidDestinations(QPoint origin)
     QList<QPoint> jumpTiles;
     for (const QPoint &d : cloneDirs) {
         QPoint dest = origin + d;
-        if (m_board->inBounds(dest) && m_board->at(dest) == 0) {
+        if (m_board->at(dest) == 0) {
             cloneTiles.append(dest);
         }
     }
     for (const QPoint &d : jumpDirs) {
         QPoint dest = origin + d;
         // Exclude jumps over walls
-        if (m_board->inBounds(dest) && m_board->at(dest) == 0 && m_board->at(origin + d / 2) != -1) {
+        if (m_board->at(dest) == 0 && m_board->at(origin + d / 2) != -1) {
             jumpTiles.append(dest);
         }
     }
