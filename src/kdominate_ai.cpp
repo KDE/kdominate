@@ -195,11 +195,11 @@ KDominateAi::AiMove KDominateAi::alphaBeta(KDominateBoard &board, int maximizing
                         bestAiMove.origin = origin;
                         bestAiMove.dest = dest;
                         bestAiMove.score = candidateAiMove.score;
+                        qWarning().noquote() << indent << "New best score:" << bestAiMove.score << "isGameOver:" << board.isGameOver() << board.countTiles().empty;
                     }
 
                     board.undo();
 
-                    qWarning().noquote() << indent << "Score:" << bestAiMove.score;
 
                     if (maximizing)
                         alpha = qMax(alpha, bestAiMove.score);
