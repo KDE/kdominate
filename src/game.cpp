@@ -304,6 +304,8 @@ void Game::computeMove()
     m_state = GameState::Computing;
     setStopAction();
     Q_EMIT setAction(Action::HINT, false);
+    int skill = (m_board->currentPlayer() == 1) ? Prefs::skill1() : Prefs::skill2();
+    m_ai->setDepth(skill + 2); // skill 0..4 maps to depth 2..6
     if (isComputer(m_board->currentPlayer())) {
         Q_EMIT statusMessage(i18n("Computer player %1 is moving", m_board->currentPlayer()), false);
     }
