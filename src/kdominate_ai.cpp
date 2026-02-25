@@ -205,7 +205,6 @@ KDominateAi::AiMove KDominateAi::alphaBeta(KDominateBoard &board, int maximizing
     }
 
     auto moves = computeMoves(board);
-    qWarning() << moves;
 
     for (const auto& [origin, dest] : moves) {
         QString indent;
@@ -219,19 +218,17 @@ KDominateAi::AiMove KDominateAi::alphaBeta(KDominateBoard &board, int maximizing
         if (!validMovement)
             continue;
 
-        qWarning().noquote() << indent << "Player" << player << "move" << origin << "to" << dest;
+        //qWarning().noquote() << indent << "Player" << player << "move" << origin << "to" << dest;
 
         m_moveCount++;
         AiMove candidateAiMove = alphaBeta(board, maximizingPlayer, depth - 1, alpha, beta);
 
         if ((maximizing && candidateAiMove.score > bestAiMove.score)
-            || (!maximizing && candidateAiMove.score < bestAiMove.score)
-        //    || (candidateAiMove.score == bestAiMove.score && rand() % 2)
-        ) {
+            || (!maximizing && candidateAiMove.score < bestAiMove.score)) {
             bestAiMove.origin = origin;
             bestAiMove.dest = dest;
             bestAiMove.score = candidateAiMove.score;
-            qWarning().noquote() << indent << "New best score:" << bestAiMove.score << "isGameOver:" << board.isGameOver() << board.countTiles().empty;
+            //qWarning().noquote() << indent << "New best score:" << bestAiMove.score << "isGameOver:" << board.isGameOver() << board.countTiles().empty;
         }
 
         board.undo();
