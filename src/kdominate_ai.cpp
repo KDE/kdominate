@@ -162,6 +162,10 @@ QList<std::pair<QPoint,QPoint>> computeMoves(KDominateBoard &board) {
             }
         }
     }
+    // Cloning ensures the game will end, but jumping can delay the game forever. We could protect against stalemates by only
+    // allowing jumps if the last N turns weren't jumps. KDominateBoard would neet to keep a count of jumps per player (maybe
+    // resetting/decreasing it after a clone) and we would skip the next loop if too many jumps happened AND there are clone
+    // moves available.  I didn't encounter any case of a stalemate in my tests, so I didn't implement that logic.
     for (int x = 0; x < size; x++) {
         for (int y = 0; y < size; y++) {
             if (board[x][y] != 0) {
