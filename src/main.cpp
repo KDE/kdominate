@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
     KDBusService service;
 
     // All session management is handled in the RESTORE macro
-    KDominate *kdominate = new KDominate;
+    KDominate *kdominate = new KDominate();
     kdominate->show();
     return app.exec();
 }

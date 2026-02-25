@@ -122,7 +122,6 @@ void KDominateAi::computeMove()
     }
 
     m_moveCount = 0;
-    qWarning() << "Player maximizing:" << m_workBoard->currentPlayer();
     int depth = m_depth;
     if (m_workBoard->countTiles().empty < 6) {
         depth += 6 - m_workBoard->countTiles().empty;
@@ -184,7 +183,8 @@ KDominateAi::AiMove KDominateAi::alphaBeta(KDominateBoard &board, int maximizing
 {
     AiMove bestAiMove;
 
-    bool maximizing = maximizingPlayer == board.currentPlayer();
+    int currentPlayer = board.currentPlayer();
+    bool maximizing = (maximizingPlayer == currentPlayer);
     bestAiMove.score = maximizing ? INT_MIN : INT_MAX;
 
     if (board.isGameOver()) {
@@ -212,13 +212,11 @@ KDominateAi::AiMove KDominateAi::alphaBeta(KDominateBoard &board, int maximizing
             indent += QStringLiteral("  ");
         }
 
-        int player = board.currentPlayer();
-
         bool validMovement = board.move(origin, dest);
         if (!validMovement)
             continue;
 
-        //qWarning().noquote() << indent << "Player" << player << "move" << origin << "to" << dest;
+        //qWarning().noquote() << indent << "Player" << currentPlayer << "move" << origin << "to" << dest;
 
         m_moveCount++;
         AiMove candidateAiMove = alphaBeta(board, maximizingPlayer, depth - 1, alpha, beta);

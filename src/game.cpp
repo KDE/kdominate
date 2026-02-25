@@ -152,7 +152,7 @@ void Game::showSettingsDialog()
 
 void Game::newSettings()
 {
-    qCDebug(KDOMINATE_LOG) << "NEW SETTINGS" << "m_state" << int(m_state) << "mapIndex:" << Prefs::mapIndex();
+    qCDebug(KDOMINATE_LOG) << "NEW SETTINGS state:" << int(m_state) << "mapIndex:" << Prefs::mapIndex();
     loadImmediateSettings();
 
     if (Prefs::mapIndex() != m_mapIndex) {
@@ -432,7 +432,7 @@ void Game::moveDone()
 
 void Game::buttonClick()
 {
-    qCDebug(KDOMINATE_LOG) << "BUTTON CLICK seen: m_state:" << int(m_state);
+    qCDebug(KDOMINATE_LOG) << "BUTTON CLICK m_state:" << int(m_state);
     if (m_board->isGameOver()) {
         KTileWidget::enableClicks(false);
         return;

@@ -46,7 +46,6 @@ KDominate::KDominate()
     m_p2Count = new QLabel();
     m_currentPlayerIcon = new QLabel();
     m_currentPlayerLabel = new QLabel();
-
     statusBar()->addPermanentWidget(m_p1Icon);
     statusBar()->addPermanentWidget(m_p1Count);
     statusBar()->addPermanentWidget(new QLabel(QStringLiteral("|")));
@@ -56,6 +55,7 @@ KDominate::KDominate()
     statusBar()->addPermanentWidget(m_currentPlayerLabel);
     statusBar()->addPermanentWidget(m_currentPlayerIcon);
     statusBar()->addPermanentWidget(new QWidget()); // Padding
+
     connect(m_view, &KBoardWidget::tileHovered, this, &KDominate::showTileCoords);
     updateStatus();
 
