@@ -31,6 +31,7 @@ private Q_SLOTS:
     void testJumpToWin();
     void testJumpToDraw();
     void testDoNotDelayDraw();
+    void testDoNotDelayDrawObstacles();
     void testDoNotDelayLose();
     void testWinable();
 };
@@ -143,6 +144,18 @@ void KDominateAiTest::testJumpToDraw()
 void KDominateAiTest::testDoNotDelayDraw()
 {
     QStringList lines = loadMapLines(QStringLiteral("do-not-delay-draw.map"));
+    QVERIFY(!lines.isEmpty());
+
+    KDominateBoard board;
+    board.loadFromMap(lines);
+
+    QVERIFY2(playToEnd(board), "Game did not complete within move limit");
+    QCOMPARE(board.winner(), 0);
+}
+
+void KDominateAiTest::testDoNotDelayDrawObstacles()
+{
+    QStringList lines = loadMapLines(QStringLiteral("do-not-delay-draw-obstacles.map"));
     QVERIFY(!lines.isEmpty());
 
     KDominateBoard board;

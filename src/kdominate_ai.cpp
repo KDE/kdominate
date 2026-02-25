@@ -194,18 +194,19 @@ KDominateAi::AiMove KDominateAi::alphaBeta(KDominateBoard &board, int maximizing
 
     if (board.isGameOver()) {
         int winner = board.winner();
+        // all options equal, favor ending the game faster (at higher depth = less moves) when drawing/winning
         if (winner == 0) {
-            bestAiMove.score = 0; // draw
+            bestAiMove.score = depth;
         } else if (winner == maximizingPlayer) {
-            bestAiMove.score = 1000 + depth; // favor faster wins (higher depth = less moves)
+            bestAiMove.score = 1000 + depth;
         } else {
-            bestAiMove.score = -1000;
+            bestAiMove.score = -1000; // subtracting depth would unnecessarily delay losing
         }
         return bestAiMove;
     }
 
     if (depth <= 0) {
-        bestAiMove.score = staticEvaluationFunction(board, maximizingPlayer);
+        bestAiMove.score = 10*staticEvaluationFunction(board, maximizingPlayer);
         return bestAiMove;
     }
 
