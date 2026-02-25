@@ -85,12 +85,14 @@ private Q_SLOTS:
 Q_SIGNALS:
     void animationDone(int index);
     void mouseClick(int x, int y);
+    void tileHovered(int x, int y);
 
 protected:
     QSize sizeHint() const override;
     void initTiles();
     void paintEvent(QPaintEvent *event) override;
     void resizeEvent(QResizeEvent *event) override;
+    void leaveEvent(QEvent *event) override;
 
 private:
     int pointToIndex(QPoint p)

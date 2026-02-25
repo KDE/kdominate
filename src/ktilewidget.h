@@ -131,9 +131,11 @@ public Q_SLOTS:
 
 Q_SIGNALS:
     void clicked(int row, int column);
+    void hovered(int row, int column);
 
 protected:
     void mouseReleaseEvent(QMouseEvent *) override;
+    void enterEvent(QEnterEvent *) override;
     void paintEvent(QPaintEvent *) override;
 
 private:

@@ -49,4 +49,5 @@ private Q_SLOTS:
     void updateStatus();
     void changeButton(bool enabled, bool stop = false, const QString &caption = QString());
     void statusMessage(const QString &message, bool timed);
+    void showTileCoords(int x, int y);
 };

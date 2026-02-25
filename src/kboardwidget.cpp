@@ -157,6 +157,12 @@ bool KBoardWidget::checkClick(int x, int y)
     return false;
 }
 
+void KBoardWidget::leaveEvent(QEvent *event)
+{
+    Q_EMIT tileHovered(-1, -1);
+    QWidget::leaveEvent(event);
+}
+
 void KBoardWidget::initTiles()
 {
     qDeleteAll(tiles);
@@ -169,6 +175,7 @@ void KBoardWidget::initTiles()
         KTileWidget *tile = new KTileWidget(this, n / m_size, n % m_size);
         tiles.append(tile);
         connect(tile, &KTileWidget::clicked, this, &KBoardWidget::checkClick);
+        connect(tile, &KTileWidget::hovered, this, &KBoardWidget::tileHovered);
         tile->show();
     }
 }

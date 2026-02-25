@@ -56,6 +56,7 @@ KDominate::KDominate()
     statusBar()->addPermanentWidget(m_currentPlayerLabel);
     statusBar()->addPermanentWidget(m_currentPlayerIcon);
     statusBar()->addPermanentWidget(new QWidget()); // Padding
+    connect(m_view, &KBoardWidget::tileHovered, this, &KDominate::showTileCoords);
     updateStatus();
 
     {
@@ -183,6 +184,15 @@ void KDominate::updateStatus()
 void KDominate::setAction(const Action a, const bool onOff)
 {
     ((QAction *)actionCollection()->action(a))->setEnabled(onOff);
+}
+
+void KDominate::showTileCoords(int x, int y)
+{
+    if (x < 0 || y < 0) {
+        statusBar()->showMessage(QString());
+    } else {
+        statusBar()->showMessage(QStringLiteral("(%1, %2)").arg(x).arg(y));
+    }
 }
 
 void KDominate::statusMessage(const QString &message, bool timed)

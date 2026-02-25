@@ -9,6 +9,7 @@
 
 #include "ktilewidget.h"
 
+#include <QEnterEvent>
 #include <QMouseEvent>
 #include <QPaintEvent>
 #include <QPainter>
@@ -51,6 +52,11 @@ void KTileWidget::reset()
     m_selected = false;
     m_animProgress = 0.0;
     update();
+}
+
+void KTileWidget::enterEvent(QEnterEvent *)
+{
+    Q_EMIT hovered(m_row, m_col);
 }
 
 void KTileWidget::mouseReleaseEvent(QMouseEvent *e)
