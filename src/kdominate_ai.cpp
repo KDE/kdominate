@@ -123,43 +123,42 @@ void KDominateAi::computeMove()
 
     m_moveCount = 0;
     AiMove move = alphaBeta(*m_workBoard, m_workBoard->currentPlayer(), m_depth);
-    qCDebug(KDOMINATE_LOG) << "AI explored" << m_moveCount << "moves";
+    qCDebug(KDOMINATE_LOG) << "AI explored" << m_moveCount << "moves, best score" << move.score;
     m_resultOrigin = move.origin;
     m_resultDest = move.dest;
 }
 
-int KDominateAi::staticEvaluationFunction(KDominateBoard &board, int initialPlayer, int depth) const
+int KDominateAi::staticEvaluationFunction(KDominateBoard &board, int maximizingPlayer) const
 {
-    int score = 0;
-
-    if (board.isWinner()) {
-        int winner = board.winner();
-        if (initialPlayer == winner)
-            score += 1000 + depth;
-        else
-            score -= (1000 - depth);
-    }
-
     KDominateBoard::TileCount tc = board.countTiles();
-    if (initialPlayer == 1)
-        score += tc.p1 - tc.p2;
+    if (maximizingPlayer == 1)
+        return tc.p1 - tc.p2;
     else
-        score += tc.p2 - tc.p1;
-
-    return score;
+        return tc.p2 - tc.p1;
 }
 
-KDominateAi::AiMove KDominateAi::alphaBeta(KDominateBoard &board, int initialPlayer, int depth, int alpha, int beta)
+KDominateAi::AiMove KDominateAi::alphaBeta(KDominateBoard &board, int maximizingPlayer, int depth, int alpha, int beta)
 {
     AiMove bestAiMove;
 
-    if (depth <= 0 || board.isWinner()) {
-        bestAiMove.score = staticEvaluationFunction(board, initialPlayer, depth);
+    bool maximizing = maximizingPlayer == board.currentPlayer();
+    bestAiMove.score = maximizing ? INT_MIN : INT_MAX;
+
+    if (board.isGameOver()) {
+        int winner = board.winner();
+        if (winner == 0) {
+            bestAiMove.score = 0; // draw
+        } else if (winner == maximizingPlayer)
+            bestAiMove.score = 1000 + depth; // favor faster wins (higher depth = less moves)
+        else
+            bestAiMove.score = -1000 - depth; // favor faster loses
         return bestAiMove;
     }
 
-    bool maximizing = initialPlayer == board.currentPlayer();
-    bestAiMove.score = maximizing ? INT_MIN : INT_MAX;
+    if (depth <= 0) {
+        bestAiMove.score = staticEvaluationFunction(board, maximizingPlayer);
+        return bestAiMove;
+    }
 
     auto tryDirections = [&](const QList<QPoint> &directions) -> bool {
         for (int i = 0; i < board.size(); i++) {
@@ -176,7 +175,7 @@ KDominateAi::AiMove KDominateAi::alphaBeta(KDominateBoard &board, int initialPla
                         continue;
 
                     m_moveCount++;
-                    AiMove candidateAiMove = alphaBeta(board, initialPlayer, depth - 1, alpha, beta);
+                    AiMove candidateAiMove = alphaBeta(board, maximizingPlayer, depth - 1, alpha, beta);
 
                     if ((maximizing && candidateAiMove.score > bestAiMove.score) || (!maximizing && candidateAiMove.score < bestAiMove.score)) {
                         bestAiMove.origin = origin;
@@ -210,7 +209,6 @@ KDominateAi::AiMove KDominateAi::alphaBeta(KDominateBoard &board, int initialPla
 
     if (bestAiMove.score == INT_MIN || bestAiMove.score == INT_MAX) {
         qCWarning(KDOMINATE_LOG) << "No moves found, THIS SHOULD NOT HAPPEN!";
-        bestAiMove.score = staticEvaluationFunction(board, initialPlayer, depth);
     }
 
     return bestAiMove;

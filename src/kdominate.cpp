@@ -171,7 +171,7 @@ void KDominate::updateStatus()
     KDominateBoard::TileCount tc = m_game->countTiles();
     m_p1Count->setText(QString::number(tc.p1));
     m_p2Count->setText(QString::number(tc.p2));
-    if (m_game->isWinner()) {
+    if (m_game->isGameOver()) {
         m_currentPlayerLabel->setText(m_game->winnerString());
         m_currentPlayerIcon->setVisible(false);
     } else {

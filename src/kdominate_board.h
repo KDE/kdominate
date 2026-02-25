@@ -40,7 +40,7 @@ public:
         return other[m_currentPlayer];
     }
 
-    bool isWinner() const
+    bool isGameOver() const
     {
         return m_winner != -1;
     }

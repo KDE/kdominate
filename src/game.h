@@ -56,9 +56,9 @@ public:
         return m_board->currentPlayer();
     }
 
-    bool isWinner() const
+    bool isGameOver() const
     {
-        return m_board->isWinner();
+        return m_board->isGameOver();
     }
 
     QString winnerString() const;

@@ -99,7 +99,7 @@ void Game::gameActions(const int action)
         newGame();
         break;
     case Action::HINT:
-        if (!m_board->isWinner() && !isComputer(m_board->currentPlayer())) {
+        if (!m_board->isGameOver() && !isComputer(m_board->currentPlayer())) {
             KTileWidget::enableClicks(false);
             computeMove();
         }
@@ -418,7 +418,7 @@ void Game::finishMove()
     Q_EMIT statusUpdated();
 
     // Check for winner
-    if (m_board->isWinner()) {
+    if (m_board->isGameOver()) {
         moveDone();
         showWinner();
         return;
@@ -439,7 +439,7 @@ void Game::moveDone()
 void Game::buttonClick()
 {
     qCDebug(KDOMINATE_LOG) << "BUTTON CLICK seen: m_state:" << int(m_state);
-    if (m_board->isWinner()) {
+    if (m_board->isGameOver()) {
         KTileWidget::enableClicks(false);
         return;
     }
@@ -512,7 +512,7 @@ void Game::redoClick()
 
 bool Game::newGameOK()
 {
-    if ((m_moveNo == 0) || m_board->isWinner()) {
+    if ((m_moveNo == 0) || m_board->isGameOver()) {
         return true;
     }
 
@@ -609,7 +609,7 @@ bool Game::redo()
 
     m_view->timedTileHighlight(snap.dest);
 
-    if (m_board->isWinner()) {
+    if (m_board->isGameOver()) {
         showWinner();
         return false;
     }
