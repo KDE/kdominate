@@ -122,8 +122,10 @@ void KDominateAi::computeMove()
     }
 
     m_moveCount = 0;
+    qWarning() << "Player maximizing:" << m_workBoard->currentPlayer();
     AiMove move = alphaBeta(*m_workBoard, m_workBoard->currentPlayer(), m_depth);
-    qCDebug(KDOMINATE_LOG) << "AI explored" << m_moveCount << "moves, best score" << move.score;
+
+    qCDebug(KDOMINATE_LOG) << "AI explored" << m_moveCount << "moves, best move" << move.origin << "to" << move.dest << "with score" << move.score;
     m_resultOrigin = move.origin;
     m_resultDest = move.dest;
 }
@@ -176,6 +178,12 @@ KDominateAi::AiMove KDominateAi::alphaBeta(KDominateBoard &board, int maximizing
 
                     m_moveCount++;
                     AiMove candidateAiMove = alphaBeta(board, maximizingPlayer, depth - 1, alpha, beta);
+
+                    QString indent;
+                    for (int i = 0; i < 4-depth; i++) {
+                        indent += QStringLiteral("  ");
+                    }
+                    qWarning() << indent.toLatin1().toStdString().c_str() << "Player" << board.currentPlayer() << "move" << origin << "to" << dest << "results in score:" << candidateAiMove.score;
 
                     if ((maximizing && candidateAiMove.score > bestAiMove.score) || (!maximizing && candidateAiMove.score < bestAiMove.score)) {
                         bestAiMove.origin = origin;
