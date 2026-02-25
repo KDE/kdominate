@@ -13,6 +13,11 @@
   </p>
   </description>
   <screenshots>
+    <screenshot type="default">
+      <caption>Playing KDominate</caption>
+      <image>https://www.kde.org/images/screenshots/kdominate.png</image>
+    </screenshot>
+  </screenshots>
   </screenshots>
   <content_rating type="oars-1.1"/>
   <url type="homepage">https://apps.kde.org/kdominate</url>
