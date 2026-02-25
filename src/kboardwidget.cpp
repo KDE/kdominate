@@ -463,7 +463,7 @@ void KBoardWidget::nextMoveAnimationStep()
     Q_EMIT animationDone(-1);
 }
 
-int KBoardWidget::killAnimation()
+void KBoardWidget::killAnimation()
 {
     if (m_blinkTimer->isActive()) {
         m_blinkTimer->stop();
@@ -478,7 +478,7 @@ int KBoardWidget::killAnimation()
             tiles.at(m_zoomOutTile)->removeEffects();
             m_zoomOutTile = -1;
         }
-        for (int idx : std::as_const(m_autofilledTiles)) {
+        for (int idx : std::as_const(m_convertedTiles)) {
             tiles.at(idx)->removeEffects();
         }
         for (int idx : std::as_const(m_autofilledTiles)) {
@@ -489,12 +489,12 @@ int KBoardWidget::killAnimation()
     }
     if (m_blinkOrigin >= 0 && m_blinkOrigin < tiles.size()) {
         tiles.at(m_blinkOrigin)->removeEffects();
+        m_blinkOrigin = -1;
     }
     if (m_blinkDest >= 0 && m_blinkDest < tiles.size()) {
         tiles.at(m_blinkDest)->removeEffects();
+        m_blinkDest = -1;
     }
-    m_blinkDest = -1;
-    return m_blinkOrigin;
 }
 
 void KBoardWidget::highlightValidMoves(int player, const QList<int> &cloneTargets, const QList<int> &jumpTargets)

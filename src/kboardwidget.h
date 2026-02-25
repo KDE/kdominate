@@ -40,7 +40,7 @@ public:
     void setNormalCursor();
     bool loadSettings();
     void setSize(int dim);
-    int killAnimation();
+    void killAnimation();
     void clearValidMoveHighlights();
     void deselectAll();
     void showPopup(const QString &message);
