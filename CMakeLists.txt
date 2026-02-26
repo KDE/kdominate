@@ -40,11 +40,8 @@ find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
     Crash
     DBusAddons
     DocTools
-    KIO
     I18n
-    JobWidgets
     XmlGui
-    WidgetsAddons
     IconThemes
 )
 

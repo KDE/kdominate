@@ -20,9 +20,6 @@
 #include "prefs.h"
 
 #include <KConfigDialog>
-#include <KIO/FileCopyJob>
-#include <KIO/StatJob>
-#include <KJobWidgets>
 #include <KLocalizedString>
 #include <KMessageBox>
 
