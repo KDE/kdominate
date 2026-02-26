@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: none
+# SPDX-License-Identifier: BSD-3-Clause
+
 include(ECMAddTests)
 
 ecm_qt_declare_logging_category(kdominate_ai_test_debug_srcs

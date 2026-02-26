@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
+ <author>
+    SPDX-FileCopyrightText: 1998-2000 Matthias Kiefer <matthias.kiefer@gmx.de>
+    SPDX-FileCopyrightText: 2026 Albert Vaca <albertvaka@kde.org>
+    SPDX-License-Identifier: GPL-2.0-or-later
+ </author>
  <class>Settings</class>
  <widget class="QWidget" name="Settings">
   <property name="geometry">

@@ -1,0 +1,46 @@
+# SPDX-FileCopyrightText: None
+# SPDX-License-Identifier: CC0-1.0
+
+version = 1
+SPDX-PackageName = "KDominate"
+SPDX-PackageSupplier = "albertvaka@kde.org"
+
+[[annotations]]
+path = ["README.md"]
+SPDX-FileCopyrightText = "Albert Vaca Cintora <albertvaka@kde.org>"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = ["icons/*.png"]
+SPDX-FileCopyrightText = "Albert Vaca Cintora <albertvaka@kde.org>"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = ["src/graphics.svg"]
+SPDX-FileCopyrightText = "Eugene Trounev <irs_me@hotmail.com>"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = ["src/maps/*.map", "tests/maps/*.map", "doc/*.png"]
+SPDX-FileCopyrightText = "none"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = "doc/*.docbook"
+SPDX-FileCopyrightText = "Albert Vaca Cintora <albertvaka@kde.org>"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = ["src/kdominate.qrc", "src/prefs.kcfgc"]
+SPDX-FileCopyrightText = "Albert Vaca Cintora <albertvaka@kde.org>"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = ["src/kdominate.kcfg", "src/kdominateui.rc"]
+SPDX-FileCopyrightText = "Albert Vaca Cintora <albertvaka@kde.org>"
+SPDX-License-Identifier = "GPL-2.0-or-later"
+
+[[annotations]]
+path = ["src/org.kde.kdominate.appdata.xml", "src/org.kde.kdominate.desktop"]
+SPDX-FileCopyrightText = "Albert Vaca Cintora <albertvaka@kde.org>"
+SPDX-License-Identifier = "CC0-1.0"

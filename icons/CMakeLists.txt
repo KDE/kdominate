@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: none
+# SPDX-License-Identifier: BSD-3-Clause
+
 ecm_install_icons(ICONS
     16-apps-kdominate.png
     22-apps-kdominate.png

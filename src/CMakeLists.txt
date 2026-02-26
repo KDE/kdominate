@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: none
+# SPDX-License-Identifier: BSD-3-Clause
+
 ecm_setup_version(${KDOMINATE_VERSION}
     VARIABLE_PREFIX KDOMINATE
     VERSION_HEADER kdominate_version.h
