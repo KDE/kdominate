@@ -6,7 +6,7 @@
 
 <book id="kdominate" lang="&language;">
 <bookinfo>
-	<title>The &kdominate; Handbook</title>
+	<title>The KDominate Handbook</title>
 <authorgroup>
 <author>
 <firstname>Albert</firstname><surname>Vaca Cintora</surname>
@@ -26,7 +26,7 @@
 <releaseinfo>1.0</releaseinfo>
 
 <abstract>
-	<para>This documentation describes the game of &kdominate;</para>
+	<para>This documentation describes the game of KDominate</para>
 </abstract>
 
 <keywordset>
@@ -50,7 +50,7 @@
 	<note><title>Gametype:</title><para>Strategy</para></note>
 	<note><title>Number of possible players:</title><para>Two</para></note>
 
-<para>&kdominate; is a tactical game for one or two players, where players place and convert tiles with the goal of controlling the majority of the board.</para>
+<para>KDominate is a tactical game for one or two players, where players place and convert tiles with the goal of controlling the majority of the board.</para>
 
 <para>You can play it against the computer or a friend - or you can set up a game between two computer
 players and just watch.</para>
@@ -72,6 +72,7 @@ or contain an obstacle. When the game starts each player controls only a couple 
 <para>The initial board (including boards of different sizes and with different obstacle configurations) as well as the computer players can be configured from the settings menu.(see the
 <link linkend="configuration">Game Configuration</link> section for more details).
 </para>
+</chapter>
 
 <chapter id="rules"><title>Game rules</title>
 <itemizedlist>
@@ -117,7 +118,7 @@ settings dialog turn the step mode on or off (see the
 <para> In each case, the button contains some text to indicate what action can
 be done or is expected, such as &nbsp;<guibutton>Stop showing move</guibutton> or
 <guibutton>Your turn</guibutton>.</para>
-</para>
+
 </sect2>
 
 <sect2 id="toolbar_buttons">
@@ -158,9 +159,9 @@ be done or is expected, such as &nbsp;<guibutton>Stop showing move</guibutton> o
 	</varlistentry>
 	<varlistentry><term><menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo></shortcut>
 		<guimenu>Game</guimenu><guimenuitem>Quit</guimenuitem></menuchoice></term>
-		<listitem><para><action>Quit</action> &kdominate;.</para></listitem>
+		<listitem><para><action>Quit</action> KDominate.</para></listitem>
 	</varlistentry>
-	</variablelist>
+</variablelist>
 </sect2>
 
 <sect2 id="move_menu">
@@ -202,7 +203,7 @@ be done or is expected, such as &nbsp;<guibutton>Stop showing move</guibutton> o
 </qandaentry>
 <qandaentry>
  <question><para>How do I get started in this game? </para></question>
- <answer><para>The moves of &kdominate; can be hard to follow at first. One way
+ <answer><para>The moves of KDominate can be hard to follow at first. One way
      to learn is to watch games where the computer plays against itself. Use the
      <link linkend="configuration">Game Configuration</link> dialog to set it up.
      Check both <guilabel>Playing now</guilabel> boxes, and enable <guilabel>Pause before each computer move</guilabel>. Click <guibutton>OK</guibutton>. Now click the big green button in the toolbar to start the game.
@@ -224,55 +225,54 @@ be done or is expected, such as &nbsp;<guibutton>Stop showing move</guibutton> o
 </qandaentry>
 <qandaentry>
  <question><para>Can I use the keyboard to play the game? </para></question>
- <answer><para>No. &kdominate; cannot be played using the keyboard.
+ <answer><para>No. KDominate cannot be played using the keyboard.
      </para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>Where are the high scores?</para></question>
- <answer><para>&kdominate; does not have such a feature.</para></answer>
+ <answer><para>KDominate does not have such a feature.</para></answer>
 </qandaentry>
 </qandaset>
 </chapter>
 
 <chapter id="configuration"><title>Game Configuration</title>
 
-<para>To open the configuration dialog use the <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Configure &kdominate;…</guimenuitem></menuchoice> menu item, on macOS use the <menuchoice><guimenu>&kdominate;</guimenu> <guimenuitem>Preferences</guimenuitem></menuchoice> menu item, or you can use the <guibutton>Settings</guibutton> button in the toolbar.</para>
+<para>To open the configuration dialog use the <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Configure KDominate…</guimenuitem></menuchoice> menu item, on macOS use the <menuchoice><guimenu>KDominate</guimenu> <guimenuitem>Preferences</guimenuitem></menuchoice> menu item, or you can use the <guibutton>Settings</guibutton> button in the toolbar.</para>
 
 <screenshot>
-    <screeninfo>&kdominate; Settings</screeninfo>
+    <screeninfo>KDominate Settings</screeninfo>
     <mediaobject>
 	<imageobject><imagedata fileref="settings.png" format="PNG"/></imageobject>
-	<textobject><phrase>&kdominate; Settings</phrase></textobject>
+	<textobject><phrase>KDominate Settings</phrase></textobject>
     </mediaobject>
 </screenshot>
 
 <variablelist>
 <varlistentry><term><guilabel>Computer Player</guilabel></term>
-<para>The Computer Player 1 and 2 panels control the skill level of each computer player's play and whether that player should actually play instead of the human or just provide hints when asked. Normally you would set the computer to play one player and you would play the other, but you can have two human players or two computer players and just watch.</para>
+<listitem><para>The Computer Player 1 and 2 panels control the skill level of each computer player's play and whether that player should actually play instead of the human or just provide hints when asked. Normally you would set the computer to play one player and you would play the other, but you can have two human players or two computer players and just watch.</para></listitem>
 </varlistentry>
 
 <varlistentry><term><guilabel>Board</guilabel></term>
-<para>The Board panel allows you to chose the initial layout of the board, with options for different sizes and different obstacle layouts.</para>
+<listitem><para>The Board panel allows you to chose the initial layout of the board, with options for different sizes and different obstacle layouts.</para></listitem>
 </varlistentry>
 
 <varlistentry><term><guilabel>Theme</guilabel></term>
-<para>The Theme dropdown lets you chose a different look for the tiles.</para>
+<listitem><para>The Theme dropdown lets you chose a different look for the tiles.</para></listitem>
 </varlistentry>
 
 <varlistentry><term><guilabel>Players' Colors</guilabel></term>
-	<listitem><para>Choose a color for the tiles of each player and for the obstacles.</para></listitem>
+<listitem><para>Choose a color for the tiles of each player and for the obstacles.</para></listitem>
 </varlistentry>
 
 </variablelist>
-</sect1>
 
 </chapter>
 
 <chapter id="credits"><title>Credits and License</title>
 
-<para>&kdominate; - Copyright 2026, Albert Vaca Cintora</para>
+<para>KDominate - Copyright 2026, Albert Vaca Cintora</para>
 
-<para>&kdominate; was inspired by a game that came out for Windows PCs in 1993, by Ken Foster et Sam C. Misemer.</para>
+<para>KDominate was inspired by a game that came out for Windows PCs in 1993, by Ken Foster et Sam C. Misemer.</para>
 
 <para>Some of the code is based on KJumpingCube, developed by Matthias Kiefer back in 1999 and reworked by Ian Wadham in 2013.</para>
 
