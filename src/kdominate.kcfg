@@ -6,7 +6,7 @@
   <kcfgfile name="kdominaterc"/>
   <group name="Game">
     <entry name="Color0" type="Color">
-      <label>Color of neutral tiles.</label>
+      <label>Color of obstacle tiles.</label>
       <default>#4b3f3d</default>
     </entry>
     <entry name="Color1" type="Color">

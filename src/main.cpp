@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
     KAboutData aboutData(QStringLiteral("kdominate"),
                          i18n("KDominate"),
                          QStringLiteral(KDOMINATE_VERSION_STRING),
-                         i18n("Tactical one or two player game"),
+                         i18n("A tactical game for one or two players."),
                          KAboutLicense::GPL,
                          i18n("(c) 2026, Albert Vaca Cintora"),
                          QString(),

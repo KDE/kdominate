@@ -1,156 +1,88 @@
 <?xml version="1.0" ?>
-<!--IMPORTANT: please note that'do not change this!' notice does not apply to translators -->
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
   <!ENTITY % English "INCLUDE" > <!-- change language only here -->
-  <!ENTITY % addindex "IGNORE"> <!-- do not change this! -->
+  <!ENTITY % addindex "IGNORE">
 ]>
 
-<book id="kjumpingcube" lang="&language;"> <!-- do not change this! -->
+<book id="kdominate" lang="&language;">
 <bookinfo>
-	<title>The &kjumpingcube; Handbook</title> <!-- This is the title of the docbook. Leave as is unless change is necessary.-->
-<!-- List of immidiate authors begins here. -->
-<!--INPORTANT! - All other contributors: [to be determined] -->
+	<title>The &kdominate; Handbook</title>
 <authorgroup>
 <author>
-<firstname>Ian</firstname><surname>Wadham</surname>
-<affiliation><address><email>iandw.au@gmail.com</email></address></affiliation>
-</author>
-<author>
-<firstname>Eugene</firstname><surname>Trounev</surname>
-<affiliation><address><email>eugene.trounev@gmail.com</email></address></affiliation>
-</author>
-<author>
-<firstname>Matthias</firstname><surname>Kiefer</surname>
-<affiliation><address>&Matthias.Kiefer.mail;</address></affiliation>
+<firstname>Albert</firstname><surname>Vaca Cintora</surname>
+<affiliation><address><email>albertvaka@kde.org</email></address></affiliation>
 </author>
 <!-- TRANS:ROLES_OF_TRANSLATORS -->
 </authorgroup>
 
 <copyright>
-<year>2012</year>
-<year>2013</year>
-<holder>Ian Wadham</holder>
-</copyright>
-<copyright>
-<year>1999</year>
-<year>2000</year>
-<holder>&Matthias.Kiefer;</holder>
+<year>2026</year>
+<holder>Albert Vaca Cintora</holder>
 </copyright>
 
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2021-07-07</date>
-<releaseinfo>2.1 (KDE Gear 21.04)</releaseinfo>
+<date>2026-02-27</date>
+<releaseinfo>1.0</releaseinfo>
 
-<!--Short description of this document. Do not change unless necessary!-->
 <abstract>
-	<para>This documentation describes the game of &kjumpingcube; version 2.1</para>
+	<para>This documentation describes the game of &kdominate;</para>
 </abstract>
 
-<!--List of relevant keywords-->
 <keywordset>
 	<keyword>KDE</keyword> <!-- do not change this! -->
 	<keyword>kdegames</keyword> <!-- do not change this! -->
 	<keyword>game</keyword> <!-- do not change this! -->
-	<keyword>Kjumpingcube</keyword><!--Application name goes here-->
-<!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<keyword>KDominate</keyword> <!--Application name goes here-->
+<!--Game genre. Use as many as necessary.-->
 	<keyword>strategy</keyword>
-	<keyword>dice</keyword>
-	<keyword>dice game</keyword>
-	<keyword>playing dice</keyword>
+	<keyword>board</keyword>
+	<keyword>tiles</keyword>
+	<keyword>grid</keyword>
 <!--Number of possible players. It can be: One, Two,..., Multiplayer-->
 	<keyword>two players</keyword>
 <!--All other relevant keywords-->
-	<keyword>cube</keyword>
-	<keyword>jump</keyword>
-	<keyword>jumping cube</keyword>
+	<keyword>dominate</keyword>
 </keywordset>
 </bookinfo>
-<!--Content begins here: -->
-<chapter id="introduction"><title>Introduction</title> <!-- do not change this! -->
-	<note><title>Gametype:</title><para>Strategy, Dice</para></note><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
-	<note><title>Number of possible players:</title><para>Two</para></note><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
 
-<!--Short game description starts here. 3-4 sentences (paragraphs)-->
-<para>&kjumpingcube; is a simple tactical game.  You can play it against
-the computer or a friend - or you can set up a game between two computer
+<chapter id="introduction"><title>Introduction</title>
+	<note><title>Gametype:</title><para>Strategy</para></note>
+	<note><title>Number of possible players:</title><para>Two</para></note>
+
+<para>&kdominate; is a tactical game for one or two players, where players place and convert tiles with the goal of controlling the majority of the board.</para>
+
+<para>You can play it against the computer or a friend - or you can set up a game between two computer
 players and just watch.</para>
 
-<para>That can be a good idea if you have not played &kjumpingcube; before. See
-<link linkend="faq">Frequently asked questions</link>,
-<quote>How do I get started in this game?</quote>.</para>
+<para>The playing area is a grid of tiles, which can be either empty, occupied by one of the two players,
+or contain an obstacle. When the game starts each player controls only a couple tiles on the board.</para>
 
-<para>The playing area is a box of cubes containing points. When the game
-starts each cube has one point, no owner and a neutral color. If you click
-on a neutral cube it becomes yours, changes to your color and increases by
-one point. Your objective is to capture all the cubes, but now it is your
-opponent's turn.</para>
+<para>On their turn, players can either clone a tile of their own to an adjacent empty space, or jump with the tile to an empty space 2 tiles away. After cloning or jumping, all the adjacent tiles from the opponent become their own.</para>
 
-<para>Players move and add points by clicking on neutral cubes or
-their own cubes.</para>
-
-<para>The only way to capture your opponent's cubes is to increase a cube's
-value until it reaches a maximum and expands into neighboring cubes. Then
-those cubes become yours, even if they belonged to your opponent before.</para>
-
-<para>Sometimes a neighbor will also reach a maximum value and expand and
-a cascade of moves will spread across the board. Large numbers
-of cubes can suddenly change hands and this is where &kjumpingcube;
-becomes interesting and challenging.</para>
-
+<para>The game ends when the board is full, and the winner is the player who owns more tiles.</para>
 </chapter>
-<chapter id="howto"><title>How to Play</title> <!-- do not change this! -->
-<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
-	<note><title>Objective:</title><para>Take over all the cubes on the game board.</para></note><!--Describe the objective of the game.-->
-<!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+<chapter id="howto"><title>How to Play</title>
+	<note><title>Objective:</title><para>Control more tiles than the opponent at the end of the game.</para></note>
 
-<para>&kjumpingcube; loads directly into game mode, so you can start playing right away. If Player 1 is a computer player, you must click to get started.</para>
+<para>You move by first clicking on a tile of your color, then clicking one of the highlighted possible moves: either an adjacent tile to clone into, or a tile two spaces away to jump into. After you move, all the opponent's tiles adjacent to the destination tile become yours, and your turn ends.</para>
 
-<para>If you have not played &kjumpingcube; before, try watching a game or two
-where the computer plays against itself. See <link linkend="faq">Frequently
-asked questions</link>, <quote>How do I get started in this game?</quote>.</para>
+<para>You can see who's turn it is, as well as the current count of tiles owned by each player, in the status bar at the bottom of the window.</para>
 
-<para>You move by clicking on a neutral cube or one you already own. If you click on a neutral cube, you gain ownership over it and the cube’s color changes to your playing color. Each time you click on a cube, the value of the cube increases by one. If the cube's value reaches a maximum, some of its points move to the cube’s immediate neighbors (the points <quote>jump</quote> around). If a neighboring cube happens to be owned by the other player, it is captured, together with all of its points, and changes to your playing color.</para>
+<para>The initial board (including boards of different sizes and with different obstacle configurations) as well as the computer players can be configured from the settings menu.(see the
+<link linkend="configuration">Game Configuration</link> section for more details).
+</para>
 
-<note><title>Example:</title><para>If a cube in the centre reaches five points, four of its points go to its four neighbors leaving the source cube with one point. It is possible to start a cascade of automatic moves if any of the neighbors cubes also reaches a maximum.</para></note>
-
-<note><title>Note:</title><para>Large parts of the playing area can change hands very rapidly. You can use animation settings to help you follow what is happening then. See the <link linkend="configuration">Game Configuration</link> section for more details.</para></note>
-
-<para>The winner is the player who ends up owning all the cubes on the board.</para>
+<chapter id="rules"><title>Game rules</title>
+<itemizedlist>
+<listitem><para>Player 1 always starts first.</para></listitem>
+<listitem><para>There's no "pass" move, if no move is available then the player's turn is skipped, otherwise the player must make a move.</para></listitem>
+<listitem><para>Tiles which contain obstacles cannot be owned by either player and cannot be jumped over.</para></listitem>
+<listitem><para>The game ends when the board is full, and the winner is the player who owns more tiles.</para></listitem>
+</itemizedlist>
 </chapter>
 
-<chapter id="rules_and_tips"><title>Game Rules, Strategies and Tips</title> <!-- do not change this! -->
-	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
-	<sect1 id="rules"><title>Rules</title>
-	<orderedlist>
-	<listitem><para>A move consists of clicking on a cube that does not belong to your opponent.</para></listitem>
-	<listitem><para>The move increases the points in the cube by one.</para></listitem>
-	<listitem><para>At the start of the game, each cube has one point, is painted in a neutral color and has no owner.</para></listitem>
-	<listitem><para>Each player has a color to mark the ownership of cubes.</para></listitem>
-	<listitem><para>By clicking a cube that has no owner, the player becomes the owner of that cube and it changes its color to the player's color. Simultaneously the cube’s value is increased by one.</para></listitem>
-	<listitem><para>If a cube has more points than it has neighbors, one point jumps to each of the neighbors.</para></listitem>
-	<listitem><para>During such a move, all the neighboring cubes become owned by the player who moved and so do all of their points, even if the neighbors were neutral or owned by the other player.</para></listitem>
-	<listitem><para>Neighbors are the cubes located above, below, at left or at right, but not diagonally. Corner cubes have two neighbors, edge cubes have three and center cubes have four.</para></listitem>
-	<listitem><para>If a move leaves a neighbor with a maximum number of points, the move continues automatically to the neighbor's neighbors and so on, in a cascade. A large number of cubes can change ownership during such a move.</para></listitem>
-	<listitem><para>The winner is the player who ends up owning all the cubes.</para></listitem>
-	<listitem><para>You can use settings to select board size, computer players, move animations and players' colors. Each computer player can have its own style and skill level. If not playing, it can provide hints to the corresponding human player. You can also pit one computer player against another and watch the outcome. See the <link linkend="configuration">Game Configuration</link> section for more details.</para></listitem>
-	</orderedlist>
-	</sect1>
-
-	<sect1 id="strattips"><title>Strategies and Tips</title>
-	<itemizedlist>
-	    <listitem><para>It may help to set up a computer v. computer game and select the check boxes in the settings dialog that let you step through moves and animations at your own pace. See <link linkend="faq">Frequently asked questions</link>, <quote>How do I get started in this game?</quote> and <quote>That was too fast for me, how can I slow it down?</quote>.</para></listitem>
-	<listitem><para>If you have a cube which is right next to an opponent's cube, try to stay ahead by increasing before your opponent does.</para></listitem>
-	<listitem><para>If such a cube's points are less than or equal to the opponent's, try to avoid increasing: you cannot win that arms race.</para></listitem>
-	<listitem><para>Look for opportunities to increase and capture, but beware of your opponent being able to reply by starting a cascade.</para></listitem>
-	<listitem><para>Try to get control of the corner cubes first, then the edge cubes. You need fewer moves to make them reach a maximum and expand.</para></listitem>
-	<listitem><para>Try not to play too close to your opponent, especially during the opening moves.  Drop back a cube or two or pick a cube on the diagonal from your opponent.</para></listitem>
-	<listitem><para>Keep an eye out for long chains of cubes that are almost at their maximum. If they are yours, you must guard them against cascading moves.  If they are your opponent's, they can become ripe for capture by a cascading move, just as soon as they are close enough to your territory.</para></listitem>
-	</itemizedlist>
-	</sect1>
-</chapter>
-
-<chapter id="interface"><title>Interface Overview</title> <!-- do not change this! -->
+<chapter id="interface"><title>Interface Overview</title>
 <sect1 id="toolbars">
 <title>The Toolbar</title>
 <sect2 id="stop_start_button">
@@ -174,7 +106,7 @@ settings dialog turn the step mode on or off (see the
 	</listitem></varlistentry>
 	<varlistentry><term>Green</term>
 	<listitem><para>It is possible to start or continue a computer
-	move, an animation or a computer v. computer game.</para></listitem>
+	move, or a computer v. computer game.</para></listitem>
 	</varlistentry>
 	<varlistentry><term>Blue</term>
 	<listitem><para>The button is disabled and a human action is expected,
@@ -183,12 +115,8 @@ settings dialog turn the step mode on or off (see the
 	</variablelist>
 
 <para> In each case, the button contains some text to indicate what action can
-be done or is expected, such as &nbsp;<guibutton>Stop animation</guibutton> or
+be done or is expected, such as &nbsp;<guibutton>Stop showing move</guibutton> or
 <guibutton>Your turn</guibutton>.</para>
-
-<para> If you stop the calculation of a computer move, the computer will pick
-the best move it has so far. If you interrupt an animation (&eg; a cascade
-that is taking too long), the move will proceed to its conclusion immediately.
 </para>
 </sect2>
 
@@ -201,14 +129,8 @@ that is taking too long), the move will proceed to its conclusion immediately.
 	<varlistentry><term><guiicon>New</guiicon></term>
 	<listitem><para><action>Start a new game.</action></para></listitem>
 	</varlistentry>
-	<varlistentry><term><guiicon>Load…</guiicon></term>
-	<listitem><para><action>Load a previously saved game.</action></para></listitem>
-	</varlistentry>
-	<varlistentry><term><guiicon>Save</guiicon></term>
-	<listitem><para><action>Save the current game.</action></para></listitem>
-	</varlistentry>
 	<varlistentry><term><guiicon>Hint</guiicon></term>
-	<listitem><para><action>Get a hint as to the best move to make next. The hint is calculated by computer player 1 or 2, depending on whether you are human player 1 or 2. See the <link linkend="configuration">Game Configuration</link> section for more details.</action></para></listitem>
+	<listitem><para><action>Get a hint as to the best move to make next. The hint is calculated by a computer player of the skill level set in the settings dialog. See the <link linkend="configuration">Game Configuration</link> section for more details.</action></para></listitem>
 	</varlistentry>
 	<varlistentry><term><guiicon>Undo</guiicon></term>
 	<listitem><para><action>Undo a previous move, repeatedly if required.
@@ -224,7 +146,6 @@ that is taking too long), the move will proceed to its conclusion immediately.
 
 </sect1>
 
-<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist> and <varlistentry>. Split the chapter into sections using <sect1(2,3)> for better viewing.-->
 <sect1 id="menu">
 <title>Menu Items</title>
 <sect2 id="game_menu">
@@ -235,21 +156,9 @@ that is taking too long), the move will proceed to its conclusion immediately.
 	<guimenu>Game</guimenu><guimenuitem>New</guimenuitem></menuchoice></term>
 	<listitem><para><action>Start a new game.</action></para></listitem>
 	</varlistentry>
-	<varlistentry id="menu-game-load"><term><menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>O</keycap></keycombo></shortcut>
-		<guimenu>Game</guimenu><guimenuitem>Load…</guimenuitem></menuchoice></term>
-		<listitem><para><action>Load a previously saved game.</action></para></listitem>
-	</varlistentry>
-	<varlistentry id="menu-game-save"><term><menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo></shortcut>
-		<guimenu>Game</guimenu><guimenuitem>Save</guimenuitem></menuchoice></term>
-		<listitem><para><action>Save the current game.</action></para></listitem>
-	</varlistentry>
-	<varlistentry><term><menuchoice>
-		<guimenu>Game</guimenu><guimenuitem>Save As…</guimenuitem></menuchoice></term>
-		<listitem><para><action>Save the current game with a different name.</action></para></listitem>
-	</varlistentry>
 	<varlistentry><term><menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo></shortcut>
 		<guimenu>Game</guimenu><guimenuitem>Quit</guimenuitem></menuchoice></term>
-		<listitem><para><action>Quit</action> &kjumpingcube;.</para></listitem>
+		<listitem><para><action>Quit</action> &kdominate;.</para></listitem>
 	</varlistentry>
 	</variablelist>
 </sect2>
@@ -276,55 +185,33 @@ that is taking too long), the move will proceed to its conclusion immediately.
 	<shortcut><keycap>H</keycap></shortcut>
 	<guimenu>Move</guimenu><guimenuitem>Hint</guimenuitem></menuchoice></term>
 	<listitem><para><action>Get a hint as to the best move to make next. The
-	hint is calculated by computer player 1 or 2, depending on whether you
-	are human player 1 or 2. See the <link linkend="configuration">Game
+	hint is calculated by a computer player of the skill level set in the settings dialog. See the <link linkend="configuration">Game
 	Configuration</link> section for more details.</action></para></listitem>
 	</varlistentry>
 	</variablelist>
 </sect2>
-
-<sect2 id="other_menus">
-<title>Other Menus</title>
-<para>
-Additionally &kjumpingcube; has the common &kde; <guimenu>Settings</guimenu> and
-<guimenu>Help</guimenu> menu items, for more information read the sections about
-the <ulink url="help:/fundamentals/menus.html#menus-settings">Settings Menu</ulink>
-and <ulink url="help:/fundamentals/menus.html#menus-help">Help Menu</ulink>
-of the &kde; Fundamentals.
-</para>
-</sect2>
-
 </sect1>
 
 </chapter>
 
-<chapter id="faq"><title>Frequently asked questions</title> <!-- do not change this! -->
-<!--This chapter is for frequently asked questions. Please use <qandaset> <qandaentry> only!-->
+<chapter id="faq"><title>Frequently asked questions</title>
 <qandaset>
-<!--Following is a standard list of FAQ questions.-->
 <qandaentry>
  <question><para>I want to change the way this game looks. Can I? </para></question>
- <answer><para>Currently you can only change the player's colors, but not the game theme. To change the player's colors use the <link linkend="configuration">Game Configuration</link> dialog.</para></answer>
+ <answer><para>You can change the player's colors or the game theme from the <link linkend="configuration">Game Configuration</link> dialog.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>How do I get started in this game? </para></question>
- <answer><para>The moves of &kjumpingcube; can be hard to follow at first. One way
+ <answer><para>The moves of &kdominate; can be hard to follow at first. One way
      to learn is to watch games where the computer plays against itself. Use the
      <link linkend="configuration">Game Configuration</link> dialog to set it up.
-     Check both <guilabel>Playing now</guilabel> boxes, choose a board size in the range 3x3 to 5x5,
-     set the animation to <guilabel>Scatter dots</guilabel> and the move-time to <guilabel>Long</guilabel>, then
-     click <guibutton>OK</guibutton>. Now click the big green button in the toolbar to start the game.
+     Check both <guilabel>Playing now</guilabel> boxes, and enable <guilabel>Pause before each computer move</guilabel>. Click <guibutton>OK</guibutton>. Now click the big green button in the toolbar to start the game.
      </para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>That was too fast for me, how can I slow it down? </para></question>
- <answer><para>Use the <link linkend="configuration">Game Configuration</link>
-     dialog again. Down at the bottom are two check boxes. Check one to pause
-     the game between moves. Check the other to pause between steps of cascade
-     moves that spread out over the board, especially near the end of the game.
-     Back in the game, you can now use the big toolbar button (whenever it goes
-     green), to trigger off each move or proceed step by step within a move, at
-     whatever pace you choose.</para></answer>
+ <answer><para>Open the <link linkend="configuration">Game Configuration</link>
+     dialog and enable <guilabel>Pause before each computer move</guilabel>. You can now use the big toolbar button (whenever it goes green) to trigger each computer move.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>What does the big button in the toolbar do? </para></question>
@@ -337,93 +224,59 @@ of the &kde; Fundamentals.
 </qandaentry>
 <qandaentry>
  <question><para>Can I use the keyboard to play the game? </para></question>
- <answer><para>No. &kjumpingcube; cannot be played using the keyboard.
+ <answer><para>No. &kdominate; cannot be played using the keyboard.
      </para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>Where are the high scores?</para></question>
- <answer><para>&kjumpingcube; does not have such a feature.</para></answer>
+ <answer><para>&kdominate; does not have such a feature.</para></answer>
 </qandaentry>
-<!--Please add more Q&As if needed-->
-
 </qandaset>
 </chapter>
 
-<chapter id="configuration"><title>Game Configuration</title> <!-- do not change this! -->
-<!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+<chapter id="configuration"><title>Game Configuration</title>
 
-<para>To open the configuration dialog use the <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Configure &kjumpingcube;…</guimenuitem></menuchoice> menu item, on Apple Mac OS X use the <menuchoice><guimenu>&kjumpingcube;</guimenu> <guimenuitem>Preferences</guimenuitem></menuchoice> menu item, or you can use the <guibutton>Settings</guibutton> button in the toolbar.</para>
+<para>To open the configuration dialog use the <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Configure &kdominate;…</guimenuitem></menuchoice> menu item, on macOS use the <menuchoice><guimenu>&kdominate;</guimenu> <guimenuitem>Preferences</guimenuitem></menuchoice> menu item, or you can use the <guibutton>Settings</guibutton> button in the toolbar.</para>
 
 <screenshot>
-    <screeninfo>&kjumpingcube; Settings</screeninfo>
+    <screeninfo>&kdominate; Settings</screeninfo>
     <mediaobject>
 	<imageobject><imagedata fileref="settings.png" format="PNG"/></imageobject>
-	<textobject><phrase>&kjumpingcube; Settings</phrase></textobject>
+	<textobject><phrase>&kdominate; Settings</phrase></textobject>
     </mediaobject>
 </screenshot>
 
-<para>The Cascade Move Display and Cascade Move Time panels control the optional animation display when a cube reaches its maximum and spills over into neighboring cubes, possibly starting an extended cascade of moves. It is easiest at first to use the <quote>Scatter dots</quote> animation and a long move time. That is the best way to follow the progress of cascade moves. The two Pause check boxes let you step through animations and computer moves at your own pace.</para>
+<variablelist>
+<varlistentry><term><guilabel>Computer Player</guilabel></term>
+<para>The Computer Player 1 and 2 panels control the skill level of each computer player's play and whether that player should actually play instead of the human or just provide hints when asked. Normally you would set the computer to play one player and you would play the other, but you can have two human players or two computer players and just watch.</para>
+</varlistentry>
 
-<para>The Computer Player 1 and 2 panels control the style and level of each computer player's play and whether that player should actually play or just provide hints to human player 1 or 2.</para>
+<varlistentry><term><guilabel>Board</guilabel></term>
+<para>The Board panel allows you to chose the initial layout of the board, with options for different sizes and different obstacle layouts.</para>
+</varlistentry>
 
-<sect1 id="setting_details">
-<title>Details of Settings</title>
-	<variablelist>
-	<varlistentry><term><guilabel>Playing now</guilabel></term>
-		<listitem><para>Sets Computer Player 1 or 2 to be actively playing or just assisting a human player with hints. Normally you would set the computer to play one player and you would play the other, but you can have two human players or two computer players and just watch. Player 1 always starts first.</para></listitem>
-	</varlistentry>
-	<varlistentry><term><guilabel>Style of Play</guilabel></term>
-		<listitem><para>Sets Computer Player 1 or 2 to play as Kepler or Newton. Kepler chooses moves by the same method as earlier versions of &kjumpingcube;. Newton uses a different method.</para></listitem>
-	</varlistentry>
-	<varlistentry><term><guilabel>Computer Skill</guilabel></term>
-		<listitem><para><action>Lets you choose a computer player's playing skill from a slider.</action> This decides how clever the computer opponent will be.</para>
-		<para>You can choose any of five levels, ranging from <guilabel>Beginner</guilabel>, through <guilabel>Average</guilabel> to <guilabel>Expert</guilabel>.</para></listitem>
-	</varlistentry>
-	<varlistentry><term><guilabel>Board Size</guilabel></term>
-		<listitem><para><action>Lets you choose the size of the play area.</action></para>
-		<para>Use the slider to select a value between <guilabel>3x3</guilabel> cubes and <guilabel>15x15</guilabel> cubes. The range 5x5 to 9x9 is the most convenient. Below 5x5 it is very hard to beat the computer. Above 9x9 games can become rather long.</para></listitem>
-	</varlistentry>
-	<varlistentry><term><guilabel>Players' Colors</guilabel></term>
-		<listitem><para>Choose a color for each player and for the neutral cubes.</para></listitem>
-	</varlistentry>
-	<varlistentry><term><guilabel>Cascade Move Display</guilabel></term>
-		<listitem><para>Choose an animation style for when a cube reaches its maximum and expands into neighboring cubes, possibly starting a cascade of such moves and covering a large area of the board.</para>
-		    <para>Use the radio buttons to select from <guilabel>None (no pauses)</guilabel>, where the whole move is displayed instantaneously; <guilabel>Darken and pause</guilabel>, where each overloaded cube darkens until it is time for it to expand; <guilabel>Blink rapidly</guilabel>, where each overloaded cube darkens at first and then blinks rapidly when it is time for it to expand and <guilabel>Scatter dots</guilabel>, where each overloaded cube darkens at first and then fires dots into neighboring cubes when it is time for it to expand.</para></listitem>
-	</varlistentry>
-	<varlistentry><term><guilabel>Cascade Move Time</guilabel></term>
-		<listitem><para>Use the slider to select from a range of times (<guilabel>Short</guilabel> to <guilabel>Long</guilabel>) to be spent on animations. The times depend a little on the type of animation, but can range from 0.15 seconds to 1.5 seconds for each stage of a cascade move.</para></listitem>
-	</varlistentry>
-	<varlistentry><term><guilabel>Pause before each computer move</guilabel></term>
-	    <listitem><para>If this check box is selected, computer players will pause before they start a move, until you click to resume. This is to help you follow the action, especially if you are a new player or studying a computer versus computer game.</para></listitem>
-	</varlistentry>
-	<varlistentry><term><guilabel>Pause before each cascade step</guilabel></term>
-		<listitem><para>If this check box is selected, the animation of cascade moves will pause between steps, until you click to resume. This is to help you observe such a move as it spreads out over the board.</para></listitem>
-	</varlistentry>
-	</variablelist>
+<varlistentry><term><guilabel>Theme</guilabel></term>
+<para>The Theme dropdown lets you chose a different look for the tiles.</para>
+</varlistentry>
+
+<varlistentry><term><guilabel>Players' Colors</guilabel></term>
+	<listitem><para>Choose a color for the tiles of each player and for the obstacles.</para></listitem>
+</varlistentry>
+
+</variablelist>
 </sect1>
 
 </chapter>
 
-<chapter id="credits"><title>Credits and License</title> <!-- do not change this! -->
-<!--This chapter is for credits and licenses.-->
+<chapter id="credits"><title>Credits and License</title>
 
-<para>&kjumpingcube; is Copyright 2012, 2013 Ian Wadham and Copyright 1998, 1999
-    &Matthias.Kiefer; &Matthias.Kiefer.mail;</para>
+<para>&kdominate; - Copyright 2026, Albert Vaca Cintora</para>
 
-<para>&kjumpingcube; was inspired by a game that came out for the
-Commodore 64 and other early home computers. Unfortunately the original
-author's name is unknown.</para>
+<para>&kdominate; was inspired by a game that came out for Windows PCs in 1993, by Ken Foster et Sam C. Misemer.</para>
 
-<para>In 2007, Ian Wadham took over maintenance of &kjumpingcube; for &kde; 4
-and Eugene Trounev painted the first &SVG; theme.</para>
+<para>Some of the code is based on KJumpingCube, developed by Matthias Kiefer back in 1999 and reworked by Ian Wadham in 2013.</para>
 
-<para>In 2012 and 2013, Ian developed versions 2.0 and 2.1 of &kjumpingcube;, adding the animation styles, allowing board sizes down to 3x3 or up to 15x15 and writing completely new artificial intelligence modules that offer more of a challenge to a human player. These versions calculate moves faster, add multi-level undo/redo (previously only one move), add a choice of two AI opponents and provide options for beginning players to step through animations and computer moves.</para>
-
-<para>Documentation Copyright 2012, 2013 Ian Wadham and
-    Copyright 1999 &Matthias.Kiefer; &Matthias.Kiefer.mail;</para>
-
-<para>Documentation updated for &kde; 2 and 3 by &Lauri.Watts;
-&Lauri.Watts.mail;</para>
+<para>The tile themes are also based on KJumpingCube's and are the work of Eugene Trounev.</para>
 
 <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
 &underFDL;
