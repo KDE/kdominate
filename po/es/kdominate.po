@@ -1,0 +1,439 @@
+# Spanish translations for kdominate.po package.
+# Copyright (C) 2026 This file is copyright:
+# This file is distributed under the same license as the kdominate package.
+# Automatically generated, 2026.
+#
+# SPDX-FileCopyrightText: 2026 Sofía Priego <spriego@darksylvania.net>
+msgid ""
+msgstr ""
+"Project-Id-Version: kdominate\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2026-03-03 00:42+0000\n"
+"PO-Revision-Date: 2026-03-02 17:15+0100\n"
+"Last-Translator: Sofía Priego <spriego@darksylvania.net>\n"
+"Language-Team: Spanish <kde-l10n-es@kde.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 25.12.2\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Sofía Priego"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "spriego@darksylvania.net"
+
+#: game.cpp:90
+#, kde-format
+msgid "Sorry, doing a move..."
+msgstr "Haciendo un movimiento…"
+
+#: game.cpp:122
+#, kde-format
+msgid "Draw!"
+msgstr "¡Tablas!"
+
+#: game.cpp:124
+#, kde-format
+msgid "Player %1 wins!"
+msgstr "¡El jugador %1 gana!"
+
+#: game.cpp:130
+#, kde-format
+msgid "Game over"
+msgstr "Partida terminada"
+
+#: game.cpp:133
+#, kde-format
+msgid "Game Over"
+msgstr "Partida terminada"
+
+#: game.cpp:143
+#, kde-format
+msgid "General"
+msgstr "General"
+
+#: game.cpp:209 game.cpp:225
+#, kde-format
+msgid "Select destination"
+msgstr "Selecciona destino"
+
+#: game.cpp:246
+#, kde-format
+msgid "Invalid move - too far"
+msgstr "Movimiento no válido: demasiado lejos"
+
+#: game.cpp:274
+#, kde-format
+msgid "Start game"
+msgstr "Empezar una partida"
+
+#: game.cpp:276 game.cpp:329
+#, kde-format
+msgid "Continue game"
+msgstr "Continuar la partida"
+
+#: game.cpp:279 game.cpp:331
+#, kde-format
+msgid "Start computer move"
+msgstr "Empezar movimiento de la máquina"
+
+#: game.cpp:296
+#, kde-format
+msgid "Your turn"
+msgstr "Tu turno"
+
+#: game.cpp:298
+#, kde-format
+msgid "Player %1"
+msgstr "Jugador %1"
+
+#: game.cpp:312
+#, kde-format
+msgid "Computer player %1 is moving"
+msgstr "El jugador de la máquina %1 está moviendo"
+
+#: game.cpp:342
+#, kde-format
+msgid "The computer could not find a valid move."
+msgstr "La máquina no ha encontrado ningún movimiento válido."
+
+#: game.cpp:363
+#, kde-format
+msgid "Hint: move from (%1,%2) to (%3,%4)"
+msgstr "Pista: mueve de (%1,%2) a (%3,%4)"
+
+#: game.cpp:446
+#, kde-format
+msgid "Finishing move..."
+msgstr "Terminando el movimiento…"
+
+#: game.cpp:467
+#, kde-format
+msgid "Interrupt game"
+msgstr "Interrumpir la partida"
+
+#: game.cpp:471
+#, kde-format
+msgid "Stop computing"
+msgstr "Detener el cálculo"
+
+#: game.cpp:473
+#, kde-format
+msgid "Stop showing move"
+msgstr "Dejar de mostrar el movimiento"
+
+#: game.cpp:487
+#, kde-format
+msgid "New Game"
+msgstr "Nueva partida"
+
+#: game.cpp:512
+#, kde-format
+msgid ""
+"You have requested a new game, but there is already a game in progress.\n"
+"\n"
+"Do you wish to abandon the current game?"
+msgstr ""
+"Has decidido empezar una nueva partida, aunque hay otra en curso.\n"
+"\n"
+"¿Quieres abandonar la partida actual?"
+
+#: game.cpp:515
+#, kde-format
+msgid "New Game?"
+msgstr "¿Nueva partida?"
+
+#: game.cpp:515
+#, kde-format
+msgid "Abandon Game"
+msgstr "Abandonar la partida"
+
+#: game.cpp:515
+#, kde-format
+msgid "Continue Game"
+msgstr "Continuar la partida"
+
+#: kdominate.cpp:83
+#, kde-format
+msgid "Settings"
+msgstr "Preferencias"
+
+#: kdominate.cpp:183
+#, kde-format
+msgid "Current player:"
+msgstr "Jugador actual:"
+
+#. i18n: ectx: label, entry (Color0), group (Game)
+#: kdominate.kcfg:9
+#, kde-format
+msgid "Color of obstacle tiles."
+msgstr "Color de las fichas de obstáculo."
+
+#. i18n: ectx: label, entry (Color1), group (Game)
+#: kdominate.kcfg:13
+#, kde-format
+msgid "Color of player 1."
+msgstr "Color del jugador 1."
+
+#. i18n: ectx: label, entry (Color2), group (Game)
+#: kdominate.kcfg:17
+#, kde-format
+msgid "Color of player 2."
+msgstr "Color del jugador 2."
+
+#. i18n: ectx: label, entry (ComputerPlayer1), group (Game)
+#: kdominate.kcfg:21
+#, kde-format
+msgid "Whether player 1 is played by the computer."
+msgstr "Indica si el jugador 1 es controlado por la máquina."
+
+#. i18n: ectx: label, entry (Skill1), group (Game)
+#: kdominate.kcfg:32
+#, kde-format
+msgid "Skill of computer player 1."
+msgstr "Habilidad del jugador 1 de la máquina."
+
+#. i18n: ectx: label, entry (ComputerPlayer2), group (Game)
+#: kdominate.kcfg:36
+#, kde-format
+msgid "Whether player 2 is played by the computer."
+msgstr "Indica si el jugador 2 es controlado par la máquina."
+
+#. i18n: ectx: label, entry (Skill2), group (Game)
+#: kdominate.kcfg:47
+#, kde-format
+msgid "Skill of computer player 2."
+msgstr "Habilidad del jugador 2 de la máquina."
+
+#. i18n: ectx: label, entry (PauseForComputer), group (Game)
+#: kdominate.kcfg:51
+#, kde-format
+msgid "Pause before each computer move."
+msgstr "Pausa antes de los movimientos de la máquina."
+
+#. i18n: ectx: label, entry (MapIndex), group (Game)
+#: kdominate.kcfg:55
+#, kde-format
+msgid "Predefined map selection"
+msgstr "Selección de mapa predefinida"
+
+#. i18n: ectx: label, entry (ThemeIndex), group (Game)
+#: kdominate.kcfg:64
+#, kde-format
+msgid "Visual theme for the tiles."
+msgstr "Tema visual para las fichas."
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kdominateui.rc:9
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Barra de herramienta principal"
+
+#: main.cpp:43
+#, kde-format
+msgid "KDominate"
+msgstr "KDominate"
+
+#: main.cpp:45
+#, kde-format
+msgid "A tactical game for one or two players."
+msgstr "Un juego de táctica para uno o dos jugadores."
+
+#: main.cpp:47
+#, kde-format
+msgid "(c) 2026, Albert Vaca Cintora"
+msgstr "© 2026, Albert Vaca Cintora"
+
+#: main.cpp:51
+#, kde-format
+msgid "Albert Vaca Cintora"
+msgstr "Albert Vaca Cintora"
+
+#: main.cpp:52
+#, kde-format
+msgid "Matthias Kiefer"
+msgstr "Matthias Kiefer"
+
+#: main.cpp:52 main.cpp:53
+#, kde-format
+msgid "Original KJumpingCube code"
+msgstr "Código original de KJumpingCube"
+
+#: main.cpp:53
+#, kde-format
+msgid "Ian Wadham"
+msgstr "Ian Wadham"
+
+#: main.cpp:54
+#, kde-format
+msgid "Eugene Trounev"
+msgstr "Eugene Trounev"
+
+#: main.cpp:54
+#, kde-format
+msgid "Graphics"
+msgstr "Gráficos"
+
+#: main.cpp:55
+#, kde-format
+msgid "Ken Foster"
+msgstr "Ken Foster"
+
+#: main.cpp:55 main.cpp:56
+#, kde-format
+msgid "Original game idea"
+msgstr "Idea original del juego"
+
+#: main.cpp:56
+#, kde-format
+msgid "Sam C. Misemer"
+msgstr "Sam C. Misemer"
+
+#: maps.cpp:1 maps.cpp:11
+#, kde-format
+msgctxt "Game board name"
+msgid "Empty - Small"
+msgstr "Vacío (pequeño)"
+
+#: maps.cpp:2 maps.cpp:12
+#, kde-format
+msgctxt "Game board name"
+msgid "Empty - Medium"
+msgstr "Vacío (mediano)"
+
+#: maps.cpp:3 maps.cpp:13
+#, kde-format
+msgctxt "Game board name"
+msgid "Empty - Large"
+msgstr "Vacío (grande)"
+
+#: maps.cpp:4 maps.cpp:14
+#, kde-format
+msgctxt "Game board name"
+msgid "Columns"
+msgstr "Columnas"
+
+#: maps.cpp:5 maps.cpp:15
+#, kde-format
+msgctxt "Game board name"
+msgid "Corridor"
+msgstr "Corredor"
+
+#: maps.cpp:6 maps.cpp:16
+#, kde-format
+msgctxt "Game board name"
+msgid "Island"
+msgstr "Isla"
+
+#: maps.cpp:7 maps.cpp:17
+#, kde-format
+msgctxt "Game board name"
+msgid "Rocks"
+msgstr "Rocas"
+
+#: maps.cpp:8 maps.cpp:18
+#, kde-format
+msgctxt "Game board name"
+msgid "Spiral"
+msgstr "Espiral"
+
+#: maps.cpp:9 maps.cpp:19
+#, kde-format
+msgctxt "Game board name"
+msgid "Trees"
+msgstr "Árboles"
+
+#: maps.cpp:10 maps.cpp:20
+#, kde-format
+msgctxt "Game board name"
+msgid "Walls"
+msgstr "Muros"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
+#: settings.ui:28
+#, kde-format
+msgid "Computer Player 1"
+msgstr "Jugador 1 de la máquina"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ComputerPlayer1)
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ComputerPlayer2)
+#: settings.ui:46 settings.ui:149
+#, kde-format
+msgid "Playing now"
+msgstr "Jugando"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#. i18n: ectx: property (text), widget (QLabel, label_9)
+#: settings.ui:88 settings.ui:188
+#, kde-format
+msgid "Beginner"
+msgstr "Principiante"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#. i18n: ectx: property (text), widget (QLabel, label_10)
+#: settings.ui:98 settings.ui:198
+#, kde-format
+msgid "Average"
+msgstr "Medio"
+
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+#. i18n: ectx: property (text), widget (QLabel, label_11)
+#: settings.ui:114 settings.ui:214
+#, kde-format
+msgid "Expert"
+msgstr "Experto"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#: settings.ui:131
+#, kde-format
+msgid "Computer Player 2"
+msgstr "Jugador 2 de la máquina"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_PauseForComputer)
+#: settings.ui:231
+#, kde-format
+msgid "Pause before each computer move"
+msgstr "Pausa antes de los movimientos de la máquina"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_5)
+#: settings.ui:242
+#, kde-format
+msgid "Board"
+msgstr "Tablero"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_6)
+#: settings.ui:255
+#, kde-format
+msgid "Theme"
+msgstr "Tema"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_4)
+#: settings.ui:268
+#, kde-format
+msgid "Players' Colors"
+msgstr "Colores de los jugadores"
+
+#. i18n: ectx: property (text), widget (QLabel, label_6)
+#: settings.ui:276
+#, kde-format
+msgid "Player 1:"
+msgstr "Jugador 1:"
+
+#. i18n: ectx: property (text), widget (QLabel, label_7)
+#: settings.ui:290
+#, kde-format
+msgid "Player 2:"
+msgstr "Jugador 2:"
+
+#. i18n: ectx: property (text), widget (QLabel, label_8)
+#: settings.ui:304
+#, kde-format
+msgid "Obstacles:"
+msgstr "Obstáculos:"
