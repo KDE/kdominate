@@ -41,6 +41,6 @@ SPDX-FileCopyrightText = "Matthias Kiefer <matthias.kiefer@gmx.de>, Albert Vaca 
 SPDX-License-Identifier = "GPL-2.0-or-later"
 
 [[annotations]]
-path = ["src/org.kde.kdominate.appdata.xml", "src/org.kde.kdominate.desktop"]
+path = ["src/org.kde.kdominate.metainfo.xml", "src/org.kde.kdominate.desktop"]
 SPDX-FileCopyrightText = "Albert Vaca Cintora <albertvaka@kde.org>"
 SPDX-License-Identifier = "CC0-1.0"

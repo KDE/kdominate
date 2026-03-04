@@ -22,7 +22,7 @@ slots:
 parts:
   kdominate:
     parse-info:
-      - usr/share/metainfo/org.kde.kdominate.appdata.xml
+      - usr/share/metainfo/org.kde.kdominate.metainfo.xml
     plugin: cmake
     source: .
     source-type: local

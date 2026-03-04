@@ -76,7 +76,7 @@ target_link_libraries(kdominate
 install(TARGETS kdominate ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(PROGRAMS org.kde.kdominate.desktop  DESTINATION  ${KDE_INSTALL_APPDIR})
-install(FILES org.kde.kdominate.appdata.xml DESTINATION  ${KDE_INSTALL_METAINFODIR})
+install(FILES org.kde.kdominate.metainfo.xml DESTINATION  ${KDE_INSTALL_METAINFODIR})
 install(FILES kdominate.kcfg  DESTINATION  ${KDE_INSTALL_KCFGDIR})
 
 ecm_qt_install_logging_categories(
