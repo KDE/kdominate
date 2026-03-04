@@ -14,8 +14,6 @@ apps:
     common-id: org.kde.kdominate.desktop
     desktop: usr/share/applications/org.kde.kdominate.desktop
     command: usr/bin/kdominate
-    plugs:
-      - audio-playback
 slots:
   session-dbus-interface:
     interface: dbus
@@ -45,9 +43,6 @@ parts:
       - -DQT_MAJOR_VERSION=6
       - -DBUILD_WITH_QT6=ON
       - -DBUILD_TESTING=OFF
-    override-pull: |
-      craftctl default
-      patch -p1 < "$CRAFT_PROJECT_DIR/snap/patches/appdata_license.patch"
     prime:
       - -usr/lib/*/cmake/*
       - -usr/include/*
