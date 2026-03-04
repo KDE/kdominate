@@ -1,135 +1,137 @@
-# German translations for kdominate package
-# German translation for kdominate.
-# Copyright (C) 2026 This file is copyright:
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the kdominate package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: kdominate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-03-04 00:41+0000\n"
-"PO-Revision-Date: 2026-03-02 10:26+0100\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: German <kde-i18n-de@kde.org>\n"
-"Language: de\n"
+"PO-Revision-Date: 2026-03-03 04:18+0100\n"
+"Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
+"Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
+"Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.8\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Deutsches KDE-Übersetzungsteam"
+msgstr "Temuri Doghonadze"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "kde-i18n-de@kde.org"
+msgstr "temuri.doghonadze@gmail.com"
 
 #: game.cpp:90
 #, kde-format
 msgid "Sorry, doing a move..."
-msgstr ""
+msgstr "უკაცრავად, სვლა ჯერ არ დასრულებულა..."
 
 #: game.cpp:122
 #, kde-format
 msgid "Draw!"
-msgstr ""
+msgstr "ფრე!"
 
 #: game.cpp:124
 #, kde-format
 msgid "Player %1 wins!"
-msgstr ""
+msgstr "მოთამაშემ %1 გაიმარჯვა!"
 
 #: game.cpp:130
 #, kde-format
 msgid "Game over"
-msgstr ""
+msgstr "თამაში დასრულდა"
 
 #: game.cpp:133
 #, kde-format
 msgid "Game Over"
-msgstr ""
+msgstr "თამაში დასრულდა"
 
 #: game.cpp:143
 #, kde-format
 msgid "General"
-msgstr ""
+msgstr "ზოგადი"
 
 #: game.cpp:209 game.cpp:225
 #, kde-format
 msgid "Select destination"
-msgstr ""
+msgstr "აირჩიეთ სამიზნე"
 
 #: game.cpp:246
 #, kde-format
 msgid "Invalid move - too far"
-msgstr ""
+msgstr "არასწორი სვლა - ძალიან შორსაა"
 
 #: game.cpp:274
 #, kde-format
 msgid "Start game"
-msgstr ""
+msgstr "თამაშის დაწყება"
 
 #: game.cpp:276 game.cpp:329
 #, kde-format
 msgid "Continue game"
-msgstr ""
+msgstr "თამაშის გაგრძელება"
 
 #: game.cpp:279 game.cpp:331
 #, kde-format
 msgid "Start computer move"
-msgstr ""
+msgstr "კომპიუტერის სვლის დაწყება"
 
 #: game.cpp:296
 #, kde-format
 msgid "Your turn"
-msgstr ""
+msgstr "თქვენი სვლაა"
 
 #: game.cpp:298
 #, kde-format
 msgid "Player %1"
-msgstr ""
+msgstr "მოთამაშე %1"
 
 #: game.cpp:312
 #, kde-format
 msgid "Computer player %1 is moving"
-msgstr ""
+msgstr "კომპიუტერის მოთამაშე %1 სვლას აკეთებს"
 
 #: game.cpp:342
 #, kde-format
 msgid "The computer could not find a valid move."
-msgstr ""
+msgstr "კომპიუტერმა სწორი სვლა ვერ იპოვა."
 
 #: game.cpp:363
 #, kde-format
 msgid "Hint: move from (%1,%2) to (%3,%4)"
-msgstr ""
+msgstr "მინიშნება: გადადით (%1,%2)-დან (%3,%4)-ზე"
 
 #: game.cpp:446
 #, kde-format
 msgid "Finishing move..."
-msgstr ""
+msgstr "სვლის დასრულება..."
 
 #: game.cpp:467
 #, kde-format
 msgid "Interrupt game"
-msgstr ""
+msgstr "თამაშის შეწყვეტა"
 
 #: game.cpp:471
 #, kde-format
 msgid "Stop computing"
-msgstr ""
+msgstr "გამოთვლის შეწყვეტა"
 
 #: game.cpp:473
 #, kde-format
 msgid "Stop showing move"
-msgstr ""
+msgstr "სვლის ჩვენების შეწყვეტა"
 
 #: game.cpp:487
 #, kde-format
 msgid "New Game"
-msgstr ""
+msgstr "ახალი თამაში"
 
 #: game.cpp:512
 #, kde-format
@@ -138,296 +140,299 @@ msgid ""
 "\n"
 "Do you wish to abandon the current game?"
 msgstr ""
+"გამოითხოვეთ ახალი თამაში, მაგრამ თამაში უკვ მიმდინარეობს.\n"
+"\n"
+"გნებავთ მიმდინარე თამაშის მიტოვება?"
 
 #: game.cpp:515
 #, kde-format
 msgid "New Game?"
-msgstr ""
+msgstr "ახალი თამაში?"
 
 #: game.cpp:515
 #, kde-format
 msgid "Abandon Game"
-msgstr ""
+msgstr "თამაშის მიტოვება"
 
 #: game.cpp:515
 #, kde-format
 msgid "Continue Game"
-msgstr ""
+msgstr "თამაშის გაგრძელება"
 
 #: kdominate.cpp:83
 #, kde-format
 msgid "Settings"
-msgstr ""
+msgstr "მორგება"
 
 #: kdominate.cpp:183
 #, kde-format
 msgid "Current player:"
-msgstr ""
+msgstr "მიმდინარე მოთამაშე:"
 
 #. i18n: ectx: label, entry (Color0), group (Game)
 #: kdominate.kcfg:9
 #, kde-format
 msgid "Color of obstacle tiles."
-msgstr ""
+msgstr "დაბრკოლების ფილების ფერი."
 
 #. i18n: ectx: label, entry (Color1), group (Game)
 #: kdominate.kcfg:13
 #, kde-format
 msgid "Color of player 1."
-msgstr ""
+msgstr "პირველი მოთამაშის ფერი."
 
 #. i18n: ectx: label, entry (Color2), group (Game)
 #: kdominate.kcfg:17
 #, kde-format
 msgid "Color of player 2."
-msgstr ""
+msgstr "მეორე მოთამაშის ფერი."
 
 #. i18n: ectx: label, entry (ComputerPlayer1), group (Game)
 #: kdominate.kcfg:21
 #, kde-format
 msgid "Whether player 1 is played by the computer."
-msgstr ""
+msgstr "თამაშობს თუ არა პირველი მოთამაშით კომპიუტერი."
 
 #. i18n: ectx: label, entry (Skill1), group (Game)
 #: kdominate.kcfg:32
 #, kde-format
 msgid "Skill of computer player 1."
-msgstr ""
+msgstr "კომპიუტერის მოთამაშე 1-ის ინტელექტი."
 
 #. i18n: ectx: label, entry (ComputerPlayer2), group (Game)
 #: kdominate.kcfg:36
 #, kde-format
 msgid "Whether player 2 is played by the computer."
-msgstr ""
+msgstr "თამაშობს თუ არა მეორე მოთამაშით კომპიუტერი."
 
 #. i18n: ectx: label, entry (Skill2), group (Game)
 #: kdominate.kcfg:47
 #, kde-format
 msgid "Skill of computer player 2."
-msgstr ""
+msgstr "კომპიუტერის მოთამაშე 2-ის ინტელექტი."
 
 #. i18n: ectx: label, entry (PauseForComputer), group (Game)
 #: kdominate.kcfg:51
 #, kde-format
 msgid "Pause before each computer move."
-msgstr ""
+msgstr "პაუზა კომპიუტერის თითოეულ სვლამდე."
 
 #. i18n: ectx: label, entry (MapIndex), group (Game)
 #: kdominate.kcfg:55
 #, kde-format
 msgid "Predefined map selection"
-msgstr ""
+msgstr "წინასწარ განსაზღვრული რუკის არჩევანი"
 
 #. i18n: ectx: label, entry (ThemeIndex), group (Game)
 #: kdominate.kcfg:64
 #, kde-format
 msgid "Visual theme for the tiles."
-msgstr ""
+msgstr "ვიზუალური თემა ფილებისთვის."
 
 #. i18n: ectx: ToolBar (mainToolBar)
 #: kdominateui.rc:9
 #, kde-format
 msgid "Main Toolbar"
-msgstr ""
+msgstr "მთავარი ხელსაწყოთა ზოლი"
 
 #: main.cpp:43
 #, kde-format
 msgid "KDominate"
-msgstr ""
+msgstr "KDominate"
 
 #: main.cpp:45
 #, kde-format
 msgid "A tactical game for one or two players."
-msgstr ""
+msgstr "ტაქტიკური თამაში ერთი ან ორი მოთამაშისთვის."
 
 #: main.cpp:47
 #, kde-format
 msgid "(c) 2026, Albert Vaca Cintora"
-msgstr ""
+msgstr "(c) 2026, Albert Vaca Cintora"
 
 #: main.cpp:51
 #, kde-format
 msgid "Albert Vaca Cintora"
-msgstr ""
+msgstr "Albert Vaca Cintora"
 
 #: main.cpp:52
 #, kde-format
 msgid "Matthias Kiefer"
-msgstr ""
+msgstr "Matthias Kiefer"
 
 #: main.cpp:52 main.cpp:53
 #, kde-format
 msgid "Original KJumpingCube code"
-msgstr ""
+msgstr "ორიგინალი KJumpingCube-ის კოდი"
 
 #: main.cpp:53
 #, kde-format
 msgid "Ian Wadham"
-msgstr ""
+msgstr "Ian Wadham"
 
 #: main.cpp:54
 #, kde-format
 msgid "Eugene Trounev"
-msgstr ""
+msgstr "Eugene Trounev"
 
 #: main.cpp:54
 #, kde-format
 msgid "Graphics"
-msgstr ""
+msgstr "გრაფიკა"
 
 #: main.cpp:55
 #, kde-format
 msgid "Ken Foster"
-msgstr ""
+msgstr "Ken Foster"
 
 #: main.cpp:55 main.cpp:56
 #, kde-format
 msgid "Original game idea"
-msgstr ""
+msgstr "თამაშის საწყისი იდეა"
 
 #: main.cpp:56
 #, kde-format
 msgid "Sam C. Misemer"
-msgstr ""
+msgstr "Sam C. Misemer"
 
 #: maps.cpp:1 maps.cpp:11 maps.cpp:21
 #, kde-format
 msgctxt "Game board name"
 msgid "Empty - Small"
-msgstr ""
+msgstr "ცარიელი - პატარა"
 
 #: maps.cpp:2 maps.cpp:12 maps.cpp:22
 #, kde-format
 msgctxt "Game board name"
 msgid "Empty - Medium"
-msgstr ""
+msgstr "ცარიელი - საშუალო"
 
 #: maps.cpp:3 maps.cpp:13 maps.cpp:23
 #, kde-format
 msgctxt "Game board name"
 msgid "Empty - Large"
-msgstr ""
+msgstr "ცარიელი - დიდი"
 
 #: maps.cpp:4 maps.cpp:14 maps.cpp:24
 #, kde-format
 msgctxt "Game board name"
 msgid "Columns"
-msgstr ""
+msgstr "სვეტები"
 
 #: maps.cpp:5 maps.cpp:15 maps.cpp:25
 #, kde-format
 msgctxt "Game board name"
 msgid "Corridor"
-msgstr ""
+msgstr "კორიდორი"
 
 #: maps.cpp:6 maps.cpp:16 maps.cpp:26
 #, kde-format
 msgctxt "Game board name"
 msgid "Island"
-msgstr ""
+msgstr "ისლანდია"
 
 #: maps.cpp:7 maps.cpp:17 maps.cpp:27
 #, kde-format
 msgctxt "Game board name"
 msgid "Rocks"
-msgstr ""
+msgstr "ქვები"
 
 #: maps.cpp:8 maps.cpp:18 maps.cpp:28
 #, kde-format
 msgctxt "Game board name"
 msgid "Spiral"
-msgstr ""
+msgstr "სპირალური"
 
 #: maps.cpp:9 maps.cpp:19 maps.cpp:29
 #, kde-format
 msgctxt "Game board name"
 msgid "Trees"
-msgstr ""
+msgstr "ხეები"
 
 #: maps.cpp:10 maps.cpp:20 maps.cpp:30
 #, kde-format
 msgctxt "Game board name"
 msgid "Walls"
-msgstr ""
+msgstr "კედლები"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
 #: settings.ui:28
 #, kde-format
 msgid "Computer Player 1"
-msgstr ""
+msgstr "კომპიუტერის მოთამაშე 1"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ComputerPlayer1)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ComputerPlayer2)
 #: settings.ui:46 settings.ui:149
 #, kde-format
 msgid "Playing now"
-msgstr ""
+msgstr "თამაშობთ"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: ectx: property (text), widget (QLabel, label_9)
 #: settings.ui:88 settings.ui:188
 #, kde-format
 msgid "Beginner"
-msgstr ""
+msgstr "დამწყები"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #. i18n: ectx: property (text), widget (QLabel, label_10)
 #: settings.ui:98 settings.ui:198
 #, kde-format
 msgid "Average"
-msgstr ""
+msgstr "საშუალო"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #. i18n: ectx: property (text), widget (QLabel, label_11)
 #: settings.ui:114 settings.ui:214
 #, kde-format
 msgid "Expert"
-msgstr ""
+msgstr "ექსპერტი"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: settings.ui:131
 #, kde-format
 msgid "Computer Player 2"
-msgstr ""
+msgstr "კომპიუტერის მოთამაშე 2"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_PauseForComputer)
 #: settings.ui:231
 #, kde-format
 msgid "Pause before each computer move"
-msgstr ""
+msgstr "პაუზა კომპიუტერის სვლამდე"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_5)
 #: settings.ui:242
 #, kde-format
 msgid "Board"
-msgstr ""
+msgstr "დაფა"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_6)
 #: settings.ui:255
 #, kde-format
 msgid "Theme"
-msgstr ""
+msgstr "თემა"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_4)
 #: settings.ui:268
 #, kde-format
 msgid "Players' Colors"
-msgstr ""
+msgstr "მოთამაშეების ფერები"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: settings.ui:276
 #, kde-format
 msgid "Player 1:"
-msgstr ""
+msgstr "მოთამაშე 1:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_7)
 #: settings.ui:290
 #, kde-format
 msgid "Player 2:"
-msgstr ""
+msgstr "მოთამაშე 2:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_8)
 #: settings.ui:304
 #, kde-format
 msgid "Obstacles:"
-msgstr ""
+msgstr "დაბრკოლებები:"

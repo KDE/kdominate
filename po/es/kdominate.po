@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdominate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-03 00:42+0000\n"
+"POT-Creation-Date: 2026-03-04 00:41+0000\n"
 "PO-Revision-Date: 2026-03-02 17:15+0100\n"
 "Last-Translator: Sofía Priego <spriego@darksylvania.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -296,61 +296,61 @@ msgstr "Idea original del juego"
 msgid "Sam C. Misemer"
 msgstr "Sam C. Misemer"
 
-#: maps.cpp:1 maps.cpp:11
+#: maps.cpp:1 maps.cpp:11 maps.cpp:21
 #, kde-format
 msgctxt "Game board name"
 msgid "Empty - Small"
 msgstr "Vacío (pequeño)"
 
-#: maps.cpp:2 maps.cpp:12
+#: maps.cpp:2 maps.cpp:12 maps.cpp:22
 #, kde-format
 msgctxt "Game board name"
 msgid "Empty - Medium"
 msgstr "Vacío (mediano)"
 
-#: maps.cpp:3 maps.cpp:13
+#: maps.cpp:3 maps.cpp:13 maps.cpp:23
 #, kde-format
 msgctxt "Game board name"
 msgid "Empty - Large"
 msgstr "Vacío (grande)"
 
-#: maps.cpp:4 maps.cpp:14
+#: maps.cpp:4 maps.cpp:14 maps.cpp:24
 #, kde-format
 msgctxt "Game board name"
 msgid "Columns"
 msgstr "Columnas"
 
-#: maps.cpp:5 maps.cpp:15
+#: maps.cpp:5 maps.cpp:15 maps.cpp:25
 #, kde-format
 msgctxt "Game board name"
 msgid "Corridor"
 msgstr "Corredor"
 
-#: maps.cpp:6 maps.cpp:16
+#: maps.cpp:6 maps.cpp:16 maps.cpp:26
 #, kde-format
 msgctxt "Game board name"
 msgid "Island"
 msgstr "Isla"
 
-#: maps.cpp:7 maps.cpp:17
+#: maps.cpp:7 maps.cpp:17 maps.cpp:27
 #, kde-format
 msgctxt "Game board name"
 msgid "Rocks"
 msgstr "Rocas"
 
-#: maps.cpp:8 maps.cpp:18
+#: maps.cpp:8 maps.cpp:18 maps.cpp:28
 #, kde-format
 msgctxt "Game board name"
 msgid "Spiral"
 msgstr "Espiral"
 
-#: maps.cpp:9 maps.cpp:19
+#: maps.cpp:9 maps.cpp:19 maps.cpp:29
 #, kde-format
 msgctxt "Game board name"
 msgid "Trees"
 msgstr "Árboles"
 
-#: maps.cpp:10 maps.cpp:20
+#: maps.cpp:10 maps.cpp:20 maps.cpp:30
 #, kde-format
 msgctxt "Game board name"
 msgid "Walls"

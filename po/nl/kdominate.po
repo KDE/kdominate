@@ -6,15 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdominate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-03 00:42+0000\n"
-"PO-Revision-Date: 2026-03-02 23:40+0100\n"
+"POT-Creation-Date: 2026-03-04 00:41+0000\n"
+"PO-Revision-Date: 2026-03-03 11:18+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 25.12.2\n"
 
 #, kde-format
@@ -60,12 +60,12 @@ msgstr "Algemeen"
 #: game.cpp:209 game.cpp:225
 #, kde-format
 msgid "Select destination"
-msgstr ""
+msgstr "Bestemming selecteren"
 
 #: game.cpp:246
 #, kde-format
 msgid "Invalid move - too far"
-msgstr ""
+msgstr "Foute zet - te ver"
 
 #: game.cpp:274
 #, kde-format
@@ -105,7 +105,7 @@ msgstr "De computer kon geen geldige zet vinden."
 #: game.cpp:363
 #, kde-format
 msgid "Hint: move from (%1,%2) to (%3,%4)"
-msgstr ""
+msgstr "Tip: zet van (%1,%2) naar (%3,%4)"
 
 #: game.cpp:446
 #, kde-format
@@ -172,7 +172,7 @@ msgstr "Huidige speler:"
 #: kdominate.kcfg:9
 #, kde-format
 msgid "Color of obstacle tiles."
-msgstr ""
+msgstr "Kleur van obstakelstenen."
 
 #. i18n: ectx: label, entry (Color1), group (Game)
 #: kdominate.kcfg:13
@@ -220,13 +220,13 @@ msgstr "Pauzeer voor elke zet van de computer."
 #: kdominate.kcfg:55
 #, kde-format
 msgid "Predefined map selection"
-msgstr ""
+msgstr "Voorgedefinieerde overeenkomstselectie"
 
 #. i18n: ectx: label, entry (ThemeIndex), group (Game)
 #: kdominate.kcfg:64
 #, kde-format
 msgid "Visual theme for the tiles."
-msgstr ""
+msgstr "Visueel thema voor de stenen."
 
 #. i18n: ectx: ToolBar (mainToolBar)
 #: kdominateui.rc:9
@@ -242,12 +242,12 @@ msgstr "KDominate"
 #: main.cpp:45
 #, kde-format
 msgid "A tactical game for one or two players."
-msgstr ""
+msgstr "Een tactisch spel voor één of twee spelers."
 
 #: main.cpp:47
 #, kde-format
 msgid "(c) 2026, Albert Vaca Cintora"
-msgstr ""
+msgstr "(c) 2026, Albert Vaca Cintora"
 
 #: main.cpp:51
 #, kde-format
@@ -262,7 +262,7 @@ msgstr "Matthias Kiefer"
 #: main.cpp:52 main.cpp:53
 #, kde-format
 msgid "Original KJumpingCube code"
-msgstr ""
+msgstr "Originele KJumpingCube code"
 
 #: main.cpp:53
 #, kde-format
@@ -282,73 +282,73 @@ msgstr "Iets grafisch"
 #: main.cpp:55
 #, kde-format
 msgid "Ken Foster"
-msgstr ""
+msgstr "Ken Foster"
 
 #: main.cpp:55 main.cpp:56
 #, kde-format
 msgid "Original game idea"
-msgstr ""
+msgstr "Oorspronkelijk spelidee"
 
 #: main.cpp:56
 #, kde-format
 msgid "Sam C. Misemer"
-msgstr ""
+msgstr "Sam C. Misemer"
 
-#: maps.cpp:1 maps.cpp:11
+#: maps.cpp:1 maps.cpp:11 maps.cpp:21
 #, kde-format
 msgctxt "Game board name"
 msgid "Empty - Small"
-msgstr ""
+msgstr "Leeg - klein"
 
-#: maps.cpp:2 maps.cpp:12
+#: maps.cpp:2 maps.cpp:12 maps.cpp:22
 #, kde-format
 msgctxt "Game board name"
 msgid "Empty - Medium"
 msgstr "Leeg - medium"
 
-#: maps.cpp:3 maps.cpp:13
+#: maps.cpp:3 maps.cpp:13 maps.cpp:23
 #, kde-format
 msgctxt "Game board name"
 msgid "Empty - Large"
-msgstr ""
+msgstr "Leeg - groot"
 
-#: maps.cpp:4 maps.cpp:14
+#: maps.cpp:4 maps.cpp:14 maps.cpp:24
 #, kde-format
 msgctxt "Game board name"
 msgid "Columns"
 msgstr "Kolommen"
 
-#: maps.cpp:5 maps.cpp:15
+#: maps.cpp:5 maps.cpp:15 maps.cpp:25
 #, kde-format
 msgctxt "Game board name"
 msgid "Corridor"
 msgstr "Galerij"
 
-#: maps.cpp:6 maps.cpp:16
+#: maps.cpp:6 maps.cpp:16 maps.cpp:26
 #, kde-format
 msgctxt "Game board name"
 msgid "Island"
 msgstr "Eiland"
 
-#: maps.cpp:7 maps.cpp:17
+#: maps.cpp:7 maps.cpp:17 maps.cpp:27
 #, kde-format
 msgctxt "Game board name"
 msgid "Rocks"
-msgstr ""
+msgstr "Rotsen"
 
-#: maps.cpp:8 maps.cpp:18
+#: maps.cpp:8 maps.cpp:18 maps.cpp:28
 #, kde-format
 msgctxt "Game board name"
 msgid "Spiral"
 msgstr "Spiraal"
 
-#: maps.cpp:9 maps.cpp:19
+#: maps.cpp:9 maps.cpp:19 maps.cpp:29
 #, kde-format
 msgctxt "Game board name"
 msgid "Trees"
-msgstr ""
+msgstr "Bomen"
 
-#: maps.cpp:10 maps.cpp:20
+#: maps.cpp:10 maps.cpp:20 maps.cpp:30
 #, kde-format
 msgctxt "Game board name"
 msgid "Walls"
@@ -434,4 +434,4 @@ msgstr "Speler 2:"
 #: settings.ui:304
 #, kde-format
 msgid "Obstacles:"
-msgstr ""
+msgstr "Obstakels:"
