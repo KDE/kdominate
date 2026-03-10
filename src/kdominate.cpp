@@ -157,9 +157,9 @@ void KDominate::changeButton(bool enabled, bool stop, const QString &caption)
         "QPushButton#ActionButton:disabled { color: white;"
         "border-color: beige; background-color: steelblue; }");
     if (enabled && stop) { // Red look (stop something).
-        actionButton->setStyleSheet(buttonLook.arg(QStringLiteral("rgb(210, 0, 0)")).arg(QStringLiteral("rgb(180, 0, 0)")));
+        actionButton->setStyleSheet(buttonLook.arg(QStringLiteral("rgb(210, 0, 0)"), QStringLiteral("rgb(180, 0, 0)")));
     } else if (enabled) { // Blue look (continue something).
-        actionButton->setStyleSheet(buttonLook.arg(QStringLiteral("rgb(0, 170, 0)")).arg(QStringLiteral("rgb(0, 150, 0)")));
+        actionButton->setStyleSheet(buttonLook.arg(QStringLiteral("rgb(0, 170, 0)"), QStringLiteral("rgb(0, 150, 0)")));
     }
     actionButton->setText(caption);
     actionButton->setEnabled(enabled);

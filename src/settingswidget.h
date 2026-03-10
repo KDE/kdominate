@@ -18,7 +18,7 @@ public:
         setupUi(this);
         // Populate map combo from the :/maps/ resource directory
         QStringList files = Game::availableMapFiles();
-        for (const QString &file : files) {
+        for (const QString &file : std::as_const(files)) {
             QString path = QStringLiteral(":/maps/") + file;
             QString name = Game::mapDisplayName(path);
             kcfg_MapIndex->addItem(name);

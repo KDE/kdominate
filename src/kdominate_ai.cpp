@@ -27,7 +27,7 @@ private:
     KDominateAi *m_ai;
 };
 
-const QList<QPoint> kCloneDirections = {
+const QPoint kCloneDirections[] = {
     QPoint(-1, 0),
     QPoint(0, -1),
     QPoint(1, 0),
@@ -37,7 +37,7 @@ const QList<QPoint> kCloneDirections = {
     QPoint(1, -1),
     QPoint(1, 1),
 };
-const QList<QPoint> kJumpDirections = {
+const QPoint kJumpDirections[] = {
     QPoint(0, -2),
     QPoint(2, 0),
     QPoint(-2, 0),
@@ -212,7 +212,7 @@ KDominateAi::AiMove KDominateAi::alphaBeta(KDominateBoard &board, int maximizing
 
     auto moves = computeMoves(board);
 
-    for (const auto &[origin, dest] : moves) {
+    for (const auto &[origin, dest] : std::as_const(moves)) {
         QString indent;
         for (int i = 0; i < (4 - depth); i++) {
             indent += QStringLiteral("  ");
