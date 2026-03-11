@@ -206,7 +206,7 @@ KDominateAi::AiMove KDominateAi::alphaBeta(KDominateBoard &board, int maximizing
     }
 
     if (depth <= 0) {
-        bestAiMove.score = 10*staticEvaluationFunction(board, maximizingPlayer);
+        bestAiMove.score = 10 * staticEvaluationFunction(board, maximizingPlayer);
         return bestAiMove;
     }
 

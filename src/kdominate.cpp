@@ -106,7 +106,7 @@ KDominate::KDominate()
     }
 
     {
-        QAction* undoAction = KGameStandardAction::undo(
+        QAction *undoAction = KGameStandardAction::undo(
             this,
             [this]() {
                 m_game->gameActions(Action::UNDO);
@@ -114,7 +114,7 @@ KDominate::KDominate()
             this);
         actionCollection()->addAction(undoAction->objectName(), undoAction);
 
-        QAction* redoAction = KGameStandardAction::redo(
+        QAction *redoAction = KGameStandardAction::redo(
             this,
             [this]() {
                 m_game->gameActions(Action::REDO);
@@ -134,7 +134,6 @@ KDominate::KDominate()
     }
 
     setupGUI();
-
 
     m_game->gameActions(Action::NEW);
 }
