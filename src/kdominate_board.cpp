@@ -100,7 +100,7 @@ bool KDominateBoard::move(QPoint origin, QPoint dest)
         expandConnected(dest);
         if (!areMovementsAvailable(otherPlayer())) {
             while (auto pos = fillNextEmpty()) {
-                if (!skipLastConvertedComputation) {
+                if (!skipStoreBoardUpdates) {
                     m_lastAutofilled.append(*pos);
                 }
             }
@@ -149,7 +149,7 @@ void KDominateBoard::expandConnected(QPoint tile)
         if (at(nb.x(), nb.y()) == other) {
             umovs.append(PosAndPlayer(nb, m_board[nb.x()][nb.y()]));
             m_board[nb.x()][nb.y()] = player;
-            if (!skipLastConvertedComputation) {
+            if (!skipStoreBoardUpdates) {
                 m_lastConverted.append(nb);
             }
         }

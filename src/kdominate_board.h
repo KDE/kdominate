@@ -104,9 +104,9 @@ public:
     std::optional<QPoint> fillNextEmpty();
     bool determineWinner();
 
-    void setSkipLastConvertedComputation(bool b)
+    void setSkipStoreBoardUpdates(bool b)
     {
-        skipLastConvertedComputation = b;
+        skipStoreBoardUpdates = b;
     }
 
 private:
@@ -114,7 +114,7 @@ private:
 
     typedef QList<QList<int>> BoardMatrix;
     BoardMatrix m_board;
-    bool skipLastConvertedComputation = false;
+    bool skipStoreBoardUpdates = false;
     QList<QPoint> m_lastConverted;
     QList<QPoint> m_lastAutofilled;
 
