@@ -22,6 +22,18 @@
      id="defs1889">
     <linearGradient
        inkscape:collect="always"
+       id="linearGradient6">
+      <stop
+         style="stop-color:#6b736d;stop-opacity:1;"
+         offset="0"
+         id="stop5" />
+      <stop
+         style="stop-color:#7a8686;stop-opacity:1;"
+         offset="1"
+         id="stop6" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
        id="linearGradient3199">
       <stop
          style="stop-color:#ffffff;stop-opacity:1;"
@@ -527,6 +539,16 @@
        fx="24.247093"
        fy="33.768173"
        r="9.6713095" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6"
+       id="linearGradient1"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(53.910469,-438.38525)"
+       x1="183.03947"
+       y1="737.60272"
+       x2="273.70389"
+       y2="539.16742" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -536,8 +558,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.97097884"
-     inkscape:cx="533.99722"
-     inkscape:cy="524.72822"
+     inkscape:cx="281.67452"
+     inkscape:cy="349.64717"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      inkscape:window-width="2560"
@@ -693,5 +715,21 @@
        style="display:inline;opacity:1;fill:url(#linearGradient2391);fill-opacity:1;stroke:none;stroke-width:0.354331;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        inkscape:label="background"
        transform="translate(-20.52779,773.21342)" />
+    <rect
+       y="63.147919"
+       x="113.78318"
+       height="258.30804"
+       width="490.95599"
+       id="background-dark"
+       style="display:inline;fill:url(#linearGradient1);fill-opacity:1;stroke:none;stroke-width:0.354331;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       inkscape:label="background-dark" />
+    <rect
+       y="63.147919"
+       x="113.78318"
+       height="258.30804"
+       width="490.95599"
+       id="rect6"
+       style="display:inline;fill:url(#linearGradient1);fill-opacity:1;stroke:none;stroke-width:0.354331;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       inkscape:label="background-dark" />
   </g>
 </svg>

@@ -18,6 +18,7 @@
 #include <QResizeEvent>
 #include <QStandardPaths>
 #include <QTimer>
+#include <QStyleHints>
 
 const int kHighlightTimeMillis = 1500;
 const int kBlinkCountComputerMove = 4; // also used for hints
@@ -67,6 +68,10 @@ KBoardWidget::KBoardWidget(QWidget *parent)
     connect(m_animationTimer, &QTimer::timeout, this, &KBoardWidget::nextMoveAnimationStep);
     setNormalCursor();
     setPopup();
+
+    connect(QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged, this, [this]() {
+        reCalculateGraphics(width(), height());
+    });
 }
 
 bool KBoardWidget::loadSettings()
@@ -187,10 +192,17 @@ const QPixmap &KBoardWidget::playerPixmap(int p)
 
 void KBoardWidget::makeSVGBackground(const int w, const int h)
 {
+    Qt::ColorScheme scheme = QGuiApplication::styleHints()->colorScheme();
+    bool isDark = (scheme == Qt::ColorScheme::Dark);
+
     QImage img(w, h, QImage::Format_ARGB32_Premultiplied);
     QPainter p(&img);
     img.fill(0);
-    svg.render(&p, QStringLiteral("background"));
+    if (isDark) {
+        svg.render(&p, QStringLiteral("background-dark"));
+    } else {
+        svg.render(&p, QStringLiteral("background"));
+    }
     p.end();
     background = QPixmap::fromImage(img);
 }
