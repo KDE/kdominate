@@ -76,20 +76,19 @@ public:
         highlightValidMoves(player, pointsToIndices(cloneTargets), pointsToIndices(jumpTargets));
     }
 
+Q_SIGNALS:
+    void animationDone(int index);
+    void mouseClick(int x, int y);
+    void tileHovered(int x, int y);
+
 private Q_SLOTS:
     void nextAnimationStep();
     void highlightDone();
     void nextMoveAnimationStep();
     bool checkClick(int x, int y);
 
-Q_SIGNALS:
-    void animationDone(int index);
-    void mouseClick(int x, int y);
-    void tileHovered(int x, int y);
-
 protected:
     QSize sizeHint() const override;
-    void initTiles();
     void paintEvent(QPaintEvent *event) override;
     void resizeEvent(QResizeEvent *event) override;
     void leaveEvent(QEvent *event) override;
@@ -111,6 +110,7 @@ private:
         return convertedIndices;
     }
     void init();
+    void initTiles();
     void setPopup();
     void makeSVGBackground(const int w, const int h);
     void makeSVGTiles(const int width);

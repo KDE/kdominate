@@ -24,15 +24,14 @@ public:
     explicit KDominateAi(QObject *parent = nullptr);
     ~KDominateAi() override;
 
+    int staticEvaluationFunction(KDominateBoard &board, int initialPlayer) const;
+
     void getMove(KDominateBoard &board, int player);
     void stop();
     void setDepth(int depth);
 
 Q_SIGNALS:
     void done(QPoint origin, QPoint dest);
-
-public:
-    int staticEvaluationFunction(KDominateBoard &board, int initialPlayer) const;
 
 private:
     struct AiMove {
