@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdominate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-05 00:40+0000\n"
+"POT-Creation-Date: 2026-03-12 00:40+0000\n"
 "PO-Revision-Date: 2026-03-03 11:18+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -163,7 +163,7 @@ msgstr "Spel voortzetten"
 msgid "Settings"
 msgstr "Instellingen"
 
-#: kdominate.cpp:183
+#: kdominate.cpp:182
 #, kde-format
 msgid "Current player:"
 msgstr "Huidige speler:"
