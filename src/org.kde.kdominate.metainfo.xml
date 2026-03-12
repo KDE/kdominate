@@ -7,6 +7,7 @@
     <name translate="no">KDE</name>
   </developer>
   <name>KDominate</name>
+  <name xml:lang="ar">السيطرة</name>
   <name xml:lang="ca">KDominate</name>
   <name xml:lang="ca-valencia">KDominate</name>
   <name xml:lang="es">KDominate</name>
@@ -18,6 +19,7 @@
   <name xml:lang="tr">K Hâkimiyet</name>
   <name xml:lang="uk">KDominate</name>
   <summary>Board Domination Game</summary>
+  <summary xml:lang="ar">لعبة السيطرة على اللوحة</summary>
   <summary xml:lang="ca">Joc de taula de dominació</summary>
   <summary xml:lang="ca-valencia">Joc de taula de dominació</summary>
   <summary xml:lang="es">Juego de dominio de tablero</summary>
@@ -32,6 +34,7 @@
     <p>
    KDominate is a tactical game for one or two players, where players move and convert tiles with the goal of controlling the majority of the board.
   </p>
+    <p xml:lang="ar">«السيطرة» لعبة تكتيكية للاعب واحد أو لاعبين، يحرك فيها اللاعبون المربعات ويحولونها بهدف الاستحواذ على أغلبية اللوحة.</p>
     <p xml:lang="ca">El KDominate és un joc de tàctica per a un o dos jugadors, on els jugadors es mouen i converteixen fitxes amb l'objectiu de controlar la majoria del tauler.</p>
     <p xml:lang="ca-valencia">KDominate és un joc de tàctica per a un o dos jugadors, on els jugadors es mouen i convertixen fitxes amb l'objectiu de controlar la majoria del tauler.</p>
     <p xml:lang="es">KDominate es un juego de táctica para uno o dos jugadores, donde los jugadores mueven y convierten fichas con el objeto de controlar la mayoría del tablero.</p>
@@ -46,6 +49,7 @@
   <screenshots>
     <screenshot type="default">
       <caption>Playing KDominate</caption>
+      <caption xml:lang="ar">لعب «السيطرة»</caption>
       <caption xml:lang="ca">Jugar al KDominate</caption>
       <caption xml:lang="ca-valencia">Jugar a KDominate</caption>
       <caption xml:lang="es">Jugando con KDominate</caption>
