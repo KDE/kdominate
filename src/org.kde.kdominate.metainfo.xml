@@ -10,8 +10,10 @@
   <name xml:lang="ar">السيطرة</name>
   <name xml:lang="ca">KDominate</name>
   <name xml:lang="ca-valencia">KDominate</name>
+  <name xml:lang="cs">KDominate</name>
   <name xml:lang="es">KDominate</name>
   <name xml:lang="he">KDominate</name>
+  <name xml:lang="it">KDominate</name>
   <name xml:lang="ka">KDominate</name>
   <name xml:lang="nl">KDominate</name>
   <name xml:lang="pt-BR">KDominate</name>
@@ -24,6 +26,7 @@
   <summary xml:lang="ca-valencia">Joc de taula de dominació</summary>
   <summary xml:lang="es">Juego de dominio de tablero</summary>
   <summary xml:lang="he">משחק שליטה על לוח</summary>
+  <summary xml:lang="it">Gioco di conquista del tabellone</summary>
   <summary xml:lang="ka">თამაში დაფაზე დომინაციის შესახებ</summary>
   <summary xml:lang="nl">Bordspel Dominatie</summary>
   <summary xml:lang="pt-BR">Jogo de Dominação de Tabuleiro</summary>
@@ -39,6 +42,7 @@
     <p xml:lang="ca-valencia">KDominate és un joc de tàctica per a un o dos jugadors, on els jugadors es mouen i convertixen fitxes amb l'objectiu de controlar la majoria del tauler.</p>
     <p xml:lang="es">KDominate es un juego de táctica para uno o dos jugadores, donde los jugadores mueven y convierten fichas con el objeto de controlar la mayoría del tablero.</p>
     <p xml:lang="he">KDominate הוא משחק טקטי לשחקן או שניים, בו שחקנים זזים וממירים אריחים במטרה לשלוח ברוב הלוח.</p>
+    <p xml:lang="it">KDominate è un gioco tattico per uno o due giocatori, in cui i giocatori muovono e convertono le tessere con l'obiettivo di controllare la maggior parte del tabellone.</p>
     <p xml:lang="ka">KDominate ტაქტიკური თამაშია ერთი, ან ორი მოთამაშისთვის, სადაც ისინი გადააადგილებენ და გადაჰყავთ ფილები იმ მიზნით, რომ დაფის უდიდესი ნაწილი აკონტროლონ.</p>
     <p xml:lang="nl">KDominate is een tactisch spel voor één of twee spelers, waar spelers stukken verplaatsen en converteren met het doel de meerderheid van het bord te controleren.</p>
     <p xml:lang="pt-BR">KDominate é um jogo tático para um ou dois jogadores, onde os jogadores movem e convertem peças com o objetivo de controlar a maior parte do tabuleiro.</p>
@@ -54,6 +58,7 @@
       <caption xml:lang="ca-valencia">Jugar a KDominate</caption>
       <caption xml:lang="es">Jugando con KDominate</caption>
       <caption xml:lang="he">משחק ב־KDominate</caption>
+      <caption xml:lang="it">Giocare a KDominate</caption>
       <caption xml:lang="ka">KDominate-ის თამაში</caption>
       <caption xml:lang="nl">KDominate spelen</caption>
       <caption xml:lang="pt-BR">Jogando KDominate</caption>
