@@ -12,6 +12,8 @@ There's no "pass" move, if one player can no longer make any move, all the remai
 
 You can play against a human or against a computer AI, with adjustable difficulty levels.
 
+<img src="https://invent.kde.org/websites/product-screenshots/-/raw/b053896c0bf5d4a102a3af6cf73cdd9de758b0e4/kdominate/kdominate.png?inline=false"/>
+
 ## Code layout
 
 The code is divided in the following classes:
