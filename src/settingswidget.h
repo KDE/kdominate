@@ -11,6 +11,7 @@
 
 class SettingsWidget : public QWidget, public Ui::Settings
 {
+    Q_OBJECT
 public:
     explicit SettingsWidget(QWidget *parent)
         : QWidget(parent)
