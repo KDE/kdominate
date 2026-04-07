@@ -84,7 +84,7 @@ Game::~Game()
     delete m_board;
 }
 
-void Game::gameActions(const int action)
+void Game::gameActions(int action)
 {
     if (isBusy() && (action != BUTTON) && (action != Action::NEW)) {
         m_view->showPopup(i18n("Sorry, doing a move..."));

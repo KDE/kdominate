@@ -184,7 +184,7 @@ const QPixmap &KBoardWidget::playerPixmap(int p)
     return ((p == 1) ? graphicElements[int(SVGElement::Player1)] : graphicElements[int(SVGElement::Player2)]);
 }
 
-void KBoardWidget::makeSVGBackground(const int w, const int h)
+void KBoardWidget::makeSVGBackground(int w, int h)
 {
     Qt::ColorScheme scheme = QGuiApplication::styleHints()->colorScheme();
     bool isDark = (scheme == Qt::ColorScheme::Dark);
@@ -201,7 +201,7 @@ void KBoardWidget::makeSVGBackground(const int w, const int h)
     background = QPixmap::fromImage(img);
 }
 
-void KBoardWidget::makeSVGTiles(const int width)
+void KBoardWidget::makeSVGTiles(int width)
 {
     QImage img(width, width, QImage::Format_ARGB32_Premultiplied);
     QPainter q;
@@ -290,7 +290,7 @@ void KBoardWidget::makeSVGTiles(const int width)
     }
 }
 
-void KBoardWidget::colorImage(QImage &img, const QColor &c, const int w)
+void KBoardWidget::colorImage(QImage &img, const QColor &c, int w)
 {
     QRgb rgba = c.rgba();
     for (int i = 0; i < w; i++) {

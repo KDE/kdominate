@@ -112,10 +112,10 @@ private:
     void init();
     void initTiles();
     void setPopup();
-    void makeSVGBackground(const int w, const int h);
-    void makeSVGTiles(const int width);
-    void reCalculateGraphics(const int w, const int h);
+    void makeSVGBackground(int w, int h);
+    void makeSVGTiles(int width);
     static void colorImage(QImage &img, const QColor &c, int w);
+    void reCalculateGraphics(int w, int h);
 
     void displayTile(int index, Owner owner);
     void selectTile(int index);
