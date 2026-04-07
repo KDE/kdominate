@@ -463,12 +463,11 @@ void KBoardWidget::nextMoveAnimationStep()
             double progress = double(autofillStep % kZoomSteps) / double(kZoomSteps);
             tiles.at(tile)->setOwner(m_animationNewOwner);
             tiles.at(tile)->setZoomInProgress(progress);
-            return;
         } else {
             tiles.at(tile)->removeEffects();
             m_autofilledTiles.pop_front();
-            return;
         }
+        return;
     }
 
     m_animationTimer->stop();
