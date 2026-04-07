@@ -133,7 +133,7 @@ void KDominateAi::computeMove()
     m_resultDest = move.dest;
 }
 
-int KDominateAi::staticEvaluationFunction(KDominateBoard &board, int maximizingPlayer) const
+int KDominateAi::staticEvaluationFunction(KDominateBoard &board, int maximizingPlayer)
 {
     KDominateBoard::TileCount tc = board.countTiles();
     if (maximizingPlayer == 1)
