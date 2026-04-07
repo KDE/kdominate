@@ -24,7 +24,7 @@ public:
     explicit KDominateAi(QObject *parent = nullptr);
     ~KDominateAi() override;
 
-    int staticEvaluationFunction(KDominateBoard &board, int initialPlayer) const;
+    static int staticEvaluationFunction(KDominateBoard &board, int maximizingPlayer) const;
 
     void getMove(KDominateBoard &board, int player);
     void stop();

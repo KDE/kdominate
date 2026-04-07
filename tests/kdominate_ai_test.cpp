@@ -16,13 +16,13 @@ class KDominateAiTest : public QObject
     Q_OBJECT
 
 private:
-    QStringList loadMapLines(const QString &filename);
+    static QStringList loadMapLines(const QString &filename);
 
     struct MoveResult {
         QPoint origin;
         QPoint dest;
     };
-    MoveResult runAiMove(KDominateBoard &board, int player, int depth = 4, int timeout = 10000);
+    static MoveResult runAiMove(KDominateBoard &board, int player, int depth = 4, int timeout = 10000);
 
 private Q_SLOTS:
     void testAi_data();
