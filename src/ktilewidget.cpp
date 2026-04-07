@@ -134,7 +134,7 @@ void KTileWidget::paintEvent(QPaintEvent * /* ev unused */)
             p.drawPixmap(ox, oy, pixmaps->at(int(SVGElement::Neutral)));
 
             // Scale the owner pixmap based on zoom progress
-            qreal scale = (m_effect == Effect::ZoomIn) ? m_animProgress : (1.0 - m_animProgress);
+            double scale = (m_effect == Effect::ZoomIn) ? m_animProgress : (1.0 - m_animProgress);
             if (scale > 0.0) {
                 p.save();
                 p.translate(w / 2.0, h / 2.0);
@@ -148,7 +148,7 @@ void KTileWidget::paintEvent(QPaintEvent * /* ev unused */)
             SVGElement oldEl = (el == SVGElement::Player1) ? SVGElement::Player2 : SVGElement::Player1;
 
             // Build diagonal clip polygon: the line x + y = d sweeps top-left to bottom-right
-            qreal d = m_animProgress * (w + h);
+            double d = m_animProgress * (w + h);
             QPolygonF clipPoly;
             if (d <= qMin(w, h)) {
                 clipPoly << QPointF(0, 0) << QPointF(d, 0) << QPointF(0, d);

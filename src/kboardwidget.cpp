@@ -213,7 +213,7 @@ void KBoardWidget::makeSVGTiles(const int width)
     QPainter q;
 
     QRectF rect(0, 0, width, width);
-    qreal pc = 20.0; // % radius on corners
+    double pc = 20.0; // % radius on corners
     graphicElements.clear();
 
     QString svgThemeTile = m_theme == Theme::Glass ? QStringLiteral("glass") : QStringLiteral("plastic");
@@ -402,7 +402,7 @@ void KBoardWidget::nextMoveAnimationStep()
 
     // Phase 1: zoom progress
     if (m_animationStep <= kZoomSteps) {
-        qreal progress = qreal(m_animationStep) / qreal(kZoomSteps);
+        double progress = double(m_animationStep) / double(kZoomSteps);
         if (m_zoomInTile >= 0) {
             tiles.at(m_zoomInTile)->setOwner(m_animationNewOwner);
             tiles.at(m_zoomInTile)->setZoomInProgress(progress);
@@ -437,7 +437,7 @@ void KBoardWidget::nextMoveAnimationStep()
         if (m_convertedTiles.isEmpty()) {
             m_animationStep += kConversionSteps;
         } else {
-            qreal progress = qreal(convStep) / qreal(kConversionSteps);
+            double progress = double(convStep) / double(kConversionSteps);
             for (int idx : std::as_const(m_convertedTiles)) {
                 tiles.at(idx)->setOwner(m_animationNewOwner);
                 tiles.at(idx)->setConversionProgress(progress);
@@ -459,7 +459,7 @@ void KBoardWidget::nextMoveAnimationStep()
     if (!m_autofilledTiles.isEmpty()) {
         int tile = m_autofilledTiles.first();
         if (autofillStep % kZoomSteps != 0) {
-            qreal progress = qreal(autofillStep % kZoomSteps) / qreal(kZoomSteps);
+            double progress = double(autofillStep % kZoomSteps) / double(kZoomSteps);
             tiles.at(tile)->setOwner(m_animationNewOwner);
             tiles.at(tile)->setZoomInProgress(progress);
             return;

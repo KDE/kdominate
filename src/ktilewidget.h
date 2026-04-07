@@ -105,21 +105,21 @@ public:
         }
     }
 
-    void setConversionProgress(qreal t)
+    void setConversionProgress(double t)
     {
         m_effect = Effect::Converting;
         m_animProgress = t;
         update();
     }
 
-    void setZoomOutProgress(qreal t)
+    void setZoomOutProgress(double t)
     {
         m_effect = Effect::ZoomOut;
         m_animProgress = t;
         update();
     }
 
-    void setZoomInProgress(qreal t)
+    void setZoomInProgress(double t)
     {
         m_effect = Effect::ZoomIn;
         m_animProgress = t;
@@ -155,7 +155,7 @@ private:
 
     Owner m_owner;
     Effect m_effect;
-    qreal m_animProgress;
+    double m_animProgress;
     int m_playerHighlight;
     bool m_selected;
 
