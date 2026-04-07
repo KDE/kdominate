@@ -54,8 +54,9 @@ void KTileWidget::reset()
     update();
 }
 
-void KTileWidget::enterEvent(QEnterEvent *)
+void KTileWidget::enterEvent(QEnterEvent *e)
 {
+    Q_UNUSED(e);
     Q_EMIT hovered(m_row, m_col);
 }
 
@@ -86,8 +87,9 @@ static SVGElement ownerToElement(Owner o)
     }
 }
 
-void KTileWidget::paintEvent(QPaintEvent * /* ev unused */)
+void KTileWidget::paintEvent(QPaintEvent * e)
 {
+    Q_UNUSED(e);
     if ((pixmaps == nullptr) || (pixmaps->isEmpty())) {
         return;
     }

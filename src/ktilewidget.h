@@ -134,9 +134,9 @@ Q_SIGNALS:
     void hovered(int row, int column);
 
 protected:
-    void mouseReleaseEvent(QMouseEvent *) override;
-    void enterEvent(QEnterEvent *) override;
-    void paintEvent(QPaintEvent *) override;
+    void mouseReleaseEvent(QMouseEvent *e) override;
+    void enterEvent(QEnterEvent *e) override;
+    void paintEvent(QPaintEvent *e) override;
 
 private:
     enum class Effect {

@@ -162,12 +162,6 @@ bool KBoardWidget::checkClick(int x, int y)
     return false;
 }
 
-void KBoardWidget::leaveEvent(QEvent *event)
-{
-    Q_EMIT tileHovered(-1, -1);
-    QWidget::leaveEvent(event);
-}
-
 void KBoardWidget::initTiles()
 {
     qDeleteAll(tiles);
@@ -308,18 +302,25 @@ void KBoardWidget::colorImage(QImage &img, const QColor &c, const int w)
     }
 }
 
-void KBoardWidget::paintEvent(QPaintEvent * /* event unused */)
+void KBoardWidget::paintEvent(QPaintEvent * e)
 {
+    Q_UNUSED(e);
     QPainter p(this);
     p.drawPixmap(0, 0, background);
 }
 
-void KBoardWidget::resizeEvent(QResizeEvent *event)
+void KBoardWidget::resizeEvent(QResizeEvent *e)
 {
-    reCalculateGraphics(event->size().width(), event->size().height());
+    reCalculateGraphics(e->size().width(), e->size().height());
 }
 
-void KBoardWidget::reCalculateGraphics(const int w, const int h)
+void KBoardWidget::leaveEvent(QEvent *e)
+{
+    Q_EMIT tileHovered(-1, -1);
+    QWidget::leaveEvent(e);
+}
+
+void KBoardWidget::reCalculateGraphics(int w, int h)
 {
     int boxSize = qMin(w, h);
     int frameWidth = boxSize / 30;

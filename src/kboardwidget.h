@@ -89,9 +89,9 @@ private Q_SLOTS:
 
 protected:
     QSize sizeHint() const override;
-    void paintEvent(QPaintEvent *event) override;
-    void resizeEvent(QResizeEvent *event) override;
-    void leaveEvent(QEvent *event) override;
+    void paintEvent(QPaintEvent *e) override;
+    void resizeEvent(QResizeEvent *e) override;
+    void leaveEvent(QEvent *e) override;
 
 private:
     int pointToIndex(QPoint p) const
