@@ -136,10 +136,11 @@ void KDominateAi::computeMove()
 int KDominateAi::staticEvaluationFunction(KDominateBoard &board, int maximizingPlayer)
 {
     KDominateBoard::TileCount tc = board.countTiles();
-    if (maximizingPlayer == 1)
+    if (maximizingPlayer == 1) {
         return tc.p1 - tc.p2;
-    else
+    } else {
         return tc.p2 - tc.p1;
+    }
 }
 
 // Often two moves result in an identical board, this function deduplicates those to reduce the space we have to explore.
@@ -219,8 +220,9 @@ KDominateAi::AiMove KDominateAi::alphaBeta(KDominateBoard &board, int maximizing
         }
 
         bool validMovement = board.move(origin, dest);
-        if (!validMovement)
+        if (!validMovement) {
             continue;
+        }
 
         // qWarning().noquote() << indent << "Player" << currentPlayer << "move" << origin << "to" << dest;
 

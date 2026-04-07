@@ -49,14 +49,15 @@ KDominateBoard::TileCount KDominateBoard::countTiles() const
     TileCount tc = {0, 0, 0, 0};
     for (int i = 0; i < m_boardSize; i++) {
         for (int j = 0; j < m_boardSize; j++) {
-            if (m_board[i][j] == 0)
+            if (m_board[i][j] == 0) {
                 tc.empty++;
-            else if (m_board[i][j] == 1)
+            } else if (m_board[i][j] == 1) {
                 tc.p1++;
-            else if (m_board[i][j] == 2)
+            } else if (m_board[i][j] == 2) {
                 tc.p2++;
-            else
+            } else {
                 tc.other++;
+            }
         }
     }
     return tc;
@@ -64,10 +65,12 @@ KDominateBoard::TileCount KDominateBoard::countTiles() const
 
 bool KDominateBoard::move(QPoint origin, QPoint dest)
 {
-    if (at(origin) != m_currentPlayer)
+    if (at(origin) != m_currentPlayer) {
         return false;
-    if (at(dest) != 0)
+    }
+    if (at(dest) != 0) {
         return false;
+    }
 
     bool validMovement = false;
     bool jumpMovement = false;
@@ -225,9 +228,10 @@ bool KDominateBoard::areMovementsAvailable(int player) const
 {
     for (int i = 0; i < m_boardSize; i++) {
         for (int j = 0; j < m_boardSize; j++) {
-            if (m_board[i][j] != player)
+            if (m_board[i][j] != player) {
                 continue;
-            if (player == 0)
+            }
+            if (player == 0) {
                 return true;
             }
             for (const QPoint &dir : s_validMovementDirections) {
@@ -237,8 +241,9 @@ bool KDominateBoard::areMovementsAvailable(int player) const
                 }
                 // can't jump over wall
                 bool isJump = qMax(qAbs(dir.x()), qAbs(dir.y())) > 1;
-                if (isJump && at((i + dest.x()) / 2, (j + dest.y()) / 2) == -1)
+                if (isJump && at((i + dest.x()) / 2, (j + dest.y()) / 2) == -1) {
                     continue;
+                }
                 return true;
             }
         }

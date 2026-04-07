@@ -90,8 +90,9 @@ public:
 
     int at(int x, int y) const
     {
-        if (!inBounds(QPoint(x, y)))
+        if (!inBounds(QPoint(x, y))) {
             return -1;
+        }
         return m_board[x][y];
     }
 

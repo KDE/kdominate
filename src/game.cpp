@@ -40,8 +40,9 @@ QStringList Game::availableMapFiles()
 QString Game::mapResourcePath(int mapIndex)
 {
     QStringList files = availableMapFiles();
-    if (mapIndex < 0 || mapIndex >= files.size())
+    if (mapIndex < 0 || mapIndex >= files.size()) {
         mapIndex = 0;
+    }
     return QStringLiteral(":/maps/") + files.at(mapIndex);
 }
 
