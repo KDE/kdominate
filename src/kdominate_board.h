@@ -112,7 +112,7 @@ public:
 private:
     void expandConnected(QPoint tile);
 
-    typedef QList<QList<int>> BoardMatrix;
+    using BoardMatrix = QList<QList<int>>;
     BoardMatrix m_board;
     bool skipStoreBoardUpdates = false;
     QList<QPoint> m_lastConverted;
@@ -131,7 +131,7 @@ private:
         QPoint pos;
         int player;
     };
-    typedef QList<PosAndPlayer> UndoMovement;
+    using UndoMovement = QList<PosAndPlayer>;
     QStack<UndoMovement> m_undos;
 
     static const QPoint s_validMovementDirections[];
