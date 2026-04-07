@@ -14,7 +14,7 @@ class AiThread : public QThread
 {
     Q_OBJECT
 public:
-    AiThread(KDominateAi *ai)
+    explicit AiThread(KDominateAi *ai)
         : m_ai(ai)
     {
     }
