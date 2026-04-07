@@ -135,5 +135,4 @@ private:
     QStack<UndoMovement> m_undos;
 
     static const QPoint s_validMovementDirections[];
-    static const int s_numDirections;
 };

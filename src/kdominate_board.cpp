@@ -22,7 +22,6 @@ const QPoint KDominateBoard::s_validMovementDirections[] = {
     QPoint(2, 0),
     QPoint(-2, 0),
     QPoint(0, 2)};
-const int KDominateBoard::s_numDirections = 12;
 
 KDominateBoard::KDominateBoard()
     : m_boardSize(0)
@@ -230,12 +229,14 @@ bool KDominateBoard::areMovementsAvailable(int player) const
                 continue;
             if (player == 0)
                 return true;
-            for (int k = 0; k < s_numDirections; k++) {
-                QPoint dest = QPoint(i, j) + s_validMovementDirections[k];
-                if (at(dest) != 0)
+            }
+            for (const QPoint &dir : s_validMovementDirections) {
+                QPoint dest = QPoint(i, j) + dir;
+                if (at(dest) != 0) {
                     continue;
+                }
                 // can't jump over wall
-                bool isJump = qMax(qAbs(s_validMovementDirections[k].x()), qAbs(s_validMovementDirections[k].y())) > 1;
+                bool isJump = qMax(qAbs(dir.x()), qAbs(dir.y())) > 1;
                 if (isJump && at((i + dest.x()) / 2, (j + dest.y()) / 2) == -1)
                     continue;
                 return true;
