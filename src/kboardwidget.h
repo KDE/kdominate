@@ -94,14 +94,14 @@ protected:
     void leaveEvent(QEvent *event) override;
 
 private:
-    int pointToIndex(QPoint p)
+    int pointToIndex(QPoint p) const
     {
         if (p.x() < 0 || p.y() < 0) {
             return -1;
         }
         return p.x() * m_size + p.y();
     }
-    QList<int> pointsToIndices(const QList<QPoint> &convertedTiles)
+    QList<int> pointsToIndices(const QList<QPoint> &convertedTiles) const
     {
         QList<int> convertedIndices;
         for (const QPoint &p : convertedTiles) {
