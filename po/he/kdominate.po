@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdominate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-12 00:40+0000\n"
+"POT-Creation-Date: 2026-04-08 00:42+0000\n"
 "PO-Revision-Date: 2026-03-02 14:05+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -28,112 +28,112 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kde-l10n-he@kde.org"
 
-#: game.cpp:90
+#: game.cpp:91
 #, kde-format
 msgid "Sorry, doing a move..."
 msgstr "סליחה, מתבצע מהלך…"
 
-#: game.cpp:122
+#: game.cpp:123
 #, kde-format
 msgid "Draw!"
 msgstr "תיקו!"
 
-#: game.cpp:124
+#: game.cpp:125
 #, kde-format
 msgid "Player %1 wins!"
 msgstr "הניצחון של %1!"
 
-#: game.cpp:130
+#: game.cpp:131
 #, kde-format
 msgid "Game over"
 msgstr "המשחק הסתיים"
 
-#: game.cpp:133
+#: game.cpp:134
 #, kde-format
 msgid "Game Over"
 msgstr "המשחק הסתיים"
 
-#: game.cpp:143
+#: game.cpp:144
 #, kde-format
 msgid "General"
 msgstr "כללי"
 
-#: game.cpp:209 game.cpp:225
+#: game.cpp:210 game.cpp:226
 #, kde-format
 msgid "Select destination"
 msgstr "בחירת יעד"
 
-#: game.cpp:246
+#: game.cpp:247
 #, kde-format
 msgid "Invalid move - too far"
 msgstr "מהלך שגוי - רחוק מדי"
 
-#: game.cpp:274
+#: game.cpp:275
 #, kde-format
 msgid "Start game"
 msgstr "התחלת משחק"
 
-#: game.cpp:276 game.cpp:329
+#: game.cpp:277 game.cpp:330
 #, kde-format
 msgid "Continue game"
 msgstr "להמשיך במשחק"
 
-#: game.cpp:279 game.cpp:331
+#: game.cpp:280 game.cpp:332
 #, kde-format
 msgid "Start computer move"
 msgstr "התחלת מהלך מחשב"
 
-#: game.cpp:296
+#: game.cpp:297
 #, kde-format
 msgid "Your turn"
 msgstr "תורך"
 
-#: game.cpp:298
+#: game.cpp:299
 #, kde-format
 msgid "Player %1"
 msgstr "השחקן/ית %1"
 
-#: game.cpp:312
+#: game.cpp:313
 #, kde-format
 msgid "Computer player %1 is moving"
 msgstr "שחקן המחשב %1 זז"
 
-#: game.cpp:342
+#: game.cpp:343
 #, kde-format
 msgid "The computer could not find a valid move."
 msgstr "המחשב לא הצליח למצוא מהלך תקף."
 
-#: game.cpp:363
+#: game.cpp:364
 #, kde-format
 msgid "Hint: move from (%1,%2) to (%3,%4)"
 msgstr "רמז: כדאי לזוז מ־(%1,%2) ל־(%3,%4)"
 
-#: game.cpp:446
+#: game.cpp:447
 #, kde-format
 msgid "Finishing move..."
 msgstr "המהלך מסתיים…"
 
-#: game.cpp:467
+#: game.cpp:468
 #, kde-format
 msgid "Interrupt game"
 msgstr "הפרעה למשחק"
 
-#: game.cpp:471
+#: game.cpp:472
 #, kde-format
 msgid "Stop computing"
 msgstr "עצירת החישוב"
 
-#: game.cpp:473
+#: game.cpp:474
 #, kde-format
 msgid "Stop showing move"
 msgstr "הפסקת הצגת מהלך"
 
-#: game.cpp:487
+#: game.cpp:488
 #, kde-format
 msgid "New Game"
 msgstr "משחק חדש"
 
-#: game.cpp:512
+#: game.cpp:513
 #, kde-format
 msgid ""
 "You have requested a new game, but there is already a game in progress.\n"
@@ -144,17 +144,17 @@ msgstr ""
 "\n"
 "לנטוש את המשחק הנוכחי?"
 
-#: game.cpp:515
+#: game.cpp:516
 #, kde-format
 msgid "New Game?"
 msgstr "משחק חדש?"
 
-#: game.cpp:515
+#: game.cpp:516
 #, kde-format
 msgid "Abandon Game"
 msgstr "נטישת המשחק"
 
-#: game.cpp:515
+#: game.cpp:516
 #, kde-format
 msgid "Continue Game"
 msgstr "להמשיך במשחק"

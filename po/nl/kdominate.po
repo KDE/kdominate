@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdominate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-12 00:40+0000\n"
+"POT-Creation-Date: 2026-04-08 00:42+0000\n"
 "PO-Revision-Date: 2026-03-03 11:18+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -27,112 +27,112 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "freekdekruijf@kde.nl"
 
-#: game.cpp:90
+#: game.cpp:91
 #, kde-format
 msgid "Sorry, doing a move..."
 msgstr "Helaas, bezig met een zet..."
 
-#: game.cpp:122
+#: game.cpp:123
 #, kde-format
 msgid "Draw!"
 msgstr "Tekenen!"
 
-#: game.cpp:124
+#: game.cpp:125
 #, kde-format
 msgid "Player %1 wins!"
 msgstr "Speler %1 wint!"
 
-#: game.cpp:130
+#: game.cpp:131
 #, kde-format
 msgid "Game over"
 msgstr "Spel afgelopen"
 
-#: game.cpp:133
+#: game.cpp:134
 #, kde-format
 msgid "Game Over"
 msgstr "Spel is afgelopen"
 
-#: game.cpp:143
+#: game.cpp:144
 #, kde-format
 msgid "General"
 msgstr "Algemeen"
 
-#: game.cpp:209 game.cpp:225
+#: game.cpp:210 game.cpp:226
 #, kde-format
 msgid "Select destination"
 msgstr "Bestemming selecteren"
 
-#: game.cpp:246
+#: game.cpp:247
 #, kde-format
 msgid "Invalid move - too far"
 msgstr "Foute zet - te ver"
 
-#: game.cpp:274
+#: game.cpp:275
 #, kde-format
 msgid "Start game"
 msgstr "Spel starten"
 
-#: game.cpp:276 game.cpp:329
+#: game.cpp:277 game.cpp:330
 #, kde-format
 msgid "Continue game"
 msgstr "Spel voortzetten"
 
-#: game.cpp:279 game.cpp:331
+#: game.cpp:280 game.cpp:332
 #, kde-format
 msgid "Start computer move"
 msgstr "Zet met computer beginnen"
 
-#: game.cpp:296
+#: game.cpp:297
 #, kde-format
 msgid "Your turn"
 msgstr "Uw beurt"
 
-#: game.cpp:298
+#: game.cpp:299
 #, kde-format
 msgid "Player %1"
 msgstr "Speler %1"
 
-#: game.cpp:312
+#: game.cpp:313
 #, kde-format
 msgid "Computer player %1 is moving"
 msgstr "Computerspeler %1 doet een zet"
 
-#: game.cpp:342
+#: game.cpp:343
 #, kde-format
 msgid "The computer could not find a valid move."
 msgstr "De computer kon geen geldige zet vinden."
 
-#: game.cpp:363
+#: game.cpp:364
 #, kde-format
 msgid "Hint: move from (%1,%2) to (%3,%4)"
 msgstr "Tip: zet van (%1,%2) naar (%3,%4)"
 
-#: game.cpp:446
+#: game.cpp:447
 #, kde-format
 msgid "Finishing move..."
 msgstr "Zet afronden..."
 
-#: game.cpp:467
+#: game.cpp:468
 #, kde-format
 msgid "Interrupt game"
 msgstr "Spel onderbreken"
 
-#: game.cpp:471
+#: game.cpp:472
 #, kde-format
 msgid "Stop computing"
 msgstr "Berekenen stoppen"
 
-#: game.cpp:473
+#: game.cpp:474
 #, kde-format
 msgid "Stop showing move"
 msgstr "Tonen van zet stoppen"
 
-#: game.cpp:487
+#: game.cpp:488
 #, kde-format
 msgid "New Game"
 msgstr "Nieuw spel"
 
-#: game.cpp:512
+#: game.cpp:513
 #, kde-format
 msgid ""
 "You have requested a new game, but there is already a game in progress.\n"
@@ -143,17 +143,17 @@ msgstr ""
 "\n"
 "Wilt u het huidige spel verlaten?"
 
-#: game.cpp:515
+#: game.cpp:516
 #, kde-format
 msgid "New Game?"
 msgstr "Nieuw spel?"
 
-#: game.cpp:515
+#: game.cpp:516
 #, kde-format
 msgid "Abandon Game"
 msgstr "Spel verlaten"
 
-#: game.cpp:515
+#: game.cpp:516
 #, kde-format
 msgid "Continue Game"
 msgstr "Spel voortzetten"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdominate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-03-12 00:40+0000\n"
+"POT-Creation-Date: 2026-04-08 00:42+0000\n"
 "PO-Revision-Date: 2026-03-02 17:15+0100\n"
 "Last-Translator: Sofía Priego <spriego@darksylvania.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -29,112 +29,112 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "spriego@darksylvania.net"
 
-#: game.cpp:90
+#: game.cpp:91
 #, kde-format
 msgid "Sorry, doing a move..."
 msgstr "Haciendo un movimiento…"
 
-#: game.cpp:122
+#: game.cpp:123
 #, kde-format
 msgid "Draw!"
 msgstr "¡Tablas!"
 
-#: game.cpp:124
+#: game.cpp:125
 #, kde-format
 msgid "Player %1 wins!"
 msgstr "¡El jugador %1 gana!"
 
-#: game.cpp:130
+#: game.cpp:131
 #, kde-format
 msgid "Game over"
 msgstr "Partida terminada"
 
-#: game.cpp:133
+#: game.cpp:134
 #, kde-format
 msgid "Game Over"
 msgstr "Partida terminada"
 
-#: game.cpp:143
+#: game.cpp:144
 #, kde-format
 msgid "General"
 msgstr "General"
 
-#: game.cpp:209 game.cpp:225
+#: game.cpp:210 game.cpp:226
 #, kde-format
 msgid "Select destination"
 msgstr "Selecciona destino"
 
-#: game.cpp:246
+#: game.cpp:247
 #, kde-format
 msgid "Invalid move - too far"
 msgstr "Movimiento no válido: demasiado lejos"
 
-#: game.cpp:274
+#: game.cpp:275
 #, kde-format
 msgid "Start game"
 msgstr "Empezar una partida"
 
-#: game.cpp:276 game.cpp:329
+#: game.cpp:277 game.cpp:330
 #, kde-format
 msgid "Continue game"
 msgstr "Continuar la partida"
 
-#: game.cpp:279 game.cpp:331
+#: game.cpp:280 game.cpp:332
 #, kde-format
 msgid "Start computer move"
 msgstr "Empezar movimiento de la máquina"
 
-#: game.cpp:296
+#: game.cpp:297
 #, kde-format
 msgid "Your turn"
 msgstr "Tu turno"
 
-#: game.cpp:298
+#: game.cpp:299
 #, kde-format
 msgid "Player %1"
 msgstr "Jugador %1"
 
-#: game.cpp:312
+#: game.cpp:313
 #, kde-format
 msgid "Computer player %1 is moving"
 msgstr "El jugador de la máquina %1 está moviendo"
 
-#: game.cpp:342
+#: game.cpp:343
 #, kde-format
 msgid "The computer could not find a valid move."
 msgstr "La máquina no ha encontrado ningún movimiento válido."
 
-#: game.cpp:363
+#: game.cpp:364
 #, kde-format
 msgid "Hint: move from (%1,%2) to (%3,%4)"
 msgstr "Pista: mueve de (%1,%2) a (%3,%4)"
 
-#: game.cpp:446
+#: game.cpp:447
 #, kde-format
 msgid "Finishing move..."
 msgstr "Terminando el movimiento…"
 
-#: game.cpp:467
+#: game.cpp:468
 #, kde-format
 msgid "Interrupt game"
 msgstr "Interrumpir la partida"
 
-#: game.cpp:471
+#: game.cpp:472
 #, kde-format
 msgid "Stop computing"
 msgstr "Detener el cálculo"
 
-#: game.cpp:473
+#: game.cpp:474
 #, kde-format
 msgid "Stop showing move"
 msgstr "Dejar de mostrar el movimiento"
 
-#: game.cpp:487
+#: game.cpp:488
 #, kde-format
 msgid "New Game"
 msgstr "Nueva partida"
 
-#: game.cpp:512
+#: game.cpp:513
 #, kde-format
 msgid ""
 "You have requested a new game, but there is already a game in progress.\n"
@@ -145,17 +145,17 @@ msgstr ""
 "\n"
 "¿Quieres abandonar la partida actual?"
 
-#: game.cpp:515
+#: game.cpp:516
 #, kde-format
 msgid "New Game?"
 msgstr "¿Nueva partida?"
 
-#: game.cpp:515
+#: game.cpp:516
 #, kde-format
 msgid "Abandon Game"
 msgstr "Abandonar la partida"
 
-#: game.cpp:515
+#: game.cpp:516
 #, kde-format
 msgid "Continue Game"
 msgstr "Continuar la partida"
