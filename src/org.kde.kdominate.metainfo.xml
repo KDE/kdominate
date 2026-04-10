@@ -83,5 +83,6 @@
     <binary>kdominate</binary>
   </provides>
   <releases>
+    <release version="0.0.1" date="2026-04-10"/>
   </releases>
 </component>
