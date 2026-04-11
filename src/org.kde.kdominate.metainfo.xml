@@ -18,6 +18,7 @@
   <name xml:lang="ka">KDominate</name>
   <name xml:lang="nl">KDominate</name>
   <name xml:lang="pt-BR">KDominate</name>
+  <name xml:lang="sk">KDominate</name>
   <name xml:lang="sl">KDominate</name>
   <name xml:lang="tr">K Hâkimiyet</name>
   <name xml:lang="uk">KDominate</name>
@@ -32,6 +33,7 @@
   <summary xml:lang="ka">თამაში დაფაზე დომინაციის შესახებ</summary>
   <summary xml:lang="nl">Bordspel Dominatie</summary>
   <summary xml:lang="pt-BR">Jogo de Dominação de Tabuleiro</summary>
+  <summary xml:lang="sk">Hra o ovládnutie dosky</summary>
   <summary xml:lang="sl">Igra dominacije na plošči</summary>
   <summary xml:lang="tr">Hâkimiyet masa oyunu</summary>
   <summary xml:lang="uk">Гра у панування на дошці</summary>
@@ -49,6 +51,7 @@
     <p xml:lang="ka">KDominate ტაქტიკური თამაშია ერთი, ან ორი მოთამაშისთვის, სადაც ისინი გადააადგილებენ და გადაჰყავთ ფილები იმ მიზნით, რომ დაფის უდიდესი ნაწილი აკონტროლონ.</p>
     <p xml:lang="nl">KDominate is een tactisch spel voor één of twee spelers, waar spelers stukken verplaatsen en converteren met het doel de meerderheid van het bord te controleren.</p>
     <p xml:lang="pt-BR">KDominate é um jogo tático para um ou dois jogadores, onde os jogadores movem e convertem peças com o objetivo de controlar a maior parte do tabuleiro.</p>
+    <p xml:lang="sk">KDominate je taktická hra pre jedného alebo dvoch hráčov, kde hráči presúvajú a konvertujú dlaždice s cieľom ovládnuť väčšinu dosky.</p>
     <p xml:lang="sl">KDominate je taktična igra za enega ali dva igralca, kjer igralci premikajo in preoblikujejo ploščice s ciljem nadzora nad večino igralne plošče.</p>
     <p xml:lang="tr">K Hâkimiyet, oyuncuların tahtanın büyük çoğunluğunu kontrol etme amacıyla taşları hareket ettirip dönüştürdüğü, bir veya iki oyuncu için taktiksel bir oyundur.</p>
     <p xml:lang="uk">KDominate — тактична гра для одного або двох гравців, де гравці роблять ходи і перевертають плитки з метою встановлення контролю над більшою частиною дошки.</p>
@@ -66,6 +69,7 @@
       <caption xml:lang="ka">KDominate-ის თამაში</caption>
       <caption xml:lang="nl">KDominate spelen</caption>
       <caption xml:lang="pt-BR">Jogando KDominate</caption>
+      <caption xml:lang="sk">Hranie KDominate</caption>
       <caption xml:lang="sl">Igranje KDominate</caption>
       <caption xml:lang="tr">K Hâkimiyet oynarken</caption>
       <caption xml:lang="uk">Гра у KDominate</caption>
