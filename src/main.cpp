@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
                          QStringLiteral(KDOMINATE_VERSION_STRING),
                          i18n("A tactical game for one or two players."),
                          KAboutLicense::GPL,
-                         i18n("(c) 2026, Albert Vaca Cintora"),
+                         i18n("© 2026 Albert Vaca Cintora"),
                          QString(),
                          QStringLiteral("https://apps.kde.org/kdominate"));
     aboutData.setOrganizationDomain(QByteArray("kde.org"));

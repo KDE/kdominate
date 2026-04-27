@@ -88,7 +88,7 @@ Game::~Game()
 void Game::gameActions(int action)
 {
     if (isBusy() && (action != BUTTON) && (action != Action::NEW)) {
-        m_view->showPopup(i18n("Sorry, doing a move..."));
+        m_view->showPopup(i18n("Sorry, doing a move…"));
         return;
     }
 
@@ -244,7 +244,7 @@ void Game::startHumanMove(int x, int y)
                 doMove(m_selectedOrigin, dest);
                 Q_EMIT statusMessage(QString(), false);
             } else {
-                Q_EMIT statusMessage(i18n("Invalid move - too far"), true);
+                Q_EMIT statusMessage(i18n("Invalid move – too far"), true);
             }
         } else {
             // Clicked opponent tile or invalid: deselect

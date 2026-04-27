@@ -265,7 +265,7 @@
         <item>
          <widget class="QGroupBox" name="groupBox_4">
           <property name="title">
-           <string>Players' Colors</string>
+           <string>Players’ Colors</string>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_6">
            <item>
