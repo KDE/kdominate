@@ -120,7 +120,7 @@ QString Game::winnerString() const
 {
     int w = m_board->winner();
     if (w == 0) {
-        return i18n("Draw!");
+        return i18nc("As in 'there is no winner'", "Draw!");
     } else {
         return i18n("Player %1 wins!", w);
     }
