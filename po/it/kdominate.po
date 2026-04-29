@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdominate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-08 00:42+0000\n"
+"POT-Creation-Date: 2026-04-29 00:41+0000\n"
 "PO-Revision-Date: 2026-03-07 09:47+0100\n"
 "Last-Translator: Vincenzo Reale <>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -28,12 +28,15 @@ msgid "Your emails"
 msgstr "smart2128vr@gmail.com"
 
 #: game.cpp:91
-#, kde-format
-msgid "Sorry, doing a move..."
+#, fuzzy, kde-format
+#| msgid "Sorry, doing a move..."
+msgid "Sorry, doing a move…"
 msgstr "Spiacente, mossa in corso..."
 
 #: game.cpp:123
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Draw!"
+msgctxt "As in 'there is no winner'"
 msgid "Draw!"
 msgstr "Pareggio!"
 
@@ -63,8 +66,9 @@ msgid "Select destination"
 msgstr "Seleziona la destinazione"
 
 #: game.cpp:247
-#, kde-format
-msgid "Invalid move - too far"
+#, fuzzy, kde-format
+#| msgid "Invalid move - too far"
+msgid "Invalid move – too far"
 msgstr "Mossa non valida - troppo lontano"
 
 #: game.cpp:275
@@ -245,8 +249,9 @@ msgid "A tactical game for one or two players."
 msgstr "Un gioco tattico per uno o due giocatori."
 
 #: main.cpp:47
-#, kde-format
-msgid "(c) 2026, Albert Vaca Cintora"
+#, fuzzy, kde-format
+#| msgid "(c) 2026, Albert Vaca Cintora"
+msgid "© 2026 Albert Vaca Cintora"
 msgstr "© 2026. Albert Vaca Cintora"
 
 #: main.cpp:51
@@ -295,21 +300,27 @@ msgid "Sam C. Misemer"
 msgstr "Sam C. Misemer"
 
 #: maps.cpp:1
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "Game board name"
+#| msgid "Empty - Small"
 msgctxt "Game board name"
-msgid "Empty - Small"
+msgid "Empty – Small"
 msgstr "Vuoto - piccolo"
 
 #: maps.cpp:2
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "Game board name"
+#| msgid "Empty - Medium"
 msgctxt "Game board name"
-msgid "Empty - Medium"
+msgid "Empty – Medium"
 msgstr "Vuoto - medio"
 
 #: maps.cpp:3
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "Game board name"
+#| msgid "Empty - Large"
 msgctxt "Game board name"
-msgid "Empty - Large"
+msgid "Empty – Large"
 msgstr "Vuoto - grande"
 
 #: maps.cpp:4
@@ -414,8 +425,9 @@ msgstr "Tema"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_4)
 #: settings.ui:268
-#, kde-format
-msgid "Players' Colors"
+#, fuzzy, kde-format
+#| msgid "Players' Colors"
+msgid "Players’ Colors"
 msgstr "Colore dei giocatori"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-08 00:42+0000\n"
+"POT-Creation-Date: 2026-04-29 00:41+0000\n"
 "PO-Revision-Date: 2026-03-03 19:31\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -29,11 +29,12 @@ msgstr ""
 
 #: game.cpp:91
 #, kde-format
-msgid "Sorry, doing a move..."
+msgid "Sorry, doing a move…"
 msgstr ""
 
 #: game.cpp:123
 #, kde-format
+msgctxt "As in 'there is no winner'"
 msgid "Draw!"
 msgstr ""
 
@@ -64,7 +65,7 @@ msgstr ""
 
 #: game.cpp:247
 #, kde-format
-msgid "Invalid move - too far"
+msgid "Invalid move – too far"
 msgstr ""
 
 #: game.cpp:275
@@ -243,7 +244,7 @@ msgstr ""
 
 #: main.cpp:47
 #, kde-format
-msgid "(c) 2026, Albert Vaca Cintora"
+msgid "© 2026 Albert Vaca Cintora"
 msgstr ""
 
 #: main.cpp:51
@@ -294,19 +295,19 @@ msgstr ""
 #: maps.cpp:1
 #, kde-format
 msgctxt "Game board name"
-msgid "Empty - Small"
+msgid "Empty – Small"
 msgstr ""
 
 #: maps.cpp:2
 #, kde-format
 msgctxt "Game board name"
-msgid "Empty - Medium"
+msgid "Empty – Medium"
 msgstr ""
 
 #: maps.cpp:3
 #, kde-format
 msgctxt "Game board name"
-msgid "Empty - Large"
+msgid "Empty – Large"
 msgstr ""
 
 #: maps.cpp:4
@@ -412,7 +413,7 @@ msgstr ""
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_4)
 #: settings.ui:268
 #, kde-format
-msgid "Players' Colors"
+msgid "Players’ Colors"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
