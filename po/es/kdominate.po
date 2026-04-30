@@ -4,12 +4,13 @@
 # Automatically generated, 2026.
 #
 # SPDX-FileCopyrightText: 2026 Sofía Priego <spriego@darksylvania.net>
+# SPDX-FileCopyrightText: 2026 Eloy Cuadra <ecuadra@eloihr.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: kdominate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-29 00:41+0000\n"
-"PO-Revision-Date: 2026-03-02 17:15+0100\n"
+"PO-Revision-Date: 2026-04-29 12:14+0100\n"
 "Last-Translator: Sofía Priego <spriego@darksylvania.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.12.2\n"
+"X-Generator: Lokalize 26.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -30,14 +31,12 @@ msgid "Your emails"
 msgstr "spriego@darksylvania.net"
 
 #: game.cpp:91
-#, fuzzy, kde-format
-#| msgid "Sorry, doing a move..."
+#, kde-format
 msgid "Sorry, doing a move…"
 msgstr "Haciendo un movimiento…"
 
 #: game.cpp:123
-#, fuzzy, kde-format
-#| msgid "Draw!"
+#, kde-format
 msgctxt "As in 'there is no winner'"
 msgid "Draw!"
 msgstr "¡Tablas!"
@@ -68,8 +67,7 @@ msgid "Select destination"
 msgstr "Selecciona destino"
 
 #: game.cpp:247
-#, fuzzy, kde-format
-#| msgid "Invalid move - too far"
+#, kde-format
 msgid "Invalid move – too far"
 msgstr "Movimiento no válido: demasiado lejos"
 
@@ -251,10 +249,9 @@ msgid "A tactical game for one or two players."
 msgstr "Un juego de táctica para uno o dos jugadores."
 
 #: main.cpp:47
-#, fuzzy, kde-format
-#| msgid "(c) 2026, Albert Vaca Cintora"
+#, kde-format
 msgid "© 2026 Albert Vaca Cintora"
-msgstr "© 2026, Albert Vaca Cintora"
+msgstr "© 2026 Albert Vaca Cintora"
 
 #: main.cpp:51
 #, kde-format
@@ -302,25 +299,19 @@ msgid "Sam C. Misemer"
 msgstr "Sam C. Misemer"
 
 #: maps.cpp:1
-#, fuzzy, kde-format
-#| msgctxt "Game board name"
-#| msgid "Empty - Small"
+#, kde-format
 msgctxt "Game board name"
 msgid "Empty – Small"
 msgstr "Vacío (pequeño)"
 
 #: maps.cpp:2
-#, fuzzy, kde-format
-#| msgctxt "Game board name"
-#| msgid "Empty - Medium"
+#, kde-format
 msgctxt "Game board name"
 msgid "Empty – Medium"
 msgstr "Vacío (mediano)"
 
 #: maps.cpp:3
-#, fuzzy, kde-format
-#| msgctxt "Game board name"
-#| msgid "Empty - Large"
+#, kde-format
 msgctxt "Game board name"
 msgid "Empty – Large"
 msgstr "Vacío (grande)"
@@ -427,8 +418,7 @@ msgstr "Tema"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_4)
 #: settings.ui:268
-#, fuzzy, kde-format
-#| msgid "Players' Colors"
+#, kde-format
 msgid "Players’ Colors"
 msgstr "Colores de los jugadores"
 

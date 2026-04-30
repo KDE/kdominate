@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: kdominate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-29 00:41+0000\n"
-"PO-Revision-Date: 2026-03-03 04:18+0100\n"
+"PO-Revision-Date: 2026-04-29 05:47+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.9\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -29,14 +29,12 @@ msgid "Your emails"
 msgstr "temuri.doghonadze@gmail.com"
 
 #: game.cpp:91
-#, fuzzy, kde-format
-#| msgid "Sorry, doing a move..."
+#, kde-format
 msgid "Sorry, doing a move…"
-msgstr "უკაცრავად, სვლა ჯერ არ დასრულებულა..."
+msgstr "უკაცრავად, მიმდინარეობს სვლის შესრულება…"
 
 #: game.cpp:123
-#, fuzzy, kde-format
-#| msgid "Draw!"
+#, kde-format
 msgctxt "As in 'there is no winner'"
 msgid "Draw!"
 msgstr "ფრე!"
@@ -67,10 +65,9 @@ msgid "Select destination"
 msgstr "აირჩიეთ სამიზნე"
 
 #: game.cpp:247
-#, fuzzy, kde-format
-#| msgid "Invalid move - too far"
+#, kde-format
 msgid "Invalid move – too far"
-msgstr "არასწორი სვლა - ძალიან შორსაა"
+msgstr "არასწორი სვლა – ძალიან შორსაა"
 
 #: game.cpp:275
 #, kde-format
@@ -250,10 +247,9 @@ msgid "A tactical game for one or two players."
 msgstr "ტაქტიკური თამაში ერთი ან ორი მოთამაშისთვის."
 
 #: main.cpp:47
-#, fuzzy, kde-format
-#| msgid "(c) 2026, Albert Vaca Cintora"
+#, kde-format
 msgid "© 2026 Albert Vaca Cintora"
-msgstr "(c) 2026, Albert Vaca Cintora"
+msgstr "© 2026, Albert Vaca Cintora"
 
 #: main.cpp:51
 #, kde-format
@@ -301,28 +297,22 @@ msgid "Sam C. Misemer"
 msgstr "Sam C. Misemer"
 
 #: maps.cpp:1
-#, fuzzy, kde-format
-#| msgctxt "Game board name"
-#| msgid "Empty - Small"
+#, kde-format
 msgctxt "Game board name"
 msgid "Empty – Small"
-msgstr "ცარიელი - პატარა"
+msgstr "ცარიელი – პატარა"
 
 #: maps.cpp:2
-#, fuzzy, kde-format
-#| msgctxt "Game board name"
-#| msgid "Empty - Medium"
+#, kde-format
 msgctxt "Game board name"
 msgid "Empty – Medium"
-msgstr "ცარიელი - საშუალო"
+msgstr "ცარიელი – საშუალო"
 
 #: maps.cpp:3
-#, fuzzy, kde-format
-#| msgctxt "Game board name"
-#| msgid "Empty - Large"
+#, kde-format
 msgctxt "Game board name"
 msgid "Empty – Large"
-msgstr "ცარიელი - დიდი"
+msgstr "ცარიელი – დიდი"
 
 #: maps.cpp:4
 #, kde-format
@@ -426,10 +416,9 @@ msgstr "თემა"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_4)
 #: settings.ui:268
-#, fuzzy, kde-format
-#| msgid "Players' Colors"
+#, kde-format
 msgid "Players’ Colors"
-msgstr "მოთამაშეების ფერები"
+msgstr "მოთამაშის ფერები"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: settings.ui:276

@@ -28,14 +28,12 @@ msgid "Your emails"
 msgstr "wizzardsk@gmail.com"
 
 #: game.cpp:91
-#, fuzzy, kde-format
-#| msgid "Sorry, doing a move..."
+#, kde-format
 msgid "Sorry, doing a move…"
-msgstr "Prepáčte, vykonávam ťah..."
+msgstr "Prepáčte, vykonávam ťah…"
 
 #: game.cpp:123
-#, fuzzy, kde-format
-#| msgid "Draw!"
+#, kde-format
 msgctxt "As in 'there is no winner'"
 msgid "Draw!"
 msgstr "Remíza!"
@@ -66,10 +64,9 @@ msgid "Select destination"
 msgstr "Vyberte cieľ"
 
 #: game.cpp:247
-#, fuzzy, kde-format
-#| msgid "Invalid move - too far"
+#, kde-format
 msgid "Invalid move – too far"
-msgstr "Neplatný ťah - príliš ďaleko"
+msgstr "Neplatný ťah – príliš ďaleko"
 
 #: game.cpp:275
 #, kde-format
@@ -249,10 +246,9 @@ msgid "A tactical game for one or two players."
 msgstr "Taktická hra pre jedného alebo dvoch hráčov."
 
 #: main.cpp:47
-#, fuzzy, kde-format
-#| msgid "(c) 2026, Albert Vaca Cintora"
+#, kde-format
 msgid "© 2026 Albert Vaca Cintora"
-msgstr "(c) 2026, Albert Vaca Cintora"
+msgstr "© 2026 Albert Vaca Cintora"
 
 #: main.cpp:51
 #, kde-format
@@ -300,28 +296,22 @@ msgid "Sam C. Misemer"
 msgstr "Sam C. Misemer"
 
 #: maps.cpp:1
-#, fuzzy, kde-format
-#| msgctxt "Game board name"
-#| msgid "Empty - Small"
+#, kde-format
 msgctxt "Game board name"
 msgid "Empty – Small"
-msgstr "Prázdna - Malá"
+msgstr "Prázdna – Malá"
 
 #: maps.cpp:2
-#, fuzzy, kde-format
-#| msgctxt "Game board name"
-#| msgid "Empty - Medium"
+#, kde-format
 msgctxt "Game board name"
 msgid "Empty – Medium"
-msgstr "Prázdna - Stredná"
+msgstr "Prázdna – Stredná"
 
 #: maps.cpp:3
-#, fuzzy, kde-format
-#| msgctxt "Game board name"
-#| msgid "Empty - Large"
+#, kde-format
 msgctxt "Game board name"
 msgid "Empty – Large"
-msgstr "Prázdna - Veľká"
+msgstr "Prázdna – Veľká"
 
 #: maps.cpp:4
 #, kde-format
@@ -425,8 +415,7 @@ msgstr "Téma"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_4)
 #: settings.ui:268
-#, fuzzy, kde-format
-#| msgid "Players' Colors"
+#, kde-format
 msgid "Players’ Colors"
 msgstr "Farby hráčov"
 

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kdominate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-29 00:41+0000\n"
-"PO-Revision-Date: 2026-03-04 07:25+0100\n"
+"PO-Revision-Date: 2026-04-29 09:14+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -29,14 +29,12 @@ msgid "Your emails"
 msgstr "matjaz.jeran@amis.net"
 
 #: game.cpp:91
-#, fuzzy, kde-format
-#| msgid "Sorry, doing a move..."
+#, kde-format
 msgid "Sorry, doing a move…"
-msgstr "Žal mi je, izvajam potezo..."
+msgstr "Žal mi je, izvajam potezo…"
 
 #: game.cpp:123
-#, fuzzy, kde-format
-#| msgid "Draw!"
+#, kde-format
 msgctxt "As in 'there is no winner'"
 msgid "Draw!"
 msgstr "Neodločeno!"
@@ -67,8 +65,7 @@ msgid "Select destination"
 msgstr "Izberi cilj"
 
 #: game.cpp:247
-#, fuzzy, kde-format
-#| msgid "Invalid move - too far"
+#, kde-format
 msgid "Invalid move – too far"
 msgstr "Neveljavna poteza - predaleč"
 
@@ -249,10 +246,9 @@ msgid "A tactical game for one or two players."
 msgstr "Taktična igra za enega ali dva igralca."
 
 #: main.cpp:47
-#, fuzzy, kde-format
-#| msgid "(c) 2026, Albert Vaca Cintora"
+#, kde-format
 msgid "© 2026 Albert Vaca Cintora"
-msgstr "(c) 2026, Albert Vaca Cintora"
+msgstr "© 2026 Albert Vaca Cintora"
 
 #: main.cpp:51
 #, kde-format
@@ -300,25 +296,19 @@ msgid "Sam C. Misemer"
 msgstr "Sam C. Misemer"
 
 #: maps.cpp:1
-#, fuzzy, kde-format
-#| msgctxt "Game board name"
-#| msgid "Empty - Small"
+#, kde-format
 msgctxt "Game board name"
 msgid "Empty – Small"
 msgstr "Prazno - Majhno"
 
 #: maps.cpp:2
-#, fuzzy, kde-format
-#| msgctxt "Game board name"
-#| msgid "Empty - Medium"
+#, kde-format
 msgctxt "Game board name"
 msgid "Empty – Medium"
 msgstr "Prazno - Srednje"
 
 #: maps.cpp:3
-#, fuzzy, kde-format
-#| msgctxt "Game board name"
-#| msgid "Empty - Large"
+#, kde-format
 msgctxt "Game board name"
 msgid "Empty – Large"
 msgstr "Prazno - Veliko"
@@ -425,8 +415,7 @@ msgstr "Tema"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_4)
 #: settings.ui:268
-#, fuzzy, kde-format
-#| msgid "Players' Colors"
+#, kde-format
 msgid "Players’ Colors"
 msgstr "Barve igralcev"
 

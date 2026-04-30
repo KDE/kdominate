@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kdominate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-29 00:41+0000\n"
-"PO-Revision-Date: 2026-03-02 09:15+0200\n"
+"PO-Revision-Date: 2026-04-29 08:43+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -29,14 +29,12 @@ msgid "Your emails"
 msgstr "yurchor@ukr.net"
 
 #: game.cpp:91
-#, fuzzy, kde-format
-#| msgid "Sorry, doing a move..."
+#, kde-format
 msgid "Sorry, doing a move…"
 msgstr "Вибачте, виконуємо хід…"
 
 #: game.cpp:123
-#, fuzzy, kde-format
-#| msgid "Draw!"
+#, kde-format
 msgctxt "As in 'there is no winner'"
 msgid "Draw!"
 msgstr "Нічия!"
@@ -67,8 +65,7 @@ msgid "Select destination"
 msgstr "Виберіть призначення"
 
 #: game.cpp:247
-#, fuzzy, kde-format
-#| msgid "Invalid move - too far"
+#, kde-format
 msgid "Invalid move – too far"
 msgstr "Некоректний хід – надто далеко"
 
@@ -250,8 +247,7 @@ msgid "A tactical game for one or two players."
 msgstr "Тактична гра для одного або двох гравців."
 
 #: main.cpp:47
-#, fuzzy, kde-format
-#| msgid "(c) 2026, Albert Vaca Cintora"
+#, kde-format
 msgid "© 2026 Albert Vaca Cintora"
 msgstr "© Albert Vaca Cintora, 2026"
 
@@ -301,25 +297,19 @@ msgid "Sam C. Misemer"
 msgstr "Sam C. Misemer"
 
 #: maps.cpp:1
-#, fuzzy, kde-format
-#| msgctxt "Game board name"
-#| msgid "Empty - Small"
+#, kde-format
 msgctxt "Game board name"
 msgid "Empty – Small"
 msgstr "Порожня — Мала"
 
 #: maps.cpp:2
-#, fuzzy, kde-format
-#| msgctxt "Game board name"
-#| msgid "Empty - Medium"
+#, kde-format
 msgctxt "Game board name"
 msgid "Empty – Medium"
 msgstr "Порожня – Середня"
 
 #: maps.cpp:3
-#, fuzzy, kde-format
-#| msgctxt "Game board name"
-#| msgid "Empty - Large"
+#, kde-format
 msgctxt "Game board name"
 msgid "Empty – Large"
 msgstr "Порожня – Велика"
@@ -426,8 +416,7 @@ msgstr "Тема"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_4)
 #: settings.ui:268
-#, fuzzy, kde-format
-#| msgid "Players' Colors"
+#, kde-format
 msgid "Players’ Colors"
 msgstr "Кольори гравців"
 
