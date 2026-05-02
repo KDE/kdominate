@@ -141,7 +141,7 @@ void Game::showSettingsDialog()
         settings = new KConfigDialog(m_parent, QStringLiteral("settings"), Prefs::self());
         settings->setFaceType(KPageDialog::Plain);
         SettingsWidget *widget = new SettingsWidget(m_parent);
-        settings->addPage(widget, i18n("General"), QStringLiteral("games-config-options"));
+        settings->addPage(widget, i18nc("@title Settings category", "General"), QStringLiteral("games-config-options"));
         connect(settings, &KConfigDialog::settingsChanged, this, &Game::newSettings);
         m_settingsPage = widget;
     }
@@ -485,7 +485,7 @@ void Game::newGame()
         loadPlayerSettings();
         reset();
         Q_EMIT setUndoRedoAvailable(false, false);
-        Q_EMIT statusMessage(i18n("New Game"), false);
+        Q_EMIT statusMessage(i18nc("@info:status", "New Game"), false);
         m_moveNo = 0;
         setUpNextTurn();
     }
@@ -512,8 +512,8 @@ bool Game::newGameOK()
     QString query = i18n(
         "You have requested a new game, but "
         "there is already a game in progress.\n\n"
-        "Do you wish to abandon the current game?");
-    int reply = KMessageBox::questionTwoActions(m_view, query, i18n("New Game?"), KGuiItem(i18n("Abandon Game")), KGuiItem(i18n("Continue Game")));
+        "Abandon the current game?");
+    int reply = KMessageBox::questionTwoActions(m_view, query, i18nc("@title:window", "New Game?"), KGuiItem(i18nc("@action:button", "Abandon Game")), KGuiItem(i18nc("@action:button", "Continue Game")));
     if (reply == KMessageBox::PrimaryAction) {
         return true;
     }

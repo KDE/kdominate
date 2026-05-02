@@ -25,7 +25,7 @@
         <item>
          <widget class="QGroupBox" name="groupBox_3">
           <property name="title">
-           <string>Computer Player 1</string>
+           <string comment="@title:group">Computer Player 1</string>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_5">
            <item>
@@ -85,7 +85,7 @@
                   </size>
                  </property>
                  <property name="text">
-                  <string>Beginner</string>
+                  <string comment="@label:slider Skill level of computer player">Beginner</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -95,7 +95,7 @@
                <item>
                 <widget class="QLabel" name="label_2">
                  <property name="text">
-                  <string>Average</string>
+                  <string comment="@label:slider Skill level of computer player">Average</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignHCenter|Qt::AlignTop</set>
@@ -111,7 +111,7 @@
                   </sizepolicy>
                  </property>
                  <property name="text">
-                  <string>Expert</string>
+                  <string comment="@label:slider Skill level of computer player">Expert</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
@@ -128,7 +128,7 @@
         <item>
          <widget class="QGroupBox" name="groupBox">
           <property name="title">
-           <string>Computer Player 2</string>
+           <string comment="@title:group">Computer Player 2</string>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_14">
            <item>
@@ -185,7 +185,7 @@
                   </size>
                  </property>
                  <property name="text">
-                  <string>Beginner</string>
+                  <string comment="@label:slider Skill level of computer player">Beginner</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -195,7 +195,7 @@
                <item>
                 <widget class="QLabel" name="label_10">
                  <property name="text">
-                  <string>Average</string>
+                  <string comment="@label:slider Skill level of computer player">Average</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignHCenter|Qt::AlignTop</set>
@@ -211,7 +211,7 @@
                   </sizepolicy>
                  </property>
                  <property name="text">
-                  <string>Expert</string>
+                  <string comment="@label:slider Skill level of computer player">Expert</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
@@ -228,7 +228,7 @@
         <item>
          <widget class="QCheckBox" name="kcfg_PauseForComputer">
           <property name="text">
-           <string>Pause before each computer move</string>
+           <string comment="@option:check">Pause before each computer move</string>
           </property>
          </widget>
         </item>
@@ -239,7 +239,7 @@
         <item>
          <widget class="QGroupBox" name="groupBox_5">
           <property name="title">
-           <string>Board</string>
+           <string comment="@label:listbox">Board</string>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_10">
            <item>
@@ -252,7 +252,7 @@
         <item>
          <widget class="QGroupBox" name="groupBox_6">
           <property name="title">
-           <string>Theme</string>
+           <string comment="@label:listbox">Theme</string>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_12">
            <item>
@@ -265,7 +265,7 @@
         <item>
          <widget class="QGroupBox" name="groupBox_4">
           <property name="title">
-           <string>Players’ Colors</string>
+           <string comment="@title:group">Players’ Colors</string>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_6">
            <item>
@@ -273,7 +273,7 @@
              <item>
               <widget class="QLabel" name="label_6">
                <property name="text">
-                <string>Player 1:</string>
+                <string comment="@label:chooser color">Player 1:</string>
                </property>
               </widget>
              </item>
@@ -287,7 +287,7 @@
              <item>
               <widget class="QLabel" name="label_7">
                <property name="text">
-                <string>Player 2:</string>
+                <string comment="@label:chooser color">Player 2:</string>
                </property>
               </widget>
              </item>
@@ -301,7 +301,7 @@
              <item>
               <widget class="QLabel" name="label_8">
                <property name="text">
-                <string>Obstacles:</string>
+                <string comment="@label:chooser color">Obstacles:</string>
                </property>
               </widget>
              </item>
