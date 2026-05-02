@@ -189,7 +189,7 @@ void KDominate::showTileCoords(int x, int y)
     if (x < 0 || y < 0) {
         statusBar()->showMessage(QString());
     } else {
-        statusBar()->showMessage(QStringLiteral("(%1, %2)").arg(x).arg(y));
+        statusBar()->showMessage(i18nc("@info:status Coordinates of the tile under the mouse pointer", "(%1,%2)", x, y));
     }
 }
 
