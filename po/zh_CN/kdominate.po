@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-29 00:41+0000\n"
+"POT-Creation-Date: 2026-05-03 00:40+0000\n"
 "PO-Revision-Date: 2026-03-03 19:31\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -55,6 +55,7 @@ msgstr ""
 
 #: game.cpp:144
 #, kde-format
+msgctxt "@title Settings category"
 msgid "General"
 msgstr ""
 
@@ -130,6 +131,7 @@ msgstr ""
 
 #: game.cpp:488
 #, kde-format
+msgctxt "@info:status"
 msgid "New Game"
 msgstr ""
 
@@ -138,21 +140,24 @@ msgstr ""
 msgid ""
 "You have requested a new game, but there is already a game in progress.\n"
 "\n"
-"Do you wish to abandon the current game?"
+"Abandon the current game?"
 msgstr ""
 
 #: game.cpp:516
 #, kde-format
+msgctxt "@title:window"
 msgid "New Game?"
 msgstr ""
 
 #: game.cpp:516
 #, kde-format
+msgctxt "@action:button"
 msgid "Abandon Game"
 msgstr ""
 
 #: game.cpp:516
 #, kde-format
+msgctxt "@action:button"
 msgid "Continue Game"
 msgstr ""
 
@@ -164,6 +169,12 @@ msgstr ""
 #: kdominate.cpp:182
 #, kde-format
 msgid "Current player:"
+msgstr ""
+
+#: kdominate.cpp:192
+#, kde-format
+msgctxt "@info:status Coordinates of the tile under the mouse pointer"
+msgid "(%1,%2)"
 msgstr ""
 
 #. i18n: ectx: label, entry (Color0), group (Game)
@@ -355,6 +366,7 @@ msgstr ""
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
 #: settings.ui:28
 #, kde-format
+msgctxt "@title:group"
 msgid "Computer Player 1"
 msgstr ""
 
@@ -369,6 +381,7 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLabel, label_9)
 #: settings.ui:88 settings.ui:188
 #, kde-format
+msgctxt "@label:slider Skill level of computer player"
 msgid "Beginner"
 msgstr ""
 
@@ -376,6 +389,7 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLabel, label_10)
 #: settings.ui:98 settings.ui:198
 #, kde-format
+msgctxt "@label:slider Skill level of computer player"
 msgid "Average"
 msgstr ""
 
@@ -383,53 +397,62 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLabel, label_11)
 #: settings.ui:114 settings.ui:214
 #, kde-format
+msgctxt "@label:slider Skill level of computer player"
 msgid "Expert"
 msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: settings.ui:131
 #, kde-format
+msgctxt "@title:group"
 msgid "Computer Player 2"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_PauseForComputer)
 #: settings.ui:231
 #, kde-format
+msgctxt "@option:check"
 msgid "Pause before each computer move"
 msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_5)
 #: settings.ui:242
 #, kde-format
+msgctxt "@label:listbox"
 msgid "Board"
 msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_6)
 #: settings.ui:255
 #, kde-format
+msgctxt "@label:listbox"
 msgid "Theme"
 msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_4)
 #: settings.ui:268
 #, kde-format
+msgctxt "@title:group"
 msgid "Players’ Colors"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: settings.ui:276
 #, kde-format
+msgctxt "@label:chooser color"
 msgid "Player 1:"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_7)
 #: settings.ui:290
 #, kde-format
+msgctxt "@label:chooser color"
 msgid "Player 2:"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_8)
 #: settings.ui:304
 #, kde-format
+msgctxt "@label:chooser color"
 msgid "Obstacles:"
 msgstr ""

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdominate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-29 00:41+0000\n"
+"POT-Creation-Date: 2026-05-03 00:40+0000\n"
 "PO-Revision-Date: 2026-04-29 07:09-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -54,7 +54,9 @@ msgid "Game Over"
 msgstr "Fim do jogo"
 
 #: game.cpp:144
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "General"
+msgctxt "@title Settings category"
 msgid "General"
 msgstr "Geral"
 
@@ -129,33 +131,45 @@ msgid "Stop showing move"
 msgstr "Parar a apresentação da jogada"
 
 #: game.cpp:488
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "New Game"
+msgctxt "@info:status"
 msgid "New Game"
 msgstr "Novo jogo"
 
 #: game.cpp:513
-#, kde-format
+#, fuzzy, kde-format
+#| msgid ""
+#| "You have requested a new game, but there is already a game in progress.\n"
+#| "\n"
+#| "Do you wish to abandon the current game?"
 msgid ""
 "You have requested a new game, but there is already a game in progress.\n"
 "\n"
-"Do you wish to abandon the current game?"
+"Abandon the current game?"
 msgstr ""
 "Você solicitou um novo jogo, mas já existe um em andamento.\n"
 "\n"
 "Deseja abandonar o jogo atual?"
 
 #: game.cpp:516
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "New Game?"
+msgctxt "@title:window"
 msgid "New Game?"
 msgstr "Novo jogo?"
 
 #: game.cpp:516
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Abandon Game"
+msgctxt "@action:button"
 msgid "Abandon Game"
 msgstr "Abandonar o jogo"
 
 #: game.cpp:516
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Continue Game"
+msgctxt "@action:button"
 msgid "Continue Game"
 msgstr "Continuar o jogo"
 
@@ -168,6 +182,12 @@ msgstr "Configurações"
 #, kde-format
 msgid "Current player:"
 msgstr "Jogador atual:"
+
+#: kdominate.cpp:192
+#, kde-format
+msgctxt "@info:status Coordinates of the tile under the mouse pointer"
+msgid "(%1,%2)"
+msgstr ""
 
 #. i18n: ectx: label, entry (Color0), group (Game)
 #: kdominate.kcfg:9
@@ -357,7 +377,9 @@ msgstr "Paredes"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
 #: settings.ui:28
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Computer Player 1"
+msgctxt "@title:group"
 msgid "Computer Player 1"
 msgstr "Jogador 1 (computador)"
 
@@ -371,68 +393,90 @@ msgstr "Jogando agora"
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: ectx: property (text), widget (QLabel, label_9)
 #: settings.ui:88 settings.ui:188
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Beginner"
+msgctxt "@label:slider Skill level of computer player"
 msgid "Beginner"
 msgstr "Iniciante"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #. i18n: ectx: property (text), widget (QLabel, label_10)
 #: settings.ui:98 settings.ui:198
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Average"
+msgctxt "@label:slider Skill level of computer player"
 msgid "Average"
 msgstr "Médio"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #. i18n: ectx: property (text), widget (QLabel, label_11)
 #: settings.ui:114 settings.ui:214
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Expert"
+msgctxt "@label:slider Skill level of computer player"
 msgid "Expert"
 msgstr "Especialista"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: settings.ui:131
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Computer Player 2"
+msgctxt "@title:group"
 msgid "Computer Player 2"
 msgstr "Jogador 2 (computador)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_PauseForComputer)
 #: settings.ui:231
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Pause before each computer move"
+msgctxt "@option:check"
 msgid "Pause before each computer move"
 msgstr "Pausa antes de cada jogada do computador"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_5)
 #: settings.ui:242
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Board"
+msgctxt "@label:listbox"
 msgid "Board"
 msgstr "Tabuleiro"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_6)
 #: settings.ui:255
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Theme"
+msgctxt "@label:listbox"
 msgid "Theme"
 msgstr "Tema"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_4)
 #: settings.ui:268
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Players’ Colors"
+msgctxt "@title:group"
 msgid "Players’ Colors"
 msgstr "Cores dos jogadores"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: settings.ui:276
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Player 1:"
+msgctxt "@label:chooser color"
 msgid "Player 1:"
 msgstr "Jogador 1:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_7)
 #: settings.ui:290
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Player 2:"
+msgctxt "@label:chooser color"
 msgid "Player 2:"
 msgstr "Jogador 2:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_8)
 #: settings.ui:304
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Obstacles:"
+msgctxt "@label:chooser color"
 msgid "Obstacles:"
 msgstr "Obstáculos:"
