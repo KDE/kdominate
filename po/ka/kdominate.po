@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kdominate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-03 00:40+0000\n"
-"PO-Revision-Date: 2026-04-29 05:47+0200\n"
+"PO-Revision-Date: 2026-05-03 04:25+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -55,8 +55,7 @@ msgid "Game Over"
 msgstr "თამაში დასრულდა"
 
 #: game.cpp:144
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "@title Settings category"
 msgid "General"
 msgstr "ზოგადი"
@@ -132,44 +131,36 @@ msgid "Stop showing move"
 msgstr "სვლის ჩვენების შეწყვეტა"
 
 #: game.cpp:488
-#, fuzzy, kde-format
-#| msgid "New Game"
+#, kde-format
 msgctxt "@info:status"
 msgid "New Game"
 msgstr "ახალი თამაში"
 
 #: game.cpp:513
-#, fuzzy, kde-format
-#| msgid ""
-#| "You have requested a new game, but there is already a game in progress.\n"
-#| "\n"
-#| "Do you wish to abandon the current game?"
+#, kde-format
 msgid ""
 "You have requested a new game, but there is already a game in progress.\n"
 "\n"
 "Abandon the current game?"
 msgstr ""
-"გამოითხოვეთ ახალი თამაში, მაგრამ თამაში უკვ მიმდინარეობს.\n"
+"გამოითხოვეთ ახალი თამაში, მაგრამ თამაში უკვე მიმდინარეობს.\n"
 "\n"
 "გნებავთ მიმდინარე თამაშის მიტოვება?"
 
 #: game.cpp:516
-#, fuzzy, kde-format
-#| msgid "New Game?"
+#, kde-format
 msgctxt "@title:window"
 msgid "New Game?"
 msgstr "ახალი თამაში?"
 
 #: game.cpp:516
-#, fuzzy, kde-format
-#| msgid "Abandon Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "Abandon Game"
 msgstr "თამაშის მიტოვება"
 
 #: game.cpp:516
-#, fuzzy, kde-format
-#| msgid "Continue Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "Continue Game"
 msgstr "თამაშის გაგრძელება"
@@ -188,7 +179,7 @@ msgstr "მიმდინარე მოთამაშე:"
 #, kde-format
 msgctxt "@info:status Coordinates of the tile under the mouse pointer"
 msgid "(%1,%2)"
-msgstr ""
+msgstr "(%1,%2)"
 
 #. i18n: ectx: label, entry (Color0), group (Game)
 #: kdominate.kcfg:9
@@ -378,8 +369,7 @@ msgstr "კედლები"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
 #: settings.ui:28
-#, fuzzy, kde-format
-#| msgid "Computer Player 1"
+#, kde-format
 msgctxt "@title:group"
 msgid "Computer Player 1"
 msgstr "კომპიუტერის მოთამაშე 1"
@@ -394,8 +384,7 @@ msgstr "თამაშობთ"
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: ectx: property (text), widget (QLabel, label_9)
 #: settings.ui:88 settings.ui:188
-#, fuzzy, kde-format
-#| msgid "Beginner"
+#, kde-format
 msgctxt "@label:slider Skill level of computer player"
 msgid "Beginner"
 msgstr "დამწყები"
@@ -403,8 +392,7 @@ msgstr "დამწყები"
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #. i18n: ectx: property (text), widget (QLabel, label_10)
 #: settings.ui:98 settings.ui:198
-#, fuzzy, kde-format
-#| msgid "Average"
+#, kde-format
 msgctxt "@label:slider Skill level of computer player"
 msgid "Average"
 msgstr "საშუალო"
@@ -412,72 +400,63 @@ msgstr "საშუალო"
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #. i18n: ectx: property (text), widget (QLabel, label_11)
 #: settings.ui:114 settings.ui:214
-#, fuzzy, kde-format
-#| msgid "Expert"
+#, kde-format
 msgctxt "@label:slider Skill level of computer player"
 msgid "Expert"
 msgstr "ექსპერტი"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: settings.ui:131
-#, fuzzy, kde-format
-#| msgid "Computer Player 2"
+#, kde-format
 msgctxt "@title:group"
 msgid "Computer Player 2"
 msgstr "კომპიუტერის მოთამაშე 2"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_PauseForComputer)
 #: settings.ui:231
-#, fuzzy, kde-format
-#| msgid "Pause before each computer move"
+#, kde-format
 msgctxt "@option:check"
 msgid "Pause before each computer move"
-msgstr "პაუზა კომპიუტერის სვლამდე"
+msgstr "პაუზა კომპიუტერის თითოეულ სვლამდე"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_5)
 #: settings.ui:242
-#, fuzzy, kde-format
-#| msgid "Board"
+#, kde-format
 msgctxt "@label:listbox"
 msgid "Board"
 msgstr "დაფა"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_6)
 #: settings.ui:255
-#, fuzzy, kde-format
-#| msgid "Theme"
+#, kde-format
 msgctxt "@label:listbox"
 msgid "Theme"
 msgstr "თემა"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_4)
 #: settings.ui:268
-#, fuzzy, kde-format
-#| msgid "Players’ Colors"
+#, kde-format
 msgctxt "@title:group"
 msgid "Players’ Colors"
 msgstr "მოთამაშის ფერები"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: settings.ui:276
-#, fuzzy, kde-format
-#| msgid "Player 1:"
+#, kde-format
 msgctxt "@label:chooser color"
 msgid "Player 1:"
 msgstr "მოთამაშე 1:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_7)
 #: settings.ui:290
-#, fuzzy, kde-format
-#| msgid "Player 2:"
+#, kde-format
 msgctxt "@label:chooser color"
 msgid "Player 2:"
 msgstr "მოთამაშე 2:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_8)
 #: settings.ui:304
-#, fuzzy, kde-format
-#| msgid "Obstacles:"
+#, kde-format
 msgctxt "@label:chooser color"
 msgid "Obstacles:"
 msgstr "დაბრკოლებები:"
