@@ -15,6 +15,7 @@ Name[pt_BR]=KDominate
 Name[sk]=KDominate
 Name[sl]=KDominate
 Name[tr]=K Hâkimiyet
+Name[ug]=KDominate
 Name[uk]=KDominate
 Exec=kdominate -qwindowtitle %c
 Icon=kdominate
