@@ -22,6 +22,7 @@
   <name xml:lang="sk">KDominate</name>
   <name xml:lang="sl">KDominate</name>
   <name xml:lang="tr">K Hâkimiyet</name>
+  <name xml:lang="ug">KDominate</name>
   <name xml:lang="uk">KDominate</name>
   <summary>Board Domination Game</summary>
   <summary xml:lang="ar">لعبة السيطرة على اللوحة</summary>
@@ -79,6 +80,7 @@
       <caption xml:lang="sk">Hranie KDominate</caption>
       <caption xml:lang="sl">Igranje KDominate</caption>
       <caption xml:lang="tr">K Hâkimiyet oynarken</caption>
+      <caption xml:lang="ug">KDominate ئويناۋاتىدۇ</caption>
       <caption xml:lang="uk">Гра у KDominate</caption>
       <image>https://www.kde.org/images/screenshots/kdominate.png</image>
     </screenshot>
