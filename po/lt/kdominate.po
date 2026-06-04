@@ -1,32 +1,32 @@
-# Uyghur translation for kdominate.
-# Copyright (C) YEAR This file is copyright:
+# Lithuanian translations for kdominate package.
+# Copyright (C) 2026 This file is copyright:
 # This file is distributed under the same license as the kdominate package.
-# Abduqadir Abliz <sahranbay@gmail.com>, 2026., YEAR.
+# Automatically generated, 2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kdominate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-03 00:40+0000\n"
-"PO-Revision-Date: 2026-05-31 18:26-0400\n"
-"Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
-"Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
-"Language: ug\n"
+"PO-Revision-Date: 2026-05-03 00:40+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.9\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
+"%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "ئابدۇقادىر ئابلىز، غەيرەت كەنجى"
+msgstr ""
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "sahranbay@gmail.com, gheyret@gmail.com"
+msgstr ""
 
 #: game.cpp:91
 #, kde-format
@@ -47,18 +47,18 @@ msgstr ""
 #: game.cpp:131
 #, kde-format
 msgid "Game over"
-msgstr "ئويۇن تامام"
+msgstr ""
 
 #: game.cpp:134
 #, kde-format
 msgid "Game Over"
-msgstr "ئويۇن ئاخىرلاشتى"
+msgstr ""
 
 #: game.cpp:144
 #, kde-format
 msgctxt "@title Settings category"
 msgid "General"
-msgstr "ئادەتتىكى"
+msgstr ""
 
 #: game.cpp:210 game.cpp:226
 #, kde-format
@@ -93,7 +93,7 @@ msgstr ""
 #: game.cpp:299
 #, kde-format
 msgid "Player %1"
-msgstr "ئوينىغۇچى %1"
+msgstr ""
 
 #: game.cpp:313
 #, kde-format
@@ -134,7 +134,7 @@ msgstr ""
 #, kde-format
 msgctxt "@info:status"
 msgid "New Game"
-msgstr "يېڭى ئويۇن"
+msgstr ""
 
 #: game.cpp:513
 #, kde-format
@@ -165,12 +165,12 @@ msgstr ""
 #: kdominate.cpp:83
 #, kde-format
 msgid "Settings"
-msgstr "تەڭشەك"
+msgstr ""
 
 #: kdominate.cpp:182
 #, kde-format
 msgid "Current player:"
-msgstr "نۆۋەتتىكى ياڭراتقۇچ:"
+msgstr ""
 
 #: kdominate.cpp:192
 #, kde-format
@@ -242,12 +242,12 @@ msgstr ""
 #: kdominateui.rc:9
 #, kde-format
 msgid "Main Toolbar"
-msgstr "ئاساسىي قورال بالداق"
+msgstr ""
 
 #: main.cpp:43
 #, kde-format
 msgid "KDominate"
-msgstr "KDominate"
+msgstr ""
 
 #: main.cpp:45
 #, kde-format
@@ -262,7 +262,7 @@ msgstr ""
 #: main.cpp:51
 #, kde-format
 msgid "Albert Vaca Cintora"
-msgstr "Albert Vaca Cintora"
+msgstr ""
 
 #: main.cpp:52
 #, kde-format
@@ -282,12 +282,12 @@ msgstr ""
 #: main.cpp:54
 #, kde-format
 msgid "Eugene Trounev"
-msgstr "Eugene Trounev"
+msgstr ""
 
 #: main.cpp:54
 #, kde-format
 msgid "Graphics"
-msgstr "گىرافىك"
+msgstr ""
 
 #: main.cpp:55
 #, kde-format
@@ -326,7 +326,7 @@ msgstr ""
 #, kde-format
 msgctxt "Game board name"
 msgid "Columns"
-msgstr "رەت"
+msgstr ""
 
 #: maps.cpp:5
 #, kde-format
@@ -338,7 +338,7 @@ msgstr ""
 #, kde-format
 msgctxt "Game board name"
 msgid "Island"
-msgstr "ئارال"
+msgstr ""
 
 #: maps.cpp:7
 #, kde-format
@@ -350,7 +350,7 @@ msgstr ""
 #, kde-format
 msgctxt "Game board name"
 msgid "Spiral"
-msgstr "بۇرمىسىمان"
+msgstr ""
 
 #: maps.cpp:9
 #, kde-format
@@ -384,7 +384,7 @@ msgstr ""
 #, kde-format
 msgctxt "@label:slider Skill level of computer player"
 msgid "Beginner"
-msgstr "يېڭى كەلداخۇن"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #. i18n: ectx: property (text), widget (QLabel, label_10)
@@ -392,7 +392,7 @@ msgstr "يېڭى كەلداخۇن"
 #, kde-format
 msgctxt "@label:slider Skill level of computer player"
 msgid "Average"
-msgstr "ئوتتۇرىچە"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #. i18n: ectx: property (text), widget (QLabel, label_11)
@@ -400,7 +400,7 @@ msgstr "ئوتتۇرىچە"
 #, kde-format
 msgctxt "@label:slider Skill level of computer player"
 msgid "Expert"
-msgstr "مۇتەخەسسىس"
+msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: settings.ui:131
@@ -428,7 +428,7 @@ msgstr ""
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Theme"
-msgstr "ئۆرنەك"
+msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_4)
 #: settings.ui:268
@@ -442,14 +442,14 @@ msgstr ""
 #, kde-format
 msgctxt "@label:chooser color"
 msgid "Player 1:"
-msgstr "ئوينىغۇچى 1:"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_7)
 #: settings.ui:290
 #, kde-format
 msgctxt "@label:chooser color"
 msgid "Player 2:"
-msgstr "ئوينىغۇچى 2:"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_8)
 #: settings.ui:304
