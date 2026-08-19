@@ -13,6 +13,7 @@
   <name xml:lang="cs">KDominate</name>
   <name xml:lang="de">KDominate</name>
   <name xml:lang="es">KDominate</name>
+  <name xml:lang="eu">KDominate</name>
   <name xml:lang="fr">KDominate</name>
   <name xml:lang="he">KDominate</name>
   <name xml:lang="it">KDominate</name>
@@ -32,6 +33,7 @@
   <summary xml:lang="cs">Hra o nadvládu nad hrací deskou</summary>
   <summary xml:lang="de">Beherrschen Sie das Spielbrett</summary>
   <summary xml:lang="es">Juego de dominio de tablero</summary>
+  <summary xml:lang="eu">Taula menderatzeko jokoa</summary>
   <summary xml:lang="fr">Jeu de conquête sur plateau</summary>
   <summary xml:lang="he">משחק שליטה על לוח</summary>
   <summary xml:lang="it">Gioco di conquista del tabellone</summary>
@@ -52,6 +54,7 @@
     <p xml:lang="cs">KDominate je taktická hra pro jednoho nebo dva hráče, ve které hráči přesouvají a přeměňují dílky s cílem ovládnout většinu hrací plochy.</p>
     <p xml:lang="de">KDominate ist ein taktisches Spiel für einen oder zwei Spieler, bei dem die Spieler Spielfelder verschieben und umwandeln, um die Mehrheit des Spielbretts zu beherrschen.</p>
     <p xml:lang="es">KDominate es un juego de táctica para uno o dos jugadores, donde los jugadores mueven y convierten fichas con el objeto de controlar la mayoría del tablero.</p>
+    <p xml:lang="eu">KDominate jokalari bat edo birentzako joko taktiko bat da; jokalariek fitxak mugitu eta bereganatzen dituzte, taularen zatirik handiena kontrolatzeko helburuarekin.</p>
     <p xml:lang="fr">KDominate est un jeu de tactique pour un ou deux joueurs, où les joueurs déplacent et convertissent des cases dans le but de contrôler la majorité du plateau.</p>
     <p xml:lang="he">KDominate הוא משחק טקטי לשחקן או שניים, בו שחקנים זזים וממירים אריחים במטרה לשלוח ברוב הלוח.</p>
     <p xml:lang="it">KDominate è un gioco tattico per uno o due giocatori, in cui i giocatori muovono e convertono le tessere con l'obiettivo di controllare la maggior parte del tabellone.</p>
@@ -72,6 +75,7 @@
       <caption xml:lang="cs">Hraní KDominate</caption>
       <caption xml:lang="de">KDominate spielen</caption>
       <caption xml:lang="es">Jugando con KDominate</caption>
+      <caption xml:lang="eu">KDominate jokatzen</caption>
       <caption xml:lang="fr">Jouer à KDominate</caption>
       <caption xml:lang="he">משחק ב־KDominate</caption>
       <caption xml:lang="it">Giocare a KDominate</caption>
