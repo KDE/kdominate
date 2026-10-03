@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kdominate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-03 00:40+0000\n"
-"PO-Revision-Date: 2026-04-13 18:42+0300\n"
+"PO-Revision-Date: 2026-09-05 11:00+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -30,13 +30,13 @@ msgstr "translator@legisign.org"
 #: game.cpp:91
 #, kde-format
 msgid "Sorry, doing a move…"
-msgstr ""
+msgstr "Pahoittelut, siirretään…"
 
 #: game.cpp:123
 #, kde-format
 msgctxt "As in 'there is no winner'"
 msgid "Draw!"
-msgstr ""
+msgstr "Tasapeli!"
 
 #: game.cpp:125
 #, kde-format
@@ -57,7 +57,7 @@ msgstr "Peli päättyi"
 #, kde-format
 msgctxt "@title Settings category"
 msgid "General"
-msgstr ""
+msgstr "Perusasetukset"
 
 #: game.cpp:210 game.cpp:226
 #, kde-format
@@ -67,7 +67,7 @@ msgstr "Valitse päämäärä"
 #: game.cpp:247
 #, kde-format
 msgid "Invalid move – too far"
-msgstr ""
+msgstr "Virheellinen siirto – liian kaukana"
 
 #: game.cpp:275
 #, kde-format
@@ -133,7 +133,7 @@ msgstr "Lopeta siirron näyttäminen"
 #, kde-format
 msgctxt "@info:status"
 msgid "New Game"
-msgstr ""
+msgstr "Uusi peli"
 
 #: game.cpp:513
 #, kde-format
@@ -142,24 +142,27 @@ msgid ""
 "\n"
 "Abandon the current game?"
 msgstr ""
+"Pyysit uutta peliä, mutta peli on jo meneillään.\n"
+"\n"
+"Hylätäänkö nykyinen peli?"
 
 #: game.cpp:516
 #, kde-format
 msgctxt "@title:window"
 msgid "New Game?"
-msgstr ""
+msgstr "Uusi peli?"
 
 #: game.cpp:516
 #, kde-format
 msgctxt "@action:button"
 msgid "Abandon Game"
-msgstr ""
+msgstr "Hylkää peli"
 
 #: game.cpp:516
 #, kde-format
 msgctxt "@action:button"
 msgid "Continue Game"
-msgstr ""
+msgstr "Jatka peliä"
 
 #: kdominate.cpp:83
 #, kde-format
@@ -175,7 +178,7 @@ msgstr "Nykyinen pelaaja:"
 #, kde-format
 msgctxt "@info:status Coordinates of the tile under the mouse pointer"
 msgid "(%1,%2)"
-msgstr ""
+msgstr "(%1,%2)"
 
 #. i18n: ectx: label, entry (Color0), group (Game)
 #: kdominate.kcfg:9
@@ -256,7 +259,7 @@ msgstr "Yhden tai kahden pelaajan taktiikkapeli."
 #: main.cpp:47
 #, kde-format
 msgid "© 2026 Albert Vaca Cintora"
-msgstr ""
+msgstr "© 2026, Albert Vaca Cintora"
 
 #: main.cpp:51
 #, kde-format
@@ -307,19 +310,19 @@ msgstr "Sam C. Misemer"
 #, kde-format
 msgctxt "Game board name"
 msgid "Empty – Small"
-msgstr ""
+msgstr "Tyhjä – pieni"
 
 #: maps.cpp:2
 #, kde-format
 msgctxt "Game board name"
 msgid "Empty – Medium"
-msgstr ""
+msgstr "Tyhjä – keskikokoinen"
 
 #: maps.cpp:3
 #, kde-format
 msgctxt "Game board name"
 msgid "Empty – Large"
-msgstr ""
+msgstr "Tyhjä – suuri"
 
 #: maps.cpp:4
 #, kde-format
@@ -368,7 +371,7 @@ msgstr "Seinät"
 #, kde-format
 msgctxt "@title:group"
 msgid "Computer Player 1"
-msgstr ""
+msgstr "Tietokonepelaaja 1"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ComputerPlayer1)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ComputerPlayer2)
@@ -383,7 +386,7 @@ msgstr "Nyt pelataan"
 #, kde-format
 msgctxt "@label:slider Skill level of computer player"
 msgid "Beginner"
-msgstr ""
+msgstr "Aloittelija"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #. i18n: ectx: property (text), widget (QLabel, label_10)
@@ -391,7 +394,7 @@ msgstr ""
 #, kde-format
 msgctxt "@label:slider Skill level of computer player"
 msgid "Average"
-msgstr ""
+msgstr "Keskitasoinen"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #. i18n: ectx: property (text), widget (QLabel, label_11)
@@ -399,60 +402,60 @@ msgstr ""
 #, kde-format
 msgctxt "@label:slider Skill level of computer player"
 msgid "Expert"
-msgstr ""
+msgstr "Asiantuntija"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: settings.ui:131
 #, kde-format
 msgctxt "@title:group"
 msgid "Computer Player 2"
-msgstr ""
+msgstr "Tietokonepelaaja 2"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_PauseForComputer)
 #: settings.ui:231
 #, kde-format
 msgctxt "@option:check"
 msgid "Pause before each computer move"
-msgstr ""
+msgstr "Tauko ennen kutakin tietokoneen siirtoa"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_5)
 #: settings.ui:242
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Board"
-msgstr ""
+msgstr "Lauta"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_6)
 #: settings.ui:255
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Theme"
-msgstr ""
+msgstr "Teema"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_4)
 #: settings.ui:268
 #, kde-format
 msgctxt "@title:group"
 msgid "Players’ Colors"
-msgstr ""
+msgstr "Pelaajan väri"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: settings.ui:276
 #, kde-format
 msgctxt "@label:chooser color"
 msgid "Player 1:"
-msgstr ""
+msgstr "Pelaaja 1:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_7)
 #: settings.ui:290
 #, kde-format
 msgctxt "@label:chooser color"
 msgid "Player 2:"
-msgstr ""
+msgstr "Pelaaja 2:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_8)
 #: settings.ui:304
 #, kde-format
 msgctxt "@label:chooser color"
 msgid "Obstacles:"
-msgstr ""
+msgstr "Esteet:"
