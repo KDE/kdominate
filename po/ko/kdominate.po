@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kdominate\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-05-03 00:40+0000\n"
-"PO-Revision-Date: 2026-06-06 15:06+0200\n"
+"PO-Revision-Date: 2026-10-05 22:07+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -30,110 +30,110 @@ msgstr "kde@peremen.name"
 #: game.cpp:91
 #, kde-format
 msgid "Sorry, doing a move…"
-msgstr ""
+msgstr "죄송합니다. 이동 중입니다…"
 
 #: game.cpp:123
 #, kde-format
 msgctxt "As in 'there is no winner'"
 msgid "Draw!"
-msgstr ""
+msgstr "무승부!"
 
 #: game.cpp:125
 #, kde-format
 msgid "Player %1 wins!"
-msgstr ""
+msgstr "%1 플레이어가 이겼습니다!"
 
 #: game.cpp:131
 #, kde-format
 msgid "Game over"
-msgstr ""
+msgstr "게임 끝"
 
 #: game.cpp:134
 #, kde-format
 msgid "Game Over"
-msgstr ""
+msgstr "게임 끝"
 
 #: game.cpp:144
 #, kde-format
 msgctxt "@title Settings category"
 msgid "General"
-msgstr ""
+msgstr "일반"
 
 #: game.cpp:210 game.cpp:226
 #, kde-format
 msgid "Select destination"
-msgstr ""
+msgstr "대상 선택"
 
 #: game.cpp:247
 #, kde-format
 msgid "Invalid move – too far"
-msgstr ""
+msgstr "잘못된 이동: 너무 멀리 떨어져 있음"
 
 #: game.cpp:275
 #, kde-format
 msgid "Start game"
-msgstr ""
+msgstr "게임 시작하기"
 
 #: game.cpp:277 game.cpp:330
 #, kde-format
 msgid "Continue game"
-msgstr ""
+msgstr "게임 계속하기"
 
 #: game.cpp:280 game.cpp:332
 #, kde-format
 msgid "Start computer move"
-msgstr ""
+msgstr "컴퓨터 이동 시작하기"
 
 #: game.cpp:297
 #, kde-format
 msgid "Your turn"
-msgstr ""
+msgstr "내 차례"
 
 #: game.cpp:299
 #, kde-format
 msgid "Player %1"
-msgstr ""
+msgstr "플레이어 %1"
 
 #: game.cpp:313
 #, kde-format
 msgid "Computer player %1 is moving"
-msgstr ""
+msgstr "컴퓨터 플레이어 %1이(가) 이동 중"
 
 #: game.cpp:343
 #, kde-format
 msgid "The computer could not find a valid move."
-msgstr ""
+msgstr "컴퓨터가 올바른 이동 방법을 찾을 수 없습니다."
 
 #: game.cpp:364
 #, kde-format
 msgid "Hint: move from (%1,%2) to (%3,%4)"
-msgstr ""
+msgstr "힌트: (%1,%2)에서 (%3,%4) 위치로 이동"
 
 #: game.cpp:447
 #, kde-format
 msgid "Finishing move..."
-msgstr ""
+msgstr "이동 완료 중..."
 
 #: game.cpp:468
 #, kde-format
 msgid "Interrupt game"
-msgstr ""
+msgstr "게임 일시 중단"
 
 #: game.cpp:472
 #, kde-format
 msgid "Stop computing"
-msgstr ""
+msgstr "계산 정지"
 
 #: game.cpp:474
 #, kde-format
 msgid "Stop showing move"
-msgstr ""
+msgstr "이동 표시 정지"
 
 #: game.cpp:488
 #, kde-format
 msgctxt "@info:status"
 msgid "New Game"
-msgstr ""
+msgstr "새 게임"
 
 #: game.cpp:513
 #, kde-format
@@ -142,240 +142,243 @@ msgid ""
 "\n"
 "Abandon the current game?"
 msgstr ""
+"새 게임을 요청했으나 현재 게임이 진행 중입니다.\n"
+"\n"
+"현재 게임을 끝내시겠습니까?"
 
 #: game.cpp:516
 #, kde-format
 msgctxt "@title:window"
 msgid "New Game?"
-msgstr ""
+msgstr "새 게임?"
 
 #: game.cpp:516
 #, kde-format
 msgctxt "@action:button"
 msgid "Abandon Game"
-msgstr ""
+msgstr "게임 끝내기"
 
 #: game.cpp:516
 #, kde-format
 msgctxt "@action:button"
 msgid "Continue Game"
-msgstr ""
+msgstr "게임 계속하기"
 
 #: kdominate.cpp:83
 #, kde-format
 msgid "Settings"
-msgstr ""
+msgstr "설정"
 
 #: kdominate.cpp:182
 #, kde-format
 msgid "Current player:"
-msgstr ""
+msgstr "현재 플레이어:"
 
 #: kdominate.cpp:192
 #, kde-format
 msgctxt "@info:status Coordinates of the tile under the mouse pointer"
 msgid "(%1,%2)"
-msgstr ""
+msgstr "(%1,%2)"
 
 #. i18n: ectx: label, entry (Color0), group (Game)
 #: kdominate.kcfg:9
 #, kde-format
 msgid "Color of obstacle tiles."
-msgstr ""
+msgstr "장애물 타일의 색상입니다."
 
 #. i18n: ectx: label, entry (Color1), group (Game)
 #: kdominate.kcfg:13
 #, kde-format
 msgid "Color of player 1."
-msgstr ""
+msgstr "플레이어 1 색상입니다."
 
 #. i18n: ectx: label, entry (Color2), group (Game)
 #: kdominate.kcfg:17
 #, kde-format
 msgid "Color of player 2."
-msgstr ""
+msgstr "플레이어 2 색상입니다."
 
 #. i18n: ectx: label, entry (ComputerPlayer1), group (Game)
 #: kdominate.kcfg:21
 #, kde-format
 msgid "Whether player 1 is played by the computer."
-msgstr ""
+msgstr "플레이어 1을 컴퓨터가 조종하는지 여부입니다."
 
 #. i18n: ectx: label, entry (Skill1), group (Game)
 #: kdominate.kcfg:32
 #, kde-format
 msgid "Skill of computer player 1."
-msgstr ""
+msgstr "컴퓨터 플레이어 1의 기술입니다."
 
 #. i18n: ectx: label, entry (ComputerPlayer2), group (Game)
 #: kdominate.kcfg:36
 #, kde-format
 msgid "Whether player 2 is played by the computer."
-msgstr ""
+msgstr "플레이어 2를 컴퓨터가 조종하는지 여부입니다."
 
 #. i18n: ectx: label, entry (Skill2), group (Game)
 #: kdominate.kcfg:47
 #, kde-format
 msgid "Skill of computer player 2."
-msgstr ""
+msgstr "컴퓨터 플레이어 2의 기술입니다."
 
 #. i18n: ectx: label, entry (PauseForComputer), group (Game)
 #: kdominate.kcfg:51
 #, kde-format
 msgid "Pause before each computer move."
-msgstr ""
+msgstr "컴퓨터가 이동하기 전에 일시 정지합니다."
 
 #. i18n: ectx: label, entry (MapIndex), group (Game)
 #: kdominate.kcfg:55
 #, kde-format
 msgid "Predefined map selection"
-msgstr ""
+msgstr "사전에 지정된 지도 선택"
 
 #. i18n: ectx: label, entry (ThemeIndex), group (Game)
 #: kdominate.kcfg:64
 #, kde-format
 msgid "Visual theme for the tiles."
-msgstr ""
+msgstr "타일의 시각 테마입니다."
 
 #. i18n: ectx: ToolBar (mainToolBar)
 #: kdominateui.rc:9
 #, kde-format
 msgid "Main Toolbar"
-msgstr ""
+msgstr "주 도구 모음"
 
 #: main.cpp:43
 #, kde-format
 msgid "KDominate"
-msgstr ""
+msgstr "KDominate"
 
 #: main.cpp:45
 #, kde-format
 msgid "A tactical game for one or two players."
-msgstr ""
+msgstr "1인이나 2인용 전략 게임입니다."
 
 #: main.cpp:47
 #, kde-format
 msgid "© 2026 Albert Vaca Cintora"
-msgstr ""
+msgstr "© 2026 Albert Vaca Cintora"
 
 #: main.cpp:51
 #, kde-format
 msgid "Albert Vaca Cintora"
-msgstr ""
+msgstr "Albert Vaca Cintora"
 
 #: main.cpp:52
 #, kde-format
 msgid "Matthias Kiefer"
-msgstr ""
+msgstr "Matthias Kiefer"
 
 #: main.cpp:52 main.cpp:53
 #, kde-format
 msgid "Original KJumpingCube code"
-msgstr ""
+msgstr "원본 KJumpingCube 코드"
 
 #: main.cpp:53
 #, kde-format
 msgid "Ian Wadham"
-msgstr ""
+msgstr "Ian Wadham"
 
 #: main.cpp:54
 #, kde-format
 msgid "Eugene Trounev"
-msgstr ""
+msgstr "Eugene Trounev"
 
 #: main.cpp:54
 #, kde-format
 msgid "Graphics"
-msgstr ""
+msgstr "그래픽"
 
 #: main.cpp:55
 #, kde-format
 msgid "Ken Foster"
-msgstr ""
+msgstr "Ken Foster"
 
 #: main.cpp:55 main.cpp:56
 #, kde-format
 msgid "Original game idea"
-msgstr ""
+msgstr "원본 게임 아이디어"
 
 #: main.cpp:56
 #, kde-format
 msgid "Sam C. Misemer"
-msgstr ""
+msgstr "Sam C. Misemer"
 
 #: maps.cpp:1
 #, kde-format
 msgctxt "Game board name"
 msgid "Empty – Small"
-msgstr ""
+msgstr "비어 있음: 작음"
 
 #: maps.cpp:2
 #, kde-format
 msgctxt "Game board name"
 msgid "Empty – Medium"
-msgstr ""
+msgstr "비어 있음: 중간"
 
 #: maps.cpp:3
 #, kde-format
 msgctxt "Game board name"
 msgid "Empty – Large"
-msgstr ""
+msgstr "비어 있음: 큼"
 
 #: maps.cpp:4
 #, kde-format
 msgctxt "Game board name"
 msgid "Columns"
-msgstr ""
+msgstr "열"
 
 #: maps.cpp:5
 #, kde-format
 msgctxt "Game board name"
 msgid "Corridor"
-msgstr ""
+msgstr "복도"
 
 #: maps.cpp:6
 #, kde-format
 msgctxt "Game board name"
 msgid "Island"
-msgstr ""
+msgstr "섬"
 
 #: maps.cpp:7
 #, kde-format
 msgctxt "Game board name"
 msgid "Rocks"
-msgstr ""
+msgstr "바위"
 
 #: maps.cpp:8
 #, kde-format
 msgctxt "Game board name"
 msgid "Spiral"
-msgstr ""
+msgstr "나선형"
 
 #: maps.cpp:9
 #, kde-format
 msgctxt "Game board name"
 msgid "Trees"
-msgstr ""
+msgstr "나무"
 
 #: maps.cpp:10
 #, kde-format
 msgctxt "Game board name"
 msgid "Walls"
-msgstr ""
+msgstr "벽"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
 #: settings.ui:28
 #, kde-format
 msgctxt "@title:group"
 msgid "Computer Player 1"
-msgstr ""
+msgstr "컴퓨터 플레이어 1"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ComputerPlayer1)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ComputerPlayer2)
 #: settings.ui:46 settings.ui:149
 #, kde-format
 msgid "Playing now"
-msgstr ""
+msgstr "현재 플레이 중"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #. i18n: ectx: property (text), widget (QLabel, label_9)
@@ -383,7 +386,7 @@ msgstr ""
 #, kde-format
 msgctxt "@label:slider Skill level of computer player"
 msgid "Beginner"
-msgstr ""
+msgstr "초보자"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #. i18n: ectx: property (text), widget (QLabel, label_10)
@@ -391,7 +394,7 @@ msgstr ""
 #, kde-format
 msgctxt "@label:slider Skill level of computer player"
 msgid "Average"
-msgstr ""
+msgstr "평균"
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #. i18n: ectx: property (text), widget (QLabel, label_11)
@@ -399,60 +402,60 @@ msgstr ""
 #, kde-format
 msgctxt "@label:slider Skill level of computer player"
 msgid "Expert"
-msgstr ""
+msgstr "전문가"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox)
 #: settings.ui:131
 #, kde-format
 msgctxt "@title:group"
 msgid "Computer Player 2"
-msgstr ""
+msgstr "컴퓨터 플레이어 2"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_PauseForComputer)
 #: settings.ui:231
 #, kde-format
 msgctxt "@option:check"
 msgid "Pause before each computer move"
-msgstr ""
+msgstr "컴퓨터가 이동하기 전에 일시 정지"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_5)
 #: settings.ui:242
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Board"
-msgstr ""
+msgstr "보드"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_6)
 #: settings.ui:255
 #, kde-format
 msgctxt "@label:listbox"
 msgid "Theme"
-msgstr ""
+msgstr "테마"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox_4)
 #: settings.ui:268
 #, kde-format
 msgctxt "@title:group"
 msgid "Players’ Colors"
-msgstr ""
+msgstr "플레이어 색상"
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: settings.ui:276
 #, kde-format
 msgctxt "@label:chooser color"
 msgid "Player 1:"
-msgstr ""
+msgstr "플레이어 1:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_7)
 #: settings.ui:290
 #, kde-format
 msgctxt "@label:chooser color"
 msgid "Player 2:"
-msgstr ""
+msgstr "플레이어 2:"
 
 #. i18n: ectx: property (text), widget (QLabel, label_8)
 #: settings.ui:304
 #, kde-format
 msgctxt "@label:chooser color"
 msgid "Obstacles:"
-msgstr ""
+msgstr "장애물:"
