@@ -1,0 +1,461 @@
+# Nemanja Hiršl <nemhirsl@gmail.com>, 2026.
+msgid ""
+msgstr ""
+"Project-Id-Version: kdominate\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2026-05-03 00:40+0000\n"
+"PO-Revision-Date: 2026-10-09 22:30+0200\n"
+"Last-Translator: Nemanja Hiršl <nemhirsl@gmail.com>\n"
+"Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
+"Language: sr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Accelerator-Marker: &\n"
+"X-Text-Markup: kde4\n"
+"X-Environment: kde\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Немања Хиршл"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "nemhirsl@gmail.com"
+
+#: game.cpp:91
+#, kde-format
+msgid "Sorry, doing a move…"
+msgstr "Извините, повлачим потез…"
+
+#: game.cpp:123
+#, kde-format
+msgctxt "As in 'there is no winner'"
+msgid "Draw!"
+msgstr "Нерешено!"
+
+#: game.cpp:125
+#, kde-format
+msgid "Player %1 wins!"
+msgstr "Играч %1 побеђује!"
+
+#: game.cpp:131
+#, kde-format
+msgid "Game over"
+msgstr "Крај игре"
+
+#: game.cpp:134
+#, kde-format
+msgid "Game Over"
+msgstr "Крај игре"
+
+#: game.cpp:144
+#, kde-format
+msgctxt "@title Settings category"
+msgid "General"
+msgstr "Опште"
+
+#: game.cpp:210 game.cpp:226
+#, kde-format
+msgid "Select destination"
+msgstr "Изаберите одредиште"
+
+#: game.cpp:247
+#, kde-format
+msgid "Invalid move – too far"
+msgstr "Лош потез – предалеко"
+
+#: game.cpp:275
+#, kde-format
+msgid "Start game"
+msgstr "Започни партију"
+
+#: game.cpp:277 game.cpp:330
+#, kde-format
+msgid "Continue game"
+msgstr "Настави партију"
+
+#: game.cpp:280 game.cpp:332
+#, kde-format
+msgid "Start computer move"
+msgstr "Започни рачунарев потез"
+
+#: game.cpp:297
+#, kde-format
+msgid "Your turn"
+msgstr "Ваш потез"
+
+#: game.cpp:299
+#, kde-format
+msgid "Player %1"
+msgstr "Играч %1"
+
+#: game.cpp:313
+#, kde-format
+msgid "Computer player %1 is moving"
+msgstr "Потез рачунарског играча %1"
+
+#: game.cpp:343
+#, kde-format
+msgid "The computer could not find a valid move."
+msgstr "Рачунар не може да нађе правилан потез."
+
+#: game.cpp:364
+#, kde-format
+msgid "Hint: move from (%1,%2) to (%3,%4)"
+msgstr "Савет: потез са (%1,%2) на (%3,%4)"
+
+#: game.cpp:447
+#, kde-format
+msgid "Finishing move..."
+msgstr "Довршавам потез..."
+
+#: game.cpp:468
+#, kde-format
+msgid "Interrupt game"
+msgstr "Прекини партију"
+
+#: game.cpp:472
+#, kde-format
+msgid "Stop computing"
+msgstr "Заустави рачунање"
+
+#: game.cpp:474
+#, kde-format
+msgid "Stop showing move"
+msgstr "Престани са показивањем потеза"
+
+#: game.cpp:488
+#, kde-format
+msgctxt "@info:status"
+msgid "New Game"
+msgstr "Нова партија"
+
+#: game.cpp:513
+#, kde-format
+msgid ""
+"You have requested a new game, but there is already a game in progress.\n"
+"\n"
+"Abandon the current game?"
+msgstr ""
+"Затражили сте нову партију, али је једна партија већ у току.\n"
+"\n"
+"Обуставити тренутну партију?"
+
+#: game.cpp:516
+#, kde-format
+msgctxt "@title:window"
+msgid "New Game?"
+msgstr "Нова партија?"
+
+#: game.cpp:516
+#, kde-format
+msgctxt "@action:button"
+msgid "Abandon Game"
+msgstr "Обустави партију"
+
+#: game.cpp:516
+#, kde-format
+msgctxt "@action:button"
+msgid "Continue Game"
+msgstr "Настави партију"
+
+#: kdominate.cpp:83
+#, kde-format
+msgid "Settings"
+msgstr "Поставке"
+
+#: kdominate.cpp:182
+#, kde-format
+msgid "Current player:"
+msgstr "Тренутни играч:"
+
+#: kdominate.cpp:192
+#, kde-format
+msgctxt "@info:status Coordinates of the tile under the mouse pointer"
+msgid "(%1,%2)"
+msgstr "(%1,%2)"
+
+#. i18n: ectx: label, entry (Color0), group (Game)
+#: kdominate.kcfg:9
+#, kde-format
+msgid "Color of obstacle tiles."
+msgstr "Боја поља препрека."
+
+#. i18n: ectx: label, entry (Color1), group (Game)
+#: kdominate.kcfg:13
+#, kde-format
+msgid "Color of player 1."
+msgstr "Боја првог играча."
+
+#. i18n: ectx: label, entry (Color2), group (Game)
+#: kdominate.kcfg:17
+#, kde-format
+msgid "Color of player 2."
+msgstr "Боја другог играча."
+
+#. i18n: ectx: label, entry (ComputerPlayer1), group (Game)
+#: kdominate.kcfg:21
+#, kde-format
+msgid "Whether player 1 is played by the computer."
+msgstr "Да ли рачунар игра као први играч."
+
+#. i18n: ectx: label, entry (Skill1), group (Game)
+#: kdominate.kcfg:32
+#, kde-format
+msgid "Skill of computer player 1."
+msgstr "Вештина рачунарског играча 1."
+
+#. i18n: ectx: label, entry (ComputerPlayer2), group (Game)
+#: kdominate.kcfg:36
+#, kde-format
+msgid "Whether player 2 is played by the computer."
+msgstr "Да ли рачунар игра као други играч."
+
+#. i18n: ectx: label, entry (Skill2), group (Game)
+#: kdominate.kcfg:47
+#, kde-format
+msgid "Skill of computer player 2."
+msgstr "Вештина рачунарског играча 2."
+
+#. i18n: ectx: label, entry (PauseForComputer), group (Game)
+#: kdominate.kcfg:51
+#, kde-format
+msgid "Pause before each computer move."
+msgstr "Пауза пре сваког рачунаревог потеза."
+
+#. i18n: ectx: label, entry (MapIndex), group (Game)
+#: kdominate.kcfg:55
+#, kde-format
+msgid "Predefined map selection"
+msgstr "Избор унапред задате табле"
+
+#. i18n: ectx: label, entry (ThemeIndex), group (Game)
+#: kdominate.kcfg:64
+#, kde-format
+msgid "Visual theme for the tiles."
+msgstr "Визуелна тема поља."
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kdominateui.rc:9
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Главна трака"
+
+#: main.cpp:43
+#, kde-format
+msgid "KDominate"
+msgstr "KDominate"
+
+#: main.cpp:45
+#, kde-format
+msgid "A tactical game for one or two players."
+msgstr "Тактичка игра за једног или два играча."
+
+#: main.cpp:47
+#, kde-format
+msgid "© 2026 Albert Vaca Cintora"
+msgstr "© 2026, Алберт Вака Синтора"
+
+#: main.cpp:51
+#, kde-format
+msgid "Albert Vaca Cintora"
+msgstr "Алберт Вака Синтора"
+
+#: main.cpp:52
+#, kde-format
+msgid "Matthias Kiefer"
+msgstr "Матијас Кифер"
+
+#: main.cpp:52 main.cpp:53
+#, kde-format
+msgid "Original KJumpingCube code"
+msgstr "првобитни код К‑скочикоцке"
+
+#: main.cpp:53
+#, kde-format
+msgid "Ian Wadham"
+msgstr "Ијан Вадам"
+
+#: main.cpp:54
+#, kde-format
+msgid "Eugene Trounev"
+msgstr "Јевгениј Труњов"
+
+#: main.cpp:54
+#, kde-format
+msgid "Graphics"
+msgstr "графика"
+
+#: main.cpp:55
+#, kde-format
+msgid "Ken Foster"
+msgstr "Ken Foster"
+
+#: main.cpp:55 main.cpp:56
+#, kde-format
+msgid "Original game idea"
+msgstr "првобитна замисао игре"
+
+#: main.cpp:56
+#, kde-format
+msgid "Sam C. Misemer"
+msgstr "Sam C. Misemer"
+
+#: maps.cpp:1
+#, kde-format
+msgctxt "Game board name"
+msgid "Empty – Small"
+msgstr "Празна – мала"
+
+#: maps.cpp:2
+#, kde-format
+msgctxt "Game board name"
+msgid "Empty – Medium"
+msgstr "Празна – средња"
+
+#: maps.cpp:3
+#, kde-format
+msgctxt "Game board name"
+msgid "Empty – Large"
+msgstr "Празна – велика"
+
+#: maps.cpp:4
+#, kde-format
+msgctxt "Game board name"
+msgid "Columns"
+msgstr "Колоне"
+
+#: maps.cpp:5
+#, kde-format
+msgctxt "Game board name"
+msgid "Corridor"
+msgstr "Ходник"
+
+#: maps.cpp:6
+#, kde-format
+msgctxt "Game board name"
+msgid "Island"
+msgstr "Острво"
+
+#: maps.cpp:7
+#, kde-format
+msgctxt "Game board name"
+msgid "Rocks"
+msgstr "Стене"
+
+#: maps.cpp:8
+#, kde-format
+msgctxt "Game board name"
+msgid "Spiral"
+msgstr "Спирала"
+
+#: maps.cpp:9
+#, kde-format
+msgctxt "Game board name"
+msgid "Trees"
+msgstr "Дрвеће"
+
+#: maps.cpp:10
+#, kde-format
+msgctxt "Game board name"
+msgid "Walls"
+msgstr "Зидови"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_3)
+#: settings.ui:28
+#, kde-format
+msgctxt "@title:group"
+msgid "Computer Player 1"
+msgstr "Рачунарски играч 1"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ComputerPlayer1)
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ComputerPlayer2)
+#: settings.ui:46 settings.ui:149
+#, kde-format
+msgid "Playing now"
+msgstr "Игра сада"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#. i18n: ectx: property (text), widget (QLabel, label_9)
+#: settings.ui:88 settings.ui:188
+#, kde-format
+msgctxt "@label:slider Skill level of computer player"
+msgid "Beginner"
+msgstr "Почетник"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#. i18n: ectx: property (text), widget (QLabel, label_10)
+#: settings.ui:98 settings.ui:198
+#, kde-format
+msgctxt "@label:slider Skill level of computer player"
+msgid "Average"
+msgstr "Просек"
+
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+#. i18n: ectx: property (text), widget (QLabel, label_11)
+#: settings.ui:114 settings.ui:214
+#, kde-format
+msgctxt "@label:slider Skill level of computer player"
+msgid "Expert"
+msgstr "Зналац"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox)
+#: settings.ui:131
+#, kde-format
+msgctxt "@title:group"
+msgid "Computer Player 2"
+msgstr "Рачунарски играч 2"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_PauseForComputer)
+#: settings.ui:231
+#, kde-format
+msgctxt "@option:check"
+msgid "Pause before each computer move"
+msgstr "Паузирај пре сваког рачунаревог потеза"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_5)
+#: settings.ui:242
+#, kde-format
+msgctxt "@label:listbox"
+msgid "Board"
+msgstr "Табла"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_6)
+#: settings.ui:255
+#, kde-format
+msgctxt "@label:listbox"
+msgid "Theme"
+msgstr "Тема"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox_4)
+#: settings.ui:268
+#, kde-format
+msgctxt "@title:group"
+msgid "Players’ Colors"
+msgstr "Боје играча"
+
+#. i18n: ectx: property (text), widget (QLabel, label_6)
+#: settings.ui:276
+#, kde-format
+msgctxt "@label:chooser color"
+msgid "Player 1:"
+msgstr "Играч 1:"
+
+#. i18n: ectx: property (text), widget (QLabel, label_7)
+#: settings.ui:290
+#, kde-format
+msgctxt "@label:chooser color"
+msgid "Player 2:"
+msgstr "Играч 2:"
+
+#. i18n: ectx: property (text), widget (QLabel, label_8)
+#: settings.ui:304
+#, kde-format
+msgctxt "@label:chooser color"
+msgid "Obstacles:"
+msgstr "Препреке:"
