@@ -24,6 +24,10 @@
   <name xml:lang="pt-BR">KDominate</name>
   <name xml:lang="sk">KDominate</name>
   <name xml:lang="sl">KDominate</name>
+  <name xml:lang="sr">KDominate</name>
+  <name xml:lang="sr-Latn">KDominate</name>
+  <name xml:lang="sr-ijekavian">KDominate</name>
+  <name xml:lang="sr-ijekavianlatin">KDominate</name>
   <name xml:lang="tr">K Hâkimiyet</name>
   <name xml:lang="ug">KDominate</name>
   <name xml:lang="uk">KDominate</name>
@@ -45,6 +49,10 @@
   <summary xml:lang="pt-BR">Jogo de Dominação de Tabuleiro</summary>
   <summary xml:lang="sk">Hra o ovládnutie dosky</summary>
   <summary xml:lang="sl">Igra dominacije na plošči</summary>
+  <summary xml:lang="sr">Игра освајања табле</summary>
+  <summary xml:lang="sr-Latn">Igra osvajanja table</summary>
+  <summary xml:lang="sr-ijekavian">Игра освајања табле</summary>
+  <summary xml:lang="sr-ijekavianlatin">Igra osvajanja table</summary>
   <summary xml:lang="tr">Hâkimiyet masa oyunu</summary>
   <summary xml:lang="uk">Гра у панування на дошці</summary>
   <description>
@@ -68,6 +76,10 @@
     <p xml:lang="pt-BR">KDominate é um jogo tático para um ou dois jogadores, onde os jogadores movem e convertem peças com o objetivo de controlar a maior parte do tabuleiro.</p>
     <p xml:lang="sk">KDominate je taktická hra pre jedného alebo dvoch hráčov, kde hráči presúvajú a konvertujú dlaždice s cieľom ovládnuť väčšinu dosky.</p>
     <p xml:lang="sl">KDominate je taktična igra za enega ali dva igralca, kjer igralci premikajo in preoblikujejo ploščice s ciljem nadzora nad večino igralne plošče.</p>
+    <p xml:lang="sr">KDominate је тактичка игра за једног или два играча, у којој играчи померају и преотимају поља са циљем да овладају већим делом табле.</p>
+    <p xml:lang="sr-Latn">KDominate je taktička igra za jednog ili dva igrača, u kojoj igrači pomeraju i preotimaju polja sa ciljem da ovladaju većim delom table.</p>
+    <p xml:lang="sr-ijekavian">KDominate је тактичка игра за једног или два играча, у којој играчи помијерају и преотимају поља са циљем да овладају већим дијелом табле.</p>
+    <p xml:lang="sr-ijekavianlatin">KDominate je taktička igra za jednog ili dva igrača, u kojoj igrači pomijeraju i preotimaju polja sa ciljem da ovladaju većim dijelom table.</p>
     <p xml:lang="tr">K Hâkimiyet, oyuncuların tahtanın büyük çoğunluğunu kontrol etme amacıyla taşları hareket ettirip dönüştürdüğü, bir veya iki oyuncu için taktiksel bir oyundur.</p>
     <p xml:lang="uk">KDominate — тактична гра для одного або двох гравців, де гравці роблять ходи і перевертають плитки з метою встановлення контролю над більшою частиною дошки.</p>
   </description>
@@ -91,6 +103,10 @@
       <caption xml:lang="pt-BR">Jogando KDominate</caption>
       <caption xml:lang="sk">Hranie KDominate</caption>
       <caption xml:lang="sl">Igranje KDominate</caption>
+      <caption xml:lang="sr">Играње игре KDominate</caption>
+      <caption xml:lang="sr-Latn">Igranje igre KDominate</caption>
+      <caption xml:lang="sr-ijekavian">Играње игре KDominate</caption>
+      <caption xml:lang="sr-ijekavianlatin">Igranje igre KDominate</caption>
       <caption xml:lang="tr">K Hâkimiyet oynarken</caption>
       <caption xml:lang="ug">KDominate ئويناۋاتىدۇ</caption>
       <caption xml:lang="uk">Гра у KDominate</caption>
