@@ -22,6 +22,7 @@
   <name xml:lang="ko">KDominate</name>
   <name xml:lang="nl">KDominate</name>
   <name xml:lang="pt-BR">KDominate</name>
+  <name xml:lang="ru">KDominate</name>
   <name xml:lang="sk">KDominate</name>
   <name xml:lang="sl">KDominate</name>
   <name xml:lang="sr">KDominate</name>
@@ -47,6 +48,7 @@
   <summary xml:lang="ko">보드 정복 게임</summary>
   <summary xml:lang="nl">Bordspel Dominatie</summary>
   <summary xml:lang="pt-BR">Jogo de Dominação de Tabuleiro</summary>
+  <summary xml:lang="ru">Игра на захват игрового поля</summary>
   <summary xml:lang="sk">Hra o ovládnutie dosky</summary>
   <summary xml:lang="sl">Igra dominacije na plošči</summary>
   <summary xml:lang="sr">Игра освајања табле</summary>
@@ -74,6 +76,7 @@
     <p xml:lang="ko">KDominate는 1인용 및 2인용 전략 게임으로, 플레이어가 이동하면서 타일을 변형하여 보드의 다수를 차지하는 게임입니다.</p>
     <p xml:lang="nl">KDominate is een tactisch spel voor één of twee spelers, waar spelers stukken verplaatsen en converteren met het doel de meerderheid van het bord te controleren.</p>
     <p xml:lang="pt-BR">KDominate é um jogo tático para um ou dois jogadores, onde os jogadores movem e convertem peças com o objetivo de controlar a maior parte do tabuleiro.</p>
+    <p xml:lang="ru">KDominate — тактическая игра для одного или двух игроков, в которой нужно перемещать и преобразовывать плитки, чтобы контролировать большую часть игрового поля.</p>
     <p xml:lang="sk">KDominate je taktická hra pre jedného alebo dvoch hráčov, kde hráči presúvajú a konvertujú dlaždice s cieľom ovládnuť väčšinu dosky.</p>
     <p xml:lang="sl">KDominate je taktična igra za enega ali dva igralca, kjer igralci premikajo in preoblikujejo ploščice s ciljem nadzora nad večino igralne plošče.</p>
     <p xml:lang="sr">KDominate је тактичка игра за једног или два играча, у којој играчи померају и преотимају поља са циљем да овладају већим делом табле.</p>
@@ -101,6 +104,7 @@
       <caption xml:lang="ko">KDominate 플레이</caption>
       <caption xml:lang="nl">KDominate spelen</caption>
       <caption xml:lang="pt-BR">Jogando KDominate</caption>
+      <caption xml:lang="ru">Игра в KDominate</caption>
       <caption xml:lang="sk">Hranie KDominate</caption>
       <caption xml:lang="sl">Igranje KDominate</caption>
       <caption xml:lang="sr">Играње игре KDominate</caption>
